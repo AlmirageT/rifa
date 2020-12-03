@@ -1,0 +1,40 @@
+version: "2"
+
+services:
+  web:
+    build: .
+    hostname: web # para comunicacion entre containers
+    stdin_open: true
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html/framework
+    links:
+      - mysql
+  mysql:
+    image: mysql:5.7.25
+    hostname: mysql # para comunicacion entre containers
+    ports:
+      - "3306:3306"
+    volumes:
+      - /datos/mysql-5-7-2:/var/lib/mysql
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Qnx640140!d747fb9cf7
+      MYSQL_DATABASE: isell1 #nombre de la base de datos a crear
+      MYSQL_ROOT_PASSWORD: Qnx640140!d747fb9cf7
+  ftp:
+    image: bogem/ftp
+    hostname: ftp # para comunicacion entre containers
+    ports:
+      - "20:20"
+      - "21:21"
+      - "47400-47470:47400-47470"
+    volumes:
+      - ./storage/app/public/xls:/home/vsftpd
+    environment:
+      FTP_USER: pinmobiliario
+      FTP_PASS: d747fb9cf7pi3189
+      PASV_ADDRESS: 186.64.123.249 # ip de la maquina 186.64.123.249 192.168.1.143
