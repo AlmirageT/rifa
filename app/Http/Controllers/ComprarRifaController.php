@@ -98,7 +98,7 @@ class ComprarRifaController extends Controller
             toastr()->info('Ocurrio un error al intentar acceder al recurso solicitado');
             DB::rollback();
             return back();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();         
             toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
             return redirect::back();
