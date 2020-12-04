@@ -33,7 +33,7 @@
     
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="{{ asset('assets/img/favicon_atotal.png') }}" type="{{ asset('assets/image/jpg') }}">
+        <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="{{ asset('assets/image/jpg') }}">
         
         <title>Rifo Mi Propiedad</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
@@ -58,7 +58,7 @@
                     <div class=" col-lg-3" style="width: 15rem;">
                         <div class="card-body">
                             <h5 class="card-title letras-footer">Rifo Mi Propiedad</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id vitae doloremque illum officiis quis possimus inventore, esse error magnam. In iste vero id eum quod voluptates aut quidem cum mollitia.</p>
+                            <p>Confía en ti, cree en la suerte, desafía al destino y podrás ser el ganador.</p>
                         </div> 
                     </div>
                
