@@ -13,8 +13,8 @@
                         <div class="col-lg-6">
                             <h4>HAZ UNA TRANSFERENCIA</h4><br>
                             <p>
-                                Muchas gracias por tu preferencia. Para activar tus números simplemente haz una transferencia a la siguiente cuenta bancaria e indica el numero de boleta en las notas de tu transferencia. <br>  <br>  
-                                Una vez realices el pago, validaremos el ingreso y te enviaremos un email con tu comprobante de compra y los números asociados a tu transacción. <br> <br>
+                                Muchas gracias por tu preferencia. Para activar tus números simplemente haz una transferencia a la siguiente cuenta bancaria e indica tu nombre y correo en las notas de tu transferencia. <br>  <br>  
+                                Una vez realices el pago, validaremos el ingreso y te enviaremos en menos de 24 horas un email con tu comprobante de compra y los números asociados a tu transacción. <br> <br>
                                 Suerte!!
 
                             </p>
