@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Boleta;
+use App\Numero;
 use Mail;
 use DB;
 
@@ -81,8 +82,8 @@ class ListadoBoletaController extends Controller
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-right'>
-		                        	<a class='dropdown-item btn btn-info'>Detalles</a>
-		                        	<a class='dropdown-item btn btn-info'>Dejar Números Disponibles</a>
+		                        	<a href='".asset('detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
+		                        	<a class='dropdown-item btn btn-info'>Cancelar Compra</a>
 		                        </div>
 		                    </div>";
 				$data[] = $nestedData;
@@ -95,5 +96,31 @@ class ListadoBoletaController extends Controller
 			"data" => $data
 		);
 		echo json_encode($json_data);
+    }
+    public function detalle($idBoleta)
+    {
+    	try{
+
+	    	$boleta = Boleta::select('*')
+			        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
+			    	->where('usuarios.nombreUsuario', $idBoleta)
+			    	->get();
+			$numeros = Numero::where('idBoleta',$idBoleta)->get();
+
+			return view('detalleBoleta',compact('boleta','numeros'));
+
+		} catch (ModelNotFoundException $e) {
+            toastr()->warning('No autorizado');
+            return back();
+        } catch (QueryException $e) {
+            toastr()->warning('Ha ocurrido un error, favor intente nuevamente' . $e->getMessage());
+            return back();
+        } catch (DecryptException $e) {
+            toastr()->info('Ocurrio un error al intentar acceder al recurso solicitado');
+            return back();
+        } catch (Exception $e) {
+            toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
+            return redirect::back();
+        }
     }
 }
