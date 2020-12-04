@@ -1,20 +1,19 @@
-   @extends('layouts.public.app')
-        @section('content')
+@extends('layouts.public.app')
+@section('content')
 <div class="btn-cookie">
-        <label for="btn-cookie" class="cookie">C</label>
-    </div>
-    
-    <input type="checkbox" id="btn-cookie">
-    <div class="contenedor-cookie">
-        <div class="cont-cookie" id="scroll">
-           <div class="container">
+    <label for="btn-cookie" class="cookie">C</label>
+</div>
+<input type="checkbox" id="btn-cookie">
+<div class="contenedor-cookie">
+  <div class="cont-cookie" id="scroll">
+    <div class="container">
         
-        <p><strong>Este sitio utiliza Cookies</strong><br>Algunas de estas cookies son esenciales, mientras que otras nos ayudan a mejorar su experiencia al proporcionar información sobre cómo se está utilizando el sitio.</p>
+      <p><strong>Este sitio utiliza Cookies</strong><br>Algunas de estas cookies son esenciales, mientras que otras nos ayudan a mejorar su experiencia al proporcionar información sobre cómo se está utilizando el sitio.</p>
       <br>
-        <button type="button" class="btn btn-light">Aceptar configuración recomendada</button>
-          <hr class="hr">
-              <p><strong>Cookies necesarias</strong><br>Las cookies necesarias permiten la funcionalidad principal, como la navegación de páginas y el acceso a áreas seguras. El sitio web no puede funcionar correctamente sin estas cookies, y solo pueden deshabilitarse cambiando las preferencias de su navegador.</p> <br>
-               <hr class="hr">
+      <button type="button" class="btn btn-light">Aceptar configuración recomendada</button>
+      <hr class="hr">
+      <p><strong>Cookies necesarias</strong><br>Las cookies necesarias permiten la funcionalidad principal, como la navegación de páginas y el acceso a áreas seguras. El sitio web no puede funcionar correctamente sin estas cookies, y solo pueden deshabilitarse cambiando las preferencias de su navegador.</p> <br>
+      <hr class="hr">
                
                         <p><strong>Analytics</strong><br>Las cookies analíticas nos ayudan a mejorar nuestro sitio web al recopilar e informar información sobre su uso.</p> 
                             
@@ -65,7 +64,7 @@
    </nav>
     </div> 
 </header>
-  <main class="main">
+   <main class="main">
   
   <!-- CARRUSEL ESCRITORIO -->
   <div id="carouselExampleCaptions" class="carousel slide desktop" data-ride="carousel">
@@ -78,22 +77,22 @@
     <div class="carousel-item active">
       <img src="{{ asset('assets/img/slider1.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <!--  <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       </div>
     </div>
     <div class="carousel-item">
       <img src="{{ asset('assets/img/slider2.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <!--  <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       </div>
     </div>
     <div class="carousel-item">
       <img src="{{ asset('assets/img/slider3.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <!--  <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       </div>
     </div>
   </div>
@@ -154,12 +153,15 @@
    <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1">
           <div class="p-5 linea padding">
-                   <h2 class="display-4 azul ">Descubre nuestra historia y conócenos.</h2>
+                   <h2 class="display-4 azul ">Llegaste! Tú si sabes aprovechar las oportunidades.</h2>
           </div>
         </div>
         <div class="col-lg-6 order-lg-2 ">
           <div class="p-5 linea-bottom">
-            <p class="">Somos parte de Isbast, una plataforma tecnológica que ofrece al propietario la asesoría inmobiliaria necesaria para vender su hogar de forma segura y particular. <br> Con el objetivo de acercarte a tus sueños hemos creado esta nueva manera de obtener tu propiedad.</p>
+            <p class=""><strong>Confía en ti</strong>, cree en la suerte, desafía al destino y podrás ser el ganador de estos premios:</p>
+            <p>Primer premio:<strong> Departamento de lujo en Marina del Golf Rapel,  una moto de agua, kit de palos de golf y $2.000.000.-</strong></p>
+            <p>Segundo premio: <strong>$1.000.000.-</strong></p>
+            <p>Tercer premio: <strong>$500.000.-</strong></p>
 
           </div>
         </div>
@@ -178,41 +180,43 @@
           <div class="p-5">          
           <div class="contenedor-hover">
             <a class="link" href="#"> <figure>
-                  <img src="{{ asset('assets/img/parcela1.jpg') }}" alt="">
+                  <img src="{{ asset('assets/img/rapel3.jpg') }}" alt="">
                   <div class="capa">
                       <h3>Piscina Efecto Infinito</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                      <!-- <p><strong>VER DETALLES</strong></p> -->
                     
                   </div>
               </figure> </a> 
               
-             <a href="#">  <figure>
-                  <img src="{{ asset('assets/img/parcela2.jpg') }}" alt="">
-                  <div class="capa">
-                      <h3>Campo de Golf</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <!-- <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-               <a href="#">   <figure>
-                  <img src="{{ asset('assets/img/parcela3.jpg') }}" alt="">
-                  <div class="capa">
-                      <h3>Senderos</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <!-- <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-                   <a href="#">
+                         <a href="#">
                     <figure>
-                  <img src="{{ asset('assets/img/parcela4.jpg') }}" alt="">
+                  <img src="{{ asset('assets/img/rapel6.jpg') }}" alt="">
                   <div class="capa">
-                      <h3>Bosques</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <h3>Bosques de Pino</h3>
+                <!--      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                        <!-- <p><strong>VER DETALLES</strong></p> -->
                   </div>
               </figure> </a>
               
+            
+               <a href="#">   <figure>
+                  <img src="{{ asset('assets/img/rapel5.jpg') }}" alt="">
+                  <div class="capa">
+                      <h3>Senderos</h3>
+                  <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <!-- <p><strong>VER DETALLES</strong></p> -->
+                  </div>
+              </figure> </a>
+               <a href="#">  <figure>
+                  <img src="{{ asset('assets/img/rapel4.jpg') }}" alt="">
+                  <div class="capa">
+                      <h3>Campo de Golf</h3>
+                  <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <!-- <p><strong>VER DETALLES</strong></p> -->
+                  </div>
+              </figure> </a>
+        
           </div>
           
           </div>
@@ -248,38 +252,38 @@
           <div class="p-5">          
           <div class="contenedor-hover">
             <a class="link" href="#"> <figure>
-                  <img src="{{ asset('assets/img/parcela1.jpg') }}" alt="">
+                  <img src="{{ asset('assets/img/rapel1.jpg') }}" alt="">
                   <div class="capa">
-                      <h3>Ubicación Parcela</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <p><strong>VER DETALLES</strong></p>
+                      <h3>Piscina Efecto Infinito</h3>
+                  <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <p><strong>VER DETALLES</strong></p> -->
                     
                   </div>
               </figure> </a> 
               
              <a href="#">  <figure>
-                  <img src="{{ asset('assets/img/parcela2.jpg') }}" alt="">
+                  <img src="{{ asset('assets/img/rapel2.jpg') }}" alt="">
                   <div class="capa">
-                      <h3>Ubicación Parcela</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                         <p><strong>VER DETALLES</strong></p>
+                      <h3>Campo de Golf</h3>
+            <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <p><strong>VER DETALLES</strong></p> -->
                   </div>
               </figure> </a>
                <a href="#">   <figure>
-                  <img src="{{ asset('assets/img/parcela3.jpg') }}" alt="">
+                  <img src="{{ asset('assets/img/rapel3.jpg') }}" alt="">
                   <div class="capa">
-                      <h3>Ubicación Parcela</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <p><strong>VER DETALLES</strong></p>
+                      <h3>Senderos</h3>
+                     <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <p><strong>VER DETALLES</strong></p> -->
                   </div>
               </figure> </a>
                    <a href="#">
                     <figure>
                   <img src="{{ asset('assets/img/parcela4.jpg') }}" alt="">
                   <div class="capa">
-                      <h3>Ubicación Parcela</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <p><strong>VER DETALLES</strong></p>
+                      <h3>Bosques</h3>
+                     <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <p><strong>VER DETALLES</strong></p> -->
                   </div>
               </figure> </a>
               
@@ -304,7 +308,7 @@
         </div>
         <div class="col-lg-6 order-lg-1 ">
           <div class="p-5">
-            <p class="">Rifo Mi Propiedad cuenta con 15.000 números con un valor de $20.000.- cada uno, posteriormente se realizará el sorteo en la notaría Manquehual, el cual será transmitido por Youtube Live, de este modo todos los compradores pueden asistir. El premio mayor y mas importante es Departamento de Lujo en Marina del Golf Rapel, una moto de agua, kit de palos de golf y $2.00.000.- <br> Para el segundo lugar el premio será de $1.000.000.- <br> Y el tercer lugar gana $500.000.- </p>
+            <p class="">Rifo Mi Propiedad cuenta con 15.000 números con un valor de $20.000.- cada uno, posteriormente se realizará el sorteo en la notaría Manquehual, el cual será transmitido por Youtube Live, de este modo todos los compradores pueden asistir. </p>
 
           </div>
         </div>

@@ -2,7 +2,7 @@
 @section('content')
 <header class="header">
     <div class="contenedor-menu logo-nav-contenedor">
-        <a class="link-logo" href="index.html" class="logo"><img class="img-logo" src="{{ asset('assets/img/logo.png') }}" alt=""></a>
+        <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('assets/img/logo.png') }}" alt=""></a>
    <span class="menu-icon" id="btnMenuIcon"><i class="fas fa-bars"></i></span> 
         <nav class="navegacion" id="navigation">
            <ul id="esconderMenu">
@@ -57,7 +57,7 @@
                  <li>Campo de Golf</li>
                  <li>Bosque de pinos</li>
             </ul> 
-            <a href="propiedades.html" class="btn btn-success" role="button" aria-pressed="true">Comprar mis números</a>
+            <a href="{{ asset('propiedades') }}" class="btn btn-success" role="button" aria-pressed="true">Comprar mis números</a>
             <br> <br>
         </div> 
             <!-- SLIDER -->
