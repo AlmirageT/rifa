@@ -38,11 +38,11 @@
       <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel1.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel1.jpg') }}" alt=""></a>  
        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel2.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel2.jpg') }}" alt=""></a> 
         <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel3.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel3.jpg') }}" alt=""></a> 
-         <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel3.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel3.jpg') }}" alt=""></a> 
-          <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel1.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel1.jpg') }}" alt=""></a> 
-           <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel2.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel2.jpg') }}" alt=""></a>
-            <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel1.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel1.jpg') }}" alt=""></a>  
-       <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel2.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel2.jpg') }}" alt=""></a> 
+         <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel4.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel4.jpg') }}" alt=""></a> 
+          <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel5.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel5.jpg') }}" alt=""></a> 
+           <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel7.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel7.jpg') }}" alt=""></a>
+            <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel8.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel8.jpg') }}" alt=""></a>  
+       <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel9.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel9.jpg') }}" alt=""></a> 
         <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel3.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel3.jpg') }}" alt=""></a> 
             
     </div>
