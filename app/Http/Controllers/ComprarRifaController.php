@@ -29,7 +29,7 @@ class ComprarRifaController extends Controller
     public function index()
     {
     	$numeros = Numero::where('idEstado',1)->take(100)->get();
-    	return view('welcome',compact('numeros'));
+    	return view('rifa',compact('numeros'));
     }
     public function numerosBuscados(Request $request)
     {
@@ -83,7 +83,7 @@ class ComprarRifaController extends Controller
 		    	]);
 	    	}
             Mail::to($usuario->correoUsuario)->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
-	    	Mail::to('saezsotoivan@gmail.com')->send(new NumerosFolio($boleta, $numerosComprados, $total));
+	    	Mail::to('pagos@rifomipropiedad.com')->send(new NumerosFolio($boleta, $numerosComprados, $total));
             DB::commit();
 	    	return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {
