@@ -1,5 +1,6 @@
         @extends('layouts.public.app')
         @section('content')
+        
         <div class="container">
             <br>
             <br>
