@@ -329,20 +329,21 @@
  <div id="contacto"  class="fondo-form">
   <section>
             <div class="contenedor-form">
-            <form action="" class="formulario-bottom">
+            <form action="{{ asset('enviar-consulta') }}" class="formulario-bottom" method="post">
+              @csrf
                  <h2 class="titulos azul">CONTÁCTANOS</h2>
      
                 <label for="nombre" class="form-label"></label> 
-                    <input type="text" id="nombre" class="form-input-bottom" placeholder="Tu Nombre">
+                    <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre">
  
                 <label for="correo" class="form-label"></label>
-                    <input type="text" id="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico">
+                    <input type="text" id="correo" name="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico">
  
                 <label for="fono" class="form-label"></label> 
-                    <input type="text" id="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
+                    <input type="text" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
                     
                      <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label> 
-                    <textarea class="form-input" name="" id="msg" cols="30" rows="5" > </textarea>
+                    <textarea class="form-input" name="consulta" id="msg" cols="30" rows="5" > </textarea>
  
     
                 <input type="submit" class="btn-submit-bottom" value="Solicita información"> 
