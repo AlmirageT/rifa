@@ -11,5 +11,12 @@
 |
 */
 
-Route::get('/', 'ComprarRifaController@index');
+Route::view('/', 'welcome');
+Route::view('galeria', 'galeria');
+Route::view('bases-legales', 'bases');
+Route::view('propiedades', 'propiedad');
+Route::get('rifa', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
+Route::get('tabla-boletas','ListadoBoletaController@index');
+Route::post('datatable-boletas','ListadoBoletaController@listaBoletas');
+Route::post('enviar-consulta','CorreoConsultaController@enviarCorreo');

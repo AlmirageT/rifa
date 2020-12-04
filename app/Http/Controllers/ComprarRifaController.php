@@ -8,6 +8,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Actions\VerificarRutAction;
 use App\Mail\ConfirmarSolicitud;
+use App\Mail\NumerosFolio;
 use App\Numero;
 use App\Usuario;
 use App\Boleta;
@@ -19,9 +20,8 @@ class ComprarRifaController extends Controller
     public function numeros()
     {
     	for ($i=0; $i < 15000; $i++) { 
-    		Numero::create([
-    			'numero'=>$i+1,
-    			'idEstado'=>1
+    		Numero::where('idNumero',$i+1)->update([
+    			'valorNumero'=>20000
     		]);
     	}
     	return "exito";
@@ -29,7 +29,7 @@ class ComprarRifaController extends Controller
     public function index()
     {
     	$numeros = Numero::where('idEstado',1)->take(100)->get();
-    	return view('welcome',compact('numeros'));
+    	return view('rifa',compact('numeros'));
     }
     public function numerosBuscados(Request $request)
     {
@@ -65,8 +65,10 @@ class ComprarRifaController extends Controller
 			    	'rutUsuario' => $rutSinCaracteres
 		    	]);
 	        }
-
+            $numerosComprados = $request->numeros;
+            $total = count($request->numeros)*20000;
 	    	$boleta = Boleta::create([
+                'totalBoleta' => $total,
 	    		'idUsuario' => $usuario->idUsuario
 	    	]);
 	    	if (count($request->numeros) > 0) {
@@ -80,9 +82,10 @@ class ComprarRifaController extends Controller
 		    		'idEstado' => 2
 		    	]);
 	    	}
-	    	Mail::to('ivansotosaez69@gmail.com')->send(new ConfirmarSolicitud());
+            Mail::to($usuario->correoUsuario)->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
+	    	Mail::to('pagos@rifomipropiedad.com')->send(new NumerosFolio($boleta, $numerosComprados, $total));
             DB::commit();
-	    	return view('datos');
+	    	return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {
             toastr()->warning('No autorizado');
             DB::rollback();

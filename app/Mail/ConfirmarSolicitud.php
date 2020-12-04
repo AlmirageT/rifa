@@ -10,19 +10,19 @@ use Illuminate\Queue\SerializesModels;
 class ConfirmarSolicitud extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $asunto;
-    protected $nombre;
-    protected $mensaje;
+    protected $boleta;
+    protected $numerosComprados;
+    protected $total;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($boleta, $numerosComprados, $total)
     {
-        /*$this->asunto = $asunto;
-        $this->nombre = $nombre;
-        $this->mensaje = $mensaje;*/
+        $this->boleta = $boleta;
+        $this->numerosComprados = $numerosComprados;
+        $this->total = $total;
     }
 
     /**
@@ -32,9 +32,9 @@ class ConfirmarSolicitud extends Mailable
      */
     public function build()
     {
-        /*$asunto = $this->asunto;
-        $nombre = $this->nombre;
-        $mensaje = $this->mensaje;*/
-        return $this->subject('Datos Bancarios')->view('mail.datosMail');        
+        $boleta = $this->boleta;
+        $numerosComprados = $this->numerosComprados;
+        $total = $this->total;
+        return $this->subject('Datos Bancarios')->view('mail.datosMail',compact('boleta','numerosComprados','total'));        
     }
 }
