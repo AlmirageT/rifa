@@ -72,17 +72,17 @@ class ListadoBoletaController extends Controller
 			foreach ($boletas as $boleta){
 				$nestedData['idBoleta'] = $boleta->idBoleta;
 				$nestedData['totalBoleta'] = "$".number_format($boleta->totalBoleta,0,',','.');
-				$nestedData['nombre'] = $boleta->nombreUsuario;
-				$nestedData['rut'] = $boleta->rutUsuario;
-				$nestedData['correo'] = $boleta->correoUsuario;
+				$nestedData['nombreUsuario'] = $boleta->nombreUsuario;
+				$nestedData['rutUsuario'] = $boleta->rutUsuario;
+				$nestedData['correoUsuario'] = $boleta->correoUsuario;
+				$nestedData['telefonoUsuario'] = $boleta->telefonoUsuario;
 				$nestedData['options'] = "<div class='dropdown'>
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-right'>
-		                        	<a class='dropdown-item btn btn-info'>Editar</a>
-		                        	<a class='dropdown-item btn btn-info'>Eliminar</a>
-		                			<a class='dropdown-item btn btn-info'>Telefonos</a>
+		                        	<a class='dropdown-item btn btn-info'>Detalles</a>
+		                        	<a class='dropdown-item btn btn-info'>Dejar Números Disponibles</a>
 		                        </div>
 		                    </div>";
 				$data[] = $nestedData;

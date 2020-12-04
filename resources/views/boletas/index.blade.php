@@ -35,6 +35,7 @@
                                       <th>Nombre Comprador</th>
                                       <th>Rut</th>
                                       <th>Correo</th>
+                                      <th>Teléfono</th>
                                       <th>Acciones</th>
                                     </tr>
                                   </thead>
@@ -63,9 +64,10 @@
                 "columns": [
                     { "data": "idBoleta" },
                     { "data": "totalBoleta" },
-                    { "data": "nombre" },
-                    { "data": "rut" },
-                    { "data": "correo" },
+                    { "data": "nombreUsuario" },
+                    { "data": "rutUsuario" },
+                    { "data": "correoUsuario" },
+                    { "data": "telefonoUsuario" },
                     { "data": "options" }
                 ],
                 language: {
