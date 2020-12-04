@@ -93,7 +93,7 @@
 
                     <div class="col-lg-3" style="width: 15rem;" >
                         <div class="card-body">
-                            <a href="index.html"> <img class="logo-footer" src="{{ asset('assets/img/logo.png') }}" alt="iquimica"></a>
+                            <a href="{{ asset('/') }}"> <img class="logo-footer" src="{{ asset('assets/img/logo.png') }}" alt="iquimica"></a>
                         </div> 
                     </div>
                 </div> 
