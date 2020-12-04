@@ -44,6 +44,18 @@
             <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel8.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel8.jpg') }}" alt=""></a>  
        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel9.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel9.jpg') }}" alt=""></a> 
         <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/rapel3.jpg') }}"><img class="galeria" src="{{ asset('assets/img/rapel3.jpg') }}" alt=""></a> 
+
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img1.jpeg') }}"><img class="galeria" src="{{ asset('assets/img/img1.jpeg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img2.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img2.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img3.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img3.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img4.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img4.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img5.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img5.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img6.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img6.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img7.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img7.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img8.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img8.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img9.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img9.jpg') }}" alt=""></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('assets/img/img10.jpg') }}"><img class="galeria" src="{{ asset('assets/img/img10.jpg') }}" alt=""></a> 
+
             
     </div>
     

@@ -25,23 +25,23 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h5><strong>Datos bancarios</strong></h5><br>
-                                            <p><strong>Fintual AGF S.A</strong></p>
-                                            <p><strong>Cuenta Corriente - Banco Security</strong></p>
+                                            <p><strong>----------</strong></p>
+                                            <p><strong>-------------------------------</strong></p>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Cuenta: <strong id="p1">91749860</strong></p>
+                                            <p>Cuenta: <strong id="p1">---------</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="color: blue;cursor: pointer;" onclick="copiarAlPortapapeles('p1')">copiar</a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Rut: <strong id="p2">76.810.627-4</strong></p>
+                                            <p>Rut: <strong id="p2">-----------</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p2')">copiar</a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Email: <strong id="p3">r2d2@fintual.com</strong></p>
+                                            <p>Email: <strong id="p3">------------</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p3')">copiar</a>
