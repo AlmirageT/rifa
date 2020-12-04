@@ -41,7 +41,7 @@
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p2')">copiar</a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Email: <strong id="p3">pagos@rifomipropiedad.com</strong></p>
+                                            <p>Email: <strong id="p3">tickets@rifomipropiedad.com</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p3')">copiar</a>
