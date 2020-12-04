@@ -2,46 +2,12 @@
 
 @section('title', 'Bienvenido')
 
-@section('textoTituloPrincipal', 'HAZ UNA TRANSFERENCIA')
-
-@section('textoParrafoUno', 'Muchas gracias por tu preferencia. Para activar tus números simplemente haz una transferencia a la siguiente cuenta bancaria e indica el numero de boleta en las notas de tu transferencia.')
-
 @section('bodyDetalles')
-    <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
-        <span style="font-size: 16px;">
-            Una vez realices el pago, validaremos el ingreso y te enviaremos un email con tu comprobante de compra y los números asociados a tu transacción.
-            <br>
-            Suerte!!
-        </span>
-    </p>
-    <div><br></div>
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
         <span style="font-size: 16px;">
             Folio de boleta : {{ $boleta->idBoleta }}
         </span>
     </p>
-    <div><br></div>
-    <div class="card">
-      <div class="container">
-        <p style="font-size: 12px; line-height: 21px; text-align: center; margin: 0;">
-            <strong>
-                <span style="font-size: 22px; line-height: 39px;">Datos bancarios</span>
-            </strong><br/>
-        </p>
-        <p style="font-size: 12px; line-height: 21px; text-align: left; margin: 0;">
-            <strong>
-                <span style="font-size: 16px; line-height: 39px;">Fintual AGF S.A</span>
-            </strong><br>
-            <strong>
-                <span style="font-size: 16px; line-height: 39px;">Cuenta Corriente - Banco Security</span>
-            </strong><br>
-            <span style="font-size: 16px; line-height: 55px;">Cuenta: <strong>91749860</strong></span><br>
-            <span style="font-size: 16px; line-height: 18px;">Rut: <strong>76.810.627-4</strong></span><br>
-            <span style="font-size: 16px; line-height: 55px;">Email: <strong>r2d2@fintual.com</strong></span><br>
-            <span style="font-size: 16px; line-height: 55px;">En el comentario del deposito ingresar folio de la boleta</span>
-        </p>
-      </div>
-    </div>
     <div><br></div>
     <div class="card">
       <div class="container">

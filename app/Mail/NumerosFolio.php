@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmarSolicitud extends Mailable
+class NumerosFolio extends Mailable
 {
     use Queueable, SerializesModels;
     protected $boleta;
@@ -35,6 +35,6 @@ class ConfirmarSolicitud extends Mailable
         $boleta = $this->boleta;
         $numerosComprados = $this->numerosComprados;
         $total = $this->total;
-        return $this->subject('Datos Bancarios')->view('mail.datosMail',compact('boleta','numerosComprados','total'));        
+        return $this->subject('Datos Bancarios')->view('mail.mailRespaldo',compact('boleta','numerosComprados','total'));        
     }
 }

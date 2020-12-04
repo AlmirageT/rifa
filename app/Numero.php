@@ -10,6 +10,7 @@ class Numero extends Model
     protected $primaryKey = 'idNumero';
     protected $fillable = [
     	'numero',
+    	'valorNumero',
     	'idBoleta',
     	'idEstado'
     ];
