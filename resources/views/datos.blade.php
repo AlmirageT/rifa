@@ -26,7 +26,7 @@
                                         <div class="col-lg-12">
                                             <h5><strong>Datos bancarios</strong></h5><br>
                                             <p><strong>IsBast REAL ESTATE TECHNOLOGY SPA</strong></p>
-                                            <p><strong>-------------------------------</strong></p>
+                                            <p><strong></strong></p>
                                         </div>
                                         <div class="col-lg-6">
                                             <p>Cuenta corriente: <strong id="p1">Banco ITAU 0214320278</strong></p>
@@ -41,7 +41,7 @@
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p2')">copiar</a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Email: <strong id="p3">------------</strong></p>
+                                            <p>Email: <strong id="p3">pagos@rifomipropiedad.com</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p3')">copiar</a>
