@@ -30,7 +30,7 @@
                                 <table class="table table-bordered dt-responsive nowrap" id="datos" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                   <thead>
                                     <tr>
-                                      <th>ID</th>
+                                      <th>Folio Boleta</th>
                                       <th>Total</th>
                                       <th>Nombre Comprador</th>
                                       <th>Rut</th>

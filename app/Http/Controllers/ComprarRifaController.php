@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Validator;
 use App\Actions\VerificarRutAction;
 use App\Mail\ConfirmarSolicitud;
 use App\Mail\NumerosFolio;
@@ -44,6 +45,15 @@ class ComprarRifaController extends Controller
     public function envioEmail(Request $request)
     {
     	try{
+            $validator = Validator::make($request->all(), [
+                'correoUsuario'=> 'required|email',
+                'telefonoUsuario'=> 'required',
+                'rutUsuario'=> 'required',
+            ]);
+            if ($validator->fails()) {
+                toastr()->info('Todos los datos deben estar llenos');
+                return back();
+            }
             DB::beginTransaction();
 	    	$rut = $request->rutUsuario;
 	        $caracteresEspeciales = array(".");
@@ -67,19 +77,23 @@ class ComprarRifaController extends Controller
 			    	'rutUsuario' => $rutSinCaracteres
 		    	]);
 	        }
-            $numerosComprados = $request->numeros;
             $total = count($request->numeros)*20000;
 	    	$boleta = Boleta::create([
                 'totalBoleta' => $total,
 	    		'idUsuario' => $usuario->idUsuario
 	    	]);
 	    	if (count($request->numeros) > 0) {
-		    	$numeros = Numero::whereIn('numero',$request->numeros)->update([
-		    		'idBoleta' => $boleta->idBoleta,
-		    		'idEstado' => 2
-		    	]);
+                $numerosComprados = Numero::whereIn('idNumero',$request->numeros)->get();
+                foreach($request->numeros as $num){
+    		    	$numeros = Numero::where('idNumero',$num)->update([
+    		    		'idBoleta' => $boleta->idBoleta,
+    		    		'idEstado' => 2
+    		    	]);
+                }
 	    	}else{
-	    		$numeros = Numero::where('numero',$request->numeros)->update([
+                $numerosComprados = Numero::where('idNumero',$request->numeros)->get();
+
+	    		$numeros = Numero::where('idNumero',$request->numeros)->update([
 	    			'idBoleta' => $boleta->idBoleta,
 		    		'idEstado' => 2
 		    	]);

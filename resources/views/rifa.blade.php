@@ -1,22 +1,7 @@
 
         @extends('layouts.public.app')
         @section('content')
-        <header class="header">
-            <div class="contenedor-menu logo-nav-contenedor">
-                <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('assets/img/logo.png') }}" alt=""></a>
-           <span class="menu-icon" id="btnMenuIcon"><i class="fas fa-bars"></i></span> 
-                <nav class="navegacion" id="navigation">
-                   <ul id="esconderMenu">
-                     <!--    <li><a href="#quienes-somos">Quienes Somos</a></li> -->
-                 <!--  <li><a href="bases.html">Bases Legales</a></li> -->
-                          <li><a href="{{ asset('propiedades') }}">Propiedad</a></li>
-                <li><a href="{{ asset('rifa') }}">Rifa</a></li>
-                <li><a href="{{ asset('galeria') }}">Galería</a></li>
-                <li><a href="{{ asset('/') }}#contacto">Contacto</a></li>
-                   </ul>
-           </nav>
-            </div> 
-        </header>
+        
         <main class="main">
                 <div class="container">
             <br> 
@@ -46,11 +31,11 @@
                         @csrf
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" name="nombreUsuario" class="form-control">
+                            <input type="text" name="nombreUsuario" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Correo</label>
-                            <input type="email" name="correoUsuario" class="form-control">
+                            <input type="email" name="correoUsuario" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Teléfono</label>
@@ -58,16 +43,16 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">+56</span>
                               </div>
-                              <input type="text" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1">
+                              <input type="text" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Rut</label>
-                            <input type="text" name="rutUsuario" class="form-control" placeholder="Ingrese su rut sin puntos ni guion" onchange="formateaRut(this.value)" id="rut">
+                            <input type="text" name="rutUsuario" class="form-control" placeholder="Ingrese su rut sin puntos ni guion" onchange="formateaRut(this.value)" id="rut" required>
                         </div>
                         <div class="form-group">
                             <label>Números</label>
-                            <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple >
+                            <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple required>
                                 @foreach($numeros as $numero)
                                     <option value="{{ $numero->idNumero }}">{{ $numero->numero }}</option>
                                 @endforeach

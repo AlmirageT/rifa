@@ -66,7 +66,7 @@
                                                 <div class="row">
                                                     @foreach($numerosComprados as $numero)
                                                         <div class="col-lg-3">
-                                                           <p>{{ $numero }}</p>
+                                                           <p>{{ $numero->numero }}</p>
                                                         </div>
                                                     @endforeach
                                                 </div>

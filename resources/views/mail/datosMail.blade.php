@@ -52,7 +52,7 @@
         </p>
         @foreach($numerosComprados as $numeroComprado)
             <p style="font-size: 12px; line-height: 21px; margin: 0;">
-                <span style="font-size: 16px; line-height: 39px;">{{ $numeroComprado }}</span>
+                <span style="font-size: 16px; line-height: 39px;">{{ $numeroComprado->numero }}</span>
             </p>
         @endforeach
         <p style="font-size: 12px; line-height: 21px; text-align: center; margin: 0;">

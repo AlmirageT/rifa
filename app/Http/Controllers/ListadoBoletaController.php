@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Boleta;
 use App\Numero;
 use Mail;
+use PDF;
 use DB;
 
 class ListadoBoletaController extends Controller
@@ -83,6 +84,7 @@ class ListadoBoletaController extends Controller
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-right'>
 		                        	<a href='".asset('detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
+		                        	<a href='".asset('enviar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Enviar Boleta</a>
 		                        	<a class='dropdown-item btn btn-info'>Cancelar Compra</a>
 		                        </div>
 		                    </div>";
@@ -103,11 +105,10 @@ class ListadoBoletaController extends Controller
 
 	    	$boleta = Boleta::select('*')
 			        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
-			    	->where('usuarios.nombreUsuario', $idBoleta)
-			    	->get();
+			    	->where('boletas.idBoleta', $idBoleta)
+			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
-
-			return view('detalleBoleta',compact('boleta','numeros'));
+			return view('boletas.detalleBoleta',compact('boleta','numeros'));
 
 		} catch (ModelNotFoundException $e) {
             toastr()->warning('No autorizado');
@@ -120,7 +121,33 @@ class ListadoBoletaController extends Controller
             return back();
         } catch (Exception $e) {
             toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
-            return redirect::back();
+            return back();
+        }
+    }
+    public function enviarBoleta($idBoleta)
+    {
+    	try{
+
+	    	$boleta = Boleta::select('*')
+			        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
+			    	->where('boletas.idBoleta', $idBoleta)
+			    	->firstOrFail();
+			$numeros = Numero::where('idBoleta',$idBoleta)->get();
+			dd($numeros);
+			return view('boletas.pdf',compact('boleta','numeros'));
+
+		} catch (ModelNotFoundException $e) {
+            toastr()->warning('No autorizado');
+            return back();
+        } catch (QueryException $e) {
+            toastr()->warning('Ha ocurrido un error, favor intente nuevamente' . $e->getMessage());
+            return back();
+        } catch (DecryptException $e) {
+            toastr()->info('Ocurrio un error al intentar acceder al recurso solicitado');
+            return back();
+        } catch (Exception $e) {
+            toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
+            return back();
         }
     }
 }

@@ -15,55 +15,38 @@
       <p><strong>Cookies necesarias</strong><br>Las cookies necesarias permiten la funcionalidad principal, como la navegación de páginas y el acceso a áreas seguras. El sitio web no puede funcionar correctamente sin estas cookies, y solo pueden deshabilitarse cambiando las preferencias de su navegador.</p> <br>
       <hr class="hr">
                
-                        <p><strong>Analytics</strong><br>Las cookies analíticas nos ayudan a mejorar nuestro sitio web al recopilar e informar información sobre su uso.</p> 
+      <p><strong>Analytics</strong><br>Las cookies analíticas nos ayudan a mejorar nuestro sitio web al recopilar e informar información sobre su uso.</p> 
                             
       <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1">
-  <label class="custom-control-label" for="customSwitch1">OFF/ON</label>
-</div><br>
-               <hr class="hr">
-                <p><strong>Marketing</strong><br>Utilizamos cookies de marketing para ayudarnos a mejorar la relevancia de las campañas publicitarias que recibe.
-
-</p> 
-                            
+        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+        <label class="custom-control-label" for="customSwitch1">OFF/ON</label>
+      </div><br>
+      <hr class="hr">
+      <p><strong>Marketing</strong><br>Utilizamos cookies de marketing para ayudarnos a mejorar la relevancia de las campañas publicitarias que recibe.
+      </p> 
       <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch2">
-  <label class="custom-control-label" for="customSwitch2">OFF/ON</label>
-</div><br>
-               <hr class="hr">
-                  <p><strong>Social Sharing
-</strong><br>Utilizamos algunos complementos para compartir en redes sociales, para permitirle compartir ciertas páginas de nuestro sitio web en las redes sociales. Estos complementos colocan cookies para que pueda ver correctamente cuántas veces se ha compartido una página.</p> 
-                            
-       <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch3">
-  <label class="custom-control-label" for="customSwitch3">OFF/ON</label>
-</div> <hr class="hr"> <br>
-        
-            <label for="btn-cookie" class="cerrar"><i class="far fa-times-circle"></i></label>
-        </div>
-        </div>
+        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+        <label class="custom-control-label" for="customSwitch2">OFF/ON</label>
+      </div><br>
+      <hr class="hr">
+      <p><strong>Social Sharing
+        </strong><br>Utilizamos algunos complementos para compartir en redes sociales, para permitirle compartir ciertas páginas de nuestro sitio web en las redes sociales. Estos complementos colocan cookies para que pueda ver correctamente cuántas veces se ha compartido una página.
+      </p> 
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch3">
+        <label class="custom-control-label" for="customSwitch3">OFF/ON</label>
+      </div> 
+      <hr class="hr"> <br>
+      <label for="btn-cookie" class="cerrar"><i class="far fa-times-circle"></i></label>
     </div>
+  </div>
+</div>
     
        <!--  TÉRMINO BARRA LATERAL  -->
 
 
 <!-- BARRA DE NAVEGACIÓN -->
-<header class="header">
-    <div class="contenedor-menu logo-nav-contenedor">
-        <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('assets/img/logo.png') }}" alt=""></a>
-   <span class="menu-icon" id="btnMenuIcon"><i class="fas fa-bars"></i></span> 
-        <nav class="navegacion" id="navigation">
-           <ul id="esconderMenu">
-                     <!--    <li><a href="#quienes-somos">Quienes Somos</a></li> -->
-              <!--  <li><a href="bases.html">Bases Legales</a></li> -->
-                <li><a href="{{ asset('propiedades') }}">Propiedad</a></li>
-                <li><a href="{{ asset('rifa') }}">Rifa</a></li>
-                <li><a href="{{ asset('galeria') }}">Galería</a></li>
-                <li><a href="{{ asset('/') }}#contacto">Contacto</a></li>
-           </ul>
-   </nav>
-    </div> 
-</header>
+
    <main class="main">
   
   <!-- CARRUSEL ESCRITORIO -->
@@ -334,16 +317,16 @@
                  <h2 class="titulos azul">CONTÁCTANOS</h2>
      
                 <label for="nombre" class="form-label"></label> 
-                    <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre">
+                    <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre" required>
  
                 <label for="correo" class="form-label"></label>
-                    <input type="text" id="correo" name="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico">
+                    <input type="email" id="correo" name="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico" required>
  
                 <label for="fono" class="form-label"></label> 
-                    <input type="text" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
+                    <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono" required>
                     
                      <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label> 
-                    <textarea class="form-input" name="consulta" id="msg" cols="30" rows="5" > </textarea>
+                    <textarea class="form-input" name="consulta" id="msg" cols="30" rows="5" required> </textarea>
  
     
                 <input type="submit" class="btn-submit-bottom" value="Solicita información"> 
