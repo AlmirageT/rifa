@@ -18,7 +18,7 @@ class CorreoConsultaController extends Controller
     	try{
 	    	$validator = Validator::make($request->all(), [
                 'nombre'=> 'required',
-                'correo'=> 'required',
+                'correo'=> 'required|email',
                 'fono'=> 'required',
                 'consulta'=> 'required'
             ]);
