@@ -317,16 +317,16 @@
                  <h2 class="titulos azul">CONTÁCTANOS</h2>
      
                 <label for="nombre" class="form-label"></label> 
-                    <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre">
+                    <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre" required>
  
                 <label for="correo" class="form-label"></label>
-                    <input type="email" id="correo" name="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico">
+                    <input type="email" id="correo" name="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico" required>
  
                 <label for="fono" class="form-label"></label> 
-                    <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
+                    <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono" required>
                     
                      <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label> 
-                    <textarea class="form-input" name="consulta" id="msg" cols="30" rows="5" > </textarea>
+                    <textarea class="form-input" name="consulta" id="msg" cols="30" rows="5" required> </textarea>
  
     
                 <input type="submit" class="btn-submit-bottom" value="Solicita información"> 
