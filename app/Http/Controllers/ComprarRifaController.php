@@ -49,7 +49,6 @@ class ComprarRifaController extends Controller
                 'correoUsuario'=> 'required|email',
                 'telefonoUsuario'=> 'required',
                 'rutUsuario'=> 'required',
-                'numeros'=> 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Todos los datos deben estar llenos');
@@ -78,19 +77,23 @@ class ComprarRifaController extends Controller
 			    	'rutUsuario' => $rutSinCaracteres
 		    	]);
 	        }
-            $numerosComprados = $request->numeros;
             $total = count($request->numeros)*20000;
 	    	$boleta = Boleta::create([
                 'totalBoleta' => $total,
 	    		'idUsuario' => $usuario->idUsuario
 	    	]);
 	    	if (count($request->numeros) > 0) {
-		    	$numeros = Numero::whereIn('numero',$request->numeros)->update([
-		    		'idBoleta' => $boleta->idBoleta,
-		    		'idEstado' => 2
-		    	]);
+                $numerosComprados = Numero::whereIn('idNumero',$request->numeros)->get();
+                foreach($request->numeros as $num){
+    		    	$numeros = Numero::where('idNumero',$num)->update([
+    		    		'idBoleta' => $boleta->idBoleta,
+    		    		'idEstado' => 2
+    		    	]);
+                }
 	    	}else{
-	    		$numeros = Numero::where('numero',$request->numeros)->update([
+                $numerosComprados = Numero::where('idNumero',$request->numeros)->get();
+
+	    		$numeros = Numero::where('idNumero',$request->numeros)->update([
 	    			'idBoleta' => $boleta->idBoleta,
 		    		'idEstado' => 2
 		    	]);
