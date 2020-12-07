@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Mail\EnvioBoleta;
 use App\Boleta;
 use App\Numero;
 use Mail;
@@ -133,8 +134,11 @@ class ListadoBoletaController extends Controller
 			    	->where('boletas.idBoleta', $idBoleta)
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
-			dd($numeros);
-			return view('boletas.pdf',compact('boleta','numeros'));
+			//return view('boletas.pdf',compact('boleta','numeros'));
+			$pdf = PDF::loadView('boletas.pdf',compact('boleta','numeros'));
+            Mail::to($boleta->correoUsuario)->send(new EnvioBoleta($boleta, $numeros, $pdf));
+            toastr()->info('Correo enviado exitosamente');
+			return back();
 
 		} catch (ModelNotFoundException $e) {
             toastr()->warning('No autorizado');
