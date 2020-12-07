@@ -21,3 +21,4 @@ Route::get('tabla-boletas','ListadoBoletaController@index');
 Route::post('datatable-boletas','ListadoBoletaController@listaBoletas');
 Route::post('enviar-consulta','CorreoConsultaController@enviarCorreo');
 Route::get('detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
+Route::get('generar-numeros','ComprarRifaController@numeros');

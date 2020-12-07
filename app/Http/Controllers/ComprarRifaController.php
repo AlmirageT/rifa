@@ -19,9 +19,11 @@ class ComprarRifaController extends Controller
 {
     public function numeros()
     {
-    	for ($i=0; $i < 15000; $i++) { 
-    		Numero::where('idNumero',$i+1)->update([
-    			'valorNumero'=>20000
+    	for ($i=99; $i < 100000; $i++) { 
+    		Numero::create([
+    			'valorNumero'=>20000,
+                'numero' => $i+1,
+                'idEstado' => 1
     		]);
     	}
     	return "exito";

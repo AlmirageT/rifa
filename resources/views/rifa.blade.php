@@ -62,11 +62,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Rut (Ingrese su rut sin puntos ni guion)</label>
+                            <label>Rut</label>
                             <input type="text" name="rutUsuario" class="form-control" placeholder="Ingrese su rut sin puntos ni guion" onchange="formateaRut(this.value)" id="rut">
                         </div>
                         <div class="form-group">
-                            <label>Números (100 - 15000) (Valor por número $20.000)</label>
+                            <label>Números</label>
                             <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple >
                                 @foreach($numeros as $numero)
                                     <option value="{{ $numero->idNumero }}">{{ $numero->numero }}</option>
