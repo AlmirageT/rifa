@@ -7,7 +7,6 @@ use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
-use App\Actions\VerificarRutAction;
 use App\Mail\ConfirmarSolicitud;
 use App\Mail\NumerosFolio;
 use App\Numero;
@@ -49,34 +48,20 @@ class ComprarRifaController extends Controller
                 'correoUsuario'=> 'required|email',
                 'telefonoUsuario'=> 'required',
                 'rutUsuario'=> 'required',
+                'numeros'=>'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Todos los datos deben estar llenos');
                 return back();
             }
             DB::beginTransaction();
-	    	$rut = $request->rutUsuario;
-	        $caracteresEspeciales = array(".");
-	        $rutSinCaracteres = str_replace($caracteresEspeciales, "", $rut);
-
-	        $VerificarRutAction = new VerificarRutAction();
-	        $rutVerificado = $VerificarRutAction->execute($rutSinCaracteres);
-	        if ($rutVerificado == false) {
-            	toastr()->warning('El rut ingresado no es valido, intente nuevamente');
-                DB::rollback();
-	            return back();
-	        }
-	        $buscarUsuario = Usuario::where('correoUsuario',$request->correoUsuario)->orWhere('rutUsuario',$rutSinCaracteres)->first();
-	        if($buscarUsuario){
-	        	$usuario = $buscarUsuario;
-	        }else{
-		    	$usuario = Usuario::create([
-		    		'nombreUsuario' => $request->nombreUsuario,
-			    	'correoUsuario' => $request->correoUsuario,
-			    	'telefonoUsuario' => $request->telefonoUsuario,
-			    	'rutUsuario' => $rutSinCaracteres
-		    	]);
-	        }
+	    	
+	    	$usuario = Usuario::create([
+	    		'nombreUsuario' => $request->nombreUsuario,
+		    	'correoUsuario' => $request->correoUsuario,
+		    	'telefonoUsuario' => $request->telefonoUsuario,
+		    	'rutUsuario' => $request->rutUsuario
+	    	]);
             $total = count($request->numeros)*20000;
 	    	$boleta = Boleta::create([
                 'totalBoleta' => $total,

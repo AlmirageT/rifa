@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 order-lg-2 ">
                   <div class="p-5 linea-bottom">
-                    <p class="">Debes escoger la propiedad por la que deseas participar y 3 números por $20.000.- Cada uno. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p class="">Desde el número 100 en adelante .....</p>
 
                   </div>
                 </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label>Rut</label>
-                            <input type="text" name="rutUsuario" class="form-control" placeholder="Ingrese su rut sin puntos ni guion" onchange="formateaRut(this.value)" id="rut" required>
+                            <input type="text" name="rutUsuario" class="form-control" id="rut" required>
                         </div>
                         <div class="form-group">
                             <label>Números</label>
@@ -112,33 +112,7 @@
             });
         </script>
         <script type="text/javascript">
-            function formateaRut(rut) {
-                if(isNaN(rut)){
-                    alert("ingrese solo numeros");
-                    document.getElementById('rut').value = '';
-                }else{
-                    var actual = rut.replace(/^0+/, "");
-                    if (actual != '' && actual.length > 1) {
-                        var sinPuntos = actual.replace(/\./g, "");
-                        var actualLimpio = sinPuntos.replace(/-/g, "");
-                        var inicio = actualLimpio.substring(0, actualLimpio.length - 1);
-                        var rutPuntos = "";
-                        var i = 0;
-                        var j = 1;
-                        for (i = inicio.length - 1; i >= 0; i--) {
-                            var letra = inicio.charAt(i);
-                            rutPuntos = letra + rutPuntos;
-                            if (j % 3 == 0 && j <= inicio.length - 1) {
-                                rutPuntos = "." + rutPuntos;
-                            }
-                            j++;
-                        }
-                        var dv = actualLimpio.substring(actualLimpio.length - 1);
-                        rutPuntos = rutPuntos + "-" + dv;
-                    }
-                    document.getElementById('rut').value = rutPuntos;
-                }
-            }
+            
             let $select = $('#numeros');
             $select.on('change', () => {
               let selecteds = [];
