@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Rut</label>
+                            <label>RUT/DNI/Pasaporte</label>
                             <input type="text" name="rutUsuario" class="form-control" id="rut" required>
                         </div>
                         <div class="form-group">
