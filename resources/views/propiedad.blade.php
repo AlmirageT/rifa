@@ -23,26 +23,26 @@
     <h3></h3>
     
         <div class="row align-items-center">
-        <div class="col-lg-7 wow slideInRight">
+            <div class="col-lg-7 wow slideInLeft">
             <h2 class="nombre-proyecto"><strong>Departamento Marina del Golf Rapel</strong></h2>
             <h4>Por $20.000.-</h4>
-            <p class="texto-ubicacion">Propiedad tasada en 6.305UF</p>
-            <p>Disfruta el lujo de tener tu propio campo de golf. Este lugar es muy apetecido por sus atractivos turísticos y riquezas naturales tanto por chilenos como para extranjeros, ideal para vacacional o arrendar por temporadas. </p>
+           <!-- <p class="texto-ubicacion">Propiedad tasada en 6.305UF</p> -->
+            <p>Disfruta el lujo de tener tu propio campo de golf. Este lugar es muy apetecido por sus atractivos turísticos y riquezas naturales tanto por chilenos como para extranjeros, ideal para vacacionar o arrendar por temporadas. </p>
             <h5 class="nombre-proyecto">Características</h5>
             <ul class="list-caracteristicas">
-                <li>Departamento de 107 m2</li>
+                <li>Departamento de 113 m2</li>
                 <li>2 Terrazas</li>
                 <li>3 Dormitorios y 3 baños</li>
                 <li>Living/Comedor</li>
                 <li>Cocina integrada con mesón en granito</li>
                 <li>1 Estacionamiento</li>
-                <li>Bodega</li>
+                <li>Bodega o dormitorio de servicio</li>
                 <li>Seguridad 24 horas</li>
                 <li>Piscina efecto infinito</li>
                  <li>Campo de Golf</li>
                  <li>Bosque de pinos</li>
             </ul> 
-            <a href="{{ asset('propiedades') }}" class="btn btn-success" role="button" aria-pressed="true">Comprar mis números</a>
+            <a href="{{ asset('rifa') }}" class="btn btn-success" role="button" aria-pressed="true">Comprar mis números</a>
             <br> <br>
         </div> 
             <!-- SLIDER -->
@@ -55,15 +55,15 @@
                 </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img  src="{{ asset('assets/img/rapel1.jpg') }}" class="d-block w-100 slide" alt="...">
+                    <img  src="{{ asset('assets/img/rapel1.jpg') }}" class="d-block w-100 slide" alt="Terraza con vistas">
                 </div>
                 
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/rapel2.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('assets/img/rapel2.jpg') }}" class="d-block w-100" alt="Comedor">
                 </div>
                 
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/rapel3.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('assets/img/rapel3.jpg') }}" class="d-block w-100" alt="Departamento y piscina">
                 </div>
             </div>
             

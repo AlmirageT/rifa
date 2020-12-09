@@ -39,7 +39,11 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-mobile.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-tablet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
+
     
+        <meta name="description" content="Departamento de lujo en Marina del Golf Rapel, moto de agua, kit de palos de golf y $2.000.000.- pueden ser tuyos por $20.000.-">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
       
         <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
@@ -48,14 +52,19 @@
         @toastr_css
     </head>
     <body>
+      <a href="https://wa.me/56942940824"><div class="plus-button" style="background-size: cover;"></div></a>
+        @include('layouts.public.cookies')
         @include('layouts.public.header')
         @yield('content')
         @include('layouts.public.footer')
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"></script>
+        
         <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        <script src="{{ asset('assets/js/efectos.js') }}"></script>
+        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
         @toastr_js
         @toastr_render
         @yield('scripts')

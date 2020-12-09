@@ -2,49 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-    <title>Boleta</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12" align="center">
-                <h5>Boleta</h5>
-            </div>
-            <div style="line-height: 10%;">
-                <p>Comprador: {{ $boleta->nombreUsuario }}</p>
-                <p>Rut: {{ $boleta->rutUsuario }}</p>
-                <p>Correo: {{ $boleta->correoUsuario }}</p>
-                <p>Teléfono: {{ $boleta->telefonoUsuario }}</p>
-            </div>
-            <div class="col-lg-12">
-                <table class="table">
-                  <thead>
+    
+        <div align="center">
+            <h3>Boleta</h3>
+        </div>
+        <div>
+            <p>Comprador: {{ $boleta->nombreUsuario }}</p>
+            <p>Rut: {{ $boleta->rutUsuario }}</p>
+            <p>Correo: {{ $boleta->correoUsuario }}</p>
+            <p>Teléfono: {{ $boleta->telefonoUsuario }}</p>
+        </div>
+        <div >
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Números Solicitados</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($numeros as $numero)
                     <tr>
-                      <th>Números Solicitados</th>
-                      <th>Total</th>
+                      <td>{{ $numero->numero }}</td>
+                      <td>${{ number_format($numero->valorNumero,0,',','.') }}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                          @foreach($numeros as $numero)
-                            <p>{{ $numero->numero }} &nbsp;</p>
-                          @endforeach
-                      </td>
-                      <td>${{ number_format($boleta->totalBoleta,0,',','.') }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
+                @endforeach
+                <tr>
+                    <td>Total</td>
+                    <td>${{ number_format($boleta->totalBoleta,0,',','.') }}</td>
+                </tr>
+              </tbody>
+            </table>
         </div>
     </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
   </body>
 </html>
