@@ -20,7 +20,7 @@ Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 //tabla de boletas creadas para revisión de compra
 Route::post('enviar-consulta','CorreoConsultaController@enviarCorreo');
 Route::group(['prefix'=>'administrador'], function(){
-	Route::view('/','admin.home');
+	Route::get('/','AdminController@index');
 
 	Route::group(['prefix'=>'transacciones'], function(){
 		Route::group(['prefix'=>'boletas'], function(){
