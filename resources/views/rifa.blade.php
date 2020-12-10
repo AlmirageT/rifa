@@ -8,12 +8,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1">
                   <div class="p-5 linea padding">
-                           <h2 class="display-4 azul ">Escoge tus nÃºmeros preferidos.</h2>
+                           <h2 class="display-4 azul ">Escoge tus números preferidos.</h2>
                   </div>
                 </div>
                 <div class="col-lg-6 order-lg-2 ">
                   <div class="p-5 linea-bottom">
-                    <p class="">Desde el nÃºmero 100 en adelante .....</p>
+                    <p class="">Desde el número 100 en adelante .....</p>
 
                   </div>
                 </div>
@@ -38,12 +38,12 @@
                             <input type="email" name="correoUsuario" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>TelÃ©fono</label>
+                            <label>Teléfono</label>
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">+56</span>
                               </div>
-                              <input type="text" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
+                              <input type="number" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,7 +51,7 @@
                             <input type="text" name="rutUsuario" class="form-control" id="rut" required>
                         </div>
                         <div class="form-group">
-                            <label>NÃºmeros</label>
+                            <label>Números</label>
                             <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple required>
                                 @foreach($numeros as $numero)
                                     <option value="{{ $numero->idNumero }}">{{ $numero->numero }}</option>
@@ -63,7 +63,7 @@
                             <input type="hidden" id="totalOculto" name="totalOculto">
                         </div>
                         <div align="center">
-                            <button class="btn btn-primary" type="submit">Comprar NÃºmero</button>
+                            <button class="btn btn-primary" type="submit">Comprar Número</button>
                         </div>
                     </form>
                 </div>
@@ -83,7 +83,7 @@
             $(document).ready(function(){
                 $('.js-example-basic-multiple').select2({
                     language: "es",
-                    placeholder: "Ingrese un numero",
+                    placeholder: "Ingrese un número",
                     minimumInputLength: 3,
                     ajax: {
                         url: '{{ asset('api/numeros') }}',
