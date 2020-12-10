@@ -38,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(count($numeros)>0)
                     <div class="col-lg-12" align="center">
                         <h5>Números</h5>
                     </div>
@@ -46,6 +47,7 @@
                             <p>{{ $numero->numero }}</p>
                         @endforeach
                     </div>
+                    @endif
                     <div class="col-lg-12" align="center">
                         <h5>Datos Boleta</h5>
                     </div>

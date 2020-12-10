@@ -27,8 +27,14 @@ Route::group(['prefix'=>'administrador'], function(){
 			Route::get('/','ListadoBoletaController@index');
 			Route::get('detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
 			Route::get('enviar-boleta/{idBoleta}','ListadoBoletaController@enviarBoleta');
+			Route::get('liberar-boleta/{idBoleta}','ListadoBoletaController@liberarBoleta');
 			Route::get('validadas','BoletasValidadasController@index');
+			Route::get('validadas/detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
 			Route::get('compradas','BoletasCompradasController@index');
+			Route::get('compradas/detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
+			Route::get('compradas/enviar-boleta/{idBoleta}','ListadoBoletaController@enviarBoleta');
+			Route::get('compradas/liberar-boleta/{idBoleta}','ListadoBoletaController@liberarBoleta');
+
 		});
 	});
 });

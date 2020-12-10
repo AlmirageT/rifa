@@ -88,9 +88,7 @@ class BoletasValidadasController extends Controller
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-right'>
-		                        	<a href='' class='dropdown-item btn btn-info'>Detalles</a>
-		                        	<a href='' class='dropdown-item btn btn-info'>Enviar Boleta</a>
-		                        	<a class='dropdown-item btn btn-info'>Cancelar Compra</a>
+		                        	<a href='".asset('administrador/transacciones/boletas/validadas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
 		                        </div>
 		                    </div>";
 				$data[] = $nestedData;
