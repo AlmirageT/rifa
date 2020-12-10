@@ -22,12 +22,12 @@
      <br>
 
   <div class="contenedor-bases">
-      <img class="base" src="{{ asset('assets/img/bases/1.png') }}" alt="">
-       <img class="base" src="{{ asset('assets/img/bases/2.png') }}" alt="">
-        <img class="base" src="{{ asset('assets/img/bases/3.png') }}" alt="">
-         <img class="base" src="{{ asset('assets/img/bases/4.png') }}" alt="">
-          <img class="base" src="{{ asset('assets/img/bases/5.png') }}" alt="">
-           <img class="base" src="{{ asset('assets/img/bases/6.png') }}" alt="">
+      <img class="base" src="{{ asset('img/bases/1.png') }}" alt="">
+       <img class="base" src="{{ asset('img/bases/2.png') }}" alt="">
+        <img class="base" src="{{ asset('img/bases/3.png') }}" alt="">
+         <img class="base" src="{{ asset('img/bases/4.png') }}" alt="">
+          <img class="base" src="{{ asset('img/bases/5.png') }}" alt="">
+           <img class="base" src="{{ asset('img/bases/6.png') }}" alt="">
   </div>
   
   

@@ -40,7 +40,7 @@
 
                 <div class="col-lg-3" style="width: 15rem;" >
                     <div class="card-body">
-                        <a href="{{ asset('/') }}"> <img class="logo-footer" src="{{ asset('assets/img/logo.png') }}" alt="Rifo Mi propiedad"></a>
+                        <a href="{{ asset('/') }}"> <img class="logo-footer" src="{{ asset('img/logo.png') }}" alt="Rifo Mi propiedad"></a>
                     </div> 
                 </div>
             </div> 

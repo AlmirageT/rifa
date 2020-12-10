@@ -16,21 +16,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('assets/img/slider1.jpg') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/slider1.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
       <!--  <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('assets/img/slider2.jpg') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/slider2.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
       <!--  <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('assets/img/slider3.jpg') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/slider3.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <!--  <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
@@ -57,21 +57,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('assets/img/slider-mobile1.jpg') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/slider-mobile1.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('assets/img/slider-mobile2.jpg') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/slider-mobile2.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('assets/img/slider-mobile3.jpg') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/slider-mobile3.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -127,7 +127,7 @@
           <div class="p-5">          
           <div class="contenedor-hover">
             <a class="link wow zoomIn" data-wow-delay="0.5s" href="#"> <figure>
-                  <img src="{{ asset('assets/img/rapel3.jpg') }}" alt="Piscina con efecto infinito">
+                  <img src="{{ asset('img/rapel3.jpg') }}" alt="Piscina con efecto infinito">
                   <div class="capa">
                       <h3>Piscina Efecto Infinito</h3>
                      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -138,7 +138,7 @@
               
                     <a class="wow zoomIn" data-wow-delay="0.7s" href="#">
                     <figure>
-                  <img src="{{ asset('assets/img/rapel6.jpg') }}" alt="Bosques de pino">
+                  <img src="{{ asset('img/rapel6.jpg') }}" alt="Bosques de pino">
                   <div class="capa">
                       <h3>Bosques de Pino</h3>
                 <!--      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -148,7 +148,7 @@
               
             
                <a class="wow zoomIn" data-wow-delay="0.9s" href="#">   <figure>
-                  <img src="{{ asset('assets/img/rapel5.jpg') }}" alt="Senderos">
+                  <img src="{{ asset('img/rapel5.jpg') }}" alt="Senderos">
                   <div class="capa">
                       <h3>Senderos</h3>
                   <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -156,7 +156,7 @@
                   </div>
               </figure> </a>
                <a class="wow zoomIn" data-wow-delay="1.2s" href="#">  <figure>
-                  <img src="{{ asset('assets/img/rapel4.jpg') }}" alt="Campo de golf">
+                  <img src="{{ asset('img/rapel4.jpg') }}" alt="Campo de golf">
                   <div class="capa">
                       <h3>Campo de Golf</h3>
                   <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -199,7 +199,7 @@
           <div class="p-5">          
           <div class="contenedor-hover">
             <a class="link wow zoomIn" href="#"> <figure>
-                  <img src="{{ asset('assets/img/rapel1.jpg') }}" alt="Piscina efecto infinito">
+                  <img src="{{ asset('img/rapel1.jpg') }}" alt="Piscina efecto infinito">
                   <div class="capa">
                       <h3>Piscina Efecto Infinito</h3>
                   <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -209,7 +209,7 @@
               </figure> </a> 
               
              <a class="wow zoomIn" href="#">  <figure>
-                  <img src="{{ asset('assets/img/rapel2.jpg') }}" alt="Campo de Golf">
+                  <img src="{{ asset('img/rapel2.jpg') }}" alt="Campo de Golf">
                   <div class="capa">
                       <h3>Campo de Golf</h3>
             <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -217,7 +217,7 @@
                   </div>
               </figure> </a>
                <a class="wow zoomIn" href="#">   <figure>
-                  <img src="{{ asset('assets/img/rapel3.jpg') }}" alt="Senderos">
+                  <img src="{{ asset('img/rapel3.jpg') }}" alt="Senderos">
                   <div class="capa">
                       <h3>Senderos</h3>
                      <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -226,7 +226,7 @@
               </figure> </a>
                    <a class="wow zoomIn" href="#">
                     <figure>
-                  <img src="{{ asset('assets/img/parcela4.jpg') }}" alt="Bosques de pino">
+                  <img src="{{ asset('img/parcela4.jpg') }}" alt="Bosques de pino">
                   <div class="capa">
                       <h3>Bosques</h3>
                      <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>

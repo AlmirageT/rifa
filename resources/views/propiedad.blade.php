@@ -55,15 +55,15 @@
                 </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img  src="{{ asset('assets/img/rapel1.jpg') }}" class="d-block w-100 slide" alt="Terraza con vistas">
+                    <img  src="{{ asset('img/rapel1.jpg') }}" class="d-block w-100 slide" alt="Terraza con vistas">
                 </div>
                 
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/rapel2.jpg') }}" class="d-block w-100" alt="Comedor">
+                    <img src="{{ asset('img/rapel2.jpg') }}" class="d-block w-100" alt="Comedor">
                 </div>
                 
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/rapel3.jpg') }}" class="d-block w-100" alt="Departamento y piscina">
+                    <img src="{{ asset('img/rapel3.jpg') }}" class="d-block w-100" alt="Departamento y piscina">
                 </div>
             </div>
             
