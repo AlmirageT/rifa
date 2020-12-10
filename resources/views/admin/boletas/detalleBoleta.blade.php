@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-
+@section('title','Rifo Mi Propiedad - Administrador')
 @section('content')
     <div class="container">
         <br>
