@@ -161,7 +161,7 @@ class ListadoBoletaController extends Controller
 			    	->where('boletas.idBoleta', $idBoleta)
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
-			//return view('boletas.pdf',compact('boleta','numeros'));
+			//return view('admin.boletas.pdf',compact('boleta','numeros'));
 			$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros'));
             Mail::to($boleta->correoUsuario)->bcc('pauloberrios@gmail.com')->send(new EnvioBoleta($boleta, $numeros, $pdf));
 

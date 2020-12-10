@@ -12,19 +12,19 @@
     <div style="background-color: white">
         <div class="row">
             <div class="col-lg-1">
-                <img src="{{ asset('img/logo.png') }}" style="max-height: 100px">
+                <img src="/img/logo.png" style="max-height: 100px">
             </div>
 
             <div class="col-lg-3 offset-6">
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th scope="row">Cotización</th>
+                            <th scope="row">Boleta</th>
                             <td></td>
                         </tr>
                         <tr>
                             <th scope="row">Fecha</th>
-                            <td></td>
+                            <td>{{ $hoy = date("d-m-Y") }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -33,16 +33,16 @@
 
         <hr>
 
-        <h3 class="text-center"><strong>Cotización</strong></h3>
+        <h3 class="text-center"><strong>Boleta</strong></h3>
         <!-- Datos del propietario -->
         
 
         <div class="row">
             <div class="col-lg-12">
-                <p><strong>Cliente: </strong></p>
-                <p><strong>RUT: </strong></p>
-                <p><strong>Correo: </strong></p>
-                <p><strong>Teléfono: </strong></p>
+                <p><strong>Cliente: {{ $boleta->nombreUsuario }}</strong></p>
+                <p><strong>RUT/DNI/Pasaporte: {{ $boleta->rutUsuario }}</strong></p>
+                <p><strong>Correo: {{ $boleta->correoUsuario }}</strong></p>
+                <p><strong>Teléfono: {{ $boleta->telefonoUsuario }}</strong></p>
             </div>
         </div>
 
@@ -52,16 +52,23 @@
         <div class="row">
             <div class="col-lg-12">
                 <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Números</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
                     <tbody>
+                        @foreach($numeros as $numero)
                             <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <th scope="row">Dirección</th>
-                                <td></td>
+                                <td>{{ $numero->numero }}</td>
+                                <td>$ {{ number_format($numero->valorNumero,0,',','.') }}</td>
                             </tr>
-
-                            
-
+                        @endforeach
+                        <tr>
+                            <td>Total</td>
+                            <td>$ {{ number_format($boleta->totalBoleta,0,',','.') }}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -70,8 +77,8 @@
 
     <footer style="background-color: white">
         <div class="text-center">
-            <p>www.isbast.com</p>
-            <p><a href="mailto:contacto@isbast.com">contacto@isbast.com</a></p>
+            <p>rifomipropiedad.com</p>
+            <p><a href="mailto:contacto@rifomipropiedad.com">contacto@rifomipropiedad.com</a></p>
         </div>
     </footer>
 
