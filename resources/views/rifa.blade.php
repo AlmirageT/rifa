@@ -43,7 +43,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">+56</span>
                               </div>
-                              <input type="text" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
+                              <input type="number" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -83,7 +83,7 @@
             $(document).ready(function(){
                 $('.js-example-basic-multiple').select2({
                     language: "es",
-                    placeholder: "Ingrese un numero",
+                    placeholder: "Ingrese un número",
                     minimumInputLength: 3,
                     ajax: {
                         url: '{{ asset('api/numeros') }}',

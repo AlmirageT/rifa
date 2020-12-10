@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Mail\EnvioBoleta;
 use App\Boleta;
 use App\Numero;
+use Session;
 use Mail;
 use PDF;
 use DB;
@@ -17,7 +18,10 @@ class ListadoBoletaController extends Controller
 {
     public function index()
     {
-    	return view('boletas.index');
+    	if (!Session::has('correoUsuario') || !Session::has('rutUsuario') || !Session::has('idTipoUsuario') || !Session::has('idUsuario') || !Session::has('nombreUsuario')) {
+            return abort(401);
+        }
+    	return view('admin.boletas.index');
     }
     public function listaBoletas(Request $request)
     {
@@ -28,10 +32,12 @@ class ListadoBoletaController extends Controller
 			3=> 'rutUsuario',
 			4=> 'correoUsuario',
 			5=> 'telefonoUsuario',
-			6=> 'options'
+			6=> 'nombreEstado',
+			7=> 'options'
 		);
 		$totalData = Boleta::select('*')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
+		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		        ->count();
 		$totalFiltered = $totalData;
 
@@ -44,6 +50,7 @@ class ListadoBoletaController extends Controller
 		{
 			$boletas = Boleta::select('*')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
+		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 				->offset($start)
 				->limit($limit)
 				->orderBy($order,$dir)
@@ -52,6 +59,7 @@ class ListadoBoletaController extends Controller
 			$search = $request->input('search.value');
 			$boletas = Boleta::select('*')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
+		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		    	->where('usuarios.nombreUsuario', 'LIKE',"%{$search}%")
 		    	->orWhere('usuarios.correoUsuario', 'LIKE',"%{$search}%")
 		    	->orWhere('usuarios.rutUsuario', 'LIKE',"%{$search}%")
@@ -63,6 +71,7 @@ class ListadoBoletaController extends Controller
 
 			$totalFiltered = Boleta::select('*')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
+		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		    	->where('usuarios.nombreUsuario', 'LIKE',"%{$search}%")
 		    	->orWhere('usuarios.correoUsuario', 'LIKE',"%{$search}%")
 		    	->orWhere('usuarios.rutUsuario', 'LIKE',"%{$search}%")
@@ -79,13 +88,14 @@ class ListadoBoletaController extends Controller
 				$nestedData['rutUsuario'] = $boleta->rutUsuario;
 				$nestedData['correoUsuario'] = $boleta->correoUsuario;
 				$nestedData['telefonoUsuario'] = $boleta->telefonoUsuario;
+				$nestedData['nombreEstado'] = $boleta->nombreEstado;
 				$nestedData['options'] = "<div class='dropdown'>
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-right'>
-		                        	<a href='".asset('detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
-		                        	<a href='".asset('enviar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Enviar Boleta</a>
+		                        	<a href='".asset('administrador/transacciones/boletas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
+		                        	<a href='".asset('administrador/transacciones/boletas/enviar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Enviar Boleta</a>
 		                        	<a class='dropdown-item btn btn-info'>Cancelar Compra</a>
 		                        </div>
 		                    </div>";
@@ -102,6 +112,9 @@ class ListadoBoletaController extends Controller
     }
     public function detalle($idBoleta)
     {
+    	if (!Session::has('correoUsuario') || !Session::has('rutUsuario') || !Session::has('idTipoUsuario') || !Session::has('idUsuario') || !Session::has('nombreUsuario')) {
+            return abort(401);
+        }
     	try{
 
 	    	$boleta = Boleta::select('*')
@@ -109,7 +122,7 @@ class ListadoBoletaController extends Controller
 			    	->where('boletas.idBoleta', $idBoleta)
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
-			return view('boletas.detalleBoleta',compact('boleta','numeros'));
+			return view('admin.boletas.detalleBoleta',compact('boleta','numeros'));
 
 		} catch (ModelNotFoundException $e) {
             toastr()->warning('No autorizado');
@@ -127,6 +140,9 @@ class ListadoBoletaController extends Controller
     }
     public function enviarBoleta($idBoleta)
     {
+    	if (!Session::has('correoUsuario') || !Session::has('rutUsuario') || !Session::has('idTipoUsuario') || !Session::has('idUsuario') || !Session::has('nombreUsuario')) {
+            return abort(401);
+        }
     	try{
 
 	    	$boleta = Boleta::select('*')
@@ -135,8 +151,8 @@ class ListadoBoletaController extends Controller
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
 			//return view('boletas.pdf',compact('boleta','numeros'));
-			$pdf = PDF::loadView('boletas.pdf',compact('boleta','numeros'));
-            Mail::to($boleta->correoUsuario)->send(new EnvioBoleta($boleta, $numeros, $pdf));
+			$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros'));
+            Mail::to($boleta->correoUsuario)->bcc('pauloberrios@gmail.com')->send(new EnvioBoleta($boleta, $numeros, $pdf));
             toastr()->info('Correo enviado exitosamente');
 			return back();
 

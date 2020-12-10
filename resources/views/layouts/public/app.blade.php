@@ -33,14 +33,14 @@
     
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="{{ asset('assets/image/jpg') }}">
+        <link rel="icon" href="{{ asset('img/favicon.png') }}" type="{{ asset('image/jpg') }}">
         
         <title>Rifo Mi Propiedad</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-mobile.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-tablet.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-mobile.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-tablet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
 
     
         <meta name="description" content="Departamento de lujo en Marina del Golf Rapel, moto de agua, kit de palos de golf y $2.000.000.- pueden ser tuyos por $20.000.-">
@@ -62,9 +62,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"></script>
         
-        <script src="{{ asset('assets/js/scripts.js') }}"></script>
-        <script src="{{ asset('assets/js/efectos.js') }}"></script>
-        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="{{ asset('js/efectos.js') }}"></script>
+        <script src="{{ asset('js/wow.min.js') }}"></script>
         @toastr_js
         @toastr_render
         @yield('scripts')

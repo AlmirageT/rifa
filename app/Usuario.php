@@ -12,6 +12,8 @@ class Usuario extends Model
     	'nombreUsuario',
     	'correoUsuario',
     	'telefonoUsuario',
-    	'rutUsuario'
+    	'rutUsuario',
+    	'password',
+    	'idTipoUsuario'
     ];
 }

@@ -65,7 +65,8 @@ class ComprarRifaController extends Controller
             $total = count($request->numeros)*20000;
 	    	$boleta = Boleta::create([
                 'totalBoleta' => $total,
-	    		'idUsuario' => $usuario->idUsuario
+	    		'idUsuario' => $usuario->idUsuario,
+                'idEstado' => 2
 	    	]);
 	    	if (count($request->numeros) > 0) {
                 $numerosComprados = Numero::whereIn('idNumero',$request->numeros)->get();
@@ -83,8 +84,8 @@ class ComprarRifaController extends Controller
 		    		'idEstado' => 2
 		    	]);
 	    	}
-            Mail::to($usuario->correoUsuario)->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
-	    	Mail::to('tickets@rifomipropiedad.com')->send(new NumerosFolio($boleta, $numerosComprados, $total));
+            Mail::to($usuario->correoUsuario)->bcc('pauloberrios@gmail.com')->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
+	    	Mail::to('tickets@rifomipropiedad.com')->bcc('pauloberrios@gmail.com')->send(new NumerosFolio($boleta, $numerosComprados, $total));
             DB::commit();
 	    	return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {

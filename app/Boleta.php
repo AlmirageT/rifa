@@ -10,6 +10,7 @@ class Boleta extends Model
     protected $primaryKey = 'idBoleta';
     protected $fillable = [
     	'totalBoleta',
-    	'idUsuario'
+    	'idUsuario',
+    	'idEstado'
     ];
 }

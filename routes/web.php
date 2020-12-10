@@ -18,10 +18,27 @@ Route::view('propiedades', 'propiedad');
 Route::get('rifa', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 //tabla de boletas creadas para revisión de compra
-Route::get('tabla-boletas','ListadoBoletaController@index');
-Route::post('datatable-boletas','ListadoBoletaController@listaBoletas');
 Route::post('enviar-consulta','CorreoConsultaController@enviarCorreo');
-Route::get('detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
-Route::get('enviar-boleta/{idBoleta}','ListadoBoletaController@enviarBoleta');
+Route::group(['prefix'=>'administrador'], function(){
+	Route::view('/','admin.home');
+
+	Route::group(['prefix'=>'transacciones'], function(){
+		Route::group(['prefix'=>'boletas'], function(){
+			Route::get('/','ListadoBoletaController@index');
+			Route::get('detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
+			Route::get('enviar-boleta/{idBoleta}','ListadoBoletaController@enviarBoleta');
+			Route::get('validadas','BoletasValidadasController@index');
+			Route::get('compradas','BoletasCompradasController@index');
+		});
+	});
+});
 //script para crear los 100.000 numeros
 //Route::get('generar-numeros','ComprarRifaController@numeros');
+Route::post('datatable-boletas','ListadoBoletaController@listaBoletas');
+Route::post('datatable-boletas-validadas','BoletasValidadasController@listaBoletas');
+Route::post('datatable-boletas-compradas','BoletasCompradasController@listaBoletas');
+
+//rutas login
+Route::get('login','LoginController@index');
+Route::post('ingreso-mi-portal','LoginController@ingresoPortal');
+Route::post('logout','LoginController@logout');
