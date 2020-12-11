@@ -25,9 +25,9 @@
     
     <br>
     <div class="contenedor-fotos">
-      <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/rapel1.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/rapel1.jpg') }}" alt="Terraza con vistas"></a>  
-       <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/rapel2.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/rapel2.jpg') }}" alt="comedor"></a> 
-        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/rapel3.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/rapel3.jpg') }}" alt="Departamento y Piscina"></a> 
+      <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/edificio.jpg') }}"><img class="galeria wow slideInUp" src="img/edificio.jpg" alt="Terraza con quincho"></a>  
+       <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/comedor.jpg') }}"><img class="galeria wow slideInUp" src="img/comedor.jpg" alt="Deportes acuáticos"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/vista-terraza.jpg') }}"><img class="galeria wow slideInUp" src="img/vista-terraza.jpg" alt="Departamento con vistas"></a> 
          
     </div>
      <div class="contenedor-videos wow slideInLeft">
@@ -37,9 +37,9 @@
           
       </div>
     <div class="contenedor-fotos">
-      <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/rapel4.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/rapel4.jpg') }}" alt="Piscinaefecto infinito"></a> 
-          <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/rapel5.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/rapel5.jpg') }}" alt="Campo de Golf"></a> 
-           <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/rapel7.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/rapel7.jpg') }}" alt="Departamento con vistas"></a>
+      <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/campos-golf.jpg') }}"><img class="galeria wow zoomIn" src="img/campos-golf.jpg" alt="Piscinaefecto infinito"></a> 
+          <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/living.jpg') }}"><img class="galeria wow zoomIn" src="img/living.jpg" alt="Campo de Golf"></a> 
+           <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/panoramica.jpg') }}"><img class="galeria wow zoomIn" src="img/panoramica.jpg" alt="Departamento con vistas"></a>
     </div>
     <div class="contenedor-videos wow slideInLeft">
               <video autoplay muted loop class="">

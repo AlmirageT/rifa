@@ -20,7 +20,7 @@
              <br>
           
         </main> <br> <br>
-        <div class="container">
+        <div class="container wow slideInUp">
             <br>
             <div class="card">
                 <div class="card-body">

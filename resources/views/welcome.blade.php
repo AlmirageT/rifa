@@ -124,6 +124,13 @@
      <br>
      </div>
       <br> <br>
+      <div class="container">
+   <div class="contenedor-videos wow zoomIn">
+         <video controls>
+             <source  src="{{ asset('videos/marina-golf-rapel.mp4') }}">
+         </video>
+          
+      </div> </div>
  <section class="desktop">
     <br> 
    <div class="row align-items-center centrado">
@@ -273,10 +280,24 @@
 <h2 class="display-4 azul centrar-titulos wow zoomIn">Premios</h2>
       
      
- <div class="contenedor-premios wow slideInUp">
+<div class="contenedor-premios wow slideInUp">
      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
-     <p><strong>Números de la Victoria</strong><br>8 premios de $1.000.000.- cada uno</p></div>
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Primer Lugar</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>$2.000.000.- en efectivo</p></div>
+          <p>
+           <strong>Primer Premio : $1.000.000.-</strong> <br>
+     <strong>Segundo Premio : $1.000.000.-</strong> <br>
+           <strong>Tercero Premio : $1.000.000.-</strong> <br>
+           <strong>Cuarto Premio : $1.000.000.-</strong> <br>
+           <strong>Quinto Premio : $1.000.000.-</strong> <br>
+           <strong>Sexto Premio : $1.000.000.-</strong> <br>
+           <strong>Séptimo Premio : $1.000.000.-</strong> <br>
+           <strong>Octavo Premio : $1.000.000.-</strong> <br>
+          </p>
+            </div>
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br><strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina infinita.</strong><br><strong>2 acciones en el campo de golf
+</strong><br><strong>Moto de agua</strong><br><strong>Kit equipo de golf
+</strong><br><strong>$2.000.000.-</strong></p>
+               
+            </div>
       <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Último Premio</strong><br>$500.000.-</div>
  </div>
      <br>
