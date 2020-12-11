@@ -4,21 +4,18 @@
         
         <main class="main">
                 <div class="container">
-            <br> 
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-1">
-                  <div class="p-5 linea padding">
-                           <h2 class="display-4 azul ">Escoge tus números preferidos.</h2>
-                  </div>
-                </div>
-                <div class="col-lg-6 order-lg-2 ">
-                  <div class="p-5 linea-bottom">
-                    <p class="">Desde el número 100 en adelante .....</p>
+    <br> 
 
-                  </div>
-                </div>
-              </div>
-             <br>
+            <h2 class="display-4 azul centrar-titulos wow zoomIn">Prueba tu suerte y podrás ganar</h2>
+      
+     
+ <div class="contenedor-premios wow slideInUp">
+     <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
+     <p><strong>Números de la Victoria</strong><br>8 premios de $1.000.000.- cada uno</p></div>
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Primer Lugar</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>$2.000.000.- en efectivo</p></div>
+      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Último Premio</strong><br>$500.000.-</div>
+ </div>
+ <br>
             </div>
              <br>
           

@@ -16,7 +16,6 @@ Rifo Mi Propiedad - Administrador
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-responsive">
                             <table class="table table-bordered dt-responsive nowrap" id="datos" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                               <thead>
                                 <tr>
@@ -30,7 +29,6 @@ Rifo Mi Propiedad - Administrador
                                 </tr>
                               </thead>
                             </table>
-                        </div>
                     </div>
                 </div>
             </div>

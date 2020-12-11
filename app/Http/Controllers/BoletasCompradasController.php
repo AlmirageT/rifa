@@ -88,7 +88,7 @@ class BoletasCompradasController extends Controller
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
-		                        <div class='dropdown-menu dropdown-menu-right'>
+		                        <div class='dropdown-menu dropdown-menu-center'>
 		                        	<a href='".asset('administrador/transacciones/boletas/compradas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
 		                        	<a href='".asset('administrador/transacciones/boletas/compradas/enviar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Enviar Boleta</a>
 		                        	<a href='".asset('administrador/transacciones/boletas/compradas/liberar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Liberar Boleta</a>
@@ -100,7 +100,7 @@ class BoletasCompradasController extends Controller
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
-		                        <div class='dropdown-menu dropdown-menu-right'>
+		                        <div class='dropdown-menu dropdown-menu-center'>
 		                        	<a href='".asset('administrador/transacciones/boletas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
 		                        </div>
 		                    </div>";

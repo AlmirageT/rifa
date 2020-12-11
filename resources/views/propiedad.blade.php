@@ -1,5 +1,6 @@
 @extends('layouts.public.app')
 @section('content')
+<a class="btn-comprar-flotante" href="{{ asset('rifa') }}">Comprar <br>Números</a>
 
   <main class="main">
         <div class="container">

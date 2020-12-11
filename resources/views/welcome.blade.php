@@ -2,7 +2,7 @@
 @section('content')
 
 
-
+<a class="btn-comprar-flotante" href="{{ asset('rifa') }}">Comprar <br>Números</a>
 <!-- BARRA DE NAVEGACIÓN -->
 
    <main class="main">
@@ -265,6 +265,22 @@
       </div>
      <br>
      </div>
+
+      <div class="container">
+    <br> 
+ 
+        
+<h2 class="display-4 azul centrar-titulos wow zoomIn">Premios</h2>
+      
+     
+ <div class="contenedor-premios wow slideInUp">
+     <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
+     <p><strong>Números de la Victoria</strong><br>8 premios de $1.000.000.- cada uno</p></div>
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Primer Lugar</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>$2.000.000.- en efectivo</p></div>
+      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Último Premio</strong><br>$500.000.-</div>
+ </div>
+     <br>
+     </div> 
  <!--
  <section class="contenedor-banner desktop">
 <img class="img-banner" src="img/banner.jpg" alt="">

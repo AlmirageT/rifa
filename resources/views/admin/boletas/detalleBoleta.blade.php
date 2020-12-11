@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>Rut Comprador</label>
+                            <label>Rut/DNI/Pasaporte</label>
                             <input type="text" disabled class="form-control" value="{{ $boleta->rutUsuario }}">
                         </div>
                     </div>
