@@ -2,7 +2,7 @@
 @section('content')
 
 
-
+<a class="btn-comprar-flotante" href="{{ asset('rifa') }}">Comprar <br>Números</a>
 <!-- BARRA DE NAVEGACIÓN -->
 
    <main class="main">
@@ -100,26 +100,37 @@
         <div class="col-lg-6 order-lg-2" >
           <div class="p-5 linea-bottom">
             <p class="wow zoomIn" data-wow-delay="0.7s"><strong>Confía en ti</strong>, cree en la suerte, desafía al destino y podrás ser el ganador de estos premios:</p>
-            <p class="wow zoomIn" data-wow-delay="0.9s">Premio Mayor:</p>
+            <p class="wow zoomIn" data-wow-delay="0.9s">PREMIO MAYOR:</p>
             <ul class="wow zoomIn" data-wow-delay="0.9s">
-                <li><strong>Departamento de lujo en Marina Golf Rapel</strong></li>
-                <li><strong>Moto de agua</strong></li>
-                <li><strong>Kit palos de golf</strong></li>
-                <li><strong>$2.000.000.-</strong></li>
+                <li><strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, de 3 dormitorios, 3 baños, con dos terrazas, estacionamiento , bodega tipo dormitorio y piscina infinita.</strong></li>
+                <li><strong>2 acciones en el campo de golf.</strong></li>
+                <li><strong>Kit equipo de golf.</strong></li>
+                <li><strong>Moto de agua.</strong></li>
+                <li><strong>$2.000.000.</strong></li>
             </ul>
             
-            <p class="wow zoomIn" data-wow-delay="1s">Segundo premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Tercer premio: <strong>$500.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1s">Primer premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Segundo premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Tercer premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Cuarto premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Quinto premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Sexto premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Séptimo premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Octavo premio: <strong>$1.000.000.-</strong></p>
 
           </div>
         </div>
       </div>
      <br>
      </div>
-  
-   
-    
       <br> <br>
+      <div class="container">
+   <div class="contenedor-videos wow zoomIn">
+         <video controls>
+             <source  src="{{ asset('videos/marina-golf-rapel.mp4') }}">
+         </video>
+          
+      </div> </div>
  <section class="desktop">
     <br> 
    <div class="row align-items-center centrado">
@@ -261,6 +272,36 @@
       </div>
      <br>
      </div>
+
+      <div class="container">
+    <br> 
+ 
+        
+<h2 class="display-4 azul centrar-titulos wow zoomIn">Premios</h2>
+      
+     
+<div class="contenedor-premios wow slideInUp">
+     <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
+          <p>
+           <strong>Primer Premio : $1.000.000.-</strong> <br>
+     <strong>Segundo Premio : $1.000.000.-</strong> <br>
+           <strong>Tercero Premio : $1.000.000.-</strong> <br>
+           <strong>Cuarto Premio : $1.000.000.-</strong> <br>
+           <strong>Quinto Premio : $1.000.000.-</strong> <br>
+           <strong>Sexto Premio : $1.000.000.-</strong> <br>
+           <strong>Séptimo Premio : $1.000.000.-</strong> <br>
+           <strong>Octavo Premio : $1.000.000.-</strong> <br>
+          </p>
+            </div>
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br><strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina infinita.</strong><br><strong>2 acciones en el campo de golf
+</strong><br><strong>Moto de agua</strong><br><strong>Kit equipo de golf
+</strong><br><strong>$2.000.000.-</strong></p>
+               
+            </div>
+      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Último Premio</strong><br>$500.000.-</div>
+ </div>
+     <br>
+     </div> 
  <!--
  <section class="contenedor-banner desktop">
 <img class="img-banner" src="img/banner.jpg" alt="">

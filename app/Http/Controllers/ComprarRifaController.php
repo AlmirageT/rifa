@@ -103,7 +103,7 @@ class ComprarRifaController extends Controller
         } catch (\Exception $e) {
             DB::rollback();         
             toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
-            return redirect::back();
+            return back();
         }
     }
 }

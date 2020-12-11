@@ -89,16 +89,28 @@ class ListadoBoletaController extends Controller
 				$nestedData['correoUsuario'] = $boleta->correoUsuario;
 				$nestedData['telefonoUsuario'] = $boleta->telefonoUsuario;
 				$nestedData['nombreEstado'] = $boleta->nombreEstado;
-				$nestedData['options'] = "<div class='dropdown'>
+				if ($boleta->idEstado == 2) {
+					$nestedData['options'] = "<div class='dropdown'>
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
-		                        <div class='dropdown-menu dropdown-menu-right'>
+		                        <div class='dropdown-menu dropdown-menu-center'>
 		                        	<a href='".asset('administrador/transacciones/boletas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
 		                        	<a href='".asset('administrador/transacciones/boletas/enviar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Enviar Boleta</a>
-		                        	<a class='dropdown-item btn btn-info'>Cancelar Compra</a>
+		                        	<a href='".asset('administrador/transacciones/boletas/liberar-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Liberar Boleta</a>
 		                        </div>
 		                    </div>";
+				}
+				if ($boleta->idEstado != 2) {
+					$nestedData['options'] = "<div class='dropdown'>
+		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
+		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
+		                        </a>
+		                        <div class='dropdown-menu dropdown-menu-center'>
+		                        	<a href='".asset('administrador/transacciones/boletas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
+		                        </div>
+		                    </div>";
+				}
 				$data[] = $nestedData;
 			}
 		}
@@ -144,15 +156,21 @@ class ListadoBoletaController extends Controller
             return abort(401);
         }
     	try{
-
 	    	$boleta = Boleta::select('*')
 			        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 			    	->where('boletas.idBoleta', $idBoleta)
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
-			//return view('boletas.pdf',compact('boleta','numeros'));
+			//return view('admin.boletas.pdf',compact('boleta','numeros'));
 			$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros'));
             Mail::to($boleta->correoUsuario)->bcc('pauloberrios@gmail.com')->send(new EnvioBoleta($boleta, $numeros, $pdf));
+
+            Boleta::where('idBoleta', $idBoleta)->update([
+            	'idEstado'=>3
+            ]);
+            Numero::where('idBoleta',$idBoleta)->update([
+	        	'idEstado'=>3
+	        ]);
             toastr()->info('Correo enviado exitosamente');
 			return back();
 
@@ -169,5 +187,20 @@ class ListadoBoletaController extends Controller
             toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
             return back();
         }
+    }
+    public function liberarBoleta($idBoleta)
+    {
+    	if (!Session::has('correoUsuario') || !Session::has('rutUsuario') || !Session::has('idTipoUsuario') || !Session::has('idUsuario') || !Session::has('nombreUsuario')) {
+            return abort(401);
+        }
+        Boleta::where('idBoleta', $idBoleta)->update([
+        	'idEstado'=>4
+        ]);
+        Numero::where('idBoleta',$idBoleta)->update([
+        	'idBoleta'=>NULL,
+        	'idEstado'=>1
+        ]);
+        toastr()->info('Boleta liberada y números disponibles');
+		return back();
     }
 }

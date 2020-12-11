@@ -1,58 +1,87 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+<!DOCTYPE html>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<html>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="container">
-    
-        <div align="center">
-            <h3>Boleta</h3>
+<head>
+    <link rel="stylesheet" href="css2/bootstrap377.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Cotización Isbast</title>
+</head>
+
+<body>
+
+    <div style="background-color: white">
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="/img/logo.png" style="max-height: 100px">
+            </div>
+
+            <div class="col-lg-3 offset-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Boleta</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fecha</th>
+                            <td>{{ $hoy = date("d-m-Y") }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <p>Comprador: {{ $boleta->nombreUsuario }}</p>
-            <p>Rut: {{ $boleta->rutUsuario }}</p>
-            <p>Correo: {{ $boleta->correoUsuario }}</p>
-            <p>Teléfono: {{ $boleta->telefonoUsuario }}</p>
+
+        <hr>
+
+        <h3 class="text-center"><strong>Boleta</strong></h3>
+        <!-- Datos del propietario -->
+        
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p><strong>Cliente: {{ $boleta->nombreUsuario }}</strong></p>
+                <p><strong>RUT/DNI/Pasaporte: {{ $boleta->rutUsuario }}</strong></p>
+                <p><strong>Correo: {{ $boleta->correoUsuario }}</strong></p>
+                <p><strong>Teléfono: {{ $boleta->telefonoUsuario }}</strong></p>
+            </div>
         </div>
-        <div >
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Números Solicitados</th>
-                  <th>Precio</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($numeros as $numero)
-                    <tr>
-                      <td>{{ $numero->numero }}</td>
-                      <td>${{ number_format($numero->valorNumero,0,',','.') }}</td>
-                    </tr>
-                @endforeach
-                <tr>
-                    <td>Total</td>
-                    <td>${{ number_format($boleta->totalBoleta,0,',','.') }}</td>
-                </tr>
-              </tbody>
-            </table>
+
+        <hr>
+
+        <!-- Datos de la propiedad -->
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Números</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($numeros as $numero)
+                            <tr>
+                                <td>{{ $numero->numero }}</td>
+                                <td>$ {{ number_format($numero->valorNumero,0,',','.') }}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <td>Total</td>
+                            <td>$ {{ number_format($boleta->totalBoleta,0,',','.') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-  </body>
+
+
+    <footer style="background-color: white">
+        <div class="text-center">
+            <p>rifomipropiedad.com</p>
+            <p><a href="mailto:contacto@rifomipropiedad.com">contacto@rifomipropiedad.com</a></p>
+        </div>
+    </footer>
+
+</body>
+
 </html>

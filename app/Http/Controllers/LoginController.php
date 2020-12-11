@@ -58,7 +58,7 @@ class LoginController extends Controller
     public function logout(Request $request) {
 
     	if (!Session::has('rutUsuario') || !Session::has('correoUsuario') || !Session::has('nombreUsuario') || !Session::has('idTipoUsuario') || !Session::has('idUsuario')) {
-    	    return back();
+    	    return abort(401);
         }
 		Session::forget('idUsuario');
         Session::forget('idTipoUsuario');

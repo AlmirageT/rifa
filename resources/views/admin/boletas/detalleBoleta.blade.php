@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>Rut Comprador</label>
+                            <label>Rut/DNI/Pasaporte</label>
                             <input type="text" disabled class="form-control" value="{{ $boleta->rutUsuario }}">
                         </div>
                     </div>
@@ -38,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(count($numeros)>0)
                     <div class="col-lg-12" align="center">
                         <h5>Números</h5>
                     </div>
@@ -46,6 +47,7 @@
                             <p>{{ $numero->numero }}</p>
                         @endforeach
                     </div>
+                    @endif
                     <div class="col-lg-12" align="center">
                         <h5>Datos Boleta</h5>
                     </div>
