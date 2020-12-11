@@ -100,25 +100,29 @@
         <div class="col-lg-6 order-lg-2" >
           <div class="p-5 linea-bottom">
             <p class="wow zoomIn" data-wow-delay="0.7s"><strong>Confía en ti</strong>, cree en la suerte, desafía al destino y podrás ser el ganador de estos premios:</p>
-            <p class="wow zoomIn" data-wow-delay="0.9s">Premio Mayor:</p>
+            <p class="wow zoomIn" data-wow-delay="0.9s">PREMIO MAYOR:</p>
             <ul class="wow zoomIn" data-wow-delay="0.9s">
-                <li><strong>Departamento de lujo en Marina Golf Rapel</strong></li>
-                <li><strong>Moto de agua</strong></li>
-                <li><strong>Kit palos de golf</strong></li>
-                <li><strong>$2.000.000.-</strong></li>
+                <li><strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, de 3 dormitorios, 3 baños, con dos terrazas, estacionamiento , bodega tipo dormitorio y piscina infinita.</strong></li>
+                <li><strong>2 acciones en el campo de golf.</strong></li>
+                <li><strong>Kit equipo de golf.</strong></li>
+                <li><strong>Moto de agua.</strong></li>
+                <li><strong>$2.000.000.</strong></li>
             </ul>
             
-            <p class="wow zoomIn" data-wow-delay="1s">Segundo premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Tercer premio: <strong>$500.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1s">Primer premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Segundo premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Tercer premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Cuarto premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Quinto premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Sexto premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Séptimo premio: <strong>$1.000.000.-</strong></p>
+            <p class="wow zoomIn" data-wow-delay="1.2s">Octavo premio: <strong>$1.000.000.-</strong></p>
 
           </div>
         </div>
       </div>
      <br>
      </div>
-  
-   
-    
       <br> <br>
  <section class="desktop">
     <br> 
