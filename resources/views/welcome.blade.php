@@ -2,7 +2,8 @@
 @section('content')
 
 
-<a class="btn-comprar-flotante" href="{{ asset('rifa') }}">Comprar <br>Números</a>
+ <a class="btn-comprar-flotante letras-btn" href="{{ asset('rifa') }}">Comprar<br>Números <br><i class="fas fa-shopping-cart"></i> </a>
+
 <!-- BARRA DE NAVEGACIÓN -->
 
    <main class="main">
@@ -88,35 +89,45 @@
   </a>
 </div>
  
- <br> <br>
+<br> <br> <br>
       <div class="container">
     <br> 
+         <h2 class="display-4 azul centrar-titulos "> <span class="min">Llegaste! Tú si sabes aprovechar las oportunidades</span></h2>
+          <p class="wow zoomIn centrar-titulos" data-wow-delay="0.7s">Confía en ti, cree en la suerte, desafía al destino y podrás ser el ganador ! <strong>Son 10 premios a repartir</strong></p>
    <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1 wow slideInLeft" data-wow-delay="0.4s">
           <div class="p-5 linea padding">
-                   <h2 class="display-4 azul"> <span class="min">Llegaste! Tú si sabes aprovechar las oportunidades</span></h2>
+                 <p class="wow zoomIn" data-wow-delay="0.9s">Premio Mayor:</p>
+            <ul class="wow zoomIn lista" data-wow-delay="0.9s">
+                <li><i class="far fa-hand-point-right"></i> <strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina infinita.</strong></li>
+                <li><i class="far fa-hand-point-right"></i> <strong>2 acciones en el campo de golf
+</strong></li>
+                <li><i class="far fa-hand-point-right"></i> <strong>Kit equipo de golf
+</strong></li>
+                <li><i class="far fa-hand-point-right"></i> <strong>Moto de agua</strong></li>
+                <li><i class="far fa-hand-point-right"></i> <strong>$2.000.000.-</strong></li>
+            </ul> 
           </div>
         </div>
         <div class="col-lg-6 order-lg-2" >
           <div class="p-5 linea-bottom">
-            <p class="wow zoomIn" data-wow-delay="0.7s"><strong>Confía en ti</strong>, cree en la suerte, desafía al destino y podrás ser el ganador de estos premios:</p>
-            <p class="wow zoomIn" data-wow-delay="0.9s">PREMIO MAYOR:</p>
-            <ul class="wow zoomIn" data-wow-delay="0.9s">
-                <li><strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, de 3 dormitorios, 3 baños, con dos terrazas, estacionamiento , bodega tipo dormitorio y piscina infinita.</strong></li>
-                <li><strong>2 acciones en el campo de golf.</strong></li>
-                <li><strong>Kit equipo de golf.</strong></li>
-                <li><strong>Moto de agua.</strong></li>
-                <li><strong>$2.000.000.</strong></li>
+           
+        
+            
+            <p class="wow zoomIn" data-wow-delay="1s">Tu suerte no termina aquí, puedes ganar:</p>
+                <ul class="wow zoomIn lista" data-wow-delay="0.9s">
+                <li><i class="fas fa-hand-point-right"></i> <strong>Primer Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Segundo Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Tercero Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Cuarto Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Quinto Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Sexto Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Séptimo Premio : $1.000.000.-</strong></li>
+           <li><i class="fas fa-hand-point-right"></i> <strong>Octavo Premio : $1.000.000.-</strong></li>
             </ul>
             
-            <p class="wow zoomIn" data-wow-delay="1s">Primer premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Segundo premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Tercer premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Cuarto premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Quinto premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Sexto premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Séptimo premio: <strong>$1.000.000.-</strong></p>
-            <p class="wow zoomIn" data-wow-delay="1.2s">Octavo premio: <strong>$1.000.000.-</strong></p>
+            
+            <p class="wow zoomIn" data-wow-delay="1.2s"><i class="fas fa-hand-sparkles"></i> Como te esforzaste y pusiste todo de tu parte, te daremos la oportunidad de ganar el último aliento que será un premio de<strong> $500.000.-</strong> </p>
 
           </div>
         </div>
@@ -131,7 +142,7 @@
          </video>
           
       </div> </div>
- <section class="desktop">
+      <section class="desktop">
     <br> 
    <div class="row align-items-center centrado">
         <div class="col-lg-6 order-lg-1">
@@ -181,10 +192,10 @@
         </div>
         <div class="col-lg-5 order-lg-2 beige wow zoomIn" data-wow-delay="1.4s">
           <div class="p-5">
-            <h2 class="display-4 ">Esta propiedad puede ser tuya</h2>
-            <p class="">Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
+            <h2 class="display-4"><span class="negrita-blanco">Esta propiedad puede ser tuya</span></h2>
+            <p class="blanco">Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
             <div class="contenedor-boton">
-            <a href="{{ asset('propiedades') }}" class="btn btn-outline-dark" role="button" aria-pressed="true">Ver Todo</a>
+            <a href="{{ asset('propiedades') }}" class="btn btn-outline-light" role="button" aria-pressed="true">Ver Todo</a>
             </div>
           </div>
         </div>

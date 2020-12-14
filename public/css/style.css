@@ -142,6 +142,17 @@ box-shadow: 0px 0px 10px -3px rgba(192,207,207,1); */
        text-align: center; 
     }
     
+          .min {
+        font-size: 40px;
+    }
+    
+    
+     .negrita-blanco {
+    font-size: 30px;   
+         font-weight:700;
+         color: #fff;
+    }
+    
     
       /*SECCION PROPIEDADES*/  
     
@@ -934,7 +945,7 @@ box-shadow: 0px 0px 10px -3px rgba(192,207,207,1); */
 }
 
     
-        .btn-comprar-flotante  {
+.btn-comprar-flotante  {
         position: fixed;
         z-index: 400;
         top: 50%;
@@ -945,9 +956,9 @@ box-shadow: 0px 0px 10px -3px rgba(192,207,207,1); */
         height: 65px;
         width: 65px;
         text-align: center;
-        font-size: 12px;
+        font-size: 11px;
         text-decoration: none;
-        padding-top: 15px;
+        padding-top: 13px;
         transition: 0.33s ease;
         box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.58);
      
@@ -958,8 +969,9 @@ box-shadow: 0px 0px 10px -3px rgba(192,207,207,1); */
          color: #fff;
     } 
     
-    
-    
+    .lista {
+        list-style: none;
+    }
 }
 
 
@@ -1095,6 +1107,17 @@ box-sizing: border-box;
     .centrar-titulos {
        text-align: center; 
     }
+        .min {
+        font-size: 40px;
+    }
+    
+    
+     .negrita-blanco {
+    font-size: 30px;   
+         font-weight:700;
+         color: #fff;
+    }
+    
     
     .linea{
         border-left: 4px solid #264492;
@@ -1121,6 +1144,10 @@ box-sizing: border-box;
       .mobile {
         display: none;
     }
+    
+    
+   
+    
     
        /*BANNER*/      
     .contenedor-banner {
@@ -1304,7 +1331,7 @@ box-sizing: border-box;
     }
     
     .contenedor-hover figure:hover > .capa h3{
-        margin-top: 70px;
+        margin-top: 100px;
         margin-bottom: 15px;  
    }
     
@@ -1812,9 +1839,9 @@ box-sizing: border-box;
         height: 65px;
         width: 65px;
         text-align: center;
-        font-size: 12px;
+        font-size: 11px;
         text-decoration: none;
-        padding-top: 15px;
+        padding-top: 13px;
         transition: 0.33s ease;
         box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.58);
      
@@ -1824,5 +1851,10 @@ box-sizing: border-box;
         background-color: #264492; 
          color: #fff;
     } 
+    
+      .lista {
+        list-style: none;
+    }
+  
     
 }

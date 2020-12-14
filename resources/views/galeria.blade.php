@@ -4,7 +4,8 @@
         
 @endsection
 @section('content')
-<a class="btn-comprar-flotante" href="{{ asset('rifa') }}">Comprar <br>Números</a>
+ <a class="btn-comprar-flotante letras-btn" href="{{ asset('rifa') }}">Comprar<br>Números <br><i class="fas fa-shopping-cart"></i> </a>
+
 
   <main class="main">
         <div class="container">
