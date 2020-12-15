@@ -3,6 +3,27 @@
 @section('title', 'Bienvenido')
 
 @section('bodyDetalles')
+<p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
+        <span style="font-size: 16px;">
+            Comprador: {{ $usuario->nombreUsuario }}
+        </span>
+    </p>
+    <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
+        <span style="font-size: 16px;">
+            Rut: {{ $usuario->rutUsuario }}
+        </span>
+    </p>
+    <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
+        <span style="font-size: 16px;">
+            Correo: {{ $usuario->correoUsuario }}
+        </span>
+    </p>
+    <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
+        <span style="font-size: 16px;">
+            Teléfono: {{ $usuario->telefonoUsuario }}
+        </span>
+    </p>
+    <div><br></div>
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
         <span style="font-size: 16px;">
             Folio de boleta : {{ $boleta->idBoleta }}
