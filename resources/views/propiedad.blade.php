@@ -1,6 +1,7 @@
 @extends('layouts.public.app')
 @section('content')
-<a class="btn-comprar-flotante" href="{{ asset('rifa') }}">Comprar <br>Números</a>
+ <a class="btn-comprar-flotante letras-btn" href="{{ asset('rifa') }}">Comprar<br>Números <br><i class="fas fa-shopping-cart"></i> </a>
+
 
   <main class="main">
         <div class="container">
@@ -8,7 +9,7 @@
    <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1">
           <div class="p-5 linea padding">
-                   <h2 class="display-4 azul ">La Propiedad</h2>
+                   <h2 class="display-4 azul wow slideInLeft" data-wow-delay="0.4s">La Propiedad</h2>
           </div>
         </div>
         <div class="col-lg-6 order-lg-2 ">

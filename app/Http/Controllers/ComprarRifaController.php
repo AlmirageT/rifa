@@ -85,7 +85,7 @@ class ComprarRifaController extends Controller
 		    	]);
 	    	}
             Mail::to($usuario->correoUsuario)->bcc('pauloberrios@gmail.com')->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
-	    	Mail::to('tickets@rifomipropiedad.com')->bcc('pauloberrios@gmail.com')->send(new NumerosFolio($boleta, $numerosComprados, $total));
+	    	Mail::to('tickets@rifomipropiedad.com')->bcc('pauloberrios@gmail.com')->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
             DB::commit();
 	    	return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {
