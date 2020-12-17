@@ -4,7 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="css2/bootstrap377.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Cotización Isbast</title>
+    <title>Comprobante de compra</title>
 </head>
 
 <body>
@@ -18,12 +18,17 @@
             <div class="col-lg-3 offset-6">
                 <table class="table">
                     <tbody>
+
                         <tr>
-                            <th scope="row">Boleta</th>
-                            <td></td>
+                            <th scope="row">Fecha Envio:</th>
+                            <td>{{ $hoy = date("d-m-Y") }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Fecha</th>
+                            <th scope="row">Fecha de Reserva:</th>
+                            <td>{{ date("d-m-Y", strtotime($boleta->created_at)) }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fecha Validación:</th>
                             <td>{{ $hoy = date("d-m-Y") }}</td>
                         </tr>
                     </tbody>
@@ -33,7 +38,7 @@
 
         <hr>
 
-        <h3 class="text-center"><strong>Boleta</strong></h3>
+        <h3 class="text-center"><strong>Comprobante de Compra: {{ $boleta->idBoleta }}</strong></h3>
         <!-- Datos del propietario -->
         
 
@@ -51,10 +56,10 @@
         <!-- Datos de la propiedad -->
         <div class="row">
             <div class="col-lg-12">
-                <table class="table">
+                <table class="table" style="font-size: 21px;">
                     <thead>
                         <tr>
-                            <th>Números</th>
+                            <th>Tickets Comprados</th>
                             <th>Precio</th>
                         </tr>
                     </thead>
@@ -77,8 +82,10 @@
 
     <footer style="background-color: white">
         <div class="text-center">
-            <p>rifomipropiedad.com</p>
-            <p><a href="mailto:contacto@rifomipropiedad.com">contacto@rifomipropiedad.com</a></p>
+            <img src="data:image/png;base64, {!! base64_encode($qr) !!}">
+        </div>
+        <div class="text-center">
+            <p>Consulta la validez de tu comprobante escaneando el siguiente codigo QR</p>
         </div>
     </footer>
 

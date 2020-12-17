@@ -42,7 +42,13 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style-tablet.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
 
-    
+        <meta property="og:url" content="{{ asset('propiedades') }}" >
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="COMPRA TUS TICKETS DE RIFA Y GANA ESTA PROPIEDAD" >
+        <meta property="og:description" content="Aprovecha esta oportunidad única para poder ganar un departamento de lujo por tan solo $20.000" >
+        <meta property="og:image" content="{{ asset('img/DSC_1688.jpg') }}" >
+        <meta property="og:image:width" content="200" >
+        <meta property="og:image:height" content="200" >
         <meta name="description" content="Departamento de lujo en Marina del Golf Rapel, moto de agua, kit de palos de golf y $2.000.000.- pueden ser tuyos por $20.000.-">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
       

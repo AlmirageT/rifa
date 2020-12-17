@@ -36,6 +36,6 @@ class EnvioBoleta extends Mailable
         $numeros = $this->numeros;
         $file = $this->pdf->output();
 
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Boleta')->attachData($file, "Boleta.pdf")->view('mail.enviarBoleta',compact('boleta','numeros'));
+        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($file, "Comprobante de Compra.pdf")->view('mail.enviarBoleta',compact('boleta','numeros'));
     }
 }

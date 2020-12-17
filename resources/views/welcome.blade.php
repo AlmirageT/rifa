@@ -105,7 +105,6 @@
                 <li><i class="far fa-hand-point-right"></i> <strong>Kit equipo de golf
 </strong></li>
                 <li><i class="far fa-hand-point-right"></i> <strong>Moto de agua</strong></li>
-                <li><i class="far fa-hand-point-right"></i> <strong>$2.000.000.-</strong></li>
             </ul> 
           </div>
         </div>
@@ -113,21 +112,12 @@
           <div class="p-5 linea-bottom">
            
         
-            
-            <p class="wow zoomIn" data-wow-delay="1s">Tu suerte no termina aquí, puedes ganar:</p>
+            <p class="wow zoomIn" data-wow-delay="1s">Primer Premio</p>
                 <ul class="wow zoomIn lista" data-wow-delay="0.9s">
-                <li><i class="fas fa-hand-point-right"></i> <strong>Primer Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Segundo Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Tercero Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Cuarto Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Quinto Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Sexto Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Séptimo Premio : $1.000.000.-</strong></li>
-           <li><i class="fas fa-hand-point-right"></i> <strong>Octavo Premio : $1.000.000.-</strong></li>
+                <li><i class="fas fa-hand-point-right"></i> <strong>$2.000.000.-</strong></li>
             </ul>
             
-            
-            <p class="wow zoomIn" data-wow-delay="1.2s"><i class="fas fa-hand-sparkles"></i> Como te esforzaste y pusiste todo de tu parte, te daremos la oportunidad de ganar el último aliento que será un premio de<strong> $500.000.-</strong> </p>
+            <p class="wow zoomIn" data-wow-delay="1.2s"><i class="fas fa-hand-sparkles"></i> Como te esforzaste y pusiste todo de tu parte, te daremos la oportunidad de ganar <strong> 8 premios de $1.000.000.-</strong> </p>
 
           </div>
         </div>
@@ -293,23 +283,9 @@
      
 <div class="contenedor-premios wow slideInUp">
      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
-          <p>
-           <strong>Primer Premio : $1.000.000.-</strong> <br>
-     <strong>Segundo Premio : $1.000.000.-</strong> <br>
-           <strong>Tercero Premio : $1.000.000.-</strong> <br>
-           <strong>Cuarto Premio : $1.000.000.-</strong> <br>
-           <strong>Quinto Premio : $1.000.000.-</strong> <br>
-           <strong>Sexto Premio : $1.000.000.-</strong> <br>
-           <strong>Séptimo Premio : $1.000.000.-</strong> <br>
-           <strong>Octavo Premio : $1.000.000.-</strong> <br>
-          </p>
-            </div>
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br><strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina infinita.</strong><br><strong>2 acciones en el campo de golf
-</strong><br><strong>Moto de agua</strong><br><strong>Kit equipo de golf
-</strong><br><strong>$2.000.000.-</strong></p>
-               
-            </div>
-      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Último Premio</strong><br>$500.000.-</div>
+     <p><strong>Primer Premio</strong><br></p>$2.000.000.- en efectivo</div>
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf </div>
+      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Segundo Premio</strong><br>8 premios de $1.000.000.-</div>
  </div>
      <br>
      </div> 

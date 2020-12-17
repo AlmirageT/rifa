@@ -17,16 +17,52 @@ use DB;
 
 class ComprarRifaController extends Controller
 {
+    public function hastaCien()
+    {
+        for ($i=0; $i < 100000; $i++) { 
+            Numero::create([
+                'numero' => $i+1,
+                'valorNumero' => 20000,
+                'idEstado' => 1
+            ]);
+        }
+        return "exito";
+
+    }
     public function numeros()
     {
-    	for ($i=99; $i < 100000; $i++) { 
-    		Numero::create([
-    			'valorNumero'=>20000,
-                'numero' => $i+1,
-                'idEstado' => 1
-    		]);
-    	}
-    	return "exito";
+    	$totalNumeros = Numero::all();
+        foreach($totalNumeros as $numero){
+            $sinEspacio = trim($numero->numero);
+            $resta = strlen($sinEspacio);
+            $valorNumero = $numero->numero;
+            switch ($resta) {
+                case 1:
+                    Numero::find($numero->idNumero)->update([
+                        'numero' => '0000'.$valorNumero
+                    ]);
+                    break;
+                case 2:
+                    Numero::find($numero->idNumero)->update([
+                        'numero' => '000'.$valorNumero
+                    ]);
+                    break;
+                case 3:
+                    Numero::find($numero->idNumero)->update([
+                        'numero' => '00'.$valorNumero
+                    ]);
+                    break;
+                case 4:
+                    Numero::find($numero->idNumero)->update([
+                        'numero' => '0'.$valorNumero
+                    ]);
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+        }
+        return "exito";
     }
     public function index()
     {
@@ -84,8 +120,8 @@ class ComprarRifaController extends Controller
 		    		'idEstado' => 2
 		    	]);
 	    	}
-            Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com'])->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
-	    	Mail::to('tickets@rifomipropiedad.com')->bcc('pauloberrios@gmail.com')->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
+            Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
+	    	Mail::to('tickets@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
             DB::commit();
 	    	return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {

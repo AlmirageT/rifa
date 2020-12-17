@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::view('/', 'welcome');
 Route::view('galeria', 'galeria');
 Route::view('bases-legales', 'bases');
 Route::view('propiedades', 'propiedad');
 Route::get('rifa', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
+Route::get('pruebaCambioNumeros','ComprarRifaController@numeros');
+Route::get('numeros-cienmil','ComprarRifaController@hastaCien');
 //tabla de boletas creadas para revisión de compra
 Route::post('enviar-consulta','CorreoConsultaController@enviarCorreo');
 Route::group(['prefix'=>'administrador'], function(){
@@ -38,6 +39,7 @@ Route::group(['prefix'=>'administrador'], function(){
 		});
 	});
 });
+Route::get('comprobar/boleta/{idBoleta}','ValidarBoletaController@validacionBoleta');
 //script para crear los 100.000 numeros
 //Route::get('generar-numeros','ComprarRifaController@numeros');
 Route::post('datatable-boletas','ListadoBoletaController@listaBoletas');

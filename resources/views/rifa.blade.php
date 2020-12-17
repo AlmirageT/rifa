@@ -6,14 +6,14 @@
                 <div class="container">
     <br> 
 
-            <h2 class="display-4 azul centrar-titulos wow zoomIn">Prueba tu suerte y podrás ganar</h2>
+            <h2 class="display-4 azul centrar-titulos wow zoomIn">Prueba tu suerte y podrás ganar hasta 10 grandes premios</h2>
       
      
  <div class="contenedor-premios wow slideInUp">
      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
-     <p><strong>Números de la Victoria</strong><br>8 premios de $1.000.000.- cada uno</p></div>
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Primer Lugar</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>$2.000.000.- en efectivo</p></div>
-      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Último Premio</strong><br>$500.000.-</div>
+     <p><strong>Primer Premio</strong><br></p>$2.000.000.- en efectivo</div>
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf </div>
+      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Segundo Premio</strong><br>8 premios de $1.000.000.-</div>
  </div>
  <br>
             </div>
@@ -48,7 +48,7 @@
                             <input type="text" name="rutUsuario" class="form-control" id="rut" required>
                         </div>
                         <div class="form-group">
-                            <label>Números</label>
+                            <label>Números (Digita tus tickets de la suerte: desde el número 100 en adelante)</label>
                             <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple required>
                                 @foreach($numeros as $numero)
                                     <option value="{{ $numero->idNumero }}">{{ $numero->numero }}</option>

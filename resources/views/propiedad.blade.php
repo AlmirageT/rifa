@@ -44,11 +44,16 @@
                  <li>Campo de Golf</li>
                  <li>Bosque de pinos</li>
             </ul> 
+
             <a href="{{ asset('rifa') }}" class="btn btn-success" role="button" aria-pressed="true">Comprar mis números</a>
             <br> <br>
         </div> 
             <!-- SLIDER -->
         <section class="col-lg-5 space wow slideInLeft">
+            <ul class="list-btn" style="align-items: center;">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ asset('propiedades') }}" style="margin-left: 20px"><i class="fab fa-facebook-f"></i></a>
+                <a target="_blank" href="https://twitter.com/intent/tweet?text=Aprovecha esta oportunidad única para poder ganar un departamento de lujo por tan solo $20.000&amp;url={{ asset('propiedades') }}"><i class="fab fa-twitter" style="margin-left: 20px"></i></a>
+            </ul>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

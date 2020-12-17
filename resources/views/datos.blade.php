@@ -25,17 +25,17 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h5><strong>Datos bancarios</strong></h5><br>
-                                            <p><strong>IsBast REAL ESTATE TECHNOLOGY SPA</strong></p>
+                                            <p><strong>INMOBILIARIA MOOCK SPA</strong></p>
                                             <p><strong></strong></p>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Cuenta corriente: <strong id="p1">Banco ITAU 0214320278</strong></p>
+                                            <p>Cuenta corriente: <strong id="p1">Banco ITAU 0220844303</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="color: blue;cursor: pointer;" onclick="copiarAlPortapapeles('p1')">copiar</a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <p>Rut: <strong id="p2">76.697.209-8</strong></p>
+                                            <p>Rut: <strong id="p2">76454378-5</strong></p>
                                         </div>
                                         <div class="col-lg-6" align="right">
                                             <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p2')">copiar</a>
