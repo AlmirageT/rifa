@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Crypt;
 use App\Mail\EnvioBoleta;
 use App\Boleta;
 use App\Numero;
 use Session;
+use QrCode;
 use Mail;
 use PDF;
 use DB;
@@ -162,15 +164,18 @@ class ListadoBoletaController extends Controller
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
 			//return view('admin.boletas.pdf',compact('boleta','numeros'));
-			$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros'));
-            Mail::to($boleta->correoUsuario)->bcc('pauloberrios@gmail.com')->send(new EnvioBoleta($boleta, $numeros, $pdf));
-
             Boleta::where('idBoleta', $idBoleta)->update([
             	'idEstado'=>3
             ]);
             Numero::where('idBoleta',$idBoleta)->update([
 	        	'idEstado'=>3
 	        ]);
+			$direccion = asset('comprobar/boleta')."/".Crypt::encrypt($idBoleta);
+			$qr = QrCode::format('png')->size(300)->generate($direccion);
+			//return view('admin.boletas.pdf',compact('boleta','numeros','qr'));
+			$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr'));
+            Mail::to($boleta->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $pdf));
+
             toastr()->info('Correo enviado exitosamente');
 			return back();
 

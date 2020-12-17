@@ -38,6 +38,6 @@ class NumerosFolio extends Mailable
         $numerosComprados = $this->numerosComprados;
         $total = $this->total;
         $usuario = $this->usuario;
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Números Comprados')->view('mail.mailRespaldo',compact('boleta','numerosComprados','total','usuario'));        
+        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Tickets Comprados')->view('mail.mailRespaldo',compact('boleta','numerosComprados','total','usuario'));        
     }
 }

@@ -30,13 +30,13 @@
         </p>
         <p style="font-size: 12px; line-height: 21px; text-align: left; margin: 0;">
             <strong>
-                <span style="font-size: 16px; line-height: 39px;">IsBast REAL ESTATE TECHNOLOGY SPA</span>
+                <span style="font-size: 16px; line-height: 39px;">INMOBILIARIA MOOCK SPA</span>
             </strong><br>
             <strong>
                 <span style="font-size: 16px; line-height: 39px;">Cuenta Corriente - Banco ITAU</span>
             </strong><br>
-            <span style="font-size: 16px; line-height: 55px;">Cuenta: <strong>0214320278</strong></span><br>
-            <span style="font-size: 16px; line-height: 18px;">Rut: <strong>76.697.209-8</strong></span><br>
+            <span style="font-size: 16px; line-height: 55px;">Cuenta: <strong>0220844303</strong></span><br>
+            <span style="font-size: 16px; line-height: 18px;">Rut: <strong>76454378-5</strong></span><br>
             <span style="font-size: 16px; line-height: 55px;">Email: <strong>tickets@rifomipropiedad.com</strong></span><br>
             <span style="font-size: 16px; line-height: 55px;">En el comentario del deposito ingresar folio de la boleta indicado en este correo o solo tu nombre y correo electrónico.</span>
         </p>

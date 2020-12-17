@@ -33,8 +33,8 @@
                     </div> -->
                              <h5 class="letras-footer">RRSS</h5>
                         <ul class="contenedor-links flex">
-                            <li><a target="_blank" href="#"><i class="fab rrss-icon fa-instagram"></i></a></li>
-                            <li><a target="_blank" href="#"><i class="fab rrss-icon fa-facebook-square"></i></a></li>            
+                            <li><a target="_blank" href="https://www.instagram.com/rifomipropiedad/"><i class="fab rrss-icon fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/Rifomipropiedadcom-102077135127324"><i class="fab rrss-icon fa-facebook-square"></i></a></li>            
                         </ul>
                 </div>  
 

@@ -33,7 +33,7 @@
     </div>
      <div class="contenedor-videos wow slideInLeft">
               <video autoplay muted loop class="">
-           <source src="{{ asset('videos/departamento-lujo.mp4') }}" type="video/mp4">
+           <source src="{{ asset('videos/departamento-lujo1.mp4') }}" type="video/mp4">
        </video> 
           
       </div>
@@ -44,7 +44,7 @@
     </div>
     <div class="contenedor-videos wow slideInLeft">
               <video autoplay muted loop class="">
-           <source src="{{ asset('videos/alrededores.mp4') }}" type="video/mp4">
+           <source src="{{ asset('videos/alrededores1.mp4') }}" type="video/mp4">
        </video> 
           
       </div> 

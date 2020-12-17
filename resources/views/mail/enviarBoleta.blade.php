@@ -1,7 +1,17 @@
 @extends('layouts.mails.app')
 
 @section('title', 'Boleta')
+@section('textoTituloPrincipal', 'YA VALIDAMOS TU TRANSFERENCIA')
+@section('textoTituloSecundario', 'Comprobante de compra de numeros de tickets')
+@section('textoParrafoUno')
+Muchas gracias por comprar tus números de la suerte. Te adjuntamos un comprobante de compra de los tickets que elegiste. La premiación se realizará de acuerdo a las bases legales que podrás siempre consultar en https://rifomipropiedad.com, en la Notaria Manquehual de Santiago mediante via LIVE STREAMING vía youtube. <br><br><br>
 
+Encuentra tu comprobante de números a tu nombre adjunto a este correo. <br><br><br>
+
+Y además: Comparte esta gran oportunidad con tus amigos, familiares, compañeros de trabajo o cercanos a ti! <br><br><br>
+
+Saludos del equipo de rifomipropiedad.com
+@endsection
 @section('bodyDetalles')
 
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">

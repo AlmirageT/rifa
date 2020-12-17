@@ -30,7 +30,7 @@ class CorreoConsultaController extends Controller
             $correo = $request->correo;
             $fono = $request->fono;
             $consulta = $request->consulta;
-	    	Mail::to('contacto@rifomipropiedad.com')->bcc('pauloberrios@gmail.com')->send(new Consulta($nombre, $correo, $fono, $consulta));
+	    	Mail::to('contacto@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com','lina.di@isbast.com'])->send(new Consulta($nombre, $correo, $fono, $consulta));
             toastr()->info('Consulta enviado exitosamente');
 	    	return back();
     	} catch (ModelNotFoundException $e) {

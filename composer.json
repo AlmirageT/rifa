@@ -13,6 +13,7 @@
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
         "niklasravnsborg/laravel-pdf": "^4.0",
+        "simplesoftwareio/simple-qrcode": "~2",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
