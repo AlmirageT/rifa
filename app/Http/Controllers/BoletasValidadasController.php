@@ -35,8 +35,6 @@ class BoletasValidadasController extends Controller
 
 		$limit = $request->input('length');
 		$start = $request->input('start');
-		$order = $columns[$request->input('order.0.column')];
-		$dir = $request->input('order.0.dir');
 
 		if(empty($request->input('search.value')))
 		{
@@ -46,7 +44,7 @@ class BoletasValidadasController extends Controller
 		        ->where('boletas.idEstado',3)
 				->offset($start)
 				->limit($limit)
-				->orderBy($order,$dir)
+				->orderBy('boletas.idBoleta','desc')
 				->get();
 		}else{
 			$search = $request->input('search.value');
@@ -60,7 +58,7 @@ class BoletasValidadasController extends Controller
 		    	->orWhere('boletas.idBoleta', 'LIKE',"%{$search}%")
 				->offset($start)
 				->limit($limit)
-				->orderBy($order,$dir)
+				->orderBy('boletas.idBoleta','desc')
 				->get();
 
 			$totalFiltered = Boleta::select('*')

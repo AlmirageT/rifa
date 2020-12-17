@@ -84,6 +84,9 @@
         <div class="text-center">
             <img src="data:image/png;base64, {!! base64_encode($qr) !!}">
         </div>
+        <div class="text-center">
+            <p>Consulta la validez de tu comprobante escaneando el siguiente codigo QR</p>
+        </div>
     </footer>
 
 </body>
