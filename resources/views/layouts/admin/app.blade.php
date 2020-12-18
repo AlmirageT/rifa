@@ -49,8 +49,8 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="author" content="Paulo Berrios">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+  <meta name="author" content="Ivan Saez">
+  <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
   
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" type="text/css" >
   <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}" id="app-style" type="text/css" >
@@ -92,8 +92,8 @@
   <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
   <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
   <script src="{{ asset('assets/js/app.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"></script>
+  <script src="{{ asset('js/select2.min.js') }}"></script>
+  <script src="{{ asset('js/es.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
   {{-- <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> --}}
   <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>

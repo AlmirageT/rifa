@@ -70,9 +70,43 @@
     </div>
     <div class="contenedor-fotos">
         <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/img10.jpg') }}"><img class="galeria wow zoomIn" src="{{ asset('img/img10.jpg') }}" alt=""></a> 
-      
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0819.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0819.JPG') }}" alt="comedor de vidrio"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0828.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0828.JPG') }}" alt="terraza"></a> 
     </div>
 
+    <div class="contenedor-fotos">
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0829.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0829.JPG') }}" alt="galeria"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0833-2.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0833-2.JPG') }}" alt="sillon"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0834.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0834.JPG') }}" alt="cocina americana"></a> 
+    </div>
+
+    <div class="contenedor-fotos">
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0846.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0846.JPG') }}" alt="interior cocina"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0836.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0836.JPG') }}" alt="horno cocina"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0842.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0842.JPG') }}" alt="refrigerador"></a> 
+    </div>
+
+    <div class="contenedor-fotos">
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0854-2.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0854-2.JPG') }}" alt="cama 1 plaza"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0848.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0848.JPG') }}" alt="pieza"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0853.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0853.JPG') }}" alt="camas 1 plaza"></a> 
+    </div>
+
+    <div class="contenedor-fotos">
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0859.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0859.JPG') }}" alt="baño"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0867.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0867.JPG') }}" alt="living"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0870.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0870.JPG') }}" alt="sala central"></a> 
+    </div>
+
+    <div class="contenedor-fotos">
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0874.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0874.JPG') }}" alt="divan"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0912.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0912.JPG') }}" alt="cama 2 plazas"></a> 
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0913.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0913.JPG') }}" alt="w.c"></a> 
+    </div>
+
+    <div class="contenedor-fotos">
+        <a class="link-foto" data-lightbox="roadtrip" href="{{ asset('img/IMG_0916.JPG') }}"><img class="galeria wow zoomIn" src="{{ asset('img/IMG_0916.JPG') }}" alt="balneareo"></a> 
+    </div>
      </div>
      <br>
 

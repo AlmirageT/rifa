@@ -36,12 +36,6 @@
         <link rel="icon" href="{{ asset('img/favicon.png') }}" type="{{ asset('image/jpg') }}">
         
         <title>Rifo Mi Propiedad</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-mobile.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-tablet.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
-
         <meta property="og:url" content="{{ asset('propiedades') }}" >
         <meta property="og:type" content="website" />
         <meta property="og:title" content="COMPRA TUS TICKETS DE RIFA Y GANA ESTA PROPIEDAD" >
@@ -50,10 +44,18 @@
         <meta property="og:image:width" content="200" >
         <meta property="og:image:height" content="200" >
         <meta name="description" content="Departamento de lujo en Marina del Golf Rapel, moto de agua, kit de palos de golf y $2.000.000.- pueden ser tuyos por $20.000.-">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-mobile.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-tablet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> 
       
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/9987974c2b.js" crossorigin="anonymous"></script>
+        <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
+        {{-- font awesome --}}
+        <script src="{{ asset('js/9987974c2b.js') }}" crossorigin="anonymous"></script>
         @yield('css')
         @toastr_css
     </head>
@@ -63,10 +65,10 @@
         @include('layouts.public.header')
         @yield('content')
         @include('layouts.public.footer')
-        <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"></script>
+        <script src="{{ asset('js/jquery-3.5.1.js') }}" ></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}" ></script>
+        <script src="{{ asset('js/select2.min.js') }}"></script>
+        <script src="{{ asset('js/es.js') }}"></script>
         
         <script src="{{ asset('js/scripts.js') }}"></script>
         <script src="{{ asset('js/efectos.js') }}"></script>
