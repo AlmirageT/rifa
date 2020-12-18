@@ -22,9 +22,6 @@
      <br>
 
   <div class="contenedor-bases">
-      <img class="base" src="{{ asset('img/bases/bases_legales_page-0001.jpg') }}" alt="">
-       <img class="base" src="{{ asset('img/bases/bases_legales_page-0002.jpg') }}" alt="">
-        <img class="base" src="{{ asset('img/bases/bases_legales_page-0003.jpg') }}" alt="">
          <img class="base" src="{{ asset('img/bases/bases_legales_page-0004.jpg') }}" alt="">
           <img class="base" src="{{ asset('img/bases/bases_legales_page-0005.jpg') }}" alt="">
            <img class="base" src="{{ asset('img/bases/bases_legales_page-0006.jpg') }}" alt="">
