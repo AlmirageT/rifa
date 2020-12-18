@@ -1,0 +1,836 @@
+@charset "utf-8";
+
+.modal-body1 {
+    /*background-image: url('https://www.imagina.cl/wp-content/uploads/2020/07/ventas.png');*/
+    /*background-image: url('/img/popupatencion1.png');*/
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 570px;
+}
+
+.fila {
+    display: flex; 
+    position: relative; 
+    top: 415px;
+}
+
+.popuptitulo-blanco {
+    font-size: 40px;
+    line-height: 40px;
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+.popuptitulo-negro {
+    font-size: 40px;
+    line-height: 40px;
+    color: black;
+    font-family: 'Anton', sans-serif;
+}
+
+.popupsubtitulo-negro {
+    font-size: 44px;
+    line-height: 40px;
+    color: black;
+    font-family: 'Anton', sans-serif;
+}
+
+/* CSS responsive matterport */
+.matterport-showcase iframe{
+  min-height: 240px;
+  margin: 16px 0;
+  width: 100%; }
+
+@media screen and (min-width: 768px) {
+.matterport-showcase iframe {
+  min-height: 360px; }}
+
+@media screen and (min-width: 992px) {
+.matterport-showcase iframe {
+  height: 600px;
+  max-width: 1068px;
+  margin: 0 auto 15px; }}
+
+.matterport-showcase {
+  text-align: center;
+}
+
+/* Matterport fin */
+
+.fuente-montserrat
+{
+    font-family: 'Montserrat' !important;
+}
+
+.isbast-card
+{
+    border-radius: 20px !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.letra-capital {
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    margin-right: 12px;
+    padding: 12px;
+    background-color: #309B8A;
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor;
+    box-sizing: inherit;
+    font-style: normal;
+    padding-top: 8px;
+    padding-bottom: 8px
+}
+
+.titulo-isbast
+{
+	color: white !important;
+	font-style: italic !important;
+	font-size: 26px !important;
+	margin-bottom: 0px !important;
+	font-weight: 500 !important;
+}
+
+.subtitulo-isbast
+{
+	color: black !important;
+	font-size: 26px !important;
+	line-height: 1.2 !important;
+	font-weight: 100 !important;
+}
+
+.simulador-container
+{
+	width: 550px;
+	margin: auto;
+	min-height: 300px;
+	margin-top: 20px;
+}
+
+/* Front v2 */
+.titulo-v2
+{
+    font-size: 46px;
+    color: white;
+    font-family: Arial;
+    text-shadow: 2px 3px black;
+    margin-bottom: 0px;
+    line-height: 1.3;
+}
+
+.subtitulo-v2
+{
+    font-size: 46px;
+    color: white;
+    font-family: Arial;
+    text-shadow: 2px 3px black;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.titulo-v3
+{
+    font-size: 46px;
+    color: #309b8a;
+    font-family: Raleway;
+    font-style: italic;
+    margin-bottom: 0px;
+    line-height: 1.3;
+    font-weight: 900;
+}
+
+.subtitulo-v3
+{
+    font-size: 46px;
+    color: white;
+    font-family: Raleway;
+    font-style: italic;
+    margin-bottom: 0px;
+    letter-spacing: 3px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.titulo-valoracion-trustpilot
+{
+    font-size: 20px;
+    color: white;
+    font-family: Raleway;
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    font-weight: bold;
+}
+
+.notapie-v2
+{
+    font-size: 26px;
+    color: white;
+    font-style: italic;
+    font-family: Arial;
+    text-shadow: 1px 2px black;
+    margin-bottom: 0px;
+    font-weight: 100;
+    letter-spacing: 1.3px;
+    line-height: 1.3;
+}
+
+.titulo-expertos
+{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    font-weight: 500 !important;
+}
+
+.subtitulo-expertos
+{
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+    font-weight: 200 !important;
+}
+
+.label-buscador
+{
+    padding-top: 30px !important;
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+    font-weight: 200 !important;
+    font-size: 18px !important;
+}
+
+/* Fin front v2 */
+
+.background-corredor-flojo
+{
+	padding-top: 150px;
+	background-image: url('/images/header/simulacion_hipotecario.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-bottom: 50px;
+}
+
+.no-propiedadencontrada
+{
+    margin-left: 20%;
+    margin-right: 20%
+}
+
+.containerdiv {
+    border: 0;
+    float: left;
+    position: relative;
+}
+
+.cornerimage {
+    border: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 14%;
+    max-height: 20%;
+}
+
+.middleimage {
+    border: 0;
+    position: absolute;
+    bottom: 25%;
+    right: 30%;
+    max-width: 50%;
+    max-height: 50%;
+    /*transform: rotate(-45deg);*/
+}
+
+.middleimage-play {
+    border: 0;
+    position: absolute;
+    bottom: 34%;
+    right: 40%;
+    max-width: 20%;
+    max-height: 30%;
+}
+
+/*------------------
+	Responsive
+---------------------*/
+
+@media (min-width: 1200px) {
+	.titulo-isbast {
+		font-size: 26px !important;
+	}
+	.subtitulo-isbast {
+		font-size: 26px !important;
+	}
+	.home-carousel
+	{
+		height: 947px;
+		max-height: 100vh;
+	}
+}
+
+/* Medium screen : 992px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .titulo-v2
+    {
+        font-size: 30px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 30px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 16px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 100;
+        letter-spacing: 1.3px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 20%;
+        margin-right: 20%
+    }
+}
+
+/* Tablet :768px. */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+    .modal-body1 {
+        background-image: url('/img/popupatencion1.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 356px;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 220px;
+    }
+
+    .popuptitulo-blanco {
+        font-size: 25px;
+        line-height: 40px;
+        color: white;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .popuptitulo-negro {
+        font-size: 25px;
+        line-height: 40px;
+        color: black;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .popupsubtitulo-negro {
+        font-size: 30px;
+        line-height: 40px;
+        color: black;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .titulo-v2
+    {
+        font-size: 26px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 26px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 14px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 100;
+        letter-spacing: 1.3px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 20%;
+        margin-right: 20%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 16px !important;
+    }
+}
+
+/* Large Mobile :480px. */
+
+@media only screen and (max-width: 767px) {
+
+    .modal-body1 {
+        background-image: url('/img/popupatencion1.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 356px;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 220px;
+    }
+
+    .popuptitulo-blanco {
+        font-size: 25px;
+        line-height: 40px;
+        color: white;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .popuptitulo-negro {
+        font-size: 25px;
+        line-height: 40px;
+        color: black;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .popupsubtitulo-negro {
+        font-size: 30px;
+        line-height: 40px;
+        color: black;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .titulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 14px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 100;
+        letter-spacing: 0.6px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 20%;
+        margin-right: 20%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 14px !important;
+    }
+}
+
+/* small Mobile :320px. */
+
+@media only screen and (max-width: 575px) {
+    .modal-body1 {
+        background-image: url('/img/popupatencion1.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 300px;
+        background-color: #1a9f8c;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 200px;
+        margin-left: 11px;
+        margin-right: 0px;
+    }
+
+    .titulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 14px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 100;
+        letter-spacing: 0.6px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 10%;
+        margin-right: 10%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    
+    .modal-body1 {
+        background-image: url('/img/popupatencion1.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 300px;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 200px;
+        margin-left: 11px;
+        margin-right: 0px;
+    }
+
+    .titulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 14px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 100;
+        letter-spacing: 0.6px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 10%;
+        margin-right: 10%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+
+    .modal-body1 {
+        background-image: url('/img/popupatencion1.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 327px;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 200px;
+        margin-left: 11px;
+        margin-right: 0px;
+    }
+
+    .titulo-v2
+    {
+        font-size: 26px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 26px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 14px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 100;
+        letter-spacing: 1px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 10%;
+        margin-right: 10%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+
+    .modal-body1 {
+        background-image: url('/img/btnpopevento1movil.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 480px;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 330px;
+        margin-right: 0px;
+        margin-left: 11px;
+    }
+
+    .titulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 24px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 14px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 10%;
+        margin-right: 10%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+
+    .modal-body1 {
+        background-image: url('/img/btnpopevento1movil.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 412px;
+    }
+
+    .fila {
+        display: flex; 
+        position: relative; 
+        top: 273px;
+        margin-right: 0px;
+        margin-left: 11px;
+    }
+
+    .titulo-v2
+    {
+        font-size: 21px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px; line-height: 1.3;
+    }
+
+    .subtitulo-v2
+    {
+        font-size: 21px;
+        color: white;
+        font-family: Arial;
+        text-shadow: 2px 3px black;
+        margin-bottom: 0px;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        font-weight: 500
+    }
+
+    .notapie-v2
+    {
+        font-size: 12px;
+        color: white;
+        font-style: italic;
+        font-family: Arial;
+        text-shadow: 1px 2px black;
+        margin-bottom: 0px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        line-height: 1.3;
+    }
+
+    .no-propiedadencontrada
+    {
+        margin-left: 10%;
+        margin-right: 10%
+    }
+
+    .label-buscador
+    {
+        padding-top: 20px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        font-weight: 200 !important;
+        font-size: 14px !important;
+    }
+}

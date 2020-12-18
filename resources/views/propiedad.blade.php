@@ -1,4 +1,7 @@
 @extends('layouts.public.app')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/isbast.css') }}">
+@endsection
 @section('content')
  <a class="btn-comprar-flotante letras-btn" href="{{ asset('rifa') }}">Comprar<br>Números <br><i class="fas fa-shopping-cart"></i> </a>
 
@@ -90,6 +93,18 @@
     <br>
     
 </div>
+        <div id="tour" class="list-details-section wow slideInLeft">
+            <div align="center">
+            <h4 class="list-details-title">Tour virtual 3D</h4>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="matterport-showcase">
+                        <iframe width='853' height='480' src='https://my.matterport.com/show/?m=PbhyCzrzkVK' frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="ubicacion"> <br>
         <h5 class="nombre-proyecto mapa"><strong>Ubicación</strong></h5> 
