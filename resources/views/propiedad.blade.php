@@ -95,7 +95,7 @@
 </div>
         <div id="tour" class="list-details-section wow slideInLeft">
             <div align="center">
-            <h4 class="list-details-title">Tour virtual 3D</h4>
+            <h4 class="list-details-title nombre-proyecto">Tour virtual 3D</h4>
             </div>
             <div class="row">
                 <div class="col-lg-12">
