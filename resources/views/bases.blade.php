@@ -1,4 +1,10 @@
 @extends('layouts.public.app')
+<style type="text/css">
+  img{
+    height: 200%;
+width: auto;
+  }
+</style>
 @section('content')
 
   <main class="main">
@@ -21,6 +27,8 @@
      </div>
      <br>
 
+<div class="row">
+  <div class="col-lg-12" align="center">
   <div class="contenedor-bases">
          <img class="base" src="{{ asset('img/bases/bases_legales_page-0004.jpg') }}" alt="">
           <img class="base" src="{{ asset('img/bases/bases_legales_page-0005.jpg') }}" alt="">
@@ -32,6 +40,8 @@
           <img class="base" src="{{ asset('img/bases/bases_legales_page-0011.jpg') }}" alt="">
            <img class="base" src="{{ asset('img/bases/bases_legales_page-0012.jpg') }}" alt="">
            <img class="base" src="{{ asset('img/bases/bases_legales_page-0013.jpg') }}" alt="">
+  </div>
+  </div>
   </div>
   
   
