@@ -10,6 +10,7 @@
                 <li><a href="{{ asset('rifa') }}">Compra tus Números</a></li>
                 <li><a href="{{ asset('galeria') }}">Galería</a></li>
                 <li><a href="{{ asset('/') }}#contacto">Contacto</a></li>
+                <li><a href="{{ asset('bases-legales') }}">Bases Legales</a></li>
            </ul>
    </nav>
     </div> 

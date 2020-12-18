@@ -22,12 +22,19 @@
      <br>
 
   <div class="contenedor-bases">
-      <img class="base" src="{{ asset('img/bases/1.png') }}" alt="">
-       <img class="base" src="{{ asset('img/bases/2.png') }}" alt="">
-        <img class="base" src="{{ asset('img/bases/3.png') }}" alt="">
-         <img class="base" src="{{ asset('img/bases/4.png') }}" alt="">
-          <img class="base" src="{{ asset('img/bases/5.png') }}" alt="">
-           <img class="base" src="{{ asset('img/bases/6.png') }}" alt="">
+      <img class="base" src="{{ asset('img/bases/bases_legales_page-0001.jpg') }}" alt="">
+       <img class="base" src="{{ asset('img/bases/bases_legales_page-0002.jpg') }}" alt="">
+        <img class="base" src="{{ asset('img/bases/bases_legales_page-0003.jpg') }}" alt="">
+         <img class="base" src="{{ asset('img/bases/bases_legales_page-0004.jpg') }}" alt="">
+          <img class="base" src="{{ asset('img/bases/bases_legales_page-0005.jpg') }}" alt="">
+           <img class="base" src="{{ asset('img/bases/bases_legales_page-0006.jpg') }}" alt="">
+           <img class="base" src="{{ asset('img/bases/bases_legales_page-0007.jpg') }}" alt="">
+       <img class="base" src="{{ asset('img/bases/bases_legales_page-0008.jpg') }}" alt="">
+        <img class="base" src="{{ asset('img/bases/bases_legales_page-0009.jpg') }}" alt="">
+         <img class="base" src="{{ asset('img/bases/bases_legales_page-0010.jpg') }}" alt="">
+          <img class="base" src="{{ asset('img/bases/bases_legales_page-0011.jpg') }}" alt="">
+           <img class="base" src="{{ asset('img/bases/bases_legales_page-0012.jpg') }}" alt="">
+           <img class="base" src="{{ asset('img/bases/bases_legales_page-0013.jpg') }}" alt="">
   </div>
   
   
