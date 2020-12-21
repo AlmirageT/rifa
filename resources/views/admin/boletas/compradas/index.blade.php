@@ -4,7 +4,6 @@
 Rifo Mi Propiedad - Administrador
 @endsection
 @section('content')
-    <div class="container">
         <br>
         <div class="row">
             <div class="col-lg-12" align="center">
@@ -34,7 +33,6 @@ Rifo Mi Propiedad - Administrador
             </div>
         </div>
             
-    </div>
 @endsection
 @section('scripts')
     <script>
