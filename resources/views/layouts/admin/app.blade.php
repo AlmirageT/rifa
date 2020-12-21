@@ -94,8 +94,6 @@
   <script src="{{ asset('assets/js/app.js') }}"></script>
   <script src="{{ asset('js/select2.min.js') }}"></script>
   <script src="{{ asset('js/es.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
-  {{-- <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> --}}
   <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
@@ -112,7 +110,6 @@
   <!-- Datatable init js -->
   <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>    
 
-  <script src="{{ asset('assets/js/app.js') }}"></script>
 
   @toastr_js
   @toastr_render
