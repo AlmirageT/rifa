@@ -17,7 +17,7 @@
     <div class="col-md-8 p-lg-5 mx-auto my-5">
         <div class="row">
             <div class="col-md-12 col-12 text-center p-3">
-                <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('img/logo.png') }}" alt="" width="200" height="100"></a>
+                <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('img/logo rifa.png') }}" alt="" width="200" height="100"></a>
                 <h1 class="display-4 font-weight-normal">¡Felicidades tu Compra ha Sido Validada!</h1>
             </div>
             <div class="col-md-12 col-12 text-center">

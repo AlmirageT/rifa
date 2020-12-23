@@ -12,7 +12,7 @@
     <div style="background-color: white">
         <div class="row">
             <div class="col-lg-1">
-                <img src="/img/logo.png" style="max-height: 100px">
+                <img src="/img/logo rifa.png" style="max-height: 100px">
             </div>
 
             <div class="col-lg-3 offset-6">
