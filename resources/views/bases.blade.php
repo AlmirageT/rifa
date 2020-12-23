@@ -4,6 +4,16 @@
     height: 200%;
     width: auto;
   }
+  @media only screen and (min-width:360px) and (max-width: 799px) {
+        .imagen-baseslegales{
+          height: 100%;
+        }
+    }
+    @media only screen and (min-width:800px) and (max-width: 900px) {
+        .imagen-baseslegales{
+          height: 90%;
+        }
+    }
 </style>
 @section('content')
 
