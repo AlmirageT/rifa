@@ -128,7 +128,7 @@
       <div class="container">
    <div class="contenedor-videos wow zoomIn">
          <video controls>
-             <source  src="{{ asset('videos/marina-golf-rapel.mp4') }}">
+             <source  src="{{ asset('videos/MARINA GOLF RAPEL VERSIÓN LARGA.mp4') }}">
          </video>
           
       </div> </div>
