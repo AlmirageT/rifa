@@ -282,9 +282,9 @@
       
      
 <div class="contenedor-premios wow slideInUp">
+      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf </div>
      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
      <p><strong>Primer Premio</strong><br></p>$2.000.000.- en efectivo</div>
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf </div>
       <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Segundo Premio</strong><br>8 premios de $1.000.000.-</div>
  </div>
      <br>
