@@ -3,28 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jobs\EnviarBoletaJob;
 use App\Boleta;
 use App\Numero;
+use App\Usuario;
 use Log;
 
 class OtrosPagosController extends Controller
 {
     public function condeu01req(Request $request){
 
-        Log::info($request);
+        //Log::info($request);
         
         $boleta = Boleta::where('idBoleta',$request->p_idcli)
             ->where('idEstado',2)
             ->first();
 
-        $convenio = env('OTROS_PAGOS_COVENIO');
+        $convenio = getenv('OTROS_PAGOS_COVENIO');
+        //Log::info($convenio);
         $key = $request->p_fectr.$request->p_tid.$convenio;
         $llave = str_pad($key,16);
-        $encriptacion = openssl_encrypt($llave, "AES-256-CBC",env('OTROS_PAGOS_KEY'),1,env('OTROS_PAGOS_IV'));
+        $encriptacion = openssl_encrypt($llave, "AES-256-CBC",getenv('OTROS_PAGOS_KEY'),1,getenv('OTROS_PAGOS_IV'));
+        //Log::info($encriptacion);
         $h_firma = base64_encode($encriptacion);
+        //Log::info($h_firma);
         $headers = apache_request_headers();
         foreach($headers as $header => $value){
-            if($header = "H-Firma"){
+            if($header == "H-Firma"){
                 if($value != $h_firma){
                     return response()->json(['r_retcod' => "65"],200);
                 }
@@ -54,14 +59,14 @@ class OtrosPagosController extends Controller
     public function notpag01req(Request $request){
         $idTransaccion = (int)$request->p_tid;
         if($idTransaccion){
-            $convenio = env('OTROS_PAGOS_COVENIO');
+            $convenio = getenv('OTROS_PAGOS_COVENIO');
             $key = $request->p_fectr.$request->p_tid.$convenio;
             $llave = str_pad($key,16);
-            $encriptacion = openssl_encrypt($llave, "AES-256-CBC",env('OTROS_PAGOS_KEY'),1,env('OTROS_PAGOS_IV'));
+            $encriptacion = openssl_encrypt($llave, "AES-256-CBC",getenv('OTROS_PAGOS_KEY'),1,getenv('OTROS_PAGOS_IV'));
             $h_firma = base64_encode($encriptacion);
             $headers = apache_request_headers();
             foreach($headers as $header => $value){
-                if($header = "H-Firma"){
+                if($header == "H-Firma"){
                     if($value != $h_firma){
                         return response()->json(['r_retcod' => "65"],200);
                     }
@@ -71,12 +76,17 @@ class OtrosPagosController extends Controller
             
             if($boleta){
                 $boleta->idEstado = 3;
+                $boleta->idOtrosPagosTransaccion = $idTransaccion;
                 $boleta->save();
                 $numeros = Numero::where('idBoleta',$request->p_idcli)->get();
                 foreach($numeros as $numero){
                     $numero->idEstado = 3;
                     $numero->save();
                 }
+                $usuario = Usuario::find($boleta->idUsuario);
+                Log::info($usuario);
+                EnviarBoletaJob::dispatch($numeros, $boleta, $usuario);
+                //sigue otros pagos
                 return response()->json([
                     'r_tid' => $idTransaccion,
                     'r_retcod' => "00",

@@ -7,7 +7,6 @@ use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
-use App\Mail\ConfirmarSolicitud;
 use App\Mail\NumerosFolio;
 use App\Numero;
 use App\Usuario;
@@ -127,7 +126,7 @@ class ComprarRifaController extends Controller
             }
             DB::commit();
 
-            return redirect()->to('http://pre.otrospagos.com/publico/portal/enlace?id='.env('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
+            return redirect()->to('http://pre.otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
             //Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
 	    	//Mail::to('tickets@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
 	    	return view('datos',compact('numerosComprados','total'));

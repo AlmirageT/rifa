@@ -12,6 +12,7 @@ class Boleta extends Model
         'totalBoleta',
         'fechaVencimiento',
     	'idUsuario',
-    	'idEstado'
+        'idEstado',
+        'idOtrosPagosTransaccion'
     ];
 }

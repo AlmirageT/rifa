@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/numeros','ComprarRifaController@numerosBuscados');
 Route::group(['prefix'=>'otrospagos'], function(){
-    Route::get('condeu','OtrosPagosController@condeu01req');
-    Route::get('notpag','OtrosPagosController@notpag01req');
-    Route::get('revpag','OtrosPagosController@revpag01req');
+    Route::post('condeu','OtrosPagosController@condeu01req');
+    Route::post('notpag','OtrosPagosController@notpag01req');
+    Route::post('revpag','OtrosPagosController@revpag01req');
 });
 
