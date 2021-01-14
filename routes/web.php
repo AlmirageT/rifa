@@ -38,6 +38,27 @@ Route::group(['prefix'=>'administrador'], function(){
 
 		});
 	});
+
+	Route::group(['prefix'=>'propiedades'], function(){
+		Route::get('/','PropiedadController@index');
+	});
+
+	Route::group(['prefix'=>'ubicaciones'],function(){
+		Route::get('paises','PaisController@index');
+		Route::get('regiones','RegionController@index');
+		Route::get('provincias','ProvinciaController@index');
+		Route::get('comunas','ComunaController@index');
+	});
+
+	Route::group(['prefix'=>'mantenedores'], function(){
+		Route::get('estados','PropiedadController@index');
+		Route::get('tipo-estados','TipoEstadoController@index');
+		Route::get('tipo-premios','TipoPremioController@index');
+	});
+
+	Route::group(['prefix'=>'parametros-generales'], function(){
+		Route::get('/','ParametroGeneralController@index');
+	});
 });
 Route::get('comprobar/boleta/{idBoleta}','ValidarBoletaController@validacionBoleta');
 //script para crear los 100.000 numeros
