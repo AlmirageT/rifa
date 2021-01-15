@@ -105,7 +105,7 @@ class OtrosPagosController extends Controller
         $boleta = Boleta::find($request->p_idcli);
         $idTransaccion = (int)$request->p_tid;
         if($boleta){
-            if($boleta->idEstado == 3){
+            if($boleta->idEstado == 3 || $boleta->idEstado == 2){
                 $boleta->idEstado = 5;
                 $boleta->save();
                 $numeros = Numero::where('idBoleta',$request->p_idcli)->get();
