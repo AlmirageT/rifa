@@ -71,3 +71,10 @@ Route::post('datatable-boletas-compradas','BoletasCompradasController@listaBolet
 Route::get('login','LoginController@index');
 Route::post('ingreso-mi-portal','LoginController@ingresoPortal');
 Route::post('logout','LoginController@logout');
+
+//RUTA PARA CRUD REGIONES
+Route::resource('mantenedor-regiones','RegionController');
+Route::delete('mantenedor-regiones/{idRegion}',array(
+    'uses'=>'RegionController@destroy',
+    'as'=>'mantenedor-regiones.delete'
+));
