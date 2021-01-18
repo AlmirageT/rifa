@@ -9,6 +9,7 @@ class Estado extends Model
     protected $table = 'estados';
     protected $primaryKey = 'idEstado';
     protected $fillable = [
-    	'nombreEstado'
+        'nombreEstado',
+        'idTipoEstado'
     ];
 }

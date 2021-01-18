@@ -1,7 +1,7 @@
 <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="edit{{$region->idRegion}}" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('mantenedor-regiones.update') }}/{{ $region->idRegion }}" method="post">
+            <form action="{{ route('mantenedor-regiones.update', $region->idRegion) }}" method="post">
                 @method('PUT')
                 @csrf
                 <div class="modal-header">

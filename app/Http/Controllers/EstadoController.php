@@ -8,34 +8,39 @@ use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
-use App\TipoPremio;
+use App\TipoEstado;
+use App\Estado;
 use Session;
 use DB;
 
-class TipoPremioController extends Controller
+class EstadoController extends Controller
 {
     public function index()
     {
         if (!Session::has('idUsuario') && !Session::has('idTipoUsuario') && !Session::has('nombre') && !Session::has('apellido') && !Session::has('correo') && !Session::has('rut')) {
             return abort(401);
         }
-    	$tiposPremios = TipoPremio::all();
-    	return view('admin.mantenedores.tiposPremios.index',compact('tiposPremios'));
+        $estados = Estado::select('*')
+            ->join('tipos_estados','estados.idTipoEstado','=','tipos_estados.idTipoEstado')
+            ->get();
+    	$tiposEstados = TipoEstado::all();
+    	return view('admin.mantenedores.estados.index',compact('estados','tiposEstados'));
     }
     public function store(Request $request)
     {
     	try {
             $validator = Validator::make($request->all(), [
-                'nombreTipoPremio' => 'required'
+                'nombreEstado' => 'required',
+                'idTipoEstado' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Los datos no pueden estar vacios');
                 return back();
             }
             DB::beginTransaction();
-            	$tipoPremio = new TipoPremio($request->all());
-            	$tipoPremio->save();
-                toastr()->success('Agregado Correctamente', 'El tipo de premio: '.$request->nombreTipoPremio.' ha sido agregado correctamente', ['timeOut' => 9000]);
+            	$estado = new Estado($request->all());
+            	$estado->save();
+                toastr()->success('Agregado Correctamente', 'El tipo de premio: '.$request->nombreEstado.' ha sido agregado correctamente', ['timeOut' => 9000]);
             DB::commit();
             return redirect::back();
     	} catch (ModelNotFoundException $e) {
@@ -56,21 +61,22 @@ class TipoPremioController extends Controller
             return redirect::back();
         }
     }
-    public function update(Request $request, $idTipoPremio)
+    public function update(Request $request, $idEstado)
     {
     	try {
             $validator = Validator::make($request->all(), [
-                'nombreTipoPremio' => 'required'
+                'nombreEstado' => 'required',
+                'idTipoEstado' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Los datos no pueden estar vacios');
                 return back();
             }
             DB::beginTransaction();
-	    		$tipoPremio = TipoPremio::find($idTipoPremio);
-	            $tipoPremio->fill($request->all());
-	            $tipoPremio->save();
-                toastr()->success('Actualizado Correctamente', 'El tipo de premio: '.$request->nombreTipoPremio.' ha sido actualizado correctamente', ['timeOut' => 9000]);
+	    		$estado = Estado::find($idEstado);
+	            $estado->fill($request->all());
+	            $estado->save();
+                toastr()->success('Actualizado Correctamente', 'El tipo de premio: '.$request->nombreEstado.' ha sido actualizado correctamente', ['timeOut' => 9000]);
             DB::commit();
         	return redirect::back();
     	} catch (ModelNotFoundException $e) {
@@ -91,13 +97,13 @@ class TipoPremioController extends Controller
             return redirect::back();
         }
     }
-    public function destroy($idTipoPremio)
+    public function destroy($idEstado)
     {
     	try {
     		DB::beginTransaction();
-    			$tipoPremio = TipoPremio::find($idTipoPremio);
-	            toastr()->success('Eliminado Correctamente', 'El tipo de flexibilidad: '.$tipoPremio->nombreTipoPremio.' ha sido eliminado correctamente', ['timeOut' => 9000]);
-	            $tipoPremio->delete();
+    			$estado = Estado::find($idEstado);
+	            toastr()->success('Eliminado Correctamente', 'El estado: '.$estado->nombreEstado.' ha sido eliminado correctamente', ['timeOut' => 9000]);
+	            $estado->delete();
     		DB::commit();
             return redirect::back();
     	} catch (ModelNotFoundException $e) {

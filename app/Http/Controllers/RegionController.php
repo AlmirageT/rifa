@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
 use App\Region;
 use App\Pais;
+use Redirect;
+use Session;
 use DB;
 
 class RegionController extends Controller
@@ -23,7 +25,7 @@ class RegionController extends Controller
 		->join('paises','regiones.idPais','=','paises.idPais')
         ->orderBy('regiones.idRegion','DESC')
 		->get();    	
-    	$paises = Pais::pluck('nombrePais','idPais');
+    	$paises = Pais::all();
     	return view('admin.ubicaciones.regiones.index',compact('paises','regiones'));
     }
     public function store(Request $request)

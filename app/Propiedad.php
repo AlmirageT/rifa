@@ -19,11 +19,16 @@ class Propiedad extends Model
     	'mTerraza',
     	'urlVideo',
     	'urlMattlePort',
-    	'direccionPropiedad',
-    	'numeracionPropiedad',
+		'direccionPropiedad',
+		'numeracionPropiedad',
+    	'codigoPostal',
+    	'latitud',
+    	'longitud',
+    	'poi',
     	'idPais',
     	'idRegion',
     	'idProvincia',
-    	'idComuna'
+		'idComuna',
+		'idEstado'
     ];
 }

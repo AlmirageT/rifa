@@ -20,10 +20,19 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fas fa-newspaper"></i>
+                        <span>Usuarios</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ asset('administrador/usuarios') }}"><i class="fas fa-align-justify"></i> Usuarios</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-newspaper"></i>
                         <span>Propiedad</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas') }}"><i class="fas fa-align-justify"></i> Propiedades</a></li>
+                        <li><a href="{{ asset('administrador/propiedades') }}"><i class="fas fa-align-justify"></i> Propiedades</a></li>
                     </ul>
                 </li>
                 <li>
@@ -47,13 +56,13 @@
                         <span>Mantenedores</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas') }}"><i class="fas fa-align-justify"></i> Estados</a></li>
+                        <li><a href="{{ asset('administrador/mantenedores/estados') }}"><i class="fas fa-align-justify"></i> Estados</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas/compradas') }}"><i class="far fa-newspaper"></i> Tipo Estados</a></li>
+                        <li><a href="{{ asset('administrador/mantenedores/tipo-estados') }}"><i class="far fa-newspaper"></i> Tipo Estados</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas/validadas') }}"><i class="fas fa-align-justify"></i> Tipo Premios</a></li>
+                        <li><a href="{{ asset('administrador/mantenedores/tipo-premios') }}"><i class="fas fa-align-justify"></i> Tipo Premios</a></li>
                     </ul>
                 </li>
                 <li>
@@ -62,16 +71,16 @@
                         <span>Ubicación</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas') }}"><i class="fas fa-align-justify"></i> Paises</a></li>
+                        <li><a href="{{ asset('administrador/ubicaciones/paises') }}"><i class="fas fa-align-justify"></i> Paises</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas/compradas') }}"><i class="far fa-newspaper"></i> Regiones</a></li>
+                        <li><a href="{{ asset('administrador/ubicaciones/regiones') }}"><i class="far fa-newspaper"></i> Regiones</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas/validadas') }}"><i class="fas fa-align-justify"></i> Provincias</a></li>
+                        <li><a href="{{ asset('administrador/ubicaciones/provincias') }}"><i class="fas fa-align-justify"></i> Provincias</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas/validadas') }}"><i class="fas fa-align-justify"></i> Comunas</a></li>
+                        <li><a href="{{ asset('administrador/ubicaciones/comunas') }}"><i class="fas fa-align-justify"></i> Comunas</a></li>
                     </ul>
                 </li>
                 <li>
@@ -80,7 +89,7 @@
                         <span>Parametros Generales</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('administrador/transacciones/boletas') }}"><i class="fas fa-align-justify"></i> Parametros Generales</a></li>
+                        <li><a href="{{ asset('administrador/parametros-generales') }}"><i class="fas fa-align-justify"></i> Parametros Generales</a></li>
                     </ul>
                 </li>
                 <!--Link a vista parametros generales. -->
