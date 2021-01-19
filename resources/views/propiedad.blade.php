@@ -1,120 +1,252 @@
 @extends('layouts.public.app')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/isbast.css') }}">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lightbox.min.css">
+<link rel="stylesheet" href="css/jquery.nice-number.css">
 @endsection
+
 @section('content')
- <a class="btn-comprar-flotante letras-btn" href="{{ asset('rifa') }}">Comprar<br>Números <br><i class="fas fa-shopping-cart"></i> </a>
-
-
-  <main class="main">
-        <div class="container">
-    <br> 
-   <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5 linea padding">
-                   <h2 class="display-4 azul wow slideInLeft" data-wow-delay="0.4s">La Propiedad</h2>
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-2 ">
-          <!--   <div class="p-5 linea-bottom">
-         <p class="">Debes escoger la propiedad por la que deseas participar y 3 números por $20.000.- Cada uno. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> 
-
-          </div>  -->
-        </div>
-      </div>
-     </div>
-     <br> <br>
-<div class="container">
-    <h3></h3>
-    
-        <div class="row align-items-center">
-            <div class="col-lg-7 wow slideInLeft">
-            <h2 class="nombre-proyecto"><strong>Departamento Marina del Golf Rapel</strong></h2>
-            <h4>Por $20.000.-</h4>
-           <!-- <p class="texto-ubicacion">Propiedad tasada en 6.305UF</p> -->
-            <p>Disfruta el lujo de tener tu propio campo de golf. Este lugar es muy apetecido por sus atractivos turísticos y riquezas naturales tanto por chilenos como para extranjeros, ideal para vacacionar o arrendar por temporadas. </p>
-            <h5 class="nombre-proyecto">Características</h5>
-            <ul class="list-caracteristicas">
-                <li>Departamento de 113 m2</li>
-                <li>2 Terrazas</li>
-                <li>3 Dormitorios y 3 baños</li>
-                <li>Living/Comedor</li>
-                <li>Cocina integrada con mesón en granito</li>
-                <li>1 Estacionamiento</li>
-                <li>Bodega o dormitorio de servicio</li>
-                <li>Seguridad 24 horas</li>
-                <li>Piscina efecto infinito</li>
-                 <li>Campo de Golf</li>
-                 <li>Bosque de pinos</li>
-            </ul> 
-
-            <a href="{{ asset('rifa') }}" class="btn btn-success" role="button" aria-pressed="true">Comprar mis números</a>
-            <br> <br>
-        </div> 
-            <!-- SLIDER -->
-        <section class="col-lg-5 space wow slideInLeft">
-            <ul class="list-btn" style="align-items: center;">
-                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ asset('propiedades') }}" style="margin-left: 20px"><i class="fab fa-facebook-f"></i></a>
-                <a target="_blank" href="https://twitter.com/intent/tweet?text=Aprovecha esta oportunidad única para poder ganar un departamento de lujo por tan solo $20.000&amp;url={{ asset('propiedades') }}"><i class="fab fa-twitter" style="margin-left: 20px"></i></a>
-            </ul>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img  src="{{ asset('img/rapel1.jpg') }}" class="d-block w-100 slide" alt="Terraza con vistas">
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="{{ asset('img/rapel2.jpg') }}" class="d-block w-100" alt="Comedor">
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="{{ asset('img/rapel3.jpg') }}" class="d-block w-100" alt="Departamento y piscina">
-                </div>
-            </div>
-            
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            </div> 
-        </section> 
-        </div>
-
+<main class="cont-body int-mobile">
+    <h1 class="ml2">Escoge la rifa que quieres ganar</h1>
+    <br>
+    <form class="form-buscar wow slideInLeft" data-wow-delay="0.4s">
+        <input class="form-control-buscar lg-12" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn-buscar" type="submit">Buscar</button>
+      </form>
     <br>
     
-</div>
-        <div id="tour" class="list-details-section wow slideInLeft">
-            <div align="center">
-            <h4 class="list-details-title nombre-proyecto">Tour virtual 3D</h4>
+      <!--  <div class="cont-tarjetas">
+    <div class="tarjeta wow fadeInUpBig" data-wow-delay="0.6s"> 
+       <div>
+           <ul class="share">
+               <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+               <li><a href=""><i class="fab fa-twitter"></i></a></li>
+           </ul>
+           <p class="precio">$20.000.-</p>
+           <img src="images/edificio.jpg" alt="">
+        </div>
+       <div class="text-tarjeta">
+           <h3>Lorem, ipsum.</h3>
+           <p><i class="fas fa-map-marker-alt"></i> Ubicación</p>
+           <p>Lorem ipsum dolor sit amet consectetur.</p>
+           <div>
+               <ul>
+                   <li><i class="fas fa-home"></i> x.xxx UF</li>
+                   <li><i class="fas fa-bed"></i> 3 Dorm</li>
+                   <li><i class="fas fa-bath"></i> 2 Baños</li>
+                   <li><i class="fas fa-gift"></i> Regalos Sorpresa</li>
+               </ul>
+           </div>
+    </div> <br>
+    <a class="btn-tickets-int" href="detalle.html">Detalles</a>
+    </div> <br>
+    <div class="tarjeta wow fadeInUpBig" data-wow-delay="0.8s">
+        <div>
+            <ul class="share">
+                <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            </ul>
+            <p class="precio">$20.000.-</p>
+            <img src="images/edificio.jpg" alt="">
+         </div>
+        <div class="text-tarjeta">
+            <h3>Lorem, ipsum.</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Ubicación</p>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <div>
+                <ul>
+                    <li><i class="fas fa-home"></i> x.xxx UF</li>
+                    <li><i class="fas fa-bed"></i> 3 Dorm</li>
+                    <li><i class="fas fa-bath"></i> 2 Baños</li>
+                    <li><i class="fas fa-gift"></i> Regalos Sorpresa</li>
+                </ul>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="matterport-showcase">
-                        <iframe width='853' height='480' src='https://my.matterport.com/show/?m=PbhyCzrzkVK' frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
+     </div> <br>
+     <a class="btn-tickets-int" href="detalle.html">Detalles</a>
+     </div> <br>
+    
+     <div class="tarjeta wow fadeInUpBig" data-wow-delay="1s">
+        <div>
+            <ul class="share">
+                <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            </ul>
+            <p class="precio">$20.000.-</p>
+            <img src="images/edificio.jpg" alt="">
+         </div>
+        <div class="text-tarjeta">
+            <h3>Lorem, ipsum.</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Ubicación</p>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <div>
+                <ul>
+                    <li><i class="fas fa-home"></i> x.xxx UF</li>
+                    <li><i class="fas fa-bed"></i> 3 Dorm</li>
+                    <li><i class="fas fa-bath"></i> 2 Baños</li>
+                    <li><i class="fas fa-gift"></i> Regalos Sorpresa</li>
+                </ul>
+            </div>
+     </div> <br>
+     <a class="btn-tickets-int" href="detalle.html">Detalles</a>
+     </div>
+    <br>
+        </div> -->
+        <div class="cont-propiedades1">
+            <div class="propiedades wow fadeInUpBig">
+                <div class="slide-img swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="images/edificio - copia.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="images/edificio - copia.jpg" alt=""></div>
                     </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="info-propiedad">
+                    <p><strong>Marina Golf Rapel</strong></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Las Cabras, Libertador Gral. Bernardo O.</p>
+                    <p>$20.000.-</p>
+                    <p>Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
+                    <br>
+                    <p class="titlePremios">10 premios a repartir</p>
+                    <div class="cont-premios-prop">
+                        <ul class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-award"></i> Premio Mayor</p> 
+                            <li>Departamento de lujo de 113 m2</li>
+                            <li>Moto de agua</li>
+                            <li>Kit palos de golf</li>
+                            <li>$2.000.000.- en efectivo</li>
+                        </ul>
+                        <div class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> Primer Premio</p> 
+                            <p>$2.000.000.- en efectivo</p>
+                        </div>
+                        <div class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> Segundo Premio</p>  
+                            <p>8 premios de $1.000.000.- en efectivo</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="cont-botones"> <br>
+                        <a class="btn-tickets-int" href="{{ asset('rifa') }}">Detalles</a>
+                        <div class="width">
+                            <ul class="share-detail">
+                                <li><a href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+                                <li><a href=""><i class="fab fa-instagram wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        
+            <div class="propiedades wow fadeInUpBig">
+                <div class="slide-img swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="images/edificio - copia.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="images/edificio - copia.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="info-propiedad">
+                    <p><strong>Marina Golf Rapel</strong></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Las Cabras, Libertador Gral. Bernardo O.</p>
+                    <p>$20.000.-</p>
+                    <p>Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
+                    <br>
+                    <p class="titlePremios">10 premios a repartir</p>
+                    <div class="cont-premios-prop">
+                        <ul class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-award"></i> Premio Mayor</p> 
+                            <li>Departamento de lujo de 113 m2</li>
+                            <li>Moto de agua</li>
+                            <li>Kit palos de golf</li>
+                            <li>$2.000.000.- en efectivo</li>
+                        </ul>
+                        <div class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> Primer Premio</p> 
+                            <p class="">$2.000.000.- en efectivo</p>
+                        </div>
+                        <div class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> Segundo Premio</p>  
+                            <p class="">8 premios de $1.000.000.- en efectivo</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="cont-botones"> <br>
+                        <a class="btn-tickets-int" href="detalle.html">Detalles</a>
+                        <div class="width">
+                            <ul class="share-detail">
+                                <li><a href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+                                <li><a href=""><i class="fab fa-instagram wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        
+            <div class="propiedades wow fadeInUpBig">
+                <div class="slide-img swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="images/edificio - copia.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="images/edificio - copia.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="info-propiedad">
+                    <p><strong>Marina Golf Rapel</strong></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Las Cabras, Libertador Gral. Bernardo O.</p>
+                    <p>$20.000.-</p>
+                    <p>Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
+                    <br>
+                    <p class="titlePremios">10 premios a repartir</p>
+                    <div class="cont-premios-prop">
+                        <ul class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-award"></i> Premio Mayor</p> 
+                            <li>Departamento de lujo de 113 m2</li>
+                            <li>Moto de agua</li>
+                            <li>Kit palos de golf</li>
+                            <li>$2.000.000.- en efectivo</li>
+                        </ul>
+                        <div class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> Primer Premio</p> 
+                            <p>$2.000.000.- en efectivo</p>
+                        </div>
+                        <div class="premios-list">
+                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> Segundo Premio</p>  
+                            <p>8 premios de $1.000.000.- en efectivo</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="cont-botones"> <br>
+                        <a class="btn-tickets-int" href="detalle.html">Detalles</a>
+                        <div class="width">
+                            <ul class="share-detail">
+                                <li><a href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+                                <li><a href=""><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
-
-        <div class="ubicacion"> <br>
-        <h5 class="nombre-proyecto mapa"><strong>Ubicación</strong></h5> 
-        <p class="mapa color"><strong>Las Cabras, Libertador Gral. Bernardo O.</strong></p>
-        <div class="cont-mapa">
-          <iframe class="frame-mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7464.443652546437!2d-71.46166354992337!3d-34.15193580340286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663963e24368e23%3A0x8d9d7499f19dea9d!2sMarina%20Golf%20Rapel!5e1!3m2!1ses-419!2scl!4v1606831320033!5m2!1ses-419!2scl" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
-        <br>
-    </div>
-
-  
-  </main> <br> <br>
+    </main>
+@endsection
+@section('scripts')
+<script>
+$( document ).ready(function() {
+    document.getElementById('contenido-cambio').classList.remove('cont-nav');
+    document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+    
+});
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      },
+    });
+</script>
 @endsection

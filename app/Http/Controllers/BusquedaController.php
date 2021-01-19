@@ -8,6 +8,7 @@ use App\Comuna;
 use App\Propiedad;
 use App\Provincia;
 use App\Region;
+use App\Usuario;
 use Session;
 
 class BusquedaController extends Controller
@@ -197,21 +198,20 @@ class BusquedaController extends Controller
 			0=> 'idPropiedad',
 			1=> 'nombrePropiedad',
 			2=> 'fotoPrincipal',
-			3=> 'caracteristicasPropiedad',
-			4=> 'fotoMapa',
-			5=> 'descripcionPropiedad',
-			6=> 'mConstruidos',
-			7=> 'mSuperficie',
-			8=> 'mTerraza',
-			9=> 'urlVideo',
-			10=> 'urlMattlePort',
-			11=> 'direccionPropiedad',
-			12=> 'numeracionPropiedad',
-			13=> 'idPais',
-			14=> 'idRegion',
-			15=> 'idProvincia',
-			16=> 'idComuna',
-			17=> 'options'
+			3=> 'fotoMapa',
+			4=> 'descripcionPropiedad',
+			5=> 'mConstruidos',
+			6=> 'mSuperficie',
+			7=> 'mTerraza',
+			8=> 'urlVideo',
+			9=> 'urlMattlePort',
+			10=> 'direccionPropiedad',
+			11=> 'numeracionPropiedad',
+			12=> 'idPais',
+			13=> 'idRegion',
+			14=> 'idProvincia',
+			15=> 'idComuna',
+			16=> 'options'
 		);
 		$totalData = Propiedad::select('*')
 			->join('paises','propiedades.idPais','=','paises.idPais')
@@ -267,7 +267,6 @@ class BusquedaController extends Controller
 				}else{
 					$nestedData['fotoPrincipal'] = "No tiene imagen";
 				}
-				$nestedData['caracteristicasPropiedad'] = $propiedad->caracteristicasPropiedad;
 				if ($propiedad->fotoMapa != null) {
 					$nestedData['fotoMapa'] = "<img src='".asset($propiedad->fotoMapa)."' width='100' height='100'>";
 				}else{
@@ -293,6 +292,86 @@ class BusquedaController extends Controller
 									<a class='dropdown-item' href='".asset('administrador/propiedades/edit')."/".$propiedad->idPropiedad."'>Editar</a>
 		                            <a class='dropdown-item' href='".asset('administrador/propiedades/destroy')."/".$propiedad->idPropiedad."'>Eliminar</a>
 		                            <a class='dropdown-item' href='".asset('administrador/propiedades/imagenes')."/".$propiedad->idPropiedad."'>Agregar Imagenes</a>
+		                            <a class='dropdown-item' href='".asset('administrador/propiedades/premios')."/".$propiedad->idPropiedad."'>Agregar Premios</a>
+		                            <a class='dropdown-item' href='".asset('administrador/propiedades/caracteristicas')."/".$propiedad->idPropiedad."'>Agregar Caracteristicas</a>
+		                        </div>
+		                    </div>";
+				$data[] = $nestedData;
+			}
+		}
+		$json_data = array(
+			"draw" => intval($request->input('draw')),
+			"recordsTotal" => intval($totalData),
+			"recordsFiltered" => intval($totalFiltered),
+			"data" => $data
+		);
+		echo json_encode($json_data);
+	}
+	
+	public function tablaUsuarios(Request $request)
+    {
+    	$columns = array(
+			0 => 'idUsuario',
+			1 => 'nombreUsuario',
+			2 => 'correoUsuario',
+			3 => 'telefonoUsuario',
+			4 => 'rutUsuario',
+			5 => 'idTipoUsuario',
+			6 => 'options'
+		);
+		$totalData = Usuario::all()->count();
+		$totalFiltered = $totalData;
+
+		$limit = $request->input('length');
+		$start = $request->input('start');
+
+		if(empty($request->input('search.value')))
+		{
+			$usuarios = Usuario::select('*')
+				->offset($start)
+				->limit($limit)
+				->orderBy('idUsuario','DESC')
+				->get();
+		}else{
+			$search = $request->input('search.value');
+			$usuarios = Usuario::select('*')
+				->where('correoUsuario', 'LIKE',"%{$search}%")
+		    	->orWhere('rutUsuario', 'LIKE',"%{$search}%")
+		    	->orWhere('nombreUsuario', 'LIKE',"%{$search}%")
+		    	->orWhere('telefonoUsuario', 'LIKE',"%{$search}%")
+				->offset($start)
+				->limit($limit)
+				->orderBy('idUsuario','DESC')
+				->get();
+
+			$totalFiltered = Usuario::select('*')
+				->where('correoUsuario', 'LIKE',"%{$search}%")
+				->orWhere('rutUsuario', 'LIKE',"%{$search}%")
+				->orWhere('nombreUsuario', 'LIKE',"%{$search}%")
+				->orWhere('telefonoUsuario', 'LIKE',"%{$search}%")
+				->count();
+		}
+
+		$data = array();
+		if(!empty($usuarios)){
+			foreach ($usuarios as $usuario){
+				$nestedData['idUsuario'] = $usuario->idUsuario;
+				$nestedData['nombreUsuario'] = $usuario->nombreUsuario;
+				$nestedData['correoUsuario'] = $usuario->correoUsuario;
+				$nestedData['telefonoUsuario'] = $usuario->telefonoUsuario;
+				$nestedData['rutUsuario'] = $usuario->rutUsuario;
+				if($usuario->idTipoUsuario == NULL){
+					$nestedData['idTipoUsuario'] = 'Comprador';
+				}else{
+					$nestedData['idTipoUsuario'] = 'Administrador';
+				}
+				$nestedData['options'] = "<div class='dropdown'>
+		                        <a href='#' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
+		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
+		                        </a>
+		                        <div class='dropdown-menu dropdown-menu-right'>
+									<a class='dropdown-item' href='".asset('administrador/usuarios/edit')."/".$usuario->idUsuario."'>Editar</a>
+		                            <a class='dropdown-item' href='".asset('administrador/usuarios/destroy')."/".$usuario->idUsuario."'>Eliminar</a>
 		                        </div>
 		                    </div>";
 				$data[] = $nestedData;

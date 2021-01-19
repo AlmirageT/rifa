@@ -11,7 +11,6 @@ class Propiedad extends Model
     protected $fillable = [
     	'nombrePropiedad',
     	'fotoPrincipal',
-    	'caracteristicasPropiedad',
     	'fotoMapa',
     	'descripcionPropiedad',
     	'mConstruidos',
@@ -24,7 +23,9 @@ class Propiedad extends Model
     	'codigoPostal',
     	'latitud',
     	'longitud',
-    	'poi',
+		'poi',
+		'urlFacebook',
+		'urlInstagram',
     	'idPais',
     	'idRegion',
     	'idProvincia',

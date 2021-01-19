@@ -1,134 +1,156 @@
-
-        @extends('layouts.public.app')
-        @section('content')
-        
-        <main class="main">
-                <div class="container">
-    <br> 
-
-            <h2 class="display-4 azul centrar-titulos wow zoomIn">Prueba tu suerte y podrás ganar hasta 10 grandes premios</h2>
-      
-     
- <div class="contenedor-premios wow slideInUp">
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>Más $2.000.000.-</div>
-     <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
-     <p><strong>Primer Premio</strong><br></p>$2.000.000.- en efectivo</div>
-      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Segundo Premio</strong><br>8 premios de $1.000.000.-</div>
- </div>
- <br>
-            </div>
-             <br>
-          
-        </main> <br> <br>
-        <div class="container wow slideInUp">
-            <br>
-            <div class="card">
-                <div class="card-body">
-                    <form method="post" action="{{ asset('comprar-numeros') }}">
-                        @csrf
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" name="nombreUsuario" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Correo</label>
-                            <input type="email" name="correoUsuario" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">+56</span>
-                              </div>
-                              <input type="number" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>RUT/DNI/Pasaporte</label>
-                            <input type="text" name="rutUsuario" class="form-control" id="rut" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Números (Digita tus tickets de la suerte: desde el número 100 en adelante)</label>
-                            <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple required>
-                                @foreach($numeros as $numero)
-                                    <option value="{{ $numero->idNumero }}">{{ $numero->numero }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <p>Total: <span id="total">$0</span></p>
-                            <input type="hidden" id="totalOculto" name="totalOculto">
-                        </div>
-                        <div align="center">
-                            <button class="btn btn-primary" type="submit">Comprar Número</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
+@extends('layouts.public.app')
+@section('css')
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lightbox.min.css">
+<link rel="stylesheet" href="css/jquery.nice-number.css">
 @endsection
-        @section('scripts')
 
-        <script type="text/javascript">
-            $(document).on('keypress', '.select2-search__field', function () {
-                $(this).val($(this).val().replace(/[^\d].+/, ""));
-                if ((event.which < 48 || event.which > 57)) {
-                  event.preventDefault();
-                }
-            });
-            $(document).ready(function(){
-                $('.js-example-basic-multiple').select2({
-                    language: "es",
-                    placeholder: "Ingrese un número",
-                    minimumInputLength: 3,
-                    ajax: {
-                        url: '{{ asset('api/numeros') }}',
-                        dataType: "json",
-                        type: "GET",
-                        data: function (params) {
-                            var queryParameters = {
-                                consulta: params.term
-                            }
-                            return queryParameters;
-                        },
-                        processResults: function (data) {
-                            var myResults = [];
-                            $.each(data, function (index, item) {
-                                myResults.push({
-                                    'id': item.idNumero,
-                                    'text': item.numero
-                                });
-                            });
-                            return {
-                                results: myResults
-                            };
-                        }
-                    }
-                });
-            });
-        </script>
-        <script type="text/javascript">
-            
-            let $select = $('#numeros');
-            $select.on('change', () => {
-              let selecteds = [];
+@section('content')
+<main class="cont-body int-mobile">
 
-              // Buscamos los option seleccionados
-              $select.children(':selected').each((idx, el) => {
-                // Obtenemos los atributos que necesitamos
-                selecteds.push({
-                  id: el.id,
-                  value: el.value
-                });
-              });
-              
-              //
-              const cantidadNumeros = selecteds.length; 
-              let total = 20000*cantidadNumeros;
-              let valorFormatoCLP = Math.trunc(total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-              document.getElementById('totalOculto').value = total;
-              document.getElementById('total').innerHTML = '$'+valorFormatoCLP;
-            });
-        </script>
+    <h1 class="ml2">Marina Golf Rapel</h1>
+    <br>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+    <div class="contenedor-galeria swiper-slide">
+        <div class="img1">
+   <!-- <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a>  -->
+    <div class="contenedor-videos wow zoomIn">
+        <video controls>
+            <source  src="videos/marina-golf.mp4">
+        </video>
+         
+     </div>
+    </div>
+    <div class="mosaic">
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+    </div>
+    </div>
+
+    <div class="contenedor-galeria swiper-slide">
+        <div class="img1">
+    <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+    </div>
+    <div class="mosaic">
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+        <a href="images/edificio.jpg" data-lightbox="roadtrip"><img src="images/edificio.jpg" alt=""></a> 
+    </div>
+    </div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<br>
+<div class="flotante-compra" id="btn-flotante">
+    <form action="">
+        <label for="numero" class="tamanoLetra">Cantidad</label> <br> <br>
+        <input type="number" id="numero" class="" placeholder="" value="1" min="1">
+        <br> <br>
+        
+        <p class="tamanoLetra">TOTAL: $20.000.-</p>
+        <div class="cont-botonesCompra">
+        <button class="btnCompra" type="submit">Comprar ahora</button>
+        <button class="btnCarrito" type="submit">Agregar al carrito</button>
+    </div>
+    </form>
+</div> 
+    <br>
+    <div class="cont-detalles" id="cont-detalles">
+    <p class="text-detail wow fadeInLeft" data-wow-delay="0.4s">Departamento de lujo en Marina Golf Rapel</p>
+    <p class="text-detail wow fadeInLeft" data-wow-delay="0.4s"><i class="fas fa-map-marker-alt"></i> Las Cabras, Libertador Gral. Bernardo O.</p>
+    <ul class="share-detail margen">
+        <li><a href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+        <li><a href=""><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+    </ul>
+    <hr>
+<br>
+    <p class="text-detail wow fadeInLeft" data-wow-delay="0.6s">Disfruta de una vista privilegiada con lago y bosque de pinos los cuales puedes recorrer y desconectarte de la rutina. Incluye además acciones en el campo de golf. Este lugar es muy apetecido por sus atractivos turísticos y riquezas naturales tanto para chilenos como para extranjeros, ideal para vacacionar o arrendar por temporadas.
+    </p> <br>
+    <ul class="text-detail wow fadeInLeft" data-wow-delay="0.7s">
+        <li><i class="fas fa-building"></i> Departamento de 113 m2.</li>
+        <li><i class="fas fa-sun"></i> 2 terrazas con vistas a los alrededores.</li>
+        <li><i class="fas fa-bed"></i> 3 amplios dormitorios y el principal en suite</li>
+        <li><i class="fas fa-couch"></i> Living/Comedor</li>
+        <li><i class="fas fa-utensils"></i> Cocina integrada con mesón en granito</li>
+        <li><i class="fas fa-parking"></i> Estacionamiento</li>
+        <li><i class="fas fa-puzzle-piece"></i> Bodega o dormitorio de servicio</li>
+        <li><i class="fas fa-lock"></i> Seguridad 24 horas</li>
+        <li><i class="fas fa-swimmer"></i> Piscina con efecto infinito</li>
+        <li><i class="fas fa-golf-ball"></i> Campos de golf</li>
+        <li><i class="fas fa-tree"></i> Bosque de pinos</li>
+        <li><i class="fas fa-layer-group"></i> Ascensor habilitado</li>
+    </ul> <br>
+    <a class="download" href="pdf/bases_legales_page-0004.pdf" download="BasesLegalesMarinaGolf">Descargar bases legales</a>
+
+</div>
+<br>
+<div class="cont-matterport">
+    <h2>Tour 3D</h2>
+<img src="images/edificio.jpg" alt="">
+</div>
+
+<br>
+<div class="cont-premios-detail">
+    <h2>Premios</h2>
+    <div class="cont-premios">
+        <img src="images/premio-mayor.png" alt="">
+        <img src="images/premios.png" alt="">
+        <img src="images/premio-final.png" alt="">
+    </div>
+
+    <br>
+
+</div>
+
+<div class="ubicacion">
+    <br>
+    <h2><strong>Ubicación</strong></h2> 
+    <h3 class="sub-direccion">Las Cabras, Libertador Gral. Bernardo O.</h3> <br>
+    <div class="cont-mapa">
+        <iframe class="frame-mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7464.443652546437!2d-71.46166354992337!3d-34.15193580340286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663963e24368e23%3A0x8d9d7499f19dea9d!2sMarina%20Golf%20Rapel!5e1!3m2!1ses-419!2scl!4v1606831320033!5m2!1ses-419!2scl" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <br>
+</div>
+</main>
+<br>
+@endsection
+@section('scripts')
+<script>
+$( document ).ready(function() {
+    document.getElementById('contenido-cambio').classList.remove('cont-nav');
+    document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+    
+});
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+<script src="js/scroll-btn.js"></script>
+<script src="js/lightbox-plus-jquery.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/jquery.nice-number.js"></script>
+
+<script>
+    $(function(){
+
+$('input[type="number"]').niceNumber();
+
+});
+</script>
 @endsection

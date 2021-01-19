@@ -124,7 +124,7 @@ Crear Propiedad
 							</div>
 						</div>
 						
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<div class="form-group">
                                 <label>Estado</label>
                                 <select name="idEstado" required class="form-control">
@@ -160,13 +160,20 @@ Crear Propiedad
                                 <input type="text" name="mTerraza" class="form-control" required>
 							</div>
 						</div>
-					
-						<div class="col-lg-12">
+						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Caracteristicas</label>
-								<textarea class="form-control summernote" name="caracteristicasPropiedad" required></textarea>
+								<label>Url Facebook</label>
+                                <input type="text" name="urlFacebook" class="form-control">
 							</div>
 						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label>Url Instagram</label>
+                                <input type="text" name="urlInstagram" class="form-control">
+							</div>
+						</div>
+						
+
 					</div>
 				</div>
 				<div class="card-footer">

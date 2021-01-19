@@ -64,6 +64,9 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ asset('administrador/mantenedores/tipo-premios') }}"><i class="fas fa-align-justify"></i> Tipo Premios</a></li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ asset('administrador/mantenedores/tipo-caracteristica') }}"><i class="fas fa-align-justify"></i> Tipo Caracteristicas</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

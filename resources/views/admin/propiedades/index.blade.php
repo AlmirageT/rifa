@@ -22,7 +22,6 @@ Propiedades
 			          <th>ID</th>
 				      <th>Nombre Propiedad</th>
 				      <th>Foto Principal</th>
-				      <th>Caracteristicas</th>
 				      <th>Foto Mapa</th>
 				      <th>Descripción Propiedad</th>
 				      <th>m2 Construidos</th>
@@ -61,7 +60,6 @@ $(document).ready(function () {
 			{ "data": "idPropiedad" },
 			{ "data": "nombrePropiedad" },
 			{ "data": "fotoPrincipal" },
-			{ "data": "caracteristicasPropiedad" },
 			{ "data": "fotoMapa" },
 			{ "data": "descripcionPropiedad" },
 			{ "data": "mConstruidos" },

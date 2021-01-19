@@ -38,15 +38,16 @@ class PropiedadController extends Controller
         $provincias = Provincia::all();
         $comunas = Comuna::all();
         $estados = Estado::where('idTipoEstado',2)->get();
+        
     	return view('admin.propiedades.create',compact('paises','regiones','provincias','comunas','estados'));
     }
     public function store(Request $request)
     {
+        
     	try {
             $validator = Validator::make($request->all(), [
                 'nombrePropiedad' => 'required',
                 'fotoPrincipal' => 'max:102400|required',
-                'caracteristicasPropiedad' => 'required',
                 'descripcionPropiedad' => 'required',
                 'mConstruidos' => 'required',
                 'mSuperficie' => 'required',
@@ -60,31 +61,51 @@ class PropiedadController extends Controller
                 'idRegion' => 'required',
                 'idProvincia' => 'required',
                 'idComuna' => 'required',
-                'idEstado' => 'required'
+                'idEstado' => 'required',
+                'idTipoCaracteristica' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('El archivo no puede pasar de los 100MB');
                 return back();
             }
             DB::beginTransaction();
-	            
-                $propiedad = new Propiedad($request->all());
-                if($request->file('fotoPrincipal')){
-	                $imagen = $request->file('fotoPrincipal');
-                    $img = Image::make($imagen);
-	                $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
-                    $img->save('assets/images/propiedades/'.$imgName);
-                    $propiedad->fotoPrincipal = 'assets/images/propiedades/'.$imgName;
-	            }
-            	$geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
-                $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=17&size=350x233&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
-                $mapa = Image::make($linkMapa);
-                $mapaNombre = uniqid();
-                $mapa->save('assets/images/propiedades/'.$mapaNombre);
-                $propiedad->fotoMapa = 'assets/images/propiedades/'.$mapaNombre;
-	            $propiedad->poi = $geoHash[0]->geoHash;
-	            $propiedad->save();
-                toastr()->success('Agregado Correctamente', 'La propiedad: '.$request->nombrePropiedad.' ha sido agregado correctamente');
+            $propiedad = new Propiedad();
+            $propiedad->nombrePropiedad = $request->nombrePropiedad;
+            $propiedad->descripcionPropiedad = $request->descripcionPropiedad;
+            $propiedad->mConstruidos = $request->mConstruidos;
+            $propiedad->mSuperficie = $request->mSuperficie;
+            $propiedad->mTerraza = $request->mTerraza;
+            $propiedad->urlVideo = $request->urlVideo;
+            $propiedad->urlMattlePort = $request->urlMattlePort;
+            $propiedad->direccionPropiedad = $request->direccionPropiedad;
+            $propiedad->numeracionPropiedad = $request->numeracionPropiedad;
+            $propiedad->codigoPostal = $request->codigoPostal;
+            $propiedad->latitud = $request->latitud;
+            $propiedad->longitud = $request->longitud;
+            $propiedad->idPais = $request->idPais;
+            $propiedad->idRegion = $request->idRegion;
+            $propiedad->idProvincia = $request->idProvincia;
+            $propiedad->idComuna = $request->idComuna;
+            $propiedad->idEstado = $request->idEstado;
+            $propiedad->urlFacebook = $request->urlFacebook;
+            $propiedad->urlInstagram = $request->urlInstagram;
+            if($request->file('fotoPrincipal')){
+                $imagen = $request->file('fotoPrincipal');
+                $img = Image::make($imagen);
+                $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
+                $img->save('assets/images/propiedades/'.$imgName);
+                $propiedad->fotoPrincipal = 'assets/images/propiedades/'.$imgName;
+            }
+            $geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
+            $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=17&size=350x233&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
+            $mapa = Image::make($linkMapa);
+            $mapaNombre = uniqid();
+            $mapa->save('assets/images/propiedades/'.$mapaNombre);
+            $propiedad->fotoMapa = 'assets/images/propiedades/'.$mapaNombre;
+            $propiedad->poi = $geoHash[0]->geoHash;
+            $propiedad->save();
+
+            toastr()->success('Agregado Correctamente', 'La propiedad: '.$request->nombrePropiedad.' ha sido agregado correctamente');
             DB::commit();
             return redirect::to('administrador/propiedades');
     	} catch (ModelNotFoundException $e) {
@@ -116,7 +137,6 @@ class PropiedadController extends Controller
         $provincias = Provincia::all();
         $comunas = Comuna::all();
         $estados = Estado::where('idTipoEstado',2)->get();
-
     	return view('admin.propiedades.edit',compact('paises','regiones','provincias','comunas','estados','propiedad'));
     }
     public function update(Request $request, $idPropiedad)
@@ -125,7 +145,6 @@ class PropiedadController extends Controller
             $validator = Validator::make($request->all(), [
                 'nombrePropiedad' => 'required',
                 'fotoPrincipal' => 'max:102400',
-                'caracteristicasPropiedad' => 'required',
                 'descripcionPropiedad' => 'required',
                 'mConstruidos' => 'required',
                 'mSuperficie' => 'required',
@@ -139,35 +158,54 @@ class PropiedadController extends Controller
                 'idRegion' => 'required',
                 'idProvincia' => 'required',
                 'idComuna' => 'required',
-                'idEstado' => 'required'
+                'idEstado' => 'required',
+                'idTipoCaracteristica' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('El archivo no puede pasar de los 100MB');
                 return back();
             }
             DB::beginTransaction();
-                $propiedad = Propiedad::find($idPropiedad);
-                if($request->file('fotoPrincipal')){
-                    if($propiedad->fotoPrincipal != null){
-                        unlink($propiedad->fotoPrincipal);
-                    }
-	                $imagen = $request->file('fotoPrincipal');
-                    $img = Image::make($imagen);
-	                $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
-                    $img->save('assets/images/propiedades/'.$imgName);
-                    $propiedad->fotoPrincipal = 'assets/images/propiedades/'.$imgName;
+            $propiedad = Propiedad::find($idPropiedad);
+            if($request->file('fotoPrincipal')){
+                if($propiedad->fotoPrincipal != null){
+                    unlink($propiedad->fotoPrincipal);
                 }
-                $propiedad->fill($request->all());
-            	$geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
-                $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=17&size=350x233&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
-                $mapa = Image::make($linkMapa);
-                $mapaNombre = uniqid();
-                $mapa->save('assets/images/propiedades/'.$mapaNombre);
-                $propiedad->fotoMapa = 'assets/images/propiedades/'.$mapaNombre;
-	            $propiedad->poi = $geoHash[0]->geoHash;
-	            $propiedad->save();
-	    		
-                toastr()->success('Actualizado Correctamente', 'La propiedad: '.$request->nombrePropiedad.' ha sido actualizado correctamente');
+                $imagen = $request->file('fotoPrincipal');
+                $img = Image::make($imagen);
+                $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
+                $img->save('assets/images/propiedades/'.$imgName);
+                $propiedad->fotoPrincipal = 'assets/images/propiedades/'.$imgName;
+            }
+            $propiedad->nombrePropiedad = $request->nombrePropiedad;
+            $propiedad->descripcionPropiedad = $request->descripcionPropiedad;
+            $propiedad->mConstruidos = $request->mConstruidos;
+            $propiedad->mSuperficie = $request->mSuperficie;
+            $propiedad->mTerraza = $request->mTerraza;
+            $propiedad->urlVideo = $request->urlVideo;
+            $propiedad->urlMattlePort = $request->urlMattlePort;
+            $propiedad->direccionPropiedad = $request->direccionPropiedad;
+            $propiedad->numeracionPropiedad = $request->numeracionPropiedad;
+            $propiedad->codigoPostal = $request->codigoPostal;
+            $propiedad->latitud = $request->latitud;
+            $propiedad->longitud = $request->longitud;
+            $propiedad->idPais = $request->idPais;
+            $propiedad->idRegion = $request->idRegion;
+            $propiedad->idProvincia = $request->idProvincia;
+            $propiedad->idComuna = $request->idComuna;
+            $propiedad->idEstado = $request->idEstado;
+            $propiedad->urlFacebook = $request->urlFacebook;
+            $propiedad->urlInstagram = $request->urlInstagram;
+            $geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
+            $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=17&size=350x233&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
+            $mapa = Image::make($linkMapa);
+            $mapaNombre = uniqid();
+            $mapa->save('assets/images/propiedades/'.$mapaNombre);
+            $propiedad->fotoMapa = 'assets/images/propiedades/'.$mapaNombre;
+            $propiedad->poi = $geoHash[0]->geoHash;
+            $propiedad->save();
+            
+            toastr()->success('Actualizado Correctamente', 'La propiedad: '.$request->nombrePropiedad.' ha sido actualizado correctamente');
             DB::commit();
             return redirect::to('administrador/propiedades');
     	} catch (ModelNotFoundException $e) {
@@ -191,13 +229,13 @@ class PropiedadController extends Controller
     public function destroy($idPropiedad)
     {
     	try {
-    		DB::beginTransaction();
-                $propiedad = Propiedad::find($idPropiedad);
-    			if($propiedad->fotoPrincipal != null){
-                    unlink($propiedad->fotoPrincipal);
-                }
-	            toastr()->success('Eliminado Correctamente', 'El tipo de calidad: '.$propiedad->nombrePropiedad.' ha sido eliminado correctamente');
-	            $propiedad->delete();
+            DB::beginTransaction();
+            $propiedad = Propiedad::find($idPropiedad);
+            if($propiedad->fotoPrincipal != null){
+                unlink($propiedad->fotoPrincipal);
+            }
+            toastr()->success('Eliminado Correctamente', 'El tipo de calidad: '.$propiedad->nombrePropiedad.' ha sido eliminado correctamente');
+            $propiedad->delete();
     		DB::commit();
             return redirect::back();
     	} catch (ModelNotFoundException $e) {
@@ -258,5 +296,12 @@ class PropiedadController extends Controller
             return response()->json("Exito");
         }
         return response()->json("fallo");
+    }
+
+    //funciones para vistas publicas
+    public function tienda()
+    {
+        $propiedades = Propiedad::all();
+        return view('propiedad',compact('propiedad'));
     }
 }

@@ -1,4 +1,4 @@
-<button class="btn btn-primary" data-toggle="modal" data-target="#create">Agregar Tipo de Estado <i class="fas fa-plus"></i></button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#create">Agregar Tipo Premio <i class="fas fa-plus"></i></button>
 
 <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="create" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
@@ -7,7 +7,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Nuevo Tipo Estado
+                    Nuevo Tipo Premio
                 </h5>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                 </button>
@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="">Nombre Tipo Estado</label>
+                            <label for="">Nombre Tipo Premio</label>
                             <input type="text" name="nombreTipoPremio" class="form-control" placeholder="Ingrese un nombre" required>
                         </div>
                     </div>

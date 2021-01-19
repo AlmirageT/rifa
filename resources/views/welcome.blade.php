@@ -1,329 +1,159 @@
 @extends('layouts.public.app')
-@section('content')
+@section('cont-header')
 
+<div class="cont-header">
+  <div class="cont-tittle">
+      <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>
+      <p class="wow slideInLeft" data-wow-delay="0.6s">Confía en ti, cree en la suerte, desafía al destino y podrás ser el ganador ! Son 10 premios a repartir
 
- <a class="btn-comprar-flotante letras-btn" href="{{ asset('rifa') }}">Comprar<br>Números <br><i class="fas fa-shopping-cart"></i> </a>
-
-<!-- BARRA DE NAVEGACIÓN -->
-
-   <main class="main">
-  
-  <!-- CARRUSEL ESCRITORIO -->
-  <div id="carouselExampleCaptions" class="carousel slide desktop" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('img/slider1.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-      <!--  <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('img/slider2.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-      <!--  <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('img/slider3.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <!--  <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-  <!-- CARRUSEL MOBILE -->
-
- <div id="carouselExampleCaptions" class="carousel slide mobile" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('img/slider-mobile1.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('img/slider-mobile2.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('img/slider-mobile3.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
- 
-<br> <br> <br>
-      <div class="container">
-    <br> 
-         <h2 class="display-4 azul centrar-titulos "> <span class="min">Llegaste! Tú si sabes aprovechar las oportunidades</span></h2>
-          <p class="wow zoomIn centrar-titulos" data-wow-delay="0.7s">Confía en ti, cree en la suerte, desafía al destino y podrás ser el ganador ! <strong>Son 10 premios a repartir</strong></p>
-   <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-1 wow slideInLeft" data-wow-delay="0.4s">
-          <div class="p-5 linea padding">
-                 <p class="wow zoomIn" data-wow-delay="0.9s">Premio Mayor:</p>
-            <ul class="wow zoomIn lista" data-wow-delay="0.9s">
-                <li><i class="far fa-hand-point-right"></i> <strong>Departamento de lujo totalmente amoblado de 120 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina infinita.</strong></li>
-                <li><i class="far fa-hand-point-right"></i> <strong>2 acciones en el campo de golf
-</strong></li>
-                <li><i class="far fa-hand-point-right"></i> <strong>Kit equipo de golf
-</strong></li>
-                <li><i class="far fa-hand-point-right"></i> <strong>Moto de agua</strong></li>
-                <li><i class="far fa-hand-point-right"></i> <strong>$2.000.000.-</strong></li>
-            </ul> 
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-2" >
-          <div class="p-5 linea-bottom">
-           
-        
-            <p class="wow zoomIn" data-wow-delay="1s">Primer Premio</p>
-                <ul class="wow zoomIn lista" data-wow-delay="0.9s">
-                <li><i class="fas fa-hand-point-right"></i> <strong>$2.000.000.-</strong></li>
-            </ul>
-            
-            <p class="wow zoomIn" data-wow-delay="1.2s"><i class="fas fa-hand-sparkles"></i> Como te esforzaste y pusiste todo de tu parte, te daremos la oportunidad de ganar <strong> 8 premios de $1.000.000.-</strong> </p>
-
-          </div>
-        </div>
-      </div>
-     <br>
-     </div>
+      </p>
       <br> <br>
-      <div class="container">
-   <div class="contenedor-videos wow zoomIn">
-         <video controls>
-             <source  src="{{ asset('videos/MARINA GOLF RAPEL VERSIÓN LARGA.mp4') }}">
-         </video>
-          
-      </div> </div>
-      <section class="desktop">
-    <br> 
-   <div class="row align-items-center centrado">
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">          
-          <div class="contenedor-hover">
-            <a class="link wow zoomIn" data-wow-delay="0.5s" href="#"> <figure>
-                  <img src="{{ asset('img/rapel3.jpg') }}" alt="Piscina con efecto infinito">
-                  <div class="capa">
-                      <h3>Piscina Efecto Infinito</h3>
-                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                     <!-- <p><strong>VER DETALLES</strong></p> -->
-                    
-                  </div>
-              </figure> </a> 
-              
-                    <a class="wow zoomIn" data-wow-delay="0.7s" href="#">
-                    <figure>
-                  <img src="{{ asset('img/rapel6.jpg') }}" alt="Bosques de pino">
-                  <div class="capa">
-                      <h3>Bosques de Pino</h3>
-                <!--      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                       <!-- <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-              
-            
-               <a class="wow zoomIn" data-wow-delay="0.9s" href="#">   <figure>
-                  <img src="{{ asset('img/rapel5.jpg') }}" alt="Senderos">
-                  <div class="capa">
-                      <h3>Senderos</h3>
-                  <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <!-- <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-               <a class="wow zoomIn" data-wow-delay="1.2s" href="#">  <figure>
-                  <img src="{{ asset('img/rapel4.jpg') }}" alt="Campo de golf">
-                  <div class="capa">
-                      <h3>Campo de Golf</h3>
-                  <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <!-- <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-        
-          </div>
-          
-          </div>
-        </div>
-        <div class="col-lg-5 order-lg-2 beige wow zoomIn" data-wow-delay="1.4s">
-          <div class="p-5">
-            <h2 class="display-4"><span class="negrita-blanco">Esta propiedad puede ser tuya</span></h2>
-            <p class="blanco">Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
-            <div class="contenedor-boton">
-            <a href="{{ asset('propiedades') }}" class="btn btn-outline-light" role="button" aria-pressed="true">Ver Todo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-     <br>
- </section>
+      <a href="{{ asset('tienda-rifo-propiedades') }}">Ver Propiedades <i class="far fa-building"></i></a> 
+      <!--<a href="{{ asset('tienda-rifo-propiedades') }}">Quiero saber más</a>-->
+  </div>
 
- 
-  <section class="mobile">
+  <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
+      <img src="images/gif2.gif" alt="">
+  </div>
+</div>
+
+<div class="circle"></div>
+@endsection
+@section('content')
+<main class="cont-body ">
+  <h2 class="wow fadeInRight">Este departamento puede ser tuyo</h2> 
+  <div class="seccion1 swiper-container ">
+      <div class="swiper-wrapper">
+      <br>
+          <div class="cont-propiedades swiper-slide">
+              <div class="cont-tour wow zoomIn" data-wow-delay="1s">
+                  <h3>Tour 3D</h3>
+                  <br>
+                  <img src="images/edificio.jpg" alt="">
+              </div>
+
+              <div class="cont-lista wow zoomIn" data-wow-delay="0.4s">
+                  <h3>Marina Golf Rapel</h3>
+                  <p><i class="fas fa-map-marker-alt"></i> Las Cabras, Libertador Gral. Bernardo O.</p>
+                  <p>Departamento de lujo totalmente amoblado de 113 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina con efecto infinito.</p>
+                  <p> <strong>Son 10 premios a repartir</strong> </p>
+                  <br>
+                  <ul>
+                      <h4>Premio Mayor</h4>
+                      <li>Departamento de lujo</li>
+                      <li>2 acciones en el campo de golf</li>
+                      <li>Kit palos de golf</li>
+                      <li>Moto de agua</li>
+                      <li>$2.000.000.- en efectivo</li>
+                  </ul> <br>
+                  <ul>
+                      <h4>Primer Premio</h4>
+                      <li>$2.000.000.- en efectivo</li>
+                  </ul><br>
+                  <ul>
+                      <h4>Segundo Premio</h4>
+                      <li>8 Premios de <strong>$1.000.000.-</strong></li>
+                  </ul>
+                  <br> <br>
+                  <a class="btn-tickets" href="{{ asset('tienda-rifo-propiedades') }}">Quiero saber más</a>
+                  <br> <br>
+              </div>
+          </div>
+
+      </div>
+     <!-- <div class="swiper-pagination"></div> 
+   <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div> -->
+  </div>
+
   
-    <br> 
-   <div class="align-items-center centrado">
-           <div class="col-lg-5 order-lg-2 beige wow zoomIn">
-          <div class="p-5">
-            <h2 class="display-4 ">Esta propiedad puede ser tuya</h2>
-            <p class="">Equipado con mobiliario en excelente estado. Seguridad 24 horas, piscina con efecto infinito, campo de golf de 9, bosques de pinos, senderos, juegos para niños y quinchos. Cercano al Club de Lago Rapel con restaurante familiar y servicio de arriendo de equipos para deportes náuticos.</p>
-            <div class="contenedor-boton">
-            <a href="{{ asset('propiedades') }}" class="btn btn-outline-dark" role="button" aria-pressed="true">Ver Todo</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">          
-          <div class="contenedor-hover">
-            <a class="link wow zoomIn" href="#"> <figure>
-                  <img src="{{ asset('img/rapel1.jpg') }}" alt="Piscina efecto infinito">
-                  <div class="capa">
-                      <h3>Piscina Efecto Infinito</h3>
-                  <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <p><strong>VER DETALLES</strong></p> -->
-                    
-                  </div>
-              </figure> </a> 
-              
-             <a class="wow zoomIn" href="#">  <figure>
-                  <img src="{{ asset('img/rapel2.jpg') }}" alt="Campo de Golf">
-                  <div class="capa">
-                      <h3>Campo de Golf</h3>
-            <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-               <a class="wow zoomIn" href="#">   <figure>
-                  <img src="{{ asset('img/rapel3.jpg') }}" alt="Senderos">
-                  <div class="capa">
-                      <h3>Senderos</h3>
-                     <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-                   <a class="wow zoomIn" href="#">
-                    <figure>
-                  <img src="{{ asset('img/parcela4.jpg') }}" alt="Bosques de pino">
-                  <div class="capa">
-                      <h3>Bosques</h3>
-                     <!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <p><strong>VER DETALLES</strong></p> -->
-                  </div>
-              </figure> </a>
-              
-          </div>
-          
-          </div>
-        </div>
-    
-      </div>
-     <br>
-   
- </section>
- 
-       <div class="container">
-    <br> 
-   <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2 wow slideInRight" data-wow-delay="1s">
-          <div class="p-5 padding">
-                   <h2 class="display-4 azul">¿Cómo funciona Rifo Mi Propiedad?</h2>
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1 wow zoomIn" data-wow-delay="1.5s">
-          <div class="p-5">
-            <p class="">Compra tu número a $20.000.- el sorteo será realizado en la notaría Manquehual, el cual será transmitido por Youtube Live, de este modo todos los compradores pueden asistir.</p>
 
-          </div>
-        </div>
-      </div>
-     <br>
-     </div>
 
-      <div class="container">
-    <br> 
- 
-        
-<h2 class="display-4 azul centrar-titulos wow zoomIn">Premios</h2>
+</main>
+
+<!--    <div class="contenedor-tarjetas-home">
+<div class="tarjetas-home">
+  <div class="imgBX">
+<a href="detalle.html"> <img src="images/edificio - copia.jpg" alt=""> </a>
+  </div>
+  <div class="content-card-home">
+<h2>Marina Golf Rapel</h2>
+<p>Departamento de Lujo</p>
+  </div>
+
+</div>
+
+<div class="tarjetas-home">
+  <div class="imgBX">
       
-     
-<div class="contenedor-premios wow slideInUp">
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>Más $2.000.000.- </div>
-     <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
-     <p><strong>Primer Premio</strong><br></p>$2.000.000.- en efectivo</div>
-      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Segundo Premio</strong><br>8 premios de $1.000.000.-</div>
- </div>
-     <br>
-     </div> 
- <!--
- <section class="contenedor-banner desktop">
-<img class="img-banner" src="img/banner.jpg" alt="">
- </section>
- 
- <section class="contenedor-banner mobile">
-<img class="img-banner" src="img/banner-mobile.jpg" alt="">
- </section> -->
- 
- <br>
- <div id="contacto"  class="fondo-form wow zoomIn">
-  <section>
-            <div class="contenedor-form">
-            <form action="{{ asset('enviar-consulta') }}" class="formulario-bottom" method="post">
-              @csrf
-                 <h2 class="titulos azul">CONTÁCTANOS</h2>
-     
-                <label for="nombre" class="form-label"></label> 
-                    <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre" required>
- 
-                <label for="correo" class="form-label"></label>
-                    <input type="email" id="correo" name="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico" required>
- 
-                <label for="fono" class="form-label"></label> 
-                    <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono" required>
-                    
-                     <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label> 
-                    <textarea class="form-input" name="consulta" id="msg" cols="30" rows="5" required> </textarea>
- 
-    
-                <input type="submit" class="btn-submit-bottom" value="Solicita información"> 
-            </form>        
-        </div>
- </section>
- </div>
-  </main> <br> <br>
+<img src="images/edificio - copia.jpg" alt="">
+  </div>
+  <div class="content-card-home">
+<h2>Card One</h2>
+<p>Lorem ipsum, dolor</p>
+  </div>
+</div>
+
+<div class="tarjetas-home">
+  <div class="imgBX">
+<img src="images/edificio - copia.jpg" alt="">
+  </div>
+  <div class="content-card-home">
+<h2>Card One</h2>
+<p>Lorem ipsum, dolor.</p>
+  </div>
+</div>
+
+</div> -->
+
+
+<div class="cont-seccion2">
+  <div class="seccion-1">
+      <img src="images/gif.gif" alt="" class="wow slideInLeft">
+  </div>
+  <div class="seccion-2">
+      <h2 class="wow zoomIn">¿Cómo funciona Rifo Mi Propiedad?</h2>
+      <p class="wow fadeInUp">Compra tu número a $20.000.- el sorteo será realizado en la notaría Manquehual, el cual será transmitido por Youtube Live, de este modo todos los compradores pueden asistir.</p>
+  </div>
+</div>
+
+<div id="contacto"  class="cont-form">
+  <div class="contenedor-form">
+      <form action="{{ asset('enviar-consulta') }}" class="formulario-bottom" method="post">
+        @csrf
+          <h2 class="">CONTÁCTANOS</h2>
+          <label for="nombre" class="form-label"></label>
+          <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre" required>
+          
+          <label for="correo" class="form-label"></label>
+          <input type="email" name="correo" id="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico">
+          
+          <label for="fono" class="form-label"></label>
+          <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
+          
+          <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label>
+          <textarea class="form-input" name="" id="msg" cols="30" rows="5" name="consulta" > </textarea>
+          
+          <input type="submit" class="btn-submit-bottom" value="Solicita información">
+      </form>
+  </div>
+</div>
+@endsection
+@section('scripts')
+<script>
+  var swiper = new Swiper('.swiper-container', {
+      pagination: {
+          el: '.swiper-pagination',
+          type: 'progressbar',
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+  });
+  
+  
+
+</script>
+
 @endsection

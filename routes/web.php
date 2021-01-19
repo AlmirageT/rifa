@@ -11,9 +11,9 @@
 |
 */
 Route::view('/', 'welcome');
-Route::view('galeria', 'galeria');
+Route::view('carrito-compra', 'galeria');
 Route::view('bases-legales', 'bases');
-Route::view('propiedades', 'propiedad');
+Route::get('tienda-rifo-propiedades', 'PropiedadController@tienda');
 Route::get('rifa', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 //Route::get('pruebaCambioNumeros','ComprarRifaController@numeros');
@@ -46,6 +46,8 @@ Route::group(['prefix'=>'administrador'], function(){
 		Route::get('destroy/{idPropiedad}','PropiedadController@destroy');
 		Route::get('imagenes/{idPropiedad}','PropiedadController@imagenes');
 		Route::post('img-propiedad/{idPropiedad}','PropiedadController@dropzone');
+		Route::get('premios/{idPropiedad}','PremiosController@index');
+		Route::get('caracteristicas/{idPropiedad}','PropiedadCaracteristicaController@index');
 	});
 
 	Route::group(['prefix'=>'ubicaciones'],function(){
@@ -59,6 +61,7 @@ Route::group(['prefix'=>'administrador'], function(){
 		Route::get('estados','EstadoController@index');
 		Route::get('tipo-estados','TipoEstadoController@index');
 		Route::get('tipo-premios','TipoPremioController@index');
+		Route::get('tipo-caracteristica','TipoCaracteristicaController@index');
 	});
 
 	Route::group(['prefix'=>'parametros-generales'], function(){
@@ -67,6 +70,9 @@ Route::group(['prefix'=>'administrador'], function(){
 
 	Route::group(['prefix'=>'usuarios'], function(){
 		Route::get('/','UsuarioController@index');
+		Route::get('create','UsuarioController@create');
+		Route::get('edit/{idUsuario}','UsuarioController@edit');
+		Route::get('destroy/{idUsuario}','UsuarioController@destroy');
 	});
 });
 
@@ -78,6 +84,7 @@ Route::get('curls/{request}','BusquedaController@curls');
 Route::post('datatable-provincias','BusquedaController@tablaProvincias');
 Route::post('datatable-comunas','BusquedaController@tablaComunas');
 Route::post('datatable-propiedades','BusquedaController@tablaPropiedades');
+Route::post('datatable-usuarios','BusquedaController@tablaUsuarios');
 
 
 //busqueda
@@ -148,4 +155,24 @@ Route::resource('mantenedor-propiedades','PropiedadController');
 Route::delete('mantenedor-propiedades/{idPropiedad}',array(
     'uses'=>'PropiedadController@destroy',
     'as'=>'mantenedor-propiedades.delete'
+));
+//crud usuarios
+Route::resource('mantenedor-usuarios','UsuarioController');
+//crud tipo caracteristicas
+Route::resource('mantenedor-tipos-caracteristicas','TipoCaracteristicaController');
+Route::delete('mantenedor-tipos-caracteristicas/{idTipoCaracteristica}',array(
+    'uses'=>'TipoCaracteristicaController@destroy',
+    'as'=>'mantenedor-tipos-caracteristicas.delete'
+));
+//crud premios
+Route::resource('mantenedor-premios','PremiosController');
+Route::delete('mantenedor-premios/{idPremio}',array(
+    'uses'=>'PremiosController@destroy',
+    'as'=>'mantenedor-premios.delete'
+));
+//crud caracteristicas
+Route::resource('mantenedor-caracteristicas','PropiedadCaracteristicaController');
+Route::delete('mantenedor-caracteristicas/{idPropiedadCaracteristica}',array(
+    'uses'=>'PropiedadCaracteristicaController@destroy',
+    'as'=>'mantenedor-caracteristicas.delete'
 ));
