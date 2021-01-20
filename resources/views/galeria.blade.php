@@ -2,98 +2,69 @@
 
 @section('content')
 <main class="cont-body int-mobile">
-  <h1 class="">Cada vez más cerca de ganar</h1>
+  <h1 class="ml2">Cada vez más cerca de ganar</h1>
   <br>
   
   <div class="cont-infoCarrito">
-    <div class="resumenPropiedades"> 
-      <div class="desglose">
-        <div class="img-thumnail">
-          <img src="images/edificio - copia.jpg" alt="">
-        </div>
-        <div class="cont-resumen-compra">
-          <div class="resumen-compra">
-            <h5>Departamento Marina Golf</h5>
-            <p>Departamento de lujo</p>
+    <div class="resumenPropiedades">
+      @if (Session::has('carritoCompra'))
+        @foreach (Session::get('carritoCompra') as $key => $propiedadTicket)
+          <div class="desglose">
+            <div class="img-thumnail">
+              @if ($propiedadTicket['imagenPropiedad'])
+                <img src="{{ asset($propiedadTicket['imagenPropiedad']) }}" alt="">
+              @else
+              @endif
+            </div>
+            <div class="cont-resumen-compra">
+              <div class="resumen-compra">
+                <h5>{{ $propiedadTicket['nombrePropiedad'] }}</h5>
+                {{-- <p>Departamentodelujo</p> --}}
+              </div>
+              <div class="resumen-compra">
+                <h5>Precio Ticket</h5>
+                <p>${{ number_format($propiedadTicket['valorRifa'],0,',','.') }}.-</p>
+              </div>
+              <div class="resumen-compra1">
+                <form action="">
+                  <label for="numero" class="tamanoLetra"></label> <br> <br>
+                  <input type="number" id="{{ $key }}" class="" placeholder="" value="{{ $propiedadTicket['cantidad'] }}" min="1">
+                </form>
+              </div>
+              <div class="resumen-compra2">
+                <a class="btnTrash" href="{{ asset('eliminar-ticket-carrito') }}/{{ $key }}" ><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
           </div>
-          <div class="resumen-compra">
-            <h5>Precio Ticket</h5>
-            <p>$20.000.-</p>
+          <br>
+<br>
+        @endforeach
+      @else
+          <div class="desglose">
+            <h1>No hay tickets comprados</h1>
           </div>
-  <div class="resumen-compra1">
-    <form action="">
-      <label for="numero" class="tamanoLetra"></label> <br> <br>
-      <input type="number" id="numero" class="" placeholder="" value="1" min="1">
-    
-  </form>
-  
-  </div>
-  <div class="resumen-compra2">
-    <button class="btnTrash" type="submit"><i class="fas fa-trash-alt"></i></button>
-  </div>
-  </div>
-  </div>
-  <br>
-  <div class="desglose">
-    <div class="img-thumnail">
-      <img src="images/edificio - copia.jpg" alt="">
-    </div>
-    <div class="cont-resumen-compra">
-      <div class="resumen-compra">
-      <h5>Departamento Marina Golf</h5>
-      <p>Departamento de lujo</p>
-    </div>
-    <div class="resumen-compra">
-      <h5>Precio Ticket</h5>
-      <p>$20.000.-</p>
-    </div>
-    <div class="resumen-compra1">
-      <form action="">
-        <label for="numero" class="tamanoLetra"></label> <br> <br>
-        <input type="number" id="numero" class="" placeholder="" value="1" min="1">
-      
-    </form>
-    
-    </div>
-    <div class="resumen-compra2">
-      <button class="btnTrash" type="submit"><i class="fas fa-trash-alt"></i></button>
-    </div>
-    </div>
-    </div>
-  <br>
-    <div class="desglose">
-      <div class="img-thumnail">
-        <img src="images/edificio - copia.jpg" alt="">
-      </div>
-      <div class="cont-resumen-compra">
-        <div class="resumen-compra">
-        <h5>Departamento Marina Golf</h5>
-        <p>Departamento de lujo</p>
-      </div>
-      <div class="resumen-compra">
-        <h5>Precio Ticket</h5>
-        <p>$20.000.-</p>
-      </div>
-      <div class="resumen-compra1">
-        <form action="">
-          <label for="numero" class="tamanoLetra"></label> <br> <br>
-          <input type="number" id="numero" class="" placeholder="" value="1" min="1">
+<br>
+<br>
+<br>
+<br>
+
+      @endif 
         
-      </form>
-      
-      </div>
-      <div class="resumen-compra2">
-        <button class="btnTrash" type="submit"><i class="fas fa-trash-alt"></i></button>
-      </div>
-      </div>
-      </div>
+        
+      <br>
     </div>
   
-  <div class="total">
-    <h5>Resumen de la compra</h5>
-  <p>TOTAL: $00.000.-</p>
-  <button class="btnCompraCarrito" type="submit">Continuar compra</button>
-  </div>
+    <div class="total">
+      @if (Session::has('total'))
+        <h5>Resumen de la compra</h5>
+        <p>TOTAL: ${{ number_format(Session::get('total'),0,',','.') }}.-</p>
+        <button class="btnCompraCarrito" type="submit">Continuar compra</button>
+      @else
+        <h5>Resumen de la compra</h5>
+        <p>TOTAL: $00.000.-</p>
+      @endif
+      
+    </div>
   
   </div>
   <br> <br>
@@ -107,7 +78,7 @@
   
   
   
-   </main>
+</main>
 @endsection
 @section('scripts')
 <script>
@@ -117,23 +88,18 @@
       
   });
   </script>
-<script>
-  var swiper = new Swiper('.swiper-container', {
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-</script>
+
 <script src="js/jquery.nice-number.js"></script>
     <script>
         $(function(){
     
-    $('input[type="number"]').niceNumber();
+    $('input[type="number"]').niceNumber({
+        onIncrement: function ($currentInput, amount, settings) {
+          $.get("{{ asset('obetener-valor-tickets') }}/"+$currentInput[0]['id']+"/"+amount,function(data, status){
+            console.log(data);
+          });
+        },
+    });
     
     });
     </script>

@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\ConfirmarSolicitud;
 use App\Mail\NumerosFolio;
+use App\ImagenPropiedad;
+use App\PropiedadCaracteristica;
+use App\Propiedad;
 use App\Numero;
 use App\Usuario;
 use App\Boleta;
@@ -64,10 +68,23 @@ class ComprarRifaController extends Controller
         }
         return "exito";
     }
-    public function index()
+    public function index(Request $request)
     {
-    	$numeros = Numero::where('idEstado',1)->take(100)->get();
-    	return view('rifa',compact('numeros'));
+        $propiedad = Propiedad::select('*')
+            ->join('paises','propiedades.idPais','=','paises.idPais')
+            ->join('regiones','propiedades.idRegion','=','regiones.idRegion')
+            ->join('comunas','propiedades.idComuna','=','comunas.idComuna')
+            ->join('provincias','propiedades.idProvincia','=','provincias.idProvincia')
+            ->where('propiedades.idPropiedad',(Crypt::decrypt($request->idPropiedad)))
+            ->firstOrFail();
+        $propiedadCaracteristicas = PropiedadCaracteristica::select('*')
+            ->join('tipos_caracteristicas','propiedades_caracteristicas.idTipoCaracteristica','=','tipos_caracteristicas.idTipoCaracteristica')
+            ->where('idPropiedad',Crypt::decrypt($request->idPropiedad))
+            ->get();
+        $imagenesPropiedad = ImagenPropiedad::where('idPropiedad',Crypt::decrypt($request->idPropiedad))->get();
+        $portada1 = $imagenesPropiedad->shift();
+        $portada2 = $imagenesPropiedad->shift();
+    	return view('rifa',compact('propiedad','propiedadCaracteristicas','imagenesPropiedad','portada1','portada2'));
     }
     public function numerosBuscados(Request $request)
     {

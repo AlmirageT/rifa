@@ -7,7 +7,7 @@ Caracteristicas
     <div class="card">
         <div class="card-header">
             <div align="center">
-                <h3>Premios</h3>
+                <h3>Caracteristicas</h3>
             </div>
         </div>
         <form action="{{ route('mantenedor-caracteristicas.store') }}" method="POST">
@@ -17,15 +17,15 @@ Caracteristicas
                     <input type="hidden" value="{{ $idPropiedad }}" name="idPropiedad">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="">Descripción Premio</label>
+                            <label for="">Descripción Caracteristica</label>
                             <input type="text" name="descripcionCaracterisitca" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="">Tipo de Premio</label>
+                            <label for="">Tipo de Caracteristica</label>
                             <select name="idTipoCaracteristica" class="form-control" required>
-                                <option value="">Seleccione tipo de premio</option>
+                                <option value="">Seleccione tipo de caracteristica</option>
                                 @foreach ($tiposCaracteristicas as $tipoCaracteristica)
                                     <option value="{{ $tipoCaracteristica->idTipoCaracteristica }}">{{ $tipoCaracteristica->nombreTipoCaracteristica }}</option>
                                 @endforeach
@@ -62,7 +62,7 @@ Caracteristicas
                                 <td>{{ $propiedadCaracteristica->idPropiedadCaracteristica }}</td>
                                 <td>{{  $propiedadCaracteristica->descripcionCaracterisitca  }}</td>
                                 <td>{{ $propiedadCaracteristica->nombreTipoCaracteristica }}</td>
-                                <td>{{ $propiedadCaracteristica->itag }}</td>
+                                <td><i class="{{ $propiedadCaracteristica->itag }}"></i>   </td>
                                 <td>
                                     <div class="dropdown">
                                     <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">

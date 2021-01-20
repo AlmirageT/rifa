@@ -272,7 +272,7 @@ class BusquedaController extends Controller
 				}else{
 					$nestedData['fotoMapa'] = "No tiene mapa";
 				}
-				$nestedData['descripcionPropiedad'] = $propiedad->descripcionPropiedad;
+				$nestedData['descripcionPropiedad'] = substr($propiedad->descripcionPropiedad,0,15).'.....';
 				$nestedData['mConstruidos'] = $propiedad->mConstruidos;
 				$nestedData['mSuperficie'] = $propiedad->mSuperficie;
 				$nestedData['mTerraza'] = $propiedad->mTerraza;
@@ -307,7 +307,7 @@ class BusquedaController extends Controller
 		);
 		echo json_encode($json_data);
 	}
-	
+	//tabla usuarios
 	public function tablaUsuarios(Request $request)
     {
     	$columns = array(
@@ -384,6 +384,8 @@ class BusquedaController extends Controller
 			"data" => $data
 		);
 		echo json_encode($json_data);
-    }
+	
+	}
+	
 
 }

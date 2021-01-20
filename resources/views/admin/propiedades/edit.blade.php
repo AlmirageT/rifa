@@ -11,15 +11,21 @@ Actualizar Propiedad
 				<h3>Actualizar Propiedad</h3>
 			</div>
 		</div>
-        <form action="{{ route('mantenedor-propiedades.update',$propiedad->idPropiedad) }}" method="POST" file="true" enctype="multipart/form-data">
+        <form action="{{ route('mantenedor-propiedades.update',$propiedad->idPropiedad) }}" method="POST" files="true" enctype="multipart/form-data">
             @method('PUT')
         	@csrf
 				<div class="card-body">
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-6">
 							<div class="form-group">
                                 <label>Nombre Propiedad</label>
                                 <input type="text" class="form-control" name="nombrePropiedad" placeholder="Ingrese nombre de la propiedad" required value="{{ $propiedad->nombrePropiedad }}">
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+                                <label>Sub-Titulo Propiedad</label>
+                                <input type="text" class="form-control" name="subtituloPropiedad" placeholder="Ingrese nombre de la propiedad" required value="{{ $propiedad->subtituloPropiedad }}">
 							</div>
 						</div>
 						<div class="col-lg-12">
@@ -130,8 +136,8 @@ Actualizar Propiedad
 						
 						<div class="col-lg-6">
 							<div class="form-group">
-                                <label>URL Video</label>
-                                <input type="text" name="urlVideo" class="form-control" value="{{ $propiedad->urlVideo }}">
+								<label>Video</label>
+								<input type="file" name="urlVideo" class="form-control" >
 							</div>
                         </div>
                         <div class="col-lg-6">
@@ -156,10 +162,22 @@ Actualizar Propiedad
                                 </select>
 							</div>
 						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="">Valor Rifa</label>
+								<input type="number" name="valorRifa" class="form-control" required value="{{ $propiedad->valorRifa }}">
+							</div>
+						</div>
 						<div class="col-lg-12">
 							<div class="form-group">
-								<label>Descripción</label>
+								<label>Descripción Frontal</label>
 								<textarea class="form-control summernote" name="descripcionPropiedad" required>{{ $propiedad->descripcionPropiedad }}</textarea>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label>Descripción Interna</label>
+								<textarea class="form-control summernote" name="descripcionDetalle" required>{{ $propiedad->descripcionDetalle }}</textarea>
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -190,6 +208,12 @@ Actualizar Propiedad
 							<div class="form-group">
 								<label>Url Instagram</label>
                                 <input type="text" name="urlInstagram" class="form-control" value="{{ $propiedad->urlInstagram }}">
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label>PDF Bases Legales</label>
+								<input type="file" name="pdfBasesLegales" class="form-control">
 							</div>
 						</div>
 						

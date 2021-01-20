@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
 use App\PropiedadCaracteristica;
 use App\TipoCaracteristica;
+use App\ImagenPropiedad;
 use Session;
 use DB;
 
@@ -31,8 +32,9 @@ class PropiedadCaracteristicaController extends Controller
     {
     	try {
             $validator = Validator::make($request->all(), [
-                'nombreEstado' => 'required',
-                'idTipoEstado' => 'required'
+                'descripcionCaracterisitca' => 'required',
+                'idPropiedad' => 'required',
+                'idTipoCaracteristica' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Los datos no pueden estar vacios');
@@ -62,22 +64,23 @@ class PropiedadCaracteristicaController extends Controller
             return redirect::back();
         }
     }
-    public function update(Request $request, $idEstado)
+    public function update(Request $request, $idPropiedadCaracteristica)
     {
     	try {
             $validator = Validator::make($request->all(), [
-                'nombreEstado' => 'required',
-                'idTipoEstado' => 'required'
+                'descripcionCaracterisitca' => 'required',
+                'idPropiedad' => 'required',
+                'idTipoCaracteristica' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Los datos no pueden estar vacios');
                 return back();
             }
             DB::beginTransaction();
-	    		$estado = Estado::find($idEstado);
-	            $estado->fill($request->all());
-	            $estado->save();
-                toastr()->success('Actualizado Correctamente', 'El tipo de premio: '.$request->nombreEstado.' ha sido actualizado correctamente', ['timeOut' => 9000]);
+            $propiedadCaracteristica = PropiedadCaracteristica::find($idPropiedadCaracteristica);
+            $propiedadCaracteristica->fill($request->all());
+            $propiedadCaracteristica->save();
+            toastr()->success('Actualizado Correctamente', 'Las caracteristicas se han agregado correctamente');
             DB::commit();
         	return redirect::back();
     	} catch (ModelNotFoundException $e) {
@@ -98,13 +101,41 @@ class PropiedadCaracteristicaController extends Controller
             return redirect::back();
         }
     }
-    public function destroy($idEstado)
+    public function destroy($idPropiedadCaracteristica)
     {
     	try {
-    		DB::beginTransaction();
-    			$estado = Estado::find($idEstado);
-	            toastr()->success('Eliminado Correctamente', 'El estado: '.$estado->nombreEstado.' ha sido eliminado correctamente', ['timeOut' => 9000]);
-	            $estado->delete();
+            DB::beginTransaction();
+            $propiedadCaracteristica = PropiedadCaracteristica::find($idPropiedadCaracteristica);
+            $propiedadCaracteristica->delete();
+            toastr()->success('Eliminado Correctamente', 'La caracteristica ha sido eliminada');
+    		DB::commit();
+            return redirect::back();
+    	} catch (ModelNotFoundException $e) {
+            toastr()->warning('No autorizado');
+            DB::rollback();
+            return back();
+        } catch (QueryException $e) {
+            toastr()->warning('Ha ocurrido un error, favor intente nuevamente' . $e->getMessage());
+            DB::rollback();
+            return back();
+        } catch (DecryptException $e) {
+            toastr()->info('Ocurrio un error al intentar acceder al recurso solicitado');
+            DB::rollback();
+            return back();
+        } catch (Exception $e) {
+            DB::rollback();         
+            toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
+            return redirect::back();
+        }
+    }
+    public function eliminarFoto($idImagenPropiedad)
+    {
+        try {
+            DB::beginTransaction();
+            $imagenPropiedad = ImagenPropiedad::find($idImagenPropiedad);
+            unlink($imagenPropiedad->urlImagen);
+            $imagenPropiedad->delete();
+            toastr()->success('Eliminado Correctamente', 'La imagen ha sido eliminada');
     		DB::commit();
             return redirect::back();
     	} catch (ModelNotFoundException $e) {

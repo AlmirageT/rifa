@@ -1,5 +1,6 @@
 @extends('layouts.public.app')
 @section('cont-header')
+<a class="btn-comprar-flotante letras-btn" href="{{ asset('tienda-rifo-propiedades') }}">Comprar<br><i class="fas fa-shopping-cart" aria-hidden="true"></i> </a>
 
 <div class="cont-header">
   <div class="cont-tittle">
@@ -13,7 +14,7 @@
   </div>
 
   <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
-      <img src="images/gif2.gif" alt="">
+      <img src="{{ asset('images/gif2.gif') }}" alt="">
   </div>
 </div>
 
@@ -132,7 +133,7 @@
           <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
           
           <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label>
-          <textarea class="form-input" name="" id="msg" cols="30" rows="5" name="consulta" > </textarea>
+          <textarea class="form-input" id="msg" cols="30" rows="5" name="consulta" > </textarea>
           
           <input type="submit" class="btn-submit-bottom" value="Solicita información">
       </form>
@@ -141,6 +142,7 @@
 @endsection
 @section('scripts')
 <script>
+  
   var swiper = new Swiper('.swiper-container', {
       pagination: {
           el: '.swiper-pagination',

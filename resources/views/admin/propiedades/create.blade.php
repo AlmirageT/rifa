@@ -15,10 +15,16 @@ Crear Propiedad
         	@csrf
 				<div class="card-body">
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-6">
 							<div class="form-group">
-                                <label>Nombre Propiedad</label>
+                                <label>Titulo Propiedad</label>
                                 <input type="text" class="form-control" name="nombrePropiedad" placeholder="Ingrese nombre de la propiedad" required>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+                                <label>Sub-Titulo Propiedad</label>
+                                <input type="text" class="form-control" name="subtituloPropiedad" placeholder="Ingrese nombre de la propiedad" required>
 							</div>
 						</div>
 						<div class="col-lg-12">
@@ -113,8 +119,8 @@ Crear Propiedad
 						
 						<div class="col-lg-6">
 							<div class="form-group">
-                                <label>URL Video</label>
-                                <input type="text" name="urlVideo" class="form-control">
+								<label>Video</label>
+								<input type="file" name="urlVideo" class="form-control">
 							</div>
                         </div>
                         <div class="col-lg-6">
@@ -135,11 +141,23 @@ Crear Propiedad
                                 </select>
 							</div>
 						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="">Valor Rifa</label>
+								<input type="number" name="valorRifa" class="form-control" required>
+							</div>
+						</div>
 						
 						<div class="col-lg-12">
 							<div class="form-group">
-								<label>Descripción</label>
+								<label>Descripción Frontal</label>
 								<textarea class="form-control summernote" name="descripcionPropiedad" required></textarea>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label>Descripción Interna</label>
+								<textarea class="form-control summernote" name="descripcionDetalle" required></textarea>
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -172,7 +190,12 @@ Crear Propiedad
                                 <input type="text" name="urlInstagram" class="form-control">
 							</div>
 						</div>
-						
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label>PDF Bases Legales</label>
+								<input type="file" name="pdfBasesLegales" class="form-control">
+							</div>
+						</div>
 
 					</div>
 				</div>

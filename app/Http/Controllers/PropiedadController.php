@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use App\Propiedad;
+use App\Premio;
 use App\ImagenPropiedad;
 use App\Pais;
 use App\Comuna;
@@ -18,6 +20,7 @@ use App\Estado;
 use Session;
 use Image;
 use DB;
+use Log;
 
 class PropiedadController extends Controller
 {
@@ -61,34 +64,14 @@ class PropiedadController extends Controller
                 'idRegion' => 'required',
                 'idProvincia' => 'required',
                 'idComuna' => 'required',
-                'idEstado' => 'required',
-                'idTipoCaracteristica' => 'required'
+                'idEstado' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('El archivo no puede pasar de los 100MB');
                 return back();
             }
             DB::beginTransaction();
-            $propiedad = new Propiedad();
-            $propiedad->nombrePropiedad = $request->nombrePropiedad;
-            $propiedad->descripcionPropiedad = $request->descripcionPropiedad;
-            $propiedad->mConstruidos = $request->mConstruidos;
-            $propiedad->mSuperficie = $request->mSuperficie;
-            $propiedad->mTerraza = $request->mTerraza;
-            $propiedad->urlVideo = $request->urlVideo;
-            $propiedad->urlMattlePort = $request->urlMattlePort;
-            $propiedad->direccionPropiedad = $request->direccionPropiedad;
-            $propiedad->numeracionPropiedad = $request->numeracionPropiedad;
-            $propiedad->codigoPostal = $request->codigoPostal;
-            $propiedad->latitud = $request->latitud;
-            $propiedad->longitud = $request->longitud;
-            $propiedad->idPais = $request->idPais;
-            $propiedad->idRegion = $request->idRegion;
-            $propiedad->idProvincia = $request->idProvincia;
-            $propiedad->idComuna = $request->idComuna;
-            $propiedad->idEstado = $request->idEstado;
-            $propiedad->urlFacebook = $request->urlFacebook;
-            $propiedad->urlInstagram = $request->urlInstagram;
+            $propiedad = new Propiedad($request->all());
             if($request->file('fotoPrincipal')){
                 $imagen = $request->file('fotoPrincipal');
                 $img = Image::make($imagen);
@@ -96,8 +79,20 @@ class PropiedadController extends Controller
                 $img->save('assets/images/propiedades/'.$imgName);
                 $propiedad->fotoPrincipal = 'assets/images/propiedades/'.$imgName;
             }
+            if($request->file('urlVideo')){
+                $video = $request->file('urlVideo');
+                $videoName = uniqid().'.'.$video->getClientOriginalExtension();
+                $video->move('assets/videos/',$videoName);
+                $propiedad->urlVideo = 'assets/videos/'.$videoName;
+            }
+            if($request->file('pdfBasesLegales')){
+                $pdf = $request->file('pdfBasesLegales');
+                $pdfName = uniqid().'.'.$pdf->getClientOriginalExtension();
+                $pdf->move('assets/pdf/',$pdfName);
+                $propiedad->pdfBasesLegales = 'assets/pdf/'.$pdfName;
+            }
             $geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
-            $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=17&size=350x233&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
+            $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=16&size=380x377&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
             $mapa = Image::make($linkMapa);
             $mapaNombre = uniqid();
             $mapa->save('assets/images/propiedades/'.$mapaNombre);
@@ -158,8 +153,7 @@ class PropiedadController extends Controller
                 'idRegion' => 'required',
                 'idProvincia' => 'required',
                 'idComuna' => 'required',
-                'idEstado' => 'required',
-                'idTipoCaracteristica' => 'required'
+                'idEstado' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('El archivo no puede pasar de los 100MB');
@@ -177,27 +171,50 @@ class PropiedadController extends Controller
                 $img->save('assets/images/propiedades/'.$imgName);
                 $propiedad->fotoPrincipal = 'assets/images/propiedades/'.$imgName;
             }
+            if($request->file('urlVideo')){
+                if($propiedad->urlVideo != null){
+                    unlink($propiedad->urlVideo);
+                }
+                $video = $request->file('urlVideo');
+                $videoName = uniqid().'.'.$video->getClientOriginalExtension();
+                $video->move('assets/videos/',$videoName);
+                $propiedad->urlVideo = 'assets/videos/'.$videoName;
+            }
+            if($request->file('pdfBasesLegales')){
+                if($propiedad->pdfBasesLegales != null){
+                    unlink($propiedad->pdfBasesLegales);
+                }
+                $pdf = $request->file('pdfBasesLegales');
+                Log::info($pdf);
+                $pdfName = uniqid().'.'.$pdf->getClientOriginalExtension();
+                Log::info($pdfName);
+
+                $pdf->move('assets/pdf/',$pdfName);
+                $propiedad->pdfBasesLegales = 'assets/pdf/'.$pdfName;
+            }
             $propiedad->nombrePropiedad = $request->nombrePropiedad;
             $propiedad->descripcionPropiedad = $request->descripcionPropiedad;
             $propiedad->mConstruidos = $request->mConstruidos;
             $propiedad->mSuperficie = $request->mSuperficie;
             $propiedad->mTerraza = $request->mTerraza;
-            $propiedad->urlVideo = $request->urlVideo;
             $propiedad->urlMattlePort = $request->urlMattlePort;
             $propiedad->direccionPropiedad = $request->direccionPropiedad;
             $propiedad->numeracionPropiedad = $request->numeracionPropiedad;
             $propiedad->codigoPostal = $request->codigoPostal;
             $propiedad->latitud = $request->latitud;
             $propiedad->longitud = $request->longitud;
+            $propiedad->urlFacebook = $request->urlFacebook;
+            $propiedad->urlInstagram = $request->urlInstagram;
+            $propiedad->valorRifa = $request->valorRifa;
+            $propiedad->descripcionDetalle = $request->descripcionDetalle;
+            $propiedad->subtituloPropiedad = $request->subtituloPropiedad;
             $propiedad->idPais = $request->idPais;
             $propiedad->idRegion = $request->idRegion;
             $propiedad->idProvincia = $request->idProvincia;
             $propiedad->idComuna = $request->idComuna;
             $propiedad->idEstado = $request->idEstado;
-            $propiedad->urlFacebook = $request->urlFacebook;
-            $propiedad->urlInstagram = $request->urlInstagram;
             $geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
-            $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=17&size=350x233&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
+            $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=16&size=380x377&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
             $mapa = Image::make($linkMapa);
             $mapaNombre = uniqid();
             $mapa->save('assets/images/propiedades/'.$mapaNombre);
@@ -301,7 +318,117 @@ class PropiedadController extends Controller
     //funciones para vistas publicas
     public function tienda()
     {
-        $propiedades = Propiedad::all();
-        return view('propiedad',compact('propiedad'));
+        $propiedades = Propiedad::select('*')
+            ->join('paises','propiedades.idPais','=','paises.idPais')
+            ->join('regiones','propiedades.idRegion','=','regiones.idRegion')
+            ->join('comunas','propiedades.idComuna','=','comunas.idComuna')
+            ->join('provincias','propiedades.idProvincia','=','provincias.idProvincia')
+            ->orderBy('propiedades.idPropiedad','DESC')
+            ->paginate(3);
+
+        $premios = Premio::select('*')
+            ->join('tipos_premios','premios.idTipoPremio','=','tipos_premios.idTipoPremio')
+            ->get();
+           
+        return view('propiedad',compact('propiedades','premios'));
+    }
+    //busqueda de propiedades
+	public function propiedadTienda(Request $request)
+	{
+        $propiedades = Propiedad::select('*')
+            ->join('paises','propiedades.idPais','=','paises.idPais')
+            ->join('regiones','propiedades.idRegion','=','regiones.idRegion')
+            ->join('comunas','propiedades.idComuna','=','comunas.idComuna')
+            ->join('provincias','propiedades.idProvincia','=','provincias.idProvincia')
+            ->where('propiedades.nombrePropiedad', 'LIKE',"%{$request->buscadorDeRifa}%")
+            ->orWhere('propiedades.direccionPropiedad', 'LIKE',"%{$request->buscadorDeRifa}%")
+            ->orWhere('regiones.nombreRegion', 'LIKE',"%{$request->buscadorDeRifa}%")
+            ->orWhere('comunas.nombreComuna', 'LIKE',"%{$request->buscadorDeRifa}%")
+            ->orderBy('propiedades.idPropiedad','DESC')
+            ->paginate(3);
+
+        $premios = Premio::select('*')
+            ->join('tipos_premios','premios.idTipoPremio','=','tipos_premios.idTipoPremio')
+            ->get();
+        
+        return view('propiedad',compact('propiedades','premios'));
+        
+    }
+    
+    //creacion session carrito compra
+    public function crearCarritoCompra($cantidad, $idPropiedad)
+    {
+        $propiedad = Propiedad::find($idPropiedad);
+
+        if (Session::has('carritoCompra')) {
+            $session = Session::get('carritoCompra');
+            $array = array(
+                'idPropiedad' => $idPropiedad,
+                'nombrePropiedad' => $propiedad->nombrePropiedad,
+                'valorRifa' => $propiedad->valorRifa,
+                'cantidad' => $cantidad,
+                'imagenPropiedad' => $propiedad->fotoPrincipal
+            );
+            array_push($session, $array);
+            Session::put('carritoCompra',$session);
+        }else{
+            $prueba = array(0=>[
+                    'idPropiedad' => $idPropiedad,
+                    'nombrePropiedad' => $propiedad->nombrePropiedad,
+                    'valorRifa' => $propiedad->valorRifa,
+                    'cantidad' => $cantidad,
+                    'imagenPropiedad' => $propiedad->fotoPrincipal
+                ]
+            );
+            Session::put('carritoCompra',$prueba);
+        }
+
+        if (Session::has('total')) {
+            $array_total = Session::get('total');
+            $total = $propiedad->valorRifa*$cantidad;
+            $total = $array_total + $total;
+            Session::put('total',$total);
+        }else{
+            $total = $propiedad->valorRifa*$cantidad;
+            Session::put('total',$total);
+        }
+
+        $cantidadCarrito = count(Session::get('carritoCompra'));
+        $estadoJson = false;
+
+        if(Session::has('total') && Session::has('carritoCompra')){
+            $estadoJson = true;
+            return response()->json(['estadoJson' => $estadoJson, 'cantidadCarrito' => $cantidadCarrito]);
+        }
+
+        return response()->json(['estadoJson' => $estadoJson]);
+    }
+    public function eliminarDatoCarroCompra($arrayKey)
+    {
+        if (Session::has('carritoCompra')) {
+            if (count(Session::get('carritoCompra'))>1) {
+                $array = Session::get('carritoCompra');
+                foreach ($array as $key => $value) {
+                    if ($key == $arrayKey) {
+                        $total = $value['valorRifa'] * $value['cantidad'];
+                        $array_total = Session::get('total');
+                        $total = $array_total - $total;
+                        Session::put('total',$total);
+                        unset($array[$arrayKey]);
+                        Session::put('carritoCompra', $array);
+                    }
+                }
+            }else if(count(Session::get('carritoCompra'))==1){
+                Session::forget('carritoCompra');
+                Session::forget('total');
+            }
+        }
+        toastr()->success('Eliminado Correctamente', 'Se ha eliminado el ticket solicitado');
+        return back();
+        
+    }
+    public function cambiarValorDatos($arrayKey, $cantidad)
+    {
+        # code...
     }
 }

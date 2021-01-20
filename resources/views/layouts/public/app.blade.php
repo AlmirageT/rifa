@@ -31,18 +31,20 @@
   </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/iconos/favicon.png" type="image/jpg">
+    <link rel="icon" href="{{ asset('images/iconos/favicon.png') }}" type="image/jpg">
     <title>Rifo mi Propiedad</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://kit.fontawesome.com/9987974c2b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
       html{
         scroll-behavior: smooth;
       }
     </style>
     @yield('css')
+  @toastr_css
+
 </head>
 
 <body>
@@ -97,7 +99,8 @@
         new WOW().init();
     });
   </script> 
-  
+  @toastr_js
+  @toastr_render
     @yield('scripts')
     </body>
 </html>

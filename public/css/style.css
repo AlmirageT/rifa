@@ -2,7 +2,7 @@
 
 *
 {
- margin: 0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -1164,6 +1164,8 @@ video {
 }
 
 
+
+
 /********PAGINA BASES LEGALES********/
 .cont-bl
 {
@@ -1244,10 +1246,9 @@ video {
 
 /********PAGINA COMPRAS********/
 
-.cont-form-ticket
-{
+.cont-form-ticket {
   width: 100%;
-  padding: 50px 200px;
+  padding: 50px 0px;
 }
 
 .contenedor-form-ticket .form-input-ticket
@@ -1261,7 +1262,7 @@ video {
   padding: 8px;
   margin-bottom: 20px;
   font-size: 17px;
-  
+  border-radius: 12px;
   
 }
 
@@ -1378,13 +1379,17 @@ display: block;
 
 .resumen-compra1 {
   width: 20%;
-  margin-top: -20px;
+  margin-top: 20px;
+}
+
+.resumen-compra1 form {
+display: flex;
 }
 
 .resumen-compra2
 {
   width: 20%;
-  margin-top: 11px; 
+  margin-top: 35px; 
 }
 
 .btnTrash {
@@ -1421,10 +1426,26 @@ display: block;
  
 }
 
+.contNotificacion{
+display: flex;
+}
+
+.notificacion
+{
+  margin-left: 1px;
+  background-color: #c70039; 
+  width: 25px;
+  height: 25px;
+  border-radius: 60px;
+  color: #fff;
+  padding-top: 4px;
+  text-align: center;
+}
+
 .total
 {
   width: 25%;
-  height: 140px;
+  height: 150px;
   border: 1px solid #ccc; 
   border-radius: 30px;
   padding: 20px;
@@ -1441,6 +1462,15 @@ font-size: 25px;
 {
   display: none;
 }
+
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  }
+  input[type="number"]:hover,
+  input[type="number"]:focus {
+  -moz-appearance: number-input;
+  }
 
 
 /********RESPONSIVE MOBILE********/

@@ -14,8 +14,15 @@ Route::view('/', 'welcome');
 Route::view('carrito-compra', 'galeria');
 Route::view('bases-legales', 'bases');
 Route::get('tienda-rifo-propiedades', 'PropiedadController@tienda');
-Route::get('rifa', 'ComprarRifaController@index');
+Route::get('rifo-propiedades/detalle', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
+Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
+
+Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
+Route::get('eliminar-ticket-carrito/{arrayKey}','PropiedadController@eliminarDatoCarroCompra');
+Route::get('obetener-valor-tickets/{arrayKey}/{cantidad}','PropiedadController@cambiarValorDatos');
+
+
 //Route::get('pruebaCambioNumeros','ComprarRifaController@numeros');
 //Route::get('numeros-cienmil','ComprarRifaController@hastaCien');
 //tabla de boletas creadas para revisión de compra
@@ -48,6 +55,7 @@ Route::group(['prefix'=>'administrador'], function(){
 		Route::post('img-propiedad/{idPropiedad}','PropiedadController@dropzone');
 		Route::get('premios/{idPropiedad}','PremiosController@index');
 		Route::get('caracteristicas/{idPropiedad}','PropiedadCaracteristicaController@index');
+		Route::get('eliminar-imagen/{idImagenPropiedad}','PropiedadCaracteristicaController@eliminarFoto');
 	});
 
 	Route::group(['prefix'=>'ubicaciones'],function(){

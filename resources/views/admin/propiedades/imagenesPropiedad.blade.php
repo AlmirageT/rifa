@@ -34,8 +34,13 @@ Imagenes Propiedades
             <div class="col-lg-12" align="center"> <h3> Galeria de Imagenes </h3> <br></div>
             @foreach ($imagenesPropiedades as $imagenPropiedad)
                 <div class="col-lg-3">
-                    <div class="card card-body">
-                        <img src="{{ asset($imagenPropiedad->urlImagen) }}" class="img-fluid"/>
+                    <div class="card ">
+						<div class="card-body">
+							<img src="{{ asset($imagenPropiedad->urlImagen) }}" class="img-fluid"/>
+						</div>
+						<div class="card-footer">
+							<a href="{{ asset('administrador/propiedades/eliminar-imagen') }}/{{ $imagenPropiedad->idImagenPropiedad }}" class="btn btn-danger">Eliminar</a>
+						</div>
                     </div>
                 </div>
             @endforeach
