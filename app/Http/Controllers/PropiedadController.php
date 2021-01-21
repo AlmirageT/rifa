@@ -91,6 +91,9 @@ class PropiedadController extends Controller
                 $pdf->move('assets/pdf/',$pdfName);
                 $propiedad->pdfBasesLegales = 'assets/pdf/'.$pdfName;
             }
+            if($request->tieneMapa){
+                $propiedad->urlGoogleMaps = 1;
+            }
             $geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
             $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=16&size=380x377&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
             $mapa = Image::make($linkMapa);
@@ -213,6 +216,11 @@ class PropiedadController extends Controller
             $propiedad->idProvincia = $request->idProvincia;
             $propiedad->idComuna = $request->idComuna;
             $propiedad->idEstado = $request->idEstado;
+            if($request->tieneMapa){
+                $propiedad->urlGoogleMaps = 1;
+            }
+
+            $propiedad->cantidadTotalPremios = $request->cantidadTotalPremios;
             $geoHash = DB::select("SELECT ST_GeoHash($request->longitud, $request->latitud, 16) as geoHash");
             $linkMapa = "https://maps.googleapis.com/maps/api/staticmap?center=".$request->latitud.",".$request->longitud."&zoom=16&size=380x377&markers=color:blue%7Clabel:S%7C".$request->latitud.",".$request->longitud."&key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g";
             $mapa = Image::make($linkMapa);
@@ -359,18 +367,68 @@ class PropiedadController extends Controller
     public function crearCarritoCompra($cantidad, $idPropiedad)
     {
         $propiedad = Propiedad::find($idPropiedad);
+        $estadoJson = false;
 
         if (Session::has('carritoCompra')) {
-            $session = Session::get('carritoCompra');
-            $array = array(
-                'idPropiedad' => $idPropiedad,
-                'nombrePropiedad' => $propiedad->nombrePropiedad,
-                'valorRifa' => $propiedad->valorRifa,
-                'cantidad' => $cantidad,
-                'imagenPropiedad' => $propiedad->fotoPrincipal
-            );
-            array_push($session, $array);
-            Session::put('carritoCompra',$session);
+            if(count(Session::get('carritoCompra')) < 15){
+                $session = Session::get('carritoCompra');
+
+                $arrayKey = false;
+                foreach ($session as $key => $busquedaId) {
+                    if($busquedaId['idPropiedad'] == $idPropiedad){
+                        $arrayKey = $key;
+                    }
+                }
+                
+
+                if(is_numeric($arrayKey)){
+                    $arrayPropiedad = $session[$arrayKey];
+                    $nuevaCantidad = $arrayPropiedad['cantidad']+$cantidad;
+                    $arrayCambio = array('cantidad'=>$nuevaCantidad);
+                    $nuevoCarrito = array_replace($arrayPropiedad, $arrayCambio);
+
+                    if (Session::has('total')) {
+                        $array_total = Session::get('total');
+                        $restaValor = $array_total - ($arrayPropiedad['valorRifa']*$arrayPropiedad['cantidad']);
+                        Session::put('total',$restaValor);
+                        $nuevoTotalArray = Session::get('total');
+                        $total = $arrayPropiedad['valorRifa']*$nuevaCantidad;
+                        $total = $nuevoTotalArray + $total;
+                        Session::put('total',$total);
+                        $nuevoValor = Session::get('total');
+                    }
+                    
+                    $array = Session::get('carritoCompra');
+                    foreach ($array as $key => $value) {
+                        if ($key == $arrayKey) {
+                            unset($array[$arrayKey]);
+                            Session::put('carritoCompra', $array);
+                            array_push($array, $nuevoCarrito);
+                            Session::put('carritoCompra', $array);
+                        }
+                    }
+                    $cantidadCarrito = count(Session::get('carritoCompra'));
+
+                    if(Session::has('total') && Session::has('carritoCompra')){
+                        $estadoJson = true;
+                        return response()->json(['estadoJson' => $estadoJson, 'cantidadCarrito' => $cantidadCarrito]);
+                    }
+
+                }else{
+                    $array = array(
+                        'idPropiedad' => $idPropiedad,
+                        'nombrePropiedad' => $propiedad->nombrePropiedad,
+                        'valorRifa' => $propiedad->valorRifa,
+                        'cantidad' => $cantidad,
+                        'imagenPropiedad' => $propiedad->fotoPrincipal
+                    );
+                    array_push($session, $array);
+                    Session::put('carritoCompra',$session);
+                }
+            }else{
+                return response()->json(['estadoJson' => $estadoJson]);
+            }
+            
         }else{
             $prueba = array(0=>[
                     'idPropiedad' => $idPropiedad,
@@ -394,7 +452,6 @@ class PropiedadController extends Controller
         }
 
         $cantidadCarrito = count(Session::get('carritoCompra'));
-        $estadoJson = false;
 
         if(Session::has('total') && Session::has('carritoCompra')){
             $estadoJson = true;
@@ -403,8 +460,15 @@ class PropiedadController extends Controller
 
         return response()->json(['estadoJson' => $estadoJson]);
     }
-    public function eliminarDatoCarroCompra($arrayKey)
+    public function eliminarDatoCarroCompra($idPropiedad)
     {
+        $session = Session::get('carritoCompra');
+        $arrayKey = 0;
+        foreach ($session as $key => $busquedaId) {
+            if($busquedaId['idPropiedad'] == $idPropiedad){
+                $arrayKey = $key;
+            }
+        }
         if (Session::has('carritoCompra')) {
             if (count(Session::get('carritoCompra'))>1) {
                 $array = Session::get('carritoCompra');
@@ -427,8 +491,73 @@ class PropiedadController extends Controller
         return back();
         
     }
-    public function cambiarValorDatos($arrayKey, $cantidad)
+    public function cambiarValorDatos($idPropiedad, $cantidad)
     {
-        # code...
+        $session = Session::get('carritoCompra');
+        $arrayKey = 0;
+        foreach ($session as $key => $busquedaId) {
+            if($busquedaId['idPropiedad'] == $idPropiedad){
+                $arrayKey = $key;
+            }
+        }
+        $arrayPropiedad = Session::get('carritoCompra')[$arrayKey];
+        $arrayCambio = array('cantidad'=>$cantidad);
+        $nuevoCarrito = array_replace($arrayPropiedad, $arrayCambio);
+
+        if (Session::has('total')) {
+            $array_total = Session::get('total');
+            $restaValor = $array_total - ($arrayPropiedad['valorRifa']*$arrayPropiedad['cantidad']);
+            Session::put('total',$restaValor);
+            $nuevoTotalArray = Session::get('total');
+            $total = $arrayPropiedad['valorRifa']*$cantidad;
+            $total = $nuevoTotalArray + $total;
+            Session::put('total',$total);
+            $nuevoValor = Session::get('total');
+        }
+        
+        $array = Session::get('carritoCompra');
+        foreach ($array as $key => $value) {
+            if ($key == $arrayKey) {
+                unset($array[$arrayKey]);
+                Session::put('carritoCompra', $array);
+                array_push($array, $nuevoCarrito);
+                Session::put('carritoCompra', $array);
+            }
+        }
+
+        return response()->json(['nuevoCarrito'=>$nuevoCarrito,'nuevoValor'=>$nuevoValor]);
+    }
+    public function restarValorDatos($idPropiedad, $cantidad)
+    {
+        $session = Session::get('carritoCompra');
+        $arrayKey = 0;
+        foreach ($session as $key => $busquedaId) {
+            if($busquedaId['idPropiedad'] == $idPropiedad){
+                $arrayKey = $key;
+            }
+        }
+
+        $arrayPropiedad = Session::get('carritoCompra')[$arrayKey];
+        $arrayCambio = array('cantidad'=>$cantidad);
+        $nuevoCarrito = array_replace($arrayPropiedad, $arrayCambio);
+
+        if (Session::has('total')) {
+            $array_total = Session::get('total');
+            $restaValor = $array_total - ($arrayPropiedad['valorRifa']);
+            Session::put('total',$restaValor);
+            $nuevoValor = Session::get('total');
+        }
+        
+        $array = Session::get('carritoCompra');
+        foreach ($array as $key => $value) {
+            if ($key == $arrayKey) {
+                unset($array[$arrayKey]);
+                Session::put('carritoCompra', $array);
+                array_push($array, $nuevoCarrito);
+                Session::put('carritoCompra', $array);
+            }
+        }
+
+        return response()->json(['nuevoCarrito'=>$nuevoCarrito,'nuevoValor'=>$nuevoValor]);
     }
 }

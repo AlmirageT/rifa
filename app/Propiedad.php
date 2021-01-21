@@ -30,6 +30,8 @@ class Propiedad extends Model
 		'descripcionDetalle',
 		'subtituloPropiedad',
 		'pdfBasesLegales',
+		'urlGoogleMaps',
+		'cantidadTotalPremios',
     	'idPais',
     	'idRegion',
     	'idProvincia',

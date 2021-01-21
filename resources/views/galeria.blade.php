@@ -1,5 +1,7 @@
 @extends('layouts.public.app')
-
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
+@endsection
 @section('content')
 <main class="cont-body int-mobile">
   <h1 class="ml2">Cada vez más cerca de ganar</h1>
@@ -28,11 +30,11 @@
               <div class="resumen-compra1">
                 <form action="">
                   <label for="numero" class="tamanoLetra"></label> <br> <br>
-                  <input type="number" id="{{ $key }}" class="" placeholder="" value="{{ $propiedadTicket['cantidad'] }}" min="1">
+                  <input type="number" id="{{ $propiedadTicket['idPropiedad'] }}" class="" placeholder="" value="{{ $propiedadTicket['cantidad'] }}" min="1">
                 </form>
               </div>
               <div class="resumen-compra2">
-                <a class="btnTrash" href="{{ asset('eliminar-ticket-carrito') }}/{{ $key }}" ><i class="fas fa-trash-alt"></i></a>
+                <a class="btnTrash" href="{{ asset('eliminar-ticket-carrito') }}/{{ $propiedadTicket['idPropiedad'] }}" ><i class="fas fa-trash-alt"></i></a>
               </div>
             </div>
           </div>
@@ -56,9 +58,12 @@
   
     <div class="total">
       @if (Session::has('total'))
-        <h5>Resumen de la compra</h5>
-        <p>TOTAL: ${{ number_format(Session::get('total'),0,',','.') }}.-</p>
-        <button class="btnCompraCarrito" type="submit">Continuar compra</button>
+        <form action="{{ asset('paso-final-compra-ticket') }}" method="POST">
+          @csrf
+          <h5>Resumen de la compra</h5>
+          <p id="totalFInal">TOTAL: ${{ number_format(Session::get('total'),0,',','.') }}.-</p>
+          <button class="btnCompraCarrito" type="submit">Continuar compra</button>
+        </form>
       @else
         <h5>Resumen de la compra</h5>
         <p>TOTAL: $00.000.-</p>
@@ -96,7 +101,18 @@
     $('input[type="number"]').niceNumber({
         onIncrement: function ($currentInput, amount, settings) {
           $.get("{{ asset('obetener-valor-tickets') }}/"+$currentInput[0]['id']+"/"+amount,function(data, status){
-            console.log(data);
+            var total = data['nuevoValor'];
+            total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+            total = total.split('').reverse().join('').replace(/^[\.]/,'');
+            document.getElementById('totalFInal').innerHTML = 'TOTAL: $'+total+'.-';;
+          });
+        },
+        onDecrement: function ($currentInput, amount, settings) {
+          $.get("{{ asset('restar-valor-tickets') }}/"+$currentInput[0]['id']+"/"+amount,function(data, status){
+            var total = data['nuevoValor'];
+            total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+            total = total.split('').reverse().join('').replace(/^[\.]/,'');
+            document.getElementById('totalFInal').innerHTML = 'TOTAL: $'+total+'.-';;
           });
         },
     });

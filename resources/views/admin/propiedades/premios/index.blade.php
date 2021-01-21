@@ -10,7 +10,7 @@ Premios
                 <h3>Premios</h3>
             </div>
         </div>
-        <form action="{{ route('mantenedor-premios.store') }}" method="POST">
+        <form action="{{ route('mantenedor-premios.store') }}" method="POST" file="true" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -34,6 +34,12 @@ Premios
                         </div>
                     </div>
                     <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="">Imagen/GIF Premio</label>
+                            <input type="file" class="form-control" name="imagenPremio">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
                         <button class="btn btn-primary btn-block" type="submit">Agregar Premio</button>
                     </div>
                 </div>
@@ -53,6 +59,7 @@ Premios
                         <th>ID</th>
                         <th>Descripción Premio</th>
                         <th>Tipo de Premio</th>
+                        <th>Imagen</th>
                         <th>Acciones</th>
                         </tr>
                     </thead>
@@ -62,6 +69,7 @@ Premios
                                 <td>{{ $premio->idPremio }}</td>
                                 <td>{!! $premio->descripcion !!}</td>
                                 <td>{{ $premio->nombreTipoPremio }}</td>
+                                <td><img src="{{ asset($premio->imagenPremio) }}" width="100" /></td>
                                 <td>
                                     <div class="dropdown">
                                     <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">

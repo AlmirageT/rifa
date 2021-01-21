@@ -196,7 +196,23 @@ Crear Propiedad
 								<input type="file" name="pdfBasesLegales" class="form-control">
 							</div>
 						</div>
-
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label>Visualizar mapa</label>
+								<br>
+								<input type="checkbox" id="switch4" switch="success" checked  name="tieneMapa"/>
+                                <label for="switch4" data-on-label="Si"
+                                        data-off-label="No"></label>
+							</div>
+						</div>
+						
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="">Cantidad Premios</label>
+								<input type="number" name="cantidadTotalPremios" class="form-control">
+							</div>
+						</div>
+						
 					</div>
 				</div>
 				<div class="card-footer">

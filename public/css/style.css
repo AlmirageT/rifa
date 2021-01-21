@@ -2,7 +2,7 @@
 
 *
 {
-  margin: 0;
+ margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -767,7 +767,6 @@ text-align: center;
   -webkit-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
   -moz-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
   box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
-  padding-left: 20px;
 }
 
 .slide-img
@@ -862,7 +861,7 @@ font-size: 25px;
 
 .margen
 {
-  margin-left: 690px;
+  margin-left: 20px;
 }
 
 .cont-detalles{
@@ -894,7 +893,7 @@ text-decoration: none;
  .img1
 {
   width: 40%;
-  height: 400px;
+  height: 390px;
   margin: 7px; 
   overflow: hidden;
   border-radius: 30px;
@@ -993,7 +992,6 @@ video
 {
   width: 100%;
   outline: none;
-  margin-top: 10px;
 }
 
 .cont-premios
@@ -1164,8 +1162,6 @@ video {
 }
 
 
-
-
 /********PAGINA BASES LEGALES********/
 .cont-bl
 {
@@ -1239,16 +1235,18 @@ video {
   width: 60%;
 }
 
-.cont-matterport img {
+.cont-matterport iframe{
   width: 100%;
+  height: 400px;
 }
 
 
 /********PAGINA COMPRAS********/
 
-.cont-form-ticket {
+.cont-form-ticket
+{
   width: 100%;
-  padding: 50px 0px;
+  padding: 50px 200px;
 }
 
 .contenedor-form-ticket .form-input-ticket
@@ -1262,7 +1260,7 @@ video {
   padding: 8px;
   margin-bottom: 20px;
   font-size: 17px;
-  border-radius: 12px;
+  
   
 }
 
@@ -1379,20 +1377,16 @@ display: block;
 
 .resumen-compra1 {
   width: 20%;
-  margin-top: 20px;
-}
-
-.resumen-compra1 form {
-display: flex;
+  margin-top: -20px;
 }
 
 .resumen-compra2
 {
   width: 20%;
-  margin-top: 35px; 
+  margin-top: 30px; 
 }
 
-.btnTrash {
+.btnTrash  {
   justify-content: center;
   background: #abdfab;
   color: #033b45;
@@ -1426,22 +1420,6 @@ display: flex;
  
 }
 
-.contNotificacion{
-display: flex;
-}
-
-.notificacion
-{
-  margin-left: 1px;
-  background-color: #c70039; 
-  width: 25px;
-  height: 25px;
-  border-radius: 60px;
-  color: #fff;
-  padding-top: 4px;
-  text-align: center;
-}
-
 .total
 {
   width: 25%;
@@ -1463,13 +1441,20 @@ font-size: 25px;
   display: none;
 }
 
-
-input[type="number"] {
-  -moz-appearance: textfield;
+.contNotificacion{
+  display: flex;
   }
-  input[type="number"]:hover,
-  input[type="number"]:focus {
-  -moz-appearance: number-input;
+  
+  .notificacion
+  {
+    margin-left: 1px;
+    background-color: #c70039; 
+    width: 25px;
+    height: 25px;
+    border-radius: 60px;
+    color: #fff;
+    padding-top: 4px;
+    text-align: center;
   }
 
 

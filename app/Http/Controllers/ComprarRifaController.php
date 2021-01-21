@@ -12,7 +12,12 @@ use App\Mail\ConfirmarSolicitud;
 use App\Mail\NumerosFolio;
 use App\ImagenPropiedad;
 use App\PropiedadCaracteristica;
+use App\Premio;
 use App\Propiedad;
+use App\Pais;
+use App\Comuna;
+use App\Provincia;
+use App\Region;
 use App\Numero;
 use App\Usuario;
 use App\Boleta;
@@ -84,7 +89,12 @@ class ComprarRifaController extends Controller
         $imagenesPropiedad = ImagenPropiedad::where('idPropiedad',Crypt::decrypt($request->idPropiedad))->get();
         $portada1 = $imagenesPropiedad->shift();
         $portada2 = $imagenesPropiedad->shift();
-    	return view('rifa',compact('propiedad','propiedadCaracteristicas','imagenesPropiedad','portada1','portada2'));
+        $premios = Premio::where('idPropiedad',(Crypt::decrypt($request->idPropiedad)))->get();
+        $paises = Pais::all();
+        $regiones = Region::all();
+        $provincias = Provincia::all();
+        $comunas = Comuna::all();
+    	return view('rifa',compact('propiedad','propiedadCaracteristicas','imagenesPropiedad','portada1','portada2','premios','paises','regiones','provincias','comunas'));
     }
     public function numerosBuscados(Request $request)
     {

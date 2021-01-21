@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'welcome');
+Route::get('/', 'WelcomeController@index');
 Route::view('carrito-compra', 'galeria');
 Route::view('bases-legales', 'bases');
 Route::get('tienda-rifo-propiedades', 'PropiedadController@tienda');
@@ -19,9 +19,11 @@ Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
 
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
-Route::get('eliminar-ticket-carrito/{arrayKey}','PropiedadController@eliminarDatoCarroCompra');
-Route::get('obetener-valor-tickets/{arrayKey}/{cantidad}','PropiedadController@cambiarValorDatos');
+Route::get('eliminar-ticket-carrito/{idPropiedad}','PropiedadController@eliminarDatoCarroCompra');
+Route::get('obetener-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@cambiarValorDatos');
+Route::get('restar-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@restarValorDatos');
 
+Route::post('paso-final-compra-ticket','UsuarioController@formularioUsuario');
 
 //Route::get('pruebaCambioNumeros','ComprarRifaController@numeros');
 //Route::get('numeros-cienmil','ComprarRifaController@hastaCien');

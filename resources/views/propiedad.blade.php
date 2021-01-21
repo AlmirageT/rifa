@@ -114,7 +114,7 @@
                             <p>${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
                             <p>{!! $propiedad->descripcionPropiedad !!}</p>
                             <br>
-                            <p class="titlePremios">10 premios a repartir</p>
+                            <p class="titlePremios">{{ $propiedad->cantidadTotalPremios }} premios a repartir</p>
                             <div class="cont-premios-prop">
                                 @if ($premios->where('idPropiedad',$propiedad->idPropiedad))
                                     @php

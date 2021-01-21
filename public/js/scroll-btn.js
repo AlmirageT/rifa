@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log(screen.width);
      /* SCROLL MENU */
     $("#cont-detalles").css({"height":$(window).height("30px") + "px"});
     

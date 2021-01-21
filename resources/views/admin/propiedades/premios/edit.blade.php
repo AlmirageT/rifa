@@ -1,7 +1,7 @@
 <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="edit{{$premio->idPremio}}" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('mantenedor-premios.update',$premio->idPremio) }}" method="POST">
+            <form action="{{ route('mantenedor-premios.update',$premio->idPremio) }}" method="POST" file="true" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <input type="hidden" value="{{ $idPropiedad }}" name="idPropiedad">
@@ -34,6 +34,12 @@
                                     @endif
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="">Imagen/GIF Premio</label>
+                            <input type="file" class="form-control" name="imagenPremio">
                         </div>
                     </div>
                 </div>

@@ -69,7 +69,8 @@
 
     <br>
     <div class="flotante-compra" id="btn-flotante">
-        <form action="">
+        <form action="{{ asset('paso-final-compra-ticket') }}" method="POST">
+            @csrf
             <label for="numero" class="tamanoLetra">Cantidad</label> <br> <br>
             <input type="number" id="numero" class="" placeholder="" value="1" min="1">
             <br> <br>
@@ -103,7 +104,7 @@
     <div class="cont-matterport">
         <h2>Tour 3D</h2>
         @if ($propiedad->urlMattlePort)
-            <iframe width='1020' height='680' src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
+            <iframe  src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
         @endif
     </div>
 
@@ -111,29 +112,133 @@
     <div class="cont-premios-detail">
         <h2>Premios</h2>
         <div class="cont-premios">
-            <img src="{{ asset('images/premio-mayor.png') }}" alt="">
-            <img src="{{ asset('images/premios.png') }}" alt="">
-            <img src="{{ asset('images/premio-final.png') }}" alt="">
+            @foreach ($premios as $premio)
+                <img src="{{ asset($premio->imagenPremio) }}" alt="">
+            @endforeach
+
         </div>
 
         <br>
 
     </div>
+    @if ($propiedad->urlGoogleMaps != null)
+        <div style="display: none">
+            <select name="idPais" id="paises" onchange="sacarRegionPorPais(this.value)" required class="form-control">
+                <option value="">Seleccione un país</option>
+                @foreach ($paises as $pais)
+                    @if ($pais->idPais == $propiedad->idPais)
+                        <option value="{{ $pais->idPais }}" selected>{{ $pais->nombrePais }}</option>
+                    @else
+                        <option value="{{ $pais->idPais }}">{{ $pais->nombrePais }}</option>
+                    @endif
+                @endforeach
+            </select>
 
-    <div class="ubicacion">
-        <br>
-        <h2><strong>Ubicación</strong></h2> 
-        <h3 class="sub-direccion">Las Cabras, Libertador Gral. Bernardo O.</h3> <br>
-        <div class="cont-mapa">
-            <iframe class="frame-mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7464.443652546437!2d-71.46166354992337!3d-34.15193580340286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663963e24368e23%3A0x8d9d7499f19dea9d!2sMarina%20Golf%20Rapel!5e1!3m2!1ses-419!2scl!4v1606831320033!5m2!1ses-419!2scl" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <select name="idRegion" id="select_regiones" class="form-control" required onchange="sacarProvinciaPorRegion(this.value)">
+                <option value="">Seleccione una region</option>
+                @foreach ($regiones as $region)
+                    @if ($region->idRegion == $propiedad->idRegion)
+                        <option value="{{ $region->idRegion }}" selected>{{ $region->nombreRegion }}</option>
+                    @else
+                        <option value="{{ $region->idRegion }}">{{ $region->nombreRegion }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <select name="idProvincia" id="select_provincias" class="form-control" required onchange="sacarComunaPorProvincia(this.value)">
+                <option value="">Seleccione provincia</option>
+                @foreach ($provincias as $provincia)
+                    @if ($provincia->idProvincia == $propiedad->idProvincia)
+                        <option value="{{ $provincia->idProvincia }}" selected>{{ $provincia->nombreProvincia }}</option>
+                    @else
+                        <option value="{{ $provincia->idProvincia }}">{{ $provincia->nombreProvincia }}</option>
+                    @endif
+                @endforeach
+            </select>
+
+            <select name="idComuna" id="select_comunas" class="form-control" required >
+                <option value="">Seleccione comuna</option>
+                @foreach ($comunas as $comuna)
+                    @if ($comuna->idComuna == $propiedad->idComuna)
+                        <option value="{{ $comuna->idComuna }}" selected>{{ $comuna->nombreComuna }}</option>
+                    @else
+                        <option value="{{ $comuna->idComuna }}">{{ $comuna->nombreComuna }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <input type="text" name="direccionPropiedad" class="form-control" placeholder="Ingrese la dirección" required id="txtDireccion" value="{{ $propiedad->direccionPropiedad }}">
+            <input type="text" name="numeracionPropiedad" class="form-control" placeholder="Ingrese numeración de su casa" required id="txtNumero" value="{{ $propiedad->numeracionPropiedad }}">
+            <input type="text" name="latitud" class="form-control" required id="latitud" value="{{ $propiedad->latitud }}"> 
+            <input type="text" name="longitud" id="longitud" class="form-control" required value="{{ $propiedad->longitud }}">
         </div>
-        <br>
-    </div>
+
+
+
+
+        <div class="ubicacion">
+            <br>
+            <h2><strong>Ubicación</strong></h2> 
+            <h3 class="sub-direccion">{{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</h3> <br>
+            <div class="cont-mapa">
+                <div id="map" style="width: 100%; height: 300px"></div>
+            </div>
+            <br>
+        </div>
+    @endif
+
 </main>
 <br>
 
 @endsection
 @section('scripts')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g&callback=initMap" async defer></script>
+<script>
+    $(document).ready(function(){
+  var direccion = $("#txtDireccion").val();
+  if(direccion != "")
+  {
+    var direccion = $("#txtDireccion").val();
+    var numero = $("#txtNumero").val();
+    var pais = $("#paises option:selected").html();
+    var region = $("#select_regiones option:selected").html();
+    var provincia = $("#select_provincias option:selected").html();
+    var comuna = $("#select_comunas option:selected").html();
+    var direccionEnviar = "" + direccion + " " + numero + " " + comuna + " " + provincia + " " + region + " " + pais + " ";
+    if(direccion != ""){
+        $.ajax({
+          url: '/curls/' + direccionEnviar,
+          method:'GET',
+          dataType: 'json',
+          success: function (respuesta) {
+              //document.getElementById("latitud").value = respuesta['results']['0']['geometry']['location']['lat'];
+              //document.getElementById("longitud").value = respuesta['results']['0']['geometry']['location']['lng'];
+              var myLatlng = new google.maps.LatLng(respuesta['results']['0']['geometry']['location']['lat'], respuesta['results']['0']['geometry']['location']['lng']); 
+              var map = new google.maps.Map(document.getElementById('map'), {
+                      center: myLatlng,
+                      zoom: 17
+                  });
+              var marker = new google.maps.Marker({
+                title: "Hello Paulo",
+                position: myLatlng
+              });
+              marker.setMap(map);
+          },
+          error: function(err) {
+              console.log(err);
+          }
+      });
+    }
+  }
+});
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: -33.4372, lng: -70.650633},
+  zoom: 17,
+});
+}
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script src="{{ asset('js/scroll-btn.js') }}"></script>
 <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
 <script src="{{ asset('js/lightbox.min.js') }}"></script>
@@ -195,10 +300,24 @@ $( document ).ready(function() {
                     document.getElementById('notificacion-span').style.display = 'block';
                     document.getElementById('notificacion-span').innerHTML = data.cantidadCarrito;
                 }
-                alert('agregado con exito');
-            }else{
-                alert('Ha surgido un problema, porfavor intente mas tarde');
+                
+                $('body, html').animate({
+                    scrollTop: '0px'
+                }, 300);
 
+                swal({
+                    title: "¡Agregado Correctamente!",
+                    text: "El ticket ha sido agregado correctamente",
+                    icon: "success",
+                    button: "OK",
+                });
+            }else{
+                swal({
+                    title: "¡Oops! ha surgido un imprevisto",
+                    text: "No se pueden agregar mas de 15 tickets",
+                    icon: "error",
+                    button: ":c",
+                });
             }
         });
     }

@@ -1,100 +1,41 @@
-        @extends('layouts.public.app')
-        @section('content')
-        
-        <div class="container">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h4>HAZ UNA TRANSFERENCIA</h4><br>
-                            <p>
-                                Muchas gracias por tu preferencia. Para activar tus números, dentro de la próximas 24 horas, simplemente haz una transferencia a la siguiente cuenta bancaria e indica tu nombre y correo en las notas de tu transferencia. <br>  <br>  
-                                Una vez realices el pago, validaremos el ingreso y te enviaremos un email con tu comprobante de compra y los tickets asociados a tu transacción. <br> <br>
-                                Suerte!!
+@extends('layouts.public.app')
+@section('content')
 
-                            </p>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h5><strong>Datos bancarios</strong></h5><br>
-                                            <p><strong>INMOBILIARIA MOOCK SPA</strong></p>
-                                            <p><strong></strong></p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <p>Cuenta corriente: <strong id="p1">Banco ITAU 0220844303</strong></p>
-                                        </div>
-                                        <div class="col-lg-6" align="right">
-                                            <a style="color: blue;cursor: pointer;" onclick="copiarAlPortapapeles('p1')">copiar</a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <p>Rut: <strong id="p2">76454378-5</strong></p>
-                                        </div>
-                                        <div class="col-lg-6" align="right">
-                                            <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p2')">copiar</a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <p>Email: <strong id="p3">tickets@rifomipropiedad.com</strong></p>
-                                        </div>
-                                        <div class="col-lg-6" align="right">
-                                            <a style="cursor: pointer;color: blue" onclick="copiarAlPortapapeles('p3')">copiar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12"><br></div>
-                        <div class="col-lg-6"></div>
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                   <div class="row">
-                                        <div class="col-lg-6">
-                                            <h5><strong>Números</strong></h5>
-                                        </div>
-                                        <div class="col-lg-6" align="right">
-                                            <h5><strong>Total</strong></h5>
-                                        </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    @foreach($numerosComprados as $numero)
-                                                        <div class="col-lg-5">
-                                                           <p>{{ $numero->numero }}</p>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        <div class="col-lg-6" align="right">
-                                            <p> ${{ number_format($total,0,',','.') }}</p>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <a href="{{  url()->previous() }}" class="btn btn-primary">Volver</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<main class="cont-body int-mobile">
+    <div id="contacto"  class="cont-form-ticket">
+        <div class="contenedor-form-ticket">
+            <form method="post" action="{{ asset('comprar-numeros') }}" class="formulario-ticket">
+                @csrf
+                <h1 class="ml2">Tus Datos</h1>
+                <label for="nombre" class="form-label"></label>
+                <input type="text" id="nombre" name="nombreUsuario" class="form-input-ticket" placeholder="Tu Nombre">
+                
+                <label for="correo" class="form-label"></label>
+                <input type="email" id="correo" name="correoUsuario" class="form-input-ticket" placeholder="Correo Electr&oacute;nico">
+                
+                <label for="fono" class="form-label"></label>
+                <input type="number" id="fono" name="telefonoUsuario" class="form-input-ticket" placeholder="Tel&eacute;fono">
+                
+                <label for="rut" class="form-label"></label>
+                <input type="text" id="rut" name="rutUsuario" class="form-input-ticket" placeholder="Tu Rut">
+    
+                <input type="submit" class="btn-submit-ticket" value="Finalizar Compra">
+            </form>
         </div>
+    </div>
+</main>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection
-
-        <script type="text/javascript">
-            function copiarAlPortapapeles(id_elemento) {
-              var aux = document.createElement("input");
-              aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
-              document.body.appendChild(aux);
-              aux.select();
-              document.execCommand("copy");
-              document.body.removeChild(aux);
-              alert("Texto Copiado");
-            }
-        </script>
+@section('scripts')
+<script>
+    $( document ).ready(function() {
+        document.getElementById('contenido-cambio').classList.remove('cont-nav');
+        document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+        
+    });
+</script>
+@endsection

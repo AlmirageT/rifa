@@ -99,7 +99,7 @@ class BusquedaController extends Controller
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
-		                        <div class='dropdown-menu dropdown-menu'>
+		                        <div class='dropdown-menu dropdown-menu-right'>
 		                            <a class='dropdown-item' href='".asset('administrador/ubicaciones/provincias/edit-provincia')."/".$provincia->idProvincia."'>Editar</a>
 		                            <a onclick='return confirm('¿Quiere borrar el Registro ?')' class='dropdown-item' href='".asset('administrador/ubicaciones/provincias/destroy-provincia')."/".$provincia->idProvincia."'>Eliminar</a>
 		                        </div>

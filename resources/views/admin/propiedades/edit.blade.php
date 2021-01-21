@@ -216,6 +216,37 @@ Actualizar Propiedad
 								<input type="file" name="pdfBasesLegales" class="form-control">
 							</div>
 						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label>Visualizar mapa</label>
+								<br>
+								@if ($propiedad->urlGoogleMaps != null)
+									<input type="checkbox" id="switch4" switch="success" checked name="tieneMapa" />
+									<label for="switch4" data-on-label="Si"
+											data-off-label="No"></label>
+								@else
+									<input type="checkbox" id="switch4" switch="success"  name="tieneMapa" />
+									<label for="switch4" data-on-label="Si"
+											data-off-label="No"></label>
+								@endif
+								
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="">Cantidad Premios</label>
+								<input type="number" name="cantidadTotalPremios" class="form-control" value="{{ $propiedad->cantidadTotalPremios }}">
+							</div>
+						</div>
+						@php
+							$valorDisplay = "";
+							if($propiedad->urlGoogleMaps != null){
+								$valorDisplay = "block";
+							}else{
+								$valorDisplay = "none";
+							}
+						@endphp
+
 						
 					</div>
 				</div>
@@ -293,5 +324,6 @@ Actualizar Propiedad
 			document.getElementById('select_comunas').innerHTML = comunas;
 		});
 	}
+
 </script>
 

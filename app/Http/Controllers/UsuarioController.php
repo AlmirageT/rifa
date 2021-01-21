@@ -168,4 +168,10 @@ class UsuarioController extends Controller
             return redirect::back();
         }
     }
+
+    //vistas publicas
+    public function formularioUsuario()
+    {
+        return view('datos');
+    }
 }

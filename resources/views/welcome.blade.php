@@ -26,40 +26,46 @@
   <div class="seccion1 swiper-container ">
       <div class="swiper-wrapper">
       <br>
+        @foreach ($propiedades as $propiedad)
+          @php
+              $nombrePropiedad = str_replace(" ", "-", $propiedad->nombrePropiedad);
+          @endphp
           <div class="cont-propiedades swiper-slide">
               <div class="cont-tour wow zoomIn" data-wow-delay="1s">
                   <h3>Tour 3D</h3>
                   <br>
-                  <img src="images/edificio.jpg" alt="">
+                  <img src="{{ $propiedad->fotoPrincipal }}" alt="Propiedad en rifa">
+                  <!--<iframe class="frame-mapa" src="{{ $propiedad->urlGoogleMaps }}" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
               </div>
 
               <div class="cont-lista wow zoomIn" data-wow-delay="0.4s">
-                  <h3>Marina Golf Rapel</h3>
-                  <p><i class="fas fa-map-marker-alt"></i> Las Cabras, Libertador Gral. Bernardo O.</p>
-                  <p>Departamento de lujo totalmente amoblado de 113 m2 aprox, 3 baños, con dos terrazas, estacionamiento, bodega tipo dormitorio y piscina con efecto infinito.</p>
-                  <p> <strong>Son 10 premios a repartir</strong> </p>
+                  <h3>{{ $propiedad->nombrePropiedad }}</h3>
+                  <p><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</p>
+                  <p>{!! $propiedad->descripcionPropiedad !!}</p>
+                  <p> <strong>Son {{ $propiedad->cantidadTotalPremios }} premios a repartir</strong> </p>
                   <br>
-                  <ul>
-                      <h4>Premio Mayor</h4>
-                      <li>Departamento de lujo</li>
-                      <li>2 acciones en el campo de golf</li>
-                      <li>Kit palos de golf</li>
-                      <li>Moto de agua</li>
-                      <li>$2.000.000.- en efectivo</li>
-                  </ul> <br>
-                  <ul>
-                      <h4>Primer Premio</h4>
-                      <li>$2.000.000.- en efectivo</li>
-                  </ul><br>
-                  <ul>
-                      <h4>Segundo Premio</h4>
-                      <li>8 Premios de <strong>$1.000.000.-</strong></li>
-                  </ul>
+                  @if ($premios->where('idPropiedad',$propiedad->idPropiedad))
+                    @php
+                        $arraySinEdicion = $premios->where('idPropiedad',$propiedad->idPropiedad);
+                        $primerValorPremios = $arraySinEdicion->shift();
+                    @endphp
+                    <ul>
+                        <h4>{{ $primerValorPremios['nombreTipoPremio'] }}</h4>
+                        {!! $primerValorPremios['descripcion'] !!}
+                    </ul> <br>
+                    @foreach ($arraySinEdicion as $premio)
+                      <ul>
+                          <h4>{{ $premio->nombreTipoPremio }}</h4>
+                          {!! $premio->descripcion !!}
+                      </ul><br>
+                    @endforeach
+                  @endif
                   <br> <br>
-                  <a class="btn-tickets" href="{{ asset('tienda-rifo-propiedades') }}">Quiero saber más</a>
+                  <a class="btn-tickets" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Quiero saber más</a>
                   <br> <br>
               </div>
           </div>
+        @endforeach
 
       </div>
      <!-- <div class="swiper-pagination"></div> 

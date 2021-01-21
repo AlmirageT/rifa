@@ -42,6 +42,13 @@ class PremiosController extends Controller
             }
             DB::beginTransaction();
             $premio = new Premio($request->all());
+            if($request->file('imagenPremio')){
+                $imagen = $request->file('imagenPremio');
+                $img = Image::make($imagen);
+                $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
+                $img->save('assets/images/propiedades/'.$imgName);
+                $premio->imagenPremio = 'assets/images/propiedades/'.$imgName;
+            }
             $premio->save();
             toastr()->success('Agregado Correctamente', 'El premio ha sido agregado correctamente');
             DB::commit();
@@ -77,7 +84,19 @@ class PremiosController extends Controller
             }
             DB::beginTransaction();
             $premio = Premio::find($idPremio);
+            if($premio->imagenPremio != null ){
+                if($request->file('imagenPremio')){
+                    unlink($premio->imagenPremio);
+                }
+            }
             $premio->fill($request->all());
+            if($request->file('imagenPremio')){
+                $imagen = $request->file('imagenPremio');
+                $img = Image::make($imagen);
+                $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
+                $img->save('assets/images/propiedades/'.$imgName);
+                $premio->imagenPremio = 'assets/images/propiedades/'.$imgName;
+            }
             $premio->save();
             toastr()->success('Actualizado Correctamente', 'El premio se ha actualizado correctamente', ['timeOut' => 9000]);
             DB::commit();
@@ -105,6 +124,9 @@ class PremiosController extends Controller
     	try {
             DB::beginTransaction();
             $premio = Premio::find($idPremio);
+            if($premio->imagenPremio != null ){
+                unlink($premio->imagenPremio);
+            }
             toastr()->success('Eliminado Correctamente', 'El premio ha sido eliminado correctamente', ['timeOut' => 9000]);
             $premio->delete();
     		DB::commit();
