@@ -2,7 +2,7 @@
 
 *
 {
- margin: 0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -767,6 +767,7 @@ text-align: center;
   -webkit-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
   -moz-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
   box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
+  padding-left: 20px;
 }
 
 .slide-img
@@ -818,7 +819,7 @@ width: 100%;
 }
 
 .width {
-  margin-left: 600px;
+  margin-left: 510px;
 }
 
 
@@ -893,7 +894,7 @@ text-decoration: none;
  .img1
 {
   width: 40%;
-  height: 390px;
+  height: 400px;
   margin: 7px; 
   overflow: hidden;
   border-radius: 30px;
@@ -992,6 +993,7 @@ video
 {
   width: 100%;
   outline: none;
+  margin-top: 10px;
 }
 
 .cont-premios
@@ -1043,7 +1045,7 @@ width: 60%;
   z-index: 2;
   background: #fff;
   border-radius: 30px;
-  right: 165px;
+  right: 175px;
   bottom: -250px;
   -webkit-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
   -moz-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
@@ -1162,6 +1164,8 @@ video {
 }
 
 
+
+
 /********PAGINA BASES LEGALES********/
 .cont-bl
 {
@@ -1235,18 +1239,16 @@ video {
   width: 60%;
 }
 
-.cont-matterport iframe{
+.cont-matterport iframe {
   width: 100%;
-  height: 400px;
 }
 
 
 /********PAGINA COMPRAS********/
 
-.cont-form-ticket
-{
+.cont-form-ticket {
   width: 100%;
-  padding: 50px 200px;
+  padding: 50px 0px;
 }
 
 .contenedor-form-ticket .form-input-ticket
@@ -1260,7 +1262,7 @@ video {
   padding: 8px;
   margin-bottom: 20px;
   font-size: 17px;
-  
+  border-radius: 12px;
   
 }
 
@@ -1380,13 +1382,17 @@ display: block;
   margin-top: -20px;
 }
 
+.resumen-compra1 form {
+display: flex;
+}
+
 .resumen-compra2
 {
   width: 20%;
-  margin-top: 30px; 
+  margin-top: 35px; 
 }
 
-.btnTrash  {
+.btnTrash {
   justify-content: center;
   background: #abdfab;
   color: #033b45;
@@ -1420,6 +1426,22 @@ display: block;
  
 }
 
+.contNotificacion{
+display: flex;
+}
+
+.notificacion
+{
+  margin-left: 1px;
+  background-color: #c70039; 
+  width: 25px;
+  height: 25px;
+  border-radius: 60px;
+  color: #fff;
+  padding-top: 4px;
+  text-align: center;
+}
+
 .total
 {
   width: 25%;
@@ -1441,20 +1463,13 @@ font-size: 25px;
   display: none;
 }
 
-.contNotificacion{
-  display: flex;
+
+input[type="number"] {
+  -moz-appearance: textfield;
   }
-  
-  .notificacion
-  {
-    margin-left: 1px;
-    background-color: #c70039; 
-    width: 25px;
-    height: 25px;
-    border-radius: 60px;
-    color: #fff;
-    padding-top: 4px;
-    text-align: center;
+  input[type="number"]:hover,
+  input[type="number"]:focus {
+  -moz-appearance: number-input;
   }
 
 
@@ -2137,6 +2152,80 @@ margin-top: 10px;
     display: flex;
 }
 
+.cont-propiedades1
+{
+  width: 100%;
+  display: block;
+  padding: 10px;
+}
+
+.propiedades
+{
+  width: 100%;
+  margin-bottom: 110px;
+  display: block;
+  justify-content: space-between;
+  color: #333;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
+  box-shadow: 0px 50px 43px -15px rgba(204,204,204,1);
+  padding-left: 20px;
+}
+
+
+.slide-img
+{
+width: 100%;
+}
+
+.slide-img img
+{
+width: 100%;
+}
+
+.info-propiedad 
+{
+  width: 100%;
+  padding: 10px;
+}
+
+.info-propiedad strong
+{
+  font-size: 25px;
+}
+
+.cont-premios-prop {
+  width: 100%;
+  display: block;
+  flex-wrap: wrap;
+}
+
+.premios-list 
+{
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  list-style: none;
+}
+
+.titlePremios {
+  font-size: 22px;
+}
+
+.titlePremioSingular {
+  font-size: 19px;
+}
+
+.cont-botones {
+  display: flex;
+  
+}
+
+.width {
+  margin-left: 510px;
+}
+
 .btnCarrito {
   width: 90%;
 }
@@ -2552,7 +2641,7 @@ margin-top: 10px;
 }
 
 .margen {
-  margin-left: 250px;
+  margin-left: 20px;
 }
   
   .container

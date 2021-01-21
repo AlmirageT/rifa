@@ -31,6 +31,11 @@
   </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield('meta')
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Ivan Saez">
     <link rel="icon" href="{{ asset('images/iconos/favicon.png') }}" type="image/jpg">
     <title>Rifo mi Propiedad</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">

@@ -86,8 +86,8 @@
         <p class="text-detail wow fadeInLeft" data-wow-delay="0.4s">{{ $propiedad->subtituloPropiedad }}</p>
         <p class="text-detail wow fadeInLeft" data-wow-delay="0.4s"><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</p>
         <ul class="share-detail margen">
-            <li><a href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
-            <li><a href=""><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+            <li><a target="_blank" href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+            <li><a target="_blank" href=""><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
         </ul>
         <hr>
         <br>
