@@ -9,8 +9,10 @@ class Boleta extends Model
     protected $table = 'boletas';
     protected $primaryKey = 'idBoleta';
     protected $fillable = [
-    	'totalBoleta',
+        'totalBoleta',
+        'fechaVencimiento',
     	'idUsuario',
-    	'idEstado'
+        'idEstado',
+        'idOtrosPagosTransaccion'
     ];
 }

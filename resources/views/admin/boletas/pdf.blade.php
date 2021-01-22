@@ -44,10 +44,10 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <p><strong>Cliente: {{ $boleta->nombreUsuario }}</strong></p>
-                <p><strong>RUT/DNI/Pasaporte: {{ $boleta->rutUsuario }}</strong></p>
-                <p><strong>Correo: {{ $boleta->correoUsuario }}</strong></p>
-                <p><strong>Teléfono: {{ $boleta->telefonoUsuario }}</strong></p>
+                <p><strong>Cliente: {{ $usuario->nombreUsuario }}</strong></p>
+                <p><strong>RUT/DNI/Pasaporte: {{ $usuario->rutUsuario }}</strong></p>
+                <p><strong>Correo: {{ $usuario->correoUsuario }}</strong></p>
+                <p><strong>Teléfono: {{ $usuario->telefonoUsuario }}</strong></p>
             </div>
         </div>
 

@@ -13,16 +13,18 @@ class EnvioBoleta extends Mailable
     protected $boleta;
     protected $numeros;
     protected $pdf;
+    protected $usuario;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($boleta, $numeros, $pdf)
+    public function __construct($boleta, $numeros, $pdf, $usuario)
     {
         $this->boleta = $boleta;
         $this->numeros = $numeros;
         $this->pdf = $pdf;
+        $this->usuario = $usuario;
     }
 
     /**
@@ -34,8 +36,9 @@ class EnvioBoleta extends Mailable
     {
         $boleta = $this->boleta;
         $numeros = $this->numeros;
+        $usuario = $this->usuario;
         $file = $this->pdf->output();
 
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($file, "Comprobante de Compra.pdf")->view('mail.enviarBoleta',compact('boleta','numeros'));
+        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($file, "Comprobante de Compra.pdf")->view('mail.enviarBoleta',compact('boleta','numeros','usuario'));
     }
 }

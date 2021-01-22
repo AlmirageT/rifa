@@ -8,7 +8,6 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
-use App\Mail\ConfirmarSolicitud;
 use App\Mail\NumerosFolio;
 use App\ImagenPropiedad;
 use App\PropiedadCaracteristica;
@@ -21,6 +20,8 @@ use App\Region;
 use App\Numero;
 use App\Usuario;
 use App\Boleta;
+use DateTime;
+use Redirect;
 use Mail;
 use DB;
 
@@ -118,7 +119,9 @@ class ComprarRifaController extends Controller
                 return back();
             }
             DB::beginTransaction();
-	    	
+            $date = new DateTime();
+            $date->modify('+48 hours');
+
 	    	$usuario = Usuario::create([
 	    		'nombreUsuario' => $request->nombreUsuario,
 		    	'correoUsuario' => $request->correoUsuario,
@@ -128,6 +131,7 @@ class ComprarRifaController extends Controller
             $total = count($request->numeros)*20000;
 	    	$boleta = Boleta::create([
                 'totalBoleta' => $total,
+                'fechaVencimiento' => $date->format('Y-m-d H:i:s'),
 	    		'idUsuario' => $usuario->idUsuario,
                 'idEstado' => 2
 	    	]);
@@ -146,10 +150,12 @@ class ComprarRifaController extends Controller
 	    			'idBoleta' => $boleta->idBoleta,
 		    		'idEstado' => 2
 		    	]);
-	    	}
-            Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
-	    	Mail::to('tickets@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
+            }
             DB::commit();
+
+            return redirect()->to('http://pre.otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
+            //Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
+	    	//Mail::to('tickets@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
 	    	return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {
             toastr()->warning('No autorizado');

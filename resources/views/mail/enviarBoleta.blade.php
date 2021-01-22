@@ -1,7 +1,7 @@
 @extends('layouts.mails.app')
 
 @section('title', 'Boleta')
-@section('textoTituloPrincipal', 'YA VALIDAMOS TU TRANSFERENCIA')
+@section('textoTituloPrincipal', 'TU COMPRA HA SIDO EXITOSA')
 @section('textoTituloSecundario', 'Comprobante de compra de numeros de tickets')
 @section('textoParrafoUno')
 Muchas gracias por comprar tus números de la suerte. Te adjuntamos un comprobante de compra de los tickets que elegiste. La premiación se realizará de acuerdo a las bases legales que podrás siempre consultar en https://rifomipropiedad.com, en la Notaria Manquehual de Santiago mediante via LIVE STREAMING vía youtube. <br><br><br>
@@ -16,22 +16,22 @@ Saludos del equipo de rifomipropiedad.com
 
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
         <span style="font-size: 16px;">
-            Comprador: {{ $boleta->nombreUsuario }}
+            Comprador: {{ $usuario->nombreUsuario }}
         </span>
     </p>
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
         <span style="font-size: 16px;">
-            Rut: {{ $boleta->rutUsuario }}
+            Rut: {{ $usuario->rutUsuario }}
         </span>
     </p>
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
         <span style="font-size: 16px;">
-            Correo: {{ $boleta->correoUsuario }}
+            Correo: {{ $usuario->correoUsuario }}
         </span>
     </p>
     <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
         <span style="font-size: 16px;">
-            Teléfono: {{ $boleta->telefonoUsuario }}
+            Teléfono: {{ $usuario->telefonoUsuario }}
         </span>
     </p>
     <div><br></div>
