@@ -9,8 +9,7 @@
             <h2>Links de Interés</h2>
             <ul>
                 <li><a href="{{ asset('tienda-rifo-propiedades') }}">Propiedades</a></li>
-                <li><a href="{{ asset('carrito-compra') }}">Comprar Tickets</a></li>
-                <li><a href="#">Bases Legales</a></li>
+                <li><a href="{{ asset('tienda-rifo-propiedades') }}">Comprar Tickets</a></li>
             </ul>
         </div>
         

@@ -212,6 +212,12 @@ Crear Propiedad
 								<input type="number" name="cantidadTotalPremios" class="form-control">
 							</div>
 						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label for="">Cantidad de numeros asociados a la propiedad</label>
+								<input type="number" class="form-control" name="cantidadNumeros" required>
+							</div>
+						</div>
 						
 					</div>
 				</div>

@@ -10,11 +10,14 @@
 <main class="cont-body int-mobile">
     <h1 class="ml2">Escoge la rifa que quieres ganar</h1>
     <br>
-    <form class="form-buscar wow slideInLeft" data-wow-delay="0.4s" action="{{ asset('tienda-rifo-propiedades') }}" method="POST">
-        @csrf
-        <input class="form-control-buscar lg-12" type="search" placeholder="Buscar" aria-label="Search" name="buscadorDeRifa">
-        <button class="btn-buscar" type="submit">Buscar</button>
-      </form>
+    @if(count($propiedades)>1)
+        <form class="form-buscar wow slideInLeft" data-wow-delay="0.4s" action="{{ asset('tienda-rifo-propiedades') }}" method="POST">
+            @csrf
+            <input class="form-control-buscar lg-12" type="search" placeholder="Buscar" aria-label="Search" name="buscadorDeRifa">
+            <button class="btn-buscar" type="submit">Buscar</button>
+        </form>
+    @endif
+    
     <br>
     
       <!--  <div class="cont-tarjetas">
@@ -96,63 +99,71 @@
         <div class="infinite-scroll" >
 
             <div class="cont-propiedades1">
-                @foreach ($propiedades as $propiedad)
-                @php
-                    $nombrePropiedad = str_replace(" ", "-", $propiedad->nombrePropiedad);
-                @endphp
-                    <div class="propiedades wow fadeInUpBig">
-                        <div class="slide-img swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="{{ asset($propiedad->fotoPrincipal) }}" alt="Propiedad a rifar"></div>
-                                <div class="swiper-slide"><img src="{{ asset($propiedad->fotoMapa) }}" alt="Mapa ubicación propiedad"></div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                        <div class="info-propiedad">
-                            <p><strong>{{ $propiedad->nombrePropiedad }}</strong></p>
-                            <p><i class="fas fa-map-marker-alt"></i>{{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</p>
-                            <p>${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
-                            <p>{!! $propiedad->descripcionPropiedad !!}</p>
-                            <br>
-                            <p class="titlePremios">{{ $propiedad->cantidadTotalPremios }} premios a repartir</p>
-                            <div class="cont-premios-prop">
-                                @if ($premios->where('idPropiedad',$propiedad->idPropiedad))
-                                    @php
-                                        $arraySinEdicion = $premios->where('idPropiedad',$propiedad->idPropiedad);
-                                        $primerValorPremios = $arraySinEdicion->shift();
-                                    @endphp
-                                    <ul class="premios-list">
-                                        <p class="titlePremioSingular"><i class="fas fa-award"></i> {{ $primerValorPremios['nombreTipoPremio'] }}</p> 
-                                        {!! $primerValorPremios['descripcion'] !!}
-                                    </ul>
-                                    @foreach ($arraySinEdicion as $premio)
-                                    <div class="premios-list">
-                                        <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> {{ $premio->nombreTipoPremio }}</p> 
-                                        {!! $premio->descripcion !!}
-                                    </div>
-                                    @endforeach
-                                    
-                                @endif
-
-                            </div>
-                            <br>
-                            <div class="cont-botones"> <br>
-                                <a class="btn-tickets-int" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Detalles</a>
-                                <div class="width">
-                                    <ul class="share-detail">
-                                        @if ($propiedad->urlFacebook)
-                                            <li><a target="_blank" href="{{ $propiedad->urlFacebook }}"><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
-                                        @endif
-                                        @if ($propiedad->urlInstagram)
-                                            <li><a target="_blank" href="{{ $propiedad->urlInstagram }}"><i class="fab fa-instagram wow bounceIn" data-wow-delay="0.6s"></i></a></li>
-                                        @endif
-                                    </ul>
+                @if (count($propiedades)>0)
+                    @foreach ($propiedades as $propiedad)
+                    @php
+                        $nombrePropiedad = str_replace(" ", "-", $propiedad->nombrePropiedad);
+                    @endphp
+                        <div class="propiedades wow fadeInUpBig">
+                            <div class="slide-img swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="{{ asset($propiedad->fotoPrincipal) }}" alt="Propiedad a rifar"></div>
+                                    <div class="swiper-slide"><img src="{{ asset($propiedad->fotoMapa) }}" alt="Mapa ubicación propiedad"></div>
                                 </div>
+                                <div class="swiper-pagination"></div>
                             </div>
-                            <br>
+                            <div class="info-propiedad">
+                                <h3><strong>{{ $propiedad->nombrePropiedad }}</strong></h3>
+                                <h4><i class="fas fa-map-marker-alt"></i>{{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
+                                <p>${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
+                                <p>{!! $propiedad->descripcionPropiedad !!}</p>
+                                <br>
+                                <p class="titlePremios">{{ $propiedad->cantidadTotalPremios }} premios a repartir</p>
+                                <div class="cont-premios-prop">
+                                    @if ($premios->where('idPropiedad',$propiedad->idPropiedad))
+                                        @php
+                                            $arraySinEdicion = $premios->where('idPropiedad',$propiedad->idPropiedad);
+                                            $primerValorPremios = $arraySinEdicion->shift();
+                                        @endphp
+                                        <ul class="premios-list">
+                                            <p class="titlePremioSingular"><i class="fas fa-award"></i> {{ $primerValorPremios['nombreTipoPremio'] }}</p> 
+                                            {!! $primerValorPremios['descripcion'] !!}
+                                        </ul>
+                                        @foreach ($arraySinEdicion as $premio)
+                                        <div class="premios-list">
+                                            <p class="titlePremioSingular"><i class="fas fa-money-bill-alt"></i> {{ $premio->nombreTipoPremio }}</p> 
+                                            {!! $premio->descripcion !!}
+                                        </div>
+                                        @endforeach
+                                        
+                                    @endif
+
+                                </div>
+                                <br>
+                                <div class="cont-botones"> <br>
+                                    <a class="btn-tickets-int" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Detalles</a>
+                                    <div class="width">
+                                        <ul class="share-detail">
+                                            @if ($propiedad->urlFacebook)
+                                                <li><a target="_blank" href="{{ $propiedad->urlFacebook }}"><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+                                            @endif
+                                            @if ($propiedad->urlInstagram)
+                                                <li><a target="_blank" href="{{ $propiedad->urlInstagram }}"><i class="fab fa-instagram wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
                         </div>
+                    @endforeach
+                @else
+                <div class="propiedades wow fadeInUpBig">
+                    <div class="info-propiedad">
+                        No se encontraron propiedades
                     </div>
-                @endforeach
+                </div>
+                @endif
             </div>
             {{ $propiedades->links() }}
         </div>

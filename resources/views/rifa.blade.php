@@ -36,7 +36,9 @@
 
             <div class="contenedor-galeria swiper-slide">
                 <div class="img1">
-                    <a href="{{ asset($portada1->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($portada1->urlImagen) }}" alt=""></a> 
+                    @if (isset($portada1->urlImagen))
+                        <a href="{{ asset($portada1->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($portada1->urlImagen) }}" alt=""></a> 
+                    @endif
                 </div>
                 <div class="mosaic">
                     @for ($i = 7; $i < count($imagenesPropiedad); $i++)
@@ -50,7 +52,9 @@
             </div>
             <div class="contenedor-galeria swiper-slide">
                 <div class="img1">
-                    <a href="{{ asset($portada2->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($portada2->urlImagen) }}" alt=""></a> 
+                    @if (isset($portada2->urlImagen))
+                        <a href="{{ asset($portada2->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($portada2->urlImagen) }}" alt=""></a> 
+                    @endif
                 </div>
                 <div class="mosaic">
                     @for ($i = 14; $i < count($imagenesPropiedad); $i++)
@@ -69,10 +73,10 @@
 
     <br>
     <div class="flotante-compra" id="btn-flotante">
-        <form action="{{ asset('paso-final-compra-ticket') }}" method="POST">
+        <form action="{{ asset('compra-ticket-directo') }}/{{ $propiedad->idPropiedad }}" method="POST">
             @csrf
             <label for="numero" class="tamanoLetra">Cantidad</label> <br> <br>
-            <input type="number" id="numero" class="" placeholder="" value="1" min="1">
+            <input type="number" id="numero" name="numero" class="" placeholder="" value="1" min="1">
             <br> <br>
             <p class="tamanoLetra" id="totalBoletos">TOTAL: ${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
             <div class="cont-botonesCompra">
@@ -83,8 +87,8 @@
     </div> 
     <br>
     <div class="cont-detalles" id="cont-detalles">
-        <p class="text-detail wow fadeInLeft" data-wow-delay="0.4s">{{ $propiedad->subtituloPropiedad }}</p>
-        <p class="text-detail wow fadeInLeft" data-wow-delay="0.4s"><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</p>
+        <h3 class="text-detail wow fadeInLeft" data-wow-delay="0.4s">{{ $propiedad->subtituloPropiedad }}</h3>
+        <h4 class="text-detail wow fadeInLeft" data-wow-delay="0.4s"><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
         <ul class="share-detail margen">
             <li><a target="_blank" href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
             <li><a target="_blank" href=""><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
@@ -97,7 +101,9 @@
                 <li><i class="{{ $propiedadCaracteristica->itag }}"></i> {{ $propiedadCaracteristica->descripcionCaracterisitca }}</li>
             @endforeach
         </ul> <br>
-        <a class="download" href="{{ asset($propiedad->pdfBasesLegales) }}" download="BasesLegalesMarinaGolf">Descargar bases legales</a>
+        @if ($propiedad->pdfBasesLegales)
+            <a class="download" href="{{ asset($propiedad->pdfBasesLegales) }}" download="BasesLegalesMarinaGolf">Descargar bases legales</a>
+        @endif
 
     </div>
     <br>
@@ -264,11 +270,13 @@ $( document ).ready(function() {
     $(function(){
         $('input[type="number"]').niceNumber({
             onIncrement: function () {
+                
                 var cantidadTickets = document.getElementById('numero').value;
                 var total = {{ $propiedad->valorRifa }} * cantidadTickets;
                 total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
                 total = total.split('').reverse().join('').replace(/^[\.]/,'');
                 document.getElementById('totalBoletos').innerHTML = 'TOTAL: $'+total+'.-';
+                
             },
             onDecrement: function () {
                 var cantidadTickets = document.getElementById('numero').value;
@@ -311,10 +319,17 @@ $( document ).ready(function() {
                     icon: "success",
                     button: "OK",
                 });
-            }else{
+            }else if(data.estadoJson == false){
                 swal({
                     title: "¡Oops! ha surgido un imprevisto",
                     text: "No se pueden agregar mas de 15 tickets",
+                    icon: "error",
+                    button: ":c",
+                });
+            }else{
+                swal({
+                    title: "¡Oops! ha surgido un imprevisto",
+                    text: "Esta propiedad no posee tickets asociados",
                     icon: "error",
                     button: ":c",
                 });

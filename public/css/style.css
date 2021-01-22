@@ -179,7 +179,12 @@ font-size: 15px;
 .cont-lista
 {
   width: 50%;
-  padding: 0px 30px;
+  padding: 0px 15px;
+}
+
+.cont-lista ul
+{
+  list-style: none;
 }
 
 .cont-lista h3 
@@ -800,8 +805,6 @@ width: 100%;
 .premios-list 
 {
   width: 33%;
-  padding-left: 20px;
-  padding-right: 20px;
   list-style: none;
 }
 
@@ -825,6 +828,15 @@ width: 100%;
 
 
 /********PAGINA DETALLES********/
+
+.cont-detalles h3{
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.cont-detalles h4{
+  margin-left: 10px;
+}
 
 .btn-mobile {
  background-color: #333;
@@ -862,7 +874,7 @@ font-size: 25px;
 
 .margen
 {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .cont-detalles{
@@ -894,7 +906,6 @@ text-decoration: none;
  .img1
 {
   width: 40%;
-  height: 400px;
   margin: 7px; 
   overflow: hidden;
   border-radius: 30px;
@@ -983,11 +994,6 @@ td, th
   padding: 50px;
 }
 
-.contenedor-videos
-{
-  width: 100%;
-  padding: 10px 10px;
-}
 
 video
 {
@@ -1010,14 +1016,18 @@ video
 }
 
 .text-detail {
-  font-size: 20px;
-  margin-left: 30px;
+  font-size: 18px;
+  margin-left: 20px;
   list-style: none;
  
 }
 
 .text-detail li {
   margin-bottom: 20px;
+}
+
+.text-detail li i{
+  width: 10%;
 }
 
 .fondo-azul {
@@ -1241,6 +1251,7 @@ video {
 
 .cont-matterport iframe {
   width: 100%;
+  height: 400px;
 }
 
 
@@ -1379,7 +1390,7 @@ display: block;
 
 .resumen-compra1 {
   width: 20%;
-  margin-top: -20px;
+  margin-top: 20px;
 }
 
 .resumen-compra1 form {
@@ -1472,11 +1483,63 @@ input[type="number"] {
   -moz-appearance: number-input;
   }
 
+  .direccion{
+    font-size: 20px;
+  }
+
 
 /********RESPONSIVE MOBILE********/
  @media (min-width:320px) and (max-width:360px){
 
+  .text-detail li i{
+    width: 10%;
+  }
 
+  .resumen-compra1 {
+    width: 20%;
+    margin-top: 20px;
+  }
+  
+  .resumen-compra1 form {
+  display: flex;
+  }
+  
+
+  .cont-infoCarrito
+  {
+    display: block;
+  }
+  
+  .resumenPropiedades {
+  
+    width: 100%;
+    display: block;
+    }
+    
+  
+  
+  .desglose
+  {
+    width: 100%;
+    display: block;
+    align-items: center;
+  }
+  
+  .resumen-compra {
+    width: 100%;
+    margin-top: 25px;
+  }
+  
+  .cont-resumen-compra {
+    display: block;
+  }
+  
+  .total
+  {
+    width: 100%;
+    height: 140px;
+  margin-top: 10px;
+  }
  
   .flotante-compra {
     width: 70%;
@@ -1581,7 +1644,7 @@ header .navigation.active
   width: 110px;
   height: 60px;
   right: 20px;
-  background: url(../images/iconos/bars.png);
+  background: url(../images/iconos/bars-solid.svg);
   background-size: 60px;
   background-repeat: no-repeat;
   background-position: center;
@@ -1594,7 +1657,7 @@ header .navigation.active
 {
   position: fixed;
   right: 20px;
-  background: url(../images/iconos/close.png);
+  background: url(../images/iconos/close-solid.svg);
   background-size: 40px;
   background-repeat: no-repeat;
   background-position: center;
@@ -1679,7 +1742,7 @@ header .navigation.active
 {
   width: 100%;
   text-align: center;
-  font-size: 1em;
+  font-size: 2em;
   padding: 30px 0px;
 }
 
@@ -1706,13 +1769,16 @@ header .navigation.active
 .cont-lista 
 {
  width: 100%;
- padding: 0px 30px;
- text-align: center;
+ padding: 0px 10px;
 }
 
 .cont-lista h3 
 {
  font-size: 1.5em;
+}
+
+.cont-lista ul li{
+  margin-left: 20px;
 }
 
 .btn-tickets 
@@ -2096,6 +2162,12 @@ width: 100%;
   margin-bottom: 25px;
 }
 
+.premios-list ul li{
+  width: 100%;
+  margin-left: 25px;
+}
+
+
 
 .cont-infoCarrito
 {
@@ -2136,6 +2208,65 @@ margin-top: 10px;
 }
 
 @media (min-width:361px) and (max-width:414px){
+
+.info-propiedad h4{
+  margin-left: 10px;
+}
+
+  .share-detail li
+  {
+    font-size: 16px;
+  }
+
+  .text-detail {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  
+  .text-detail li {
+    margin-bottom: 20px;
+  }
+  
+  .text-detail li i{
+    width: 10%;
+  }
+
+  .cont-infoCarrito
+{
+  display: block;
+}
+
+.resumenPropiedades {
+
+  width: 100%;
+  display: block;
+  }
+  
+
+
+.desglose
+{
+  width: 100%;
+  display: block;
+  align-items: center;
+}
+
+.resumen-compra {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.cont-resumen-compra {
+  display: block;
+}
+
+.total
+{
+  width: 100%;
+  height: 140px;
+margin-top: 10px;
+}
+
 
   .flotante-compra {
     width: 75%;
@@ -2204,9 +2335,14 @@ width: 100%;
 .premios-list 
 {
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
   list-style: none;
+  margin-top: 30px;
+}
+
+
+.premios-list  li{
+  width: 100%;
+  margin-left: 25px;
 }
 
 .titlePremios {
@@ -2215,6 +2351,11 @@ width: 100%;
 
 .titlePremioSingular {
   font-size: 19px;
+}
+
+.premios-list p
+{
+  margin-left: 25px;
 }
 
 .cont-botones {
@@ -2448,7 +2589,7 @@ width: 100%;
   {
     width: 100%;
     text-align: center;
-    font-size: 1em;
+    font-size: 2em;
     padding: 30px 0px;
   }
   
@@ -2475,9 +2616,12 @@ width: 100%;
   .cont-lista 
   {
    width: 100%;
-   padding: 0px 30px;
-   text-align: center;
+   padding: 0px 10px;
   }
+
+  .cont-lista ul li{
+   margin-left: 20px;
+}
   
   .cont-lista h3 
   {
@@ -2641,7 +2785,7 @@ width: 100%;
 }
 
 .margen {
-  margin-left: 20px;
+  margin-left: 1px;
 }
   
   .container
@@ -2831,29 +2975,24 @@ width: 100%;
   @media (min-width:415px) and (max-width:515px)
   {
 
+    .text-detail li i{
+      width: 10%;
+    }
     .flotante-compra {
-      width: 75%;
+      width: 75% !important; 
       border: solid 1px #ccc;
       padding: 5px;
       position: fixed;
       z-index: 2;
       background: #fff;
       border-radius: 30px;
-      right: 1px;
-      bottom: 12px;
+      right: 1px!important;
+      bottom: 12px !important;
       text-align: center;
       justify-content: center;
       display: flex;
   }
-  
-  .btnCarrito {
-    width: 90%;
-  }
-  
-  .tamanoLetra {
-    display: none;
-  }
-  
+
   .flotante-compra form {
     display: flex;
   }
@@ -2881,6 +3020,21 @@ width: 100%;
      
     }
   
+  .btnCarrito {
+    width: 90%;
+  }
+  
+  .tamanoLetra {
+    display: none;
+  }
+  
+
+    
+  .btnCompra{
+    display: none;
+  }
+  
+
     
     
     .cont-infoCarrito
@@ -3060,7 +3214,7 @@ margin-top: 10px;
   {
     width: 100%;
     text-align: center;
-    font-size: 1em;
+    font-size: 2em;
     padding: 30px 0px;
   }
   
@@ -3236,7 +3390,7 @@ margin-top: 10px;
 .img1
 {
   width: 100%;
-  height: 220px;
+  height: 250px;
  margin:0;
 }
 
@@ -3273,25 +3427,7 @@ margin-top: 10px;
     background: #00667f;
     margin-top: calc(100vh * var(--i)); 
   }
-  
-  h4
-  {
-    position: relative;
-    background: linear-gradient(0deg,#ff0076,#cc00ff,#ffae00,#1fae99,#264492);
-    display: flex;
-    justify-content: center;
-  }
-  
-  h4 span
-  {
-    position: sticky;
-    top: 0;
-    line-height: 100vh;
-    height: 100vh;
-    color: #fff;
-    font-size: 1.3em;
-    margin-top: calc(100vh * var(--i)); 
-  }
+
   
   .cont-footer 
   {
@@ -3460,7 +3596,26 @@ margin-top: 10px;
 
   @media (min-width:516px) and (max-width:768px)
   {
+
+    .text-detail li i{
+      width: 10%;
+    }
     
+    .flotante-compra {
+      width: 55%;
+      border: solid 1px #ccc;
+      padding: 5px;
+      position: fixed;
+      z-index: 2;
+      background: #fff;
+      border-radius: 30px;
+      right: 30px;
+      bottom: 12px;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+  }
+
     .cont-infoCarrito
 {
   display: block;
@@ -3689,7 +3844,7 @@ margin-top: 10px;
   {
     width: 100%;
     text-align: center;
-    font-size: 1em;
+    font-size: 2em;
     padding: 30px 0px;
   }
   
@@ -3717,7 +3872,6 @@ margin-top: 10px;
   {
    width: 100%;
    padding: 0px 30px;
-   text-align: center;
   }
   
   .cont-lista h3 
@@ -4042,6 +4196,10 @@ margin-top: 10px;
   @media (min-width:769px) and (max-width:1024px)
   {
     
+    .text-detail li i{
+      width: 10%;
+    }
+
     .cont-infoCarrito
 {
   display: block;
@@ -4223,7 +4381,7 @@ margin-top: 10px;
   {
     width: 100%;
     text-align: center;
-    font-size: 1em;
+    font-size: 2em;
     padding: 30px 0px;
   }
   
@@ -4251,7 +4409,6 @@ margin-top: 10px;
   {
    width: 100%;
    padding: 0px 30px;
-   text-align: center;
   }
   
   .cont-lista h3 

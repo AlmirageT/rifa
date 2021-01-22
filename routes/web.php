@@ -17,13 +17,17 @@ Route::get('tienda-rifo-propiedades', 'PropiedadController@tienda');
 Route::get('rifo-propiedades/detalle', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
+Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAFormularioUsuario');
+
+Route::get('prueba-pdf','WelcomeController@pdf');
+
 
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
 Route::get('eliminar-ticket-carrito/{idPropiedad}','PropiedadController@eliminarDatoCarroCompra');
 Route::get('obetener-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@cambiarValorDatos');
 Route::get('restar-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@restarValorDatos');
 
-Route::post('paso-final-compra-ticket','UsuarioController@formularioUsuario');
+Route::get('paso-final-compra-ticket','UsuarioController@formularioUsuario');
 
 //Route::get('pruebaCambioNumeros','ComprarRifaController@numeros');
 //Route::get('numeros-cienmil','ComprarRifaController@hastaCien');

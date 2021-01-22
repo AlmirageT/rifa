@@ -58,8 +58,7 @@
   
     <div class="total">
       @if (Session::has('total'))
-        <form action="{{ asset('paso-final-compra-ticket') }}" method="POST">
-          @csrf
+        <form action="{{ asset('paso-final-compra-ticket') }}" method="get">
           <h5>Resumen de la compra</h5>
           <p id="totalFInal">TOTAL: ${{ number_format(Session::get('total'),0,',','.') }}.-</p>
           <button class="btnCompraCarrito" type="submit">Continuar compra</button>

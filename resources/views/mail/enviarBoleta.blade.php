@@ -1,16 +1,32 @@
 @extends('layouts.mails.app')
 
 @section('title', 'Boleta')
-@section('textoTituloPrincipal', 'TU COMPRA HA SIDO EXITOSA')
-@section('textoTituloSecundario', 'Comprobante de compra de numeros de tickets')
+@section('textoTituloPrincipal')
+@if (count($numeros)>1)
+LA COMPRA DE TUS TICKETS HA SIDO EXITOSA
+@else
+LA COMPRA DE TU TICKET HA SIDO EXITOSA
+@endif
+
+@endsection
+@section('textoTituloSecundario')
+@if (count($numeros)>1)
+Comprobante de compra de numeros de tickets
+@else
+Comprobante de compra del numero del ticket
+@endif
+@endsection
 @section('textoParrafoUno')
-Muchas gracias por comprar tus números de la suerte. Te adjuntamos un comprobante de compra de los tickets que elegiste. La premiación se realizará de acuerdo a las bases legales que podrás siempre consultar en https://rifomipropiedad.com, en la Notaria Manquehual de Santiago mediante via LIVE STREAMING vía youtube. <br><br><br>
-
-Encuentra tu comprobante de números a tu nombre adjunto a este correo. <br><br><br>
-
+@if (count($numeros)>1)
+Muchas gracias por comprar tus tickets. <br><br><br>
+@else
+Muchas gracias por comprar tu ticket. <br><br><br>
+@endif
+Adjunto encontrarás los tickets asociados a la rifa {{ $propiedad->nombrePropiedad }}. <br><br><br>
+La premiación se realizará de acuerdo a las bases legales que podrás siempre consultar en {{ asset('/') }}, en la Notaria Manquehual de Santiago mediante via LIVE STREAMING vía youtube. <br><br><br>
 Y además: Comparte esta gran oportunidad con tus amigos, familiares, compañeros de trabajo o cercanos a ti! <br><br><br>
-
-Saludos del equipo de rifomipropiedad.com
+Saludos del equipo.
+<img src="{{ asset('images/iconos/logo.png') }}"/> <br><br><br>
 @endsection
 @section('bodyDetalles')
 
@@ -34,29 +50,13 @@ Saludos del equipo de rifomipropiedad.com
             Teléfono: {{ $usuario->telefonoUsuario }}
         </span>
     </p>
+    <p style="font-size: 12px; line-height: 28px; text-align: left; margin: 0;">
+        <span style="font-size: 16px;">
+            Fecha Transacción: {{ date("d-m-Y") }}
+        </span>
+    </p>
     <div><br></div>
-    <div class="card">
-      <div class="container">
-        <p style="font-size: 12px; line-height: 21px; text-align: center; margin: 0;">
-            <strong>
-                <span style="font-size: 22px; line-height: 39px;">Números</span>
-            </strong><br/>
-        </p>
-        @foreach($numeros as $numero)
-            <p style="font-size: 12px; line-height: 21px; margin: 0;">
-                <span style="font-size: 16px; line-height: 39px;">{{ $numero->numero }}</span>
-            </p>
-        @endforeach
-        <p style="font-size: 12px; line-height: 21px; text-align: center; margin: 0;">
-            <strong>
-                <span style="font-size: 22px; line-height: 39px;">Total</span>
-            </strong><br/>
-        </p>
-        <p style="font-size: 12px; line-height: 21px; margin: 0;">
-            <span style="font-size: 16px; line-height: 39px;">${{ number_format($boleta->totalBoleta,0,',','.') }}</span>
-        </p>
-      </div>
-    </div>
+
 @endsection
 
     {{--  

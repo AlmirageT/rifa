@@ -7,6 +7,8 @@ use App\Jobs\EnviarBoletaJob;
 use App\Boleta;
 use App\Numero;
 use App\Usuario;
+use App\BoletaPropiedad;
+use App\Propiedad;
 use Log;
 
 class OtrosPagosController extends Controller
@@ -19,6 +21,7 @@ class OtrosPagosController extends Controller
             ->where('idEstado',2)
             ->first();
         if($boleta){
+            //Log::info($boleta);
 
             $convenio = getenv('OTROS_PAGOS_COVENIO');
             //Log::info($convenio);
@@ -38,6 +41,8 @@ class OtrosPagosController extends Controller
             }
             $idTransaccion = (int)$request->p_tid;
             if($idTransaccion){
+            //Log::info($idTransaccion);
+
                 return response()->json([
                     'r_tid' => $idTransaccion,
                     'r_retcod' => "00",
@@ -85,13 +90,20 @@ class OtrosPagosController extends Controller
                 $boleta->save();
                 $numeros = Numero::where('idBoleta',$request->p_idcli)->get();
                 foreach($numeros as $numero){
-                    $numero->idBoleta = null;
                     $numero->idEstado = 3;
                     $numero->save();
                 }
                 $usuario = Usuario::find($boleta->idUsuario);
-                Log::info($usuario);
-                EnviarBoletaJob::dispatch($numeros, $boleta, $usuario);
+                $boletaPropiedad = BoletaPropiedad::where('idBoleta',$request->p_idcli)->get();
+                
+                if(count($boletaPropiedad)>1){
+                    $propiedad = Propiedad::find($boletaPropiedad->first()->idPropiedad);
+                }else if(count($boletaPropiedad)==1){
+                    $propiedad = Propiedad::find($boletaPropiedad->first()->idPropiedad);
+                }
+                Log::info($propiedad);
+
+                EnviarBoletaJob::dispatch($numeros, $boleta, $usuario, $propiedad);
                 //sigue otros pagos
                 return response()->json([
                     'r_tid' => $idTransaccion,
@@ -116,6 +128,7 @@ class OtrosPagosController extends Controller
                 $boleta->save();
                 $numeros = Numero::where('idBoleta',$request->p_idcli)->get();
                 foreach($numeros as $numero){
+                    $numero->idBoleta = null;
                     $numero->idEstado = 1;
                     $numero->save();
                 }

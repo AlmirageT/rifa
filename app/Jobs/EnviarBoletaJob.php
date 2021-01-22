@@ -12,6 +12,7 @@ use App\Mail\EnvioBoleta;
 use QrCode;
 use Mail;
 use PDF;
+use Log;
 
 class EnviarBoletaJob implements ShouldQueue
 {
@@ -19,17 +20,19 @@ class EnviarBoletaJob implements ShouldQueue
     protected $boleta;
     protected $numeros;
     protected $usuario;
+    protected $propiedad;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($numeros, $boleta, $usuario)
+    public function __construct($numeros, $boleta, $usuario, $propiedad)
     {
         $this->boleta = $boleta;
         $this->numeros = $numeros;
         $this->usuario = $usuario;
+        $this->propiedad = $propiedad;
     }
 
     /**
@@ -42,10 +45,11 @@ class EnviarBoletaJob implements ShouldQueue
         $boleta = $this->boleta;
         $numeros = $this->numeros;
         $usuario = $this->usuario;
+        $propiedad = $this->propiedad;
         //pdf
         $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
-        $qr = QrCode::format('png')->size(300)->generate($direccion);
+        $qr = QrCode::format('png')->size(200)->generate($direccion);
         $pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario'));
-        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $pdf, $usuario));
+        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $pdf, $usuario,$propiedad));
     }
 }

@@ -238,14 +238,12 @@ Actualizar Propiedad
 								<input type="number" name="cantidadTotalPremios" class="form-control" value="{{ $propiedad->cantidadTotalPremios }}">
 							</div>
 						</div>
-						@php
-							$valorDisplay = "";
-							if($propiedad->urlGoogleMaps != null){
-								$valorDisplay = "block";
-							}else{
-								$valorDisplay = "none";
-							}
-						@endphp
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label for="">Cantidad de numeros asociados a la propiedad</label>
+								<input type="number" class="form-control" name="cantidadNumeros" min="{{ count($numeros) }}" required value="{{ count($numeros) }}">
+							</div>
+						</div>
 
 						
 					</div>

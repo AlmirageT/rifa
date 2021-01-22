@@ -14,7 +14,7 @@
   </div>
 
   <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
-      <img src="{{ asset('images/gif2.gif') }}" alt="">
+      <img src="{{ asset('images/giphy.gif') }}" alt="">
   </div>
 </div>
 
@@ -40,7 +40,7 @@
 
               <div class="cont-lista wow zoomIn" data-wow-delay="0.4s">
                   <h3>{{ $propiedad->nombrePropiedad }}</h3>
-                  <p><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</p>
+                  <h4><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</h4>
                   <p>{!! $propiedad->descripcionPropiedad !!}</p>
                   <p> <strong>Son {{ $propiedad->cantidadTotalPremios }} premios a repartir</strong> </p>
                   <br>
