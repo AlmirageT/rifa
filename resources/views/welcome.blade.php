@@ -14,7 +14,7 @@
   </div>
 
   <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
-      <img src="{{ asset('images/giphy.gif') }}" alt="">
+      <img src="{{ asset('images/GIF-home.gif') }}" alt="">
   </div>
 </div>
 
