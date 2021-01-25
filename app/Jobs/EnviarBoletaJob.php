@@ -49,7 +49,7 @@ class EnviarBoletaJob implements ShouldQueue
         //pdf
         $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
         $qr = QrCode::format('png')->size(200)->generate($direccion);
-        $pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario'));
+        $pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
         Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $pdf, $usuario,$propiedad));
     }
 }

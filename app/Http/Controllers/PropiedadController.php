@@ -412,7 +412,7 @@ class PropiedadController extends Controller
             ->join('comunas','propiedades.idComuna','=','comunas.idComuna')
             ->join('provincias','propiedades.idProvincia','=','provincias.idProvincia')
             ->where('propiedades.idEstado',7)
-            ->where('propiedades.nombrePropiedad', 'LIKE',"%{$request->buscadorDeRifa}%")
+            ->whereRaw(" MATCH(propiedades.nombrePropiedad) AGAINST('+".$request->buscadorDeRifa."' IN BOOLEAN MODE)")
             ->orWhere('propiedades.direccionPropiedad', 'LIKE',"%{$request->buscadorDeRifa}%")
             ->orWhere('regiones.nombreRegion', 'LIKE',"%{$request->buscadorDeRifa}%")
             ->orWhere('comunas.nombreComuna', 'LIKE',"%{$request->buscadorDeRifa}%")

@@ -1,7 +1,7 @@
 
 <header>
     <div class="cont-nav" id="contenido-cambio">
-        <a href="{{ asset('/') }}"><img src="{{ asset('images/iconos/logo.png') }}" alt=""></a>
+        <a href="{{ asset('/') }}"><img src="{{ asset('images/variantes logo rifopoly-05.png') }}" alt=""></a>
         <div class="toggle" onclick="toggleMenu()"></div>
         <ul class="navigation">
            <!-- <li><a href="propiedades.html">Propiedades</a></li> -->

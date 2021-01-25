@@ -44,9 +44,8 @@ class PremiosController extends Controller
             $premio = new Premio($request->all());
             if($request->file('imagenPremio')){
                 $imagen = $request->file('imagenPremio');
-                $img = Image::make($imagen);
                 $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
-                $img->save('assets/images/propiedades/'.$imgName);
+                $imagen->move('assets/images/propiedades/',$imgName);
                 $premio->imagenPremio = 'assets/images/propiedades/'.$imgName;
             }
             $premio->save();
@@ -92,9 +91,8 @@ class PremiosController extends Controller
             $premio->fill($request->all());
             if($request->file('imagenPremio')){
                 $imagen = $request->file('imagenPremio');
-                $img = Image::make($imagen);
                 $imgName = uniqid().'.'.$imagen->getClientOriginalExtension();
-                $img->save('assets/images/propiedades/'.$imgName);
+                $imagen->move('assets/images/propiedades/',$imgName);
                 $premio->imagenPremio = 'assets/images/propiedades/'.$imgName;
             }
             $premio->save();

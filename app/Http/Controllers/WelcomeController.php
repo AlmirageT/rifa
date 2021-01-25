@@ -11,6 +11,7 @@ use App\Boleta;
 use App\Numero;
 use App\Usuario;
 use App\BoletaPropiedad;
+use PDF;
 use QrCode;
 
 class WelcomeController extends Controller
@@ -43,10 +44,18 @@ class WelcomeController extends Controller
         $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
         $qr = QrCode::format('png')->size(200)->generate($direccion);
         $usuario = Usuario::find(132);
-        $boletaPropiedad = BoletaPropiedad::select('*')
-            ->join('propiedades','boletas_propiedades.idPropiedad','=','propiedades.idPropiedad')
-            ->where('idBoleta',194)->get();
-        return view('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','boletaPropiedad'));
-        $pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','boletaPropiedad'));
+        $boletasPropiedades = BoletaPropiedad::where('idBoleta',194)->get();
+        $idPropiedad = array();
+        foreach($boletasPropiedades as $boletaPropiedad){
+            $array = array(
+                'idPropiedad' => $boletaPropiedad->idPropiedad
+            );
+            array_push($idPropiedad,$array);
+        }
+        $propiedad = Propiedad::whereIn('idPropiedad',$idPropiedad)->get();
+
+        //return view('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
+        $pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
+        return $pdf->download('listado.pdf');
     }
 }

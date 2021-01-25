@@ -1,4 +1,13 @@
 @extends('layouts.public.app')
+@section('meta')
+    <meta property="og:url" content="{{ $url }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Participa por esta propiedad {{ $propiedad->nombrePropiedad }}" >
+    <meta property="og:description" content="Una propiedad de lujo puede ser tuya por ${{ number_format($propiedad->valorRifa,0,',','.') }}" >
+    <meta property="og:image" content="{{ asset($propiedad->fotoPrincipal) }}" >
+    <meta property="og:image:width" content="200" >
+    <meta property="og:image:height" content="200" >
+@endsection
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -90,8 +99,8 @@
         <h3 class="text-detail wow fadeInLeft" data-wow-delay="0.4s">{{ $propiedad->subtituloPropiedad }}</h3>
         <h4 class="text-detail wow fadeInLeft" data-wow-delay="0.4s"><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
         <ul class="share-detail margen">
-            <li><a target="_blank" href=""><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
-            <li><a target="_blank" href=""><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+            <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}"><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+            <li><a target="_blank" href="https://twitter.com/intent/tweet?text=Una propiedad de lujo puede ser tuya por ${{ number_format($propiedad->valorRifa,0,',','.') }}&amp;url={{ $url }}"><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
         </ul>
         <hr>
         <br>
@@ -107,26 +116,32 @@
 
     </div>
     <br>
-    <div class="cont-matterport">
-        <h2>Tour 3D</h2>
-        @if ($propiedad->urlMattlePort)
-            <iframe  src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
-        @endif
-    </div>
+    @if ($propiedad->urlMattlePort)
+        
+        <div class="cont-matterport">
+            <h2>Tour 3D</h2>
+            @if ($propiedad->urlMattlePort)
+                <iframe  src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
+            @endif
+        </div>
+    @endif
 
     <br>
-    <div class="cont-premios-detail">
-        <h2>Premios</h2>
-        <div class="cont-premios">
-            @foreach ($premios as $premio)
-                <img src="{{ asset($premio->imagenPremio) }}" alt="">
-            @endforeach
+    @if (count($premios)>0)
+        
+        <div class="cont-premios-detail">
+            <h2>Premios</h2>
+            <div class="cont-premios">
+                @foreach ($premios as $premio)
+                    <img src="{{ asset($premio->imagenPremio) }}" alt="">
+                @endforeach
 
+            </div>
+
+            <br>
         </div>
+    @endif
 
-        <br>
-
-    </div>
     @if ($propiedad->urlGoogleMaps != null)
         <div style="display: none">
             <select name="idPais" id="paises" onchange="sacarRegionPorPais(this.value)" required class="form-control">

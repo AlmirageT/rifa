@@ -50,12 +50,12 @@
                         $primerValorPremios = $arraySinEdicion->shift();
                     @endphp
                     <ul>
-                        <h4>{{ $primerValorPremios['nombreTipoPremio'] }}</h4>
+                        <h4><i class="fas fa-award"></i> {{ $primerValorPremios['nombreTipoPremio'] }}</h4>
                         {!! $primerValorPremios['descripcion'] !!}
                     </ul> <br>
                     @foreach ($arraySinEdicion as $premio)
                       <ul>
-                          <h4>{{ $premio->nombreTipoPremio }}</h4>
+                          <h4><i class="fas fa-money-bill-alt"></i> {{ $premio->nombreTipoPremio }}</h4>
                           {!! $premio->descripcion !!}
                       </ul><br>
                     @endforeach

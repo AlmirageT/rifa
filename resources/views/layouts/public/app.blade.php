@@ -35,8 +35,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="author" content="Ivan Saez">
-    <link rel="icon" href="{{ asset('images/iconos/favicon.png') }}" type="image/jpg">
+    <meta name="author" content="Francisca Ocares, Ivan Saez">
+    <link rel="icon" href="{{ asset('images/variantes logo rifopoly-07.png') }}" type="image/jpg">
     <title>Rifo mi Propiedad</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://kit.fontawesome.com/9987974c2b.js" crossorigin="anonymous"></script>

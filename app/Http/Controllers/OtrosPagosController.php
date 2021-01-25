@@ -94,13 +94,18 @@ class OtrosPagosController extends Controller
                     $numero->save();
                 }
                 $usuario = Usuario::find($boleta->idUsuario);
-                $boletaPropiedad = BoletaPropiedad::where('idBoleta',$request->p_idcli)->get();
-                
-                if(count($boletaPropiedad)>1){
-                    $propiedad = Propiedad::find($boletaPropiedad->first()->idPropiedad);
-                }else if(count($boletaPropiedad)==1){
-                    $propiedad = Propiedad::find($boletaPropiedad->first()->idPropiedad);
+                $boletasPropiedades = BoletaPropiedad::where('idBoleta',$request->p_idcli)->get();
+
+                $idPropiedad = array();
+                foreach($boletasPropiedades as $boletaPropiedad){
+                    $array = array(
+                        'idPropiedad' => $boletaPropiedad->idPropiedad
+                    );
+                    array_push($idPropiedad,$array);
                 }
+                
+                $propiedad = Propiedad::whereIn('idPropiedad',$idPropiedad)->get();
+                
                 Log::info($propiedad);
 
                 EnviarBoletaJob::dispatch($numeros, $boleta, $usuario, $propiedad);

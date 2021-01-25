@@ -114,7 +114,8 @@
                             </div>
                             <div class="info-propiedad">
                                 <h3><strong>{{ $propiedad->nombrePropiedad }}</strong></h3>
-                                <h4><i class="fas fa-map-marker-alt"></i>{{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
+                                <h4 id="nombreComuna{{ $propiedad->idPropiedad }}"><i class="fas fa-map-marker-alt"></i>{{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
+
                                 <p>${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
                                 <p>{!! $propiedad->descripcionPropiedad !!}</p>
                                 <br>
@@ -173,12 +174,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
 
 <script>
-$( document ).ready(function() {
-    document.getElementById('contenido-cambio').classList.remove('cont-nav');
-    document.getElementById('contenido-cambio').classList.add('cont-nav-int');
-    
-});
+    $( document ).ready(function() {
+        document.getElementById('contenido-cambio').classList.remove('cont-nav');
+        document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+    });
 </script>
+@foreach($propiedades as $propiedad)
+    <script>
+        const prop = @json($propiedad->idPropiedad);
+
+        if(screen.width < 766 && screen.width > 675){
+            const nombreComuna = @json($propiedad->nombreComuna);
+            const nombreRegion = @json(substr($propiedad->nombreRegion,0,28));
+            
+            document.getElementById('nombreComuna'+prop).innerHTML = '';
+            document.getElementById('nombreComuna'+prop).innerHTML = `<i class="fas fa-map-marker-alt"></i>${nombreComuna}, ${nombreRegion}...`;
+        }
+        if(screen.width < 675 && screen.width > 558){
+            const nombreComuna = @json($propiedad->nombreComuna);
+            const nombreRegion = @json(substr($propiedad->nombreRegion,0,18));
+            
+            document.getElementById('nombreComuna'+prop).innerHTML = '';
+            document.getElementById('nombreComuna'+prop).innerHTML = `<i class="fas fa-map-marker-alt"></i>${nombreComuna}, ${nombreRegion}...`;
+        }
+        if(screen.width < 558){
+            const nombreComuna = @json($propiedad->nombreComuna);
+            const nombreRegion = @json(substr($propiedad->nombreRegion,0,8));
+            
+            document.getElementById('nombreComuna'+prop).innerHTML = '';
+            document.getElementById('nombreComuna'+prop).innerHTML = `<i class="fas fa-map-marker-alt"></i>${nombreComuna}, ${nombreRegion}...`;
+        }
+    </script>
+@endforeach
+
 <script>
     var swiper = new Swiper('.swiper-container', {
       pagination: {

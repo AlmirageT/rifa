@@ -99,7 +99,8 @@ class ComprarRifaController extends Controller
             $regiones = Region::all();
             $provincias = Provincia::all();
             $comunas = Comuna::all();
-            return view('rifa',compact('propiedad','propiedadCaracteristicas','imagenesPropiedad','portada1','portada2','premios','paises','regiones','provincias','comunas'));
+            $url = asset('rifo-propiedades/detalle')."?idPropiedad=".$request->idPropiedad;
+            return view('rifa',compact('propiedad','propiedadCaracteristicas','imagenesPropiedad','portada1','portada2','premios','paises','regiones','provincias','comunas','url'));
         } catch (ModelNotFoundException $e) {
             toastr()->warning('La propiedad solicitada esta cerrada');
             return back();

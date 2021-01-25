@@ -19,7 +19,7 @@ Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
 Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAFormularioUsuario');
 
-Route::get('prueba-pdf','WelcomeController@pdf');
+//Route::get('prueba-pdf','WelcomeController@pdf');
 
 
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');

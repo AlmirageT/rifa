@@ -561,12 +561,11 @@ justify-content: center;
   border-radius: 4px;
   color: #033b45;
   transition: ease-out 0.3s;
-  box-shadow: inset 0 0 0 0 #ff4274;
 }
 
 .sci li a:hover 
 {
-  box-shadow: inset 40px 0 0 0 #ff4274;
+  background: #ff4274;
   color: #033b45;
 }
 
@@ -890,11 +889,10 @@ text-decoration: none;
   color: #033b45;
   border-radius: 15px;
   transition: ease-out 0.3s;
-  box-shadow: inset 0 0 0 0 #ff4274;
 }
 .download:hover
 {
-  box-shadow: inset 210px 0 0 0 #ff4274;
+  background:  #ff4274;
 }
 .contenedor-galeria
 {
@@ -1027,7 +1025,7 @@ video
 }
 
 .text-detail li i{
-  width: 10%;
+  width: 5%;
 }
 
 .fondo-azul {
@@ -2951,14 +2949,14 @@ width: 100%;
   .cont-premios
   {
     width: 100%;
-    display: flex;
+    display: block;
     padding: 10px 10px;
     justify-content: center;
   }
   
   .cont-premios img
   {
-    width: 35%;
+    width: 100%;
   }
 
   .cont-bl
@@ -2974,6 +2972,53 @@ width: 100%;
 
   @media (min-width:415px) and (max-width:515px)
   {
+
+    .width {
+      margin-left: 180px;
+  }
+
+    .premios-list {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+    
+    .premios-list ul li{
+      width: 100%;
+      margin-left: 25px;
+    }
+    
+
+    .info-propiedad {
+      width: 100%;
+  }
+    .propiedades {
+
+      display: block;
+
+  }
+
+    .slide-img
+{
+width: 100%;
+}
+
+.slide-img img
+{
+width: 100%;
+}
+
+    .cont-propiedades1
+{
+  width: 100%;
+  display: block;
+  padding: 10px;
+}
+
+    .cont-premios-prop {
+      width: 100%;
+      display: block;
+      flex-wrap: wrap;
+    }
 
     .text-detail li i{
       width: 10%;
@@ -3597,6 +3642,17 @@ margin-top: 10px;
   @media (min-width:516px) and (max-width:768px)
   {
 
+    .cont-propiedades1
+    {
+      width: 100%;
+      display: block;
+      padding: 50px;
+    }
+
+    .width {
+      margin-left: 210px;
+    }
+
     .text-detail li i{
       width: 10%;
     }
@@ -3776,7 +3832,7 @@ margin-top: 10px;
     
     .seccion-1 {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background: #033b45;
     margin: auto;
     justify-content: center;
@@ -3785,15 +3841,16 @@ margin-top: 10px;
     .seccion-1 img {
       display:block;
       margin: 50px auto;
-      width: 100%;
-      padding-top: 120px;
+      width: 50%;
+      padding-top: 40px;
       }
     
     .seccion-2 {
       width: 100%;
-      padding: 80px 20px;
+      height: 50vh;
+      padding: 80px;
       color: #fff;
-      font-size: 25px;
+      font-size: 30px;
     }
   
     .sec2-mobile img {
@@ -4004,7 +4061,7 @@ margin-top: 10px;
 }
 
 .margen {
-  margin-left: 600px;
+  margin-left: 20px;
 }
   
   .container
