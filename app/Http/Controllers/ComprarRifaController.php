@@ -208,7 +208,7 @@ class ComprarRifaController extends Controller
 
                 DB::commit();
 
-                return redirect()->to('https://otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
+                return redirect()->to('http://pre.otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
             }else{
                 DB::rollback();
                 toastr()->warning('Debe pasar por el carrito de compra antes de poder continuar');
