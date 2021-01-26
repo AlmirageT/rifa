@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="cont-footer">
         <div class="aboutus">
-            <h2>Rifo Mi Propiedad</h2>
+            <h2>Rifopoly</h2>
             <p>Confía en ti, cree en la suerte, desafía al destino y podrás ser el ganador.</p>
         </div>
 

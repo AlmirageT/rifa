@@ -37,7 +37,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Francisca Ocares, Ivan Saez">
     <link rel="icon" href="{{ asset('images/variantes logo rifopoly-07.png') }}" type="image/jpg">
-    <title>Rifo mi Propiedad</title>
+    <title>Rifopoly</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://kit.fontawesome.com/9987974c2b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
