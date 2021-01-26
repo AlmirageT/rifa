@@ -30,7 +30,8 @@
     gtag('config', 'UA-180685280-1');
   </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prueba tu suerte con nosotros, compra un ticket y podrias ser el flamante ganador de una propiedad" />
+    <meta name="keywords" content="rifo mi propiedad, rifa departamento, rifa casa, rifa, propiedad, casa, departamento" />
     @yield('meta')
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

@@ -20,7 +20,7 @@ Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
 Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAFormularioUsuario');
 
 //Route::get('prueba-pdf','WelcomeController@pdf');
-
+//Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
 Route::get('eliminar-ticket-carrito/{idPropiedad}','PropiedadController@eliminarDatoCarroCompra');

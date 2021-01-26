@@ -208,7 +208,7 @@ class ComprarRifaController extends Controller
 
                 DB::commit();
 
-                return redirect()->to('http://pre.otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
+                return redirect()->to('http://otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
             }else{
                 DB::rollback();
                 toastr()->warning('Debe pasar por el carrito de compra antes de poder continuar');
@@ -234,6 +234,22 @@ class ComprarRifaController extends Controller
             DB::rollback();         
             toastr()->error('Ha surgido un error inesperado', $e->getMessage(), ['timeOut' => 9000]);
             return back();
+        }
+    }
+
+    public function reversarEstadoDeNoPagados()
+    {
+        $boletas = Boleta::where('idEstado', 2)->get();
+        foreach ($boletas as $boleta) {
+            if(date('d-m-Y',strtotime($boleta->fechaVencimiento)) == date('d-m-Y') ){
+                $boleta->update([
+                    'idEstado'=>4
+                ]);
+                Numero::where('idBoleta',$boleta->idBoleta)->update([
+                    'idEstado'=>1,
+                    'idBoleta'=>null
+                ]);
+            }
         }
     }
 }
