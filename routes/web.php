@@ -55,7 +55,7 @@ Route::group(['prefix'=>'administrador'], function(){
 	Route::group(['prefix'=>'propiedades'], function(){
 		Route::get('/','PropiedadController@index');
 		Route::get('create','PropiedadController@create');
-		Route::get('edit/{idPropiedad}','PropiedadController@edit');
+		Route::get('editar/{idPropiedad}','PropiedadController@edit');
 		Route::get('destroy/{idPropiedad}','PropiedadController@destroy');
 		Route::get('imagenes/{idPropiedad}','PropiedadController@imagenes');
 		Route::post('img-propiedad/{idPropiedad}','PropiedadController@dropzone');

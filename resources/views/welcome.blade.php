@@ -4,9 +4,11 @@
 
 <div class="cont-header">
   <div class="cont-tittle">
-      <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>
-      <p class="wow slideInLeft" data-wow-delay="0.6s">Confía en ti, cree en la suerte, desafía al destino y podrás ser el ganador ! Son 10 premios a repartir
-
+      <h1 class="ml2">Rifa Departamento <br>de Lujo</h1> <br>
+      <p class="wow slideInLeft" style="text-align: center" data-wow-delay="0.6s">
+        No llegaste a Rifopoly porque si, cree en tu suerte, <br> 
+        compra tu número y desafía al destino <br>
+        <strong>¡Hay 10 premios esperando por ti!</strong> 
       </p>
       <br> <br>
       <a href="{{ asset('tienda-rifo-propiedades') }}">Ver Propiedades <i class="far fa-building"></i></a> 
@@ -42,7 +44,7 @@
                   <h3>{{ $propiedad->nombrePropiedad }}</h3>
                   <h4><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</h4>
                   <p>{!! $propiedad->descripcionPropiedad !!}</p>
-                  <p> <strong>Son {{ $propiedad->cantidadTotalPremios }} premios a repartir</strong> </p>
+                  <p> <strong>Hay {{ $propiedad->cantidadTotalPremios }} premios esperando por ti.</strong> </p>
                   <br>
                   @if ($premios->where('idPropiedad',$propiedad->idPropiedad))
                     @php
