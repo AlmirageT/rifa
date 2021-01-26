@@ -132,8 +132,28 @@
         <div class="cont-premios-detail">
             <h2>Premios</h2>
             <div class="cont-premios">
+                <div class="contListaPremios">
+                    @php
+                        $primerValorPremios = $premios->shift();
+                    @endphp
+                    <img src="{{ asset($primerValorPremios->imagenPremio) }}" alt="">
+                    <ul>
+                        <p><i class="fas fa-award"></i> {{ $primerValorPremios->nombreTipoPremio }}</p>
+                        {!! $primerValorPremios->descripcion !!}
+                    </ul>
+                    
+                </div>
                 @foreach ($premios as $premio)
+
+                <div class="contListaPremios">
                     <img src="{{ asset($premio->imagenPremio) }}" alt="">
+
+                    <ul>
+                        <p><i class="fas fa-money-bill-alt"></i> {{ $premio->nombreTipoPremio }}</p>
+                        {!! $premio->descripcion !!}
+                    </ul>
+
+                </div>
                 @endforeach
 
             </div>

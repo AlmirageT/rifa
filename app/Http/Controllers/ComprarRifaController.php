@@ -94,7 +94,9 @@ class ComprarRifaController extends Controller
             $imagenesPropiedad = ImagenPropiedad::where('idPropiedad',Crypt::decrypt($request->idPropiedad))->get();
             $portada1 = $imagenesPropiedad->shift();
             $portada2 = $imagenesPropiedad->shift();
-            $premios = Premio::where('idPropiedad',(Crypt::decrypt($request->idPropiedad)))->get();
+            $premios = Premio::select('*')
+            ->join('tipos_premios','premios.idTipoPremio','=','tipos_premios.idTipoPremio')
+            ->where('idPropiedad',(Crypt::decrypt($request->idPropiedad)))->get();
             $paises = Pais::all();
             $regiones = Region::all();
             $provincias = Provincia::all();
