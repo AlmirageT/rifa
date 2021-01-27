@@ -4,7 +4,7 @@
 
 <div class="cont-header">
   <div class="cont-tittle">
-      <h1 class="ml2">Rifa Departamento <br>de Lujo</h1> <br>
+      <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>
       <p class="wow slideInLeft" style="text-align: center" data-wow-delay="0.6s">
         No llegaste a Rifopoly porque si, cree en tu suerte, <br> 
         compra tu número y desafía al destino <br>
