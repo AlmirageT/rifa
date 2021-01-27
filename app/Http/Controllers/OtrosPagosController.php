@@ -25,12 +25,17 @@ class OtrosPagosController extends Controller
         $h_firma = base64_encode($encriptacion);
         //Log::info($h_firma);
         $headers = apache_request_headers();
+        $encontrado = false;
         foreach($headers as $header => $value){
             if($header == "H-Firma"){
+                $encontrado = true;
                 if($value != $h_firma){
                     return response()->json(['r_retcod' => "65"],200);
                 }
             }
+        }
+        if(!$encontrado){
+            return response()->json(['r_retcod' => "65"],200);
         }
 
         $boleta = Boleta::where('idBoleta',$request->p_idcli)
@@ -73,12 +78,17 @@ class OtrosPagosController extends Controller
         $encriptacion = openssl_encrypt($llave, "AES-256-CBC",getenv('OTROS_PAGOS_KEY'),1,getenv('OTROS_PAGOS_IV'));
         $h_firma = base64_encode($encriptacion);
         $headers = apache_request_headers();
+        $encontrado = false;
         foreach($headers as $header => $value){
             if($header == "H-Firma"){
+                $encontrado = true;
                 if($value != $h_firma){
                     return response()->json(['r_retcod' => "65"],200);
                 }
             }
+        }
+        if(!$encontrado){
+            return response()->json(['r_retcod' => "65"],200);
         }
 
         $idTransaccion = (int)$request->p_tid;
