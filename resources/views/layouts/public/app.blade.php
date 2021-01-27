@@ -43,6 +43,8 @@
     <script src="https://kit.fontawesome.com/9987974c2b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;700&display=swap" rel="stylesheet">
     <style>
       html{
         scroll-behavior: smooth;

@@ -5,11 +5,13 @@
 <div class="cont-header">
   <div class="cont-tittle">
       <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>
-      <p class="wow slideInLeft" style="text-align: center" data-wow-delay="0.6s">
-        No llegaste a Rifopoly porque si, cree en tu suerte, <br> 
-        compra tu número y desafía al destino <br>
-        <strong>¡Hay 10 premios esperando por ti!</strong> 
+      <p class="wow slideInLeft" data-wow-delay="0.6s">
+        No llegaste a Rifopoly porque si, cree en tu suerte,
+        compra tu número y desafía al destino 
+        
       </p>
+      <br>
+      <p class=""><strong>Son 10 premios a repartir</strong></p>
       <br> <br>
       <a href="{{ asset('tienda-rifo-propiedades') }}">Ver Propiedades <i class="far fa-building"></i></a> 
       <!--<a href="{{ asset('tienda-rifo-propiedades') }}">Quiero saber más</a>-->
