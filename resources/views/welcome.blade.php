@@ -55,12 +55,12 @@
                     @endphp
                     <ul>
                         <h4><i class="fas fa-award"></i> {{ $primerValorPremios['nombreTipoPremio'] }}</h4>
-                        {!! $primerValorPremios['descripcion'] !!}
+                        <li>{!! $primerValorPremios['descripcion'] !!}</li>
                     </ul> <br>
                     @foreach ($arraySinEdicion as $premio)
                       <ul>
                           <h4><i class="fas fa-money-bill-alt"></i> {{ $premio->nombreTipoPremio }}</h4>
-                          {!! $premio->descripcion !!}
+                          <li> {!! $premio->descripcion !!}</li>
                       </ul><br>
                     @endforeach
                   @endif

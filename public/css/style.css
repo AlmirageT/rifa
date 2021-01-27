@@ -194,6 +194,10 @@ font-size: 15px;
   list-style: none;
 }
 
+.cont-lista ul li{
+  margin-left: 17px;
+}
+
 .cont-lista h3 
 {
   font-size: 2em;
@@ -812,6 +816,13 @@ width: 100%;
   width: 33%;
   list-style: none;
 }
+
+.premios-list li
+{
+margin-left: 24px;
+}
+
+
 
 .titlePremios {
   font-size: 20px;
