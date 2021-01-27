@@ -44,7 +44,7 @@
 
               <div class="cont-lista wow zoomIn" data-wow-delay="0.4s">
                   <h3>{{ $propiedad->nombrePropiedad }}</h3>
-                  <h4><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</h4>
+                  <h4><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
                   <p>{!! $propiedad->descripcionPropiedad !!}</p>
                   <p> <strong>Hay {{ $propiedad->cantidadTotalPremios }} premios esperando por ti.</strong> </p>
                   <br>
@@ -123,7 +123,7 @@
       <img src="images/gif.gif" alt="" class="wow slideInLeft">
   </div>
   <div class="seccion-2">
-      <h2 class="wow zoomIn">¿Cómo funciona Rifo Mi Propiedad?</h2>
+      <h2 class="wow zoomIn">¿Cómo funciona Rifopoly?</h2>
       <p class="wow fadeInUp">Compra tu número a $20.000.- el sorteo será realizado en la notaría Manquehual, el cual será transmitido por Youtube Live, de este modo todos los compradores pueden asistir.</p>
   </div>
 </div>
