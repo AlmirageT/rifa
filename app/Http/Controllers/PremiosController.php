@@ -85,7 +85,9 @@ class PremiosController extends Controller
             $premio = Premio::find($idPremio);
             if($premio->imagenPremio != null ){
                 if($request->file('imagenPremio')){
-                    unlink($premio->imagenPremio);
+                    if(file_exists($premio->imagenPremio)){
+                        unlink($premio->imagenPremio);
+                    }
                 }
             }
             $premio->fill($request->all());
@@ -123,7 +125,9 @@ class PremiosController extends Controller
             DB::beginTransaction();
             $premio = Premio::find($idPremio);
             if($premio->imagenPremio != null ){
-                unlink($premio->imagenPremio);
+                if(file_exists($premio->imagenPremio)){
+                    unlink($premio->imagenPremio);
+                }
             }
             toastr()->success('Eliminado Correctamente', 'El premio ha sido eliminado correctamente', ['timeOut' => 9000]);
             $premio->delete();

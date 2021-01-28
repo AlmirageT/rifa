@@ -179,7 +179,9 @@ class PropiedadController extends Controller
             $propiedad = Propiedad::find($idPropiedad);
             if($request->file('fotoPrincipal')){
                 if($propiedad->fotoPrincipal != null){
-                    unlink($propiedad->fotoPrincipal);
+                    if(file_exists($propiedad->fotoPrincipal)){
+                        unlink($propiedad->fotoPrincipal);
+                    }
                 }
                 $imagen = $request->file('fotoPrincipal');
                 $img = Image::make($imagen);
@@ -189,7 +191,9 @@ class PropiedadController extends Controller
             }
             if($request->file('urlVideo')){
                 if($propiedad->urlVideo != null){
-                    unlink($propiedad->urlVideo);
+                    if(file_exists($propiedad->urlVideo)){
+                        unlink($propiedad->urlVideo);
+                    }
                 }
                 $video = $request->file('urlVideo');
                 $videoName = uniqid().'.'.$video->getClientOriginalExtension();
@@ -198,7 +202,9 @@ class PropiedadController extends Controller
             }
             if($request->file('pdfBasesLegales')){
                 if($propiedad->pdfBasesLegales != null){
-                    unlink($propiedad->pdfBasesLegales);
+                    if(file_exists($propiedad->pdfBasesLegales)){
+                        unlink($propiedad->pdfBasesLegales);
+                    }
                 }
                 $pdf = $request->file('pdfBasesLegales');
                 Log::info($pdf);
@@ -209,7 +215,9 @@ class PropiedadController extends Controller
                 $propiedad->pdfBasesLegales = 'assets/pdf/'.$pdfName;
             }
             if($propiedad->fotoMapa != null){
-                unlink($propiedad->fotoMapa);
+                if(file_exists($propiedad->fotoMapa)){
+                    unlink($propiedad->fotoMapa);
+                }
             }
             $propiedad->nombrePropiedad = $request->nombrePropiedad;
             $propiedad->descripcionPropiedad = $request->descripcionPropiedad;
@@ -287,7 +295,9 @@ class PropiedadController extends Controller
 
             if(count($imagenesPropiedad)>0){
                 foreach ($imagenesPropiedad as $imagenPropiedad) {
-                    unlink($imagenPropiedad->urlImagen);
+                    if(file_exists($imagenPropiedad->urlImagen)){
+                        unlink($imagenPropiedad->urlImagen);
+                    }
                     $imagenPropiedad->delete();
                 }
             }
@@ -295,7 +305,9 @@ class PropiedadController extends Controller
             if(count($premios)>0){
                 foreach ($premios as $premio) {
                     if($premio->imagenPremio){
-                        unlink($premio->imagenPremio);
+                        if(file_exists($premio->imagenPremio)){
+                            unlink($premio->imagenPremio);
+                        }
                         $premio->delete();
                     }else{
                         $premio->delete();
@@ -310,16 +322,24 @@ class PropiedadController extends Controller
             }
             $propiedad = Propiedad::find($idPropiedad);
             if($propiedad->fotoPrincipal != null){
-                unlink($propiedad->fotoPrincipal);
+                if(file_exists($propiedad->fotoPrincipal)){
+                    unlink($propiedad->fotoPrincipal);
+                }
             }
             if($propiedad->fotoMapa != null){
-                unlink($propiedad->fotoMapa);
+                if(file_exists($propiedad->fotoMapa)){
+                    unlink($propiedad->fotoMapa);
+                }
             }
             if($propiedad->pdfBasesLegales != null){
-                unlink($propiedad->pdfBasesLegales);
+                if(file_exists($propiedad->pdfBasesLegales)){
+                    unlink($propiedad->pdfBasesLegales);
+                }
             }
             if($propiedad->urlVideo != null){
-                unlink($propiedad->urlVideo);
+                if(file_exists($propiedad->urlVideo)){
+                    unlink($propiedad->urlVideo);
+                }
             }
             toastr()->success('Eliminado Correctamente', 'El tipo de calidad: '.$propiedad->nombrePropiedad.' ha sido eliminado correctamente');
             $propiedad->delete();

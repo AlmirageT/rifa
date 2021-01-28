@@ -137,13 +137,13 @@
           <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre" required>
           
           <label for="correo" class="form-label"></label>
-          <input type="email" name="correo" id="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico">
+          <input type="email" name="correo" id="correo" class="form-input-bottom" placeholder="Correo Electr&oacute;nico" required>
           
           <label for="fono" class="form-label"></label>
-          <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono">
+          <input type="number" id="fono" name="fono" class="form-input-bottom" placeholder="Tel&eacute;fono 987654321" min="111111111" max="999999999" required>
           
           <label for="msg" class="azul form-label">Escribe tu mensaje a continuación</label>
-          <textarea class="form-input" id="msg" cols="30" rows="5" name="consulta" > </textarea>
+          <textarea class="form-input" id="msg" cols="30" rows="5" name="consulta" required > </textarea>
           
           <input type="submit" class="btn-submit-bottom" value="Solicita información">
       </form>
