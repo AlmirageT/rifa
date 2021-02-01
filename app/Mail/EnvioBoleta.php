@@ -12,7 +12,7 @@ class EnvioBoleta extends Mailable
     use Queueable, SerializesModels;
     protected $boleta;
     protected $numeros;
-    protected $pdf;
+    protected $fileatt;
     protected $usuario;
     protected $propiedad;
     /**
@@ -20,11 +20,11 @@ class EnvioBoleta extends Mailable
      *
      * @return void
      */
-    public function __construct($boleta, $numeros, $pdf, $usuario, $propiedad)
+    public function __construct($boleta, $numeros, $fileatt, $usuario, $propiedad)
     {
         $this->boleta = $boleta;
         $this->numeros = $numeros;
-        $this->pdf = $pdf;
+        $this->fileatt = $fileatt;
         $this->usuario = $usuario;
         $this->propiedad = $propiedad;
     }
@@ -40,8 +40,8 @@ class EnvioBoleta extends Mailable
         $numeros = $this->numeros;
         $usuario = $this->usuario;
         $propiedad = $this->propiedad;
-        $file = $this->pdf->output();
+        $fileatt = $this->fileatt;
 
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($file, "Comprobante de Compra.pdf")->view('mail.enviarBoleta',compact('boleta','numeros','usuario','propiedad'));
+        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($fileatt, "Comprobante de Compra.pdf")->view('mail.enviarBoleta',compact('boleta','numeros','usuario','propiedad'));
     }
 }
