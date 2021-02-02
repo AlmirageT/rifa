@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use App\Jobs\EnviarBoletaJob;
 use App\Boleta;
 use App\Numero;
