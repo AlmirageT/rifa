@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="icon" href="{{ asset('img/favicon.png') }}" type="{{ asset('image/jpg') }}">
+    <link rel="icon" href="{{ asset('images/variantes logo rifopoly-07.png') }}" type="image/jpg">
 
     <title>¡Compra Validada!</title>
   </head>
@@ -17,7 +17,7 @@
     <div class="col-md-8 p-lg-5 mx-auto my-5">
         <div class="row">
             <div class="col-md-12 col-12 text-center p-3">
-                <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('img/logo rifa.png') }}" alt="" width="200" height="100"></a>
+                <a class="link-logo" href="{{ asset('/') }}" class="logo"><img class="img-logo" src="{{ asset('images/variantes logo rifopoly-05.png') }}" alt="" width="200" height="100"></a>
                 <h1 class="display-4 font-weight-normal">¡Felicidades tu Compra ha Sido Validada!</h1>
             </div>
             <div class="col-md-12 col-12 text-center">
@@ -107,7 +107,7 @@
   </body>
   <footer>
       <div align="center">
-          <p>El Equipo de Rifo Mi Propiedad te Desea Suerte</p>
+          <p>El Equipo de Rifopoly te Desea Suerte</p>
       </div>
   </footer>
 </html>

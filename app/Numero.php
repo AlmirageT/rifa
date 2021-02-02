@@ -12,6 +12,7 @@ class Numero extends Model
     	'numero',
     	'valorNumero',
     	'idBoleta',
-    	'idEstado'
+        'idEstado',
+        'idPropiedad'
     ];
 }
