@@ -176,7 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-
+        Intervention\Image\ImageServiceProvider::class,
+        Elibyy\TCPDF\ServiceProvider::class,
     ],
 
     /*
@@ -229,7 +230,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-
+        'Image' => Intervention\Image\Facades\Image::class,
+        'PDFTC' => Elibyy\TCPDF\Facades\TCPDF::class,
     ],
 
 ];

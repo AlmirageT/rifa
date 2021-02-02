@@ -58,6 +58,8 @@ $(document).ready(function(){
                 map: map,
                 position: {lat: respuesta['results']['0']['geometry']['location']['lat'], lng: respuesta['results']['0']['geometry']['location']['lng']}
               });
+              console.log(respuesta['results']['0']['geometry']['location']['lat']);
+              console.log(respuesta['results']['0']['geometry']['location']['lng']);
               map.setMap(map);
           },
           error: function(err) {

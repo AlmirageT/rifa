@@ -12,12 +12,12 @@
                     </span>
                 </a>
 
-                <a href="{{ url('/dashboard') }}" class="logo logo-light">
+                <a href="{{ url('/administrador') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-light.svg') }}" alt="" height="22">
+                        <img src="{{  asset('images/variantes logo rifopoly-07.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="19">
+                        <img src="{{ asset('images/variantes logo rifopoly-05.png') }}" alt="" height="55">
                     </span>
                 </a>
             </div>

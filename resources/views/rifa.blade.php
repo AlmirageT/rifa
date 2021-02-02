@@ -1,134 +1,375 @@
+@extends('layouts.public.app')
+@section('meta')
+    <meta property="og:url" content="{{ $url }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Participa por esta propiedad {{ $propiedad->nombrePropiedad }}" >
+    <meta property="og:description" content="Una propiedad de lujo puede ser tuya por ${{ number_format($propiedad->valorRifa,0,',','.') }}" >
+    <meta property="og:image" content="{{ asset($propiedad->fotoPrincipal) }}" >
+    <meta property="og:image:width" content="200" >
+    <meta property="og:image:height" content="200" >
+@endsection
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
+@endsection
 
-        @extends('layouts.public.app')
-        @section('content')
-        
-        <main class="main">
-                <div class="container">
-    <br> 
-
-            <h2 class="display-4 azul centrar-titulos wow zoomIn">Prueba tu suerte y podrás ganar hasta 10 grandes premios</h2>
-      
-     
- <div class="contenedor-premios wow slideInUp">
-      <div class="cont-premio-mayor"><img class="img-premios" src="{{ asset('img/premio-mayor.png') }}" alt="primer premio"><p><strong>Premio Mayor</strong><br>Departamento de Lujo<br>Moto de Agua<br>Kit Palos de Golf <br>Más $2.000.000.-</div>
-     <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premios.png') }}" alt="segundo premio">
-     <p><strong>Primer Premio</strong><br></p>$2.000.000.- en efectivo</div>
-      <div class="cont-premios"><img class="img-premios" src="{{ asset('img/premio-final.png') }}" alt="tercer premio"><strong>Segundo Premio</strong><br>8 premios de $1.000.000.-</div>
- </div>
- <br>
+@section('content')
+<main class="cont-body int-mobile">
+    <h1 class="ml2">{{ $propiedad->nombrePropiedad }}</h1>
+    <br>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            
+            <div class="contenedor-galeria swiper-slide">
+                <div class="img1">
+                    <div class="contenedor-videos wow zoomIn">
+                        <video controls>
+                            <source  src="{{ asset($propiedad->urlVideo) }}">
+                        </video>
+                        
+                    </div>
+                </div>
+                <div class="mosaic">
+                    @for ($i = 0; $i < count($imagenesPropiedad); $i++)
+                        @if (($i+1)%7 == 0)
+                            @break
+                        @else
+                            <a href="{{ asset($imagenesPropiedad[$i]->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($imagenesPropiedad[$i]->urlImagen) }}" alt=""></a> 
+                        @endif
+                    @endfor
+                    
+                </div>
             </div>
-             <br>
-          
-        </main> <br> <br>
-        <div class="container wow slideInUp">
-            <br>
-            <div class="card">
-                <div class="card-body">
-                    <form method="post" action="{{ asset('comprar-numeros') }}">
-                        @csrf
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" name="nombreUsuario" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Correo</label>
-                            <input type="email" name="correoUsuario" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">+56</span>
-                              </div>
-                              <input type="number" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>RUT/DNI/Pasaporte</label>
-                            <input type="text" name="rutUsuario" class="form-control" id="rut" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Números (Digita tus tickets de la suerte: desde el número 100 en adelante)</label>
-                            <select class="js-example-basic-multiple form-control" id="numeros" name="numeros[]" multiple required>
-                                @foreach($numeros as $numero)
-                                    <option value="{{ $numero->idNumero }}">{{ $numero->numero }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <p>Total: <span id="total">$0</span></p>
-                            <input type="hidden" id="totalOculto" name="totalOculto">
-                        </div>
-                        <div align="center">
-                            <button class="btn btn-primary" type="submit">Comprar Número</button>
-                        </div>
-                    </form>
+
+            <div class="contenedor-galeria swiper-slide">
+                <div class="img1">
+                    @if (isset($portada1->urlImagen))
+                        <a href="{{ asset($portada1->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($portada1->urlImagen) }}" alt=""></a> 
+                    @endif
+                </div>
+                <div class="mosaic">
+                    @for ($i = 7; $i < count($imagenesPropiedad); $i++)
+                        @if (($i+1)%14 == 0)
+                            @break
+                        @else
+                            <a href="{{ asset($imagenesPropiedad[$i]->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($imagenesPropiedad[$i]->urlImagen) }}" alt=""></a> 
+                        @endif
+                    @endfor
+                </div>
+            </div>
+            <div class="contenedor-galeria swiper-slide">
+                <div class="img1">
+                    @if (isset($portada2->urlImagen))
+                        <a href="{{ asset($portada2->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($portada2->urlImagen) }}" alt=""></a> 
+                    @endif
+                </div>
+                <div class="mosaic">
+                    @for ($i = 14; $i < count($imagenesPropiedad); $i++)
+                        @if (($i+1)%21 == 0)
+                            @break
+                        @else
+                            <a href="{{ asset($imagenesPropiedad[$i]->urlImagen) }}" data-lightbox="roadtrip"><img src="{{ asset($imagenesPropiedad[$i]->urlImagen) }}" alt=""></a> 
+                        @endif
+                    @endfor
                 </div>
             </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <br>
+    <div class="flotante-compra" id="btn-flotante">
+        <form action="{{ asset('compra-ticket-directo') }}/{{ $propiedad->idPropiedad }}" method="POST">
+            @csrf
+            <label for="numero" class="tamanoLetra">Cantidad</label> <br> <br>
+            <input type="number" id="numero" name="numero" class="" placeholder="" value="1" min="1">
+            <br> <br>
+            <p class="tamanoLetra" id="totalBoletos">TOTAL: ${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
+            <div class="cont-botonesCompra">
+                <button class="btnCompra" type="submit">Comprar ahora</button>
+                <button class="btnCarrito" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
+            </div>
+        </form>
+    </div> 
+    <br>
+    <div class="cont-detalles" id="cont-detalles">
+        <h3 class="text-detail wow fadeInLeft" data-wow-delay="0.4s">{{ $propiedad->subtituloPropiedad }}</h3>
+        <h4 class="text-detail wow fadeInLeft" data-wow-delay="0.4s"><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
+        <ul class="share-detail margen">
+            <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}"><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+            <li><a target="_blank" href="https://twitter.com/intent/tweet?text=Una propiedad de lujo puede ser tuya por ${{ number_format($propiedad->valorRifa,0,',','.') }}&amp;url={{ $url }}"><i class="fab fa-twitter wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+        </ul>
+        <hr>
+        <br>
+        <p class="text-detail wow fadeInLeft" data-wow-delay="0.6s">{!! $propiedad->descripcionDetalle !!}</p> <br>
+        <ul class="text-detail wow fadeInLeft" data-wow-delay="0.7s">
+            @foreach ($propiedadCaracteristicas as $propiedadCaracteristica)
+                <li><i class="{{ $propiedadCaracteristica->itag }}"></i> {{ $propiedadCaracteristica->descripcionCaracterisitca }}</li>
+            @endforeach
+        </ul> <br>
+        @if ($propiedad->pdfBasesLegales)
+            <a class="download" href="{{ asset($propiedad->pdfBasesLegales) }}" download="BasesLegalesMarinaGolf">Descargar bases legales</a>
+        @endif
+
+    </div>
+    <br>
+    @if ($propiedad->urlMattlePort)
         
+        <div class="cont-matterport">
+            <h2>Tour 3D</h2>
+            @if ($propiedad->urlMattlePort)
+                <iframe  src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
+            @endif
+        </div>
+    @endif
+
+    <br>
+    @if (count($premios)>0)
+        
+        <div class="cont-premios-detail">
+            <h2>Premios</h2>
+            <div class="cont-premios">
+                <div class="contListaPremios">
+                    @php
+                        $primerValorPremios = $premios->shift();
+                    @endphp
+                    <img src="{{ asset($primerValorPremios->imagenPremio) }}" alt="">
+                    <ul>
+                        <p><i class="fas fa-award"></i> {{ $primerValorPremios->nombreTipoPremio }}</p>
+                        {!! $primerValorPremios->descripcion !!}
+                    </ul>
+                    
+                </div>
+                @foreach ($premios as $premio)
+
+                <div class="contListaPremios">
+                    <img src="{{ asset($premio->imagenPremio) }}" alt="">
+
+                    <ul>
+                        <p><i class="fas fa-money-bill-alt"></i> {{ $premio->nombreTipoPremio }}</p>
+                        {!! $premio->descripcion !!}
+                    </ul>
+
+                </div>
+                @endforeach
+
+            </div>
+
+            <br>
+        </div>
+    @endif
+
+    @if ($propiedad->urlGoogleMaps != null)
+        <div style="display: none">
+            <select name="idPais" id="paises" onchange="sacarRegionPorPais(this.value)" required class="form-control">
+                <option value="">Seleccione un país</option>
+                @foreach ($paises as $pais)
+                    @if ($pais->idPais == $propiedad->idPais)
+                        <option value="{{ $pais->idPais }}" selected>{{ $pais->nombrePais }}</option>
+                    @else
+                        <option value="{{ $pais->idPais }}">{{ $pais->nombrePais }}</option>
+                    @endif
+                @endforeach
+            </select>
+
+            <select name="idRegion" id="select_regiones" class="form-control" required onchange="sacarProvinciaPorRegion(this.value)">
+                <option value="">Seleccione una region</option>
+                @foreach ($regiones as $region)
+                    @if ($region->idRegion == $propiedad->idRegion)
+                        <option value="{{ $region->idRegion }}" selected>{{ $region->nombreRegion }}</option>
+                    @else
+                        <option value="{{ $region->idRegion }}">{{ $region->nombreRegion }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <select name="idProvincia" id="select_provincias" class="form-control" required onchange="sacarComunaPorProvincia(this.value)">
+                <option value="">Seleccione provincia</option>
+                @foreach ($provincias as $provincia)
+                    @if ($provincia->idProvincia == $propiedad->idProvincia)
+                        <option value="{{ $provincia->idProvincia }}" selected>{{ $provincia->nombreProvincia }}</option>
+                    @else
+                        <option value="{{ $provincia->idProvincia }}">{{ $provincia->nombreProvincia }}</option>
+                    @endif
+                @endforeach
+            </select>
+
+            <select name="idComuna" id="select_comunas" class="form-control" required >
+                <option value="">Seleccione comuna</option>
+                @foreach ($comunas as $comuna)
+                    @if ($comuna->idComuna == $propiedad->idComuna)
+                        <option value="{{ $comuna->idComuna }}" selected>{{ $comuna->nombreComuna }}</option>
+                    @else
+                        <option value="{{ $comuna->idComuna }}">{{ $comuna->nombreComuna }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <input type="text" name="direccionPropiedad" class="form-control" placeholder="Ingrese la dirección" required id="txtDireccion" value="{{ $propiedad->direccionPropiedad }}">
+            <input type="text" name="numeracionPropiedad" class="form-control" placeholder="Ingrese numeración de su casa" required id="txtNumero" value="{{ $propiedad->numeracionPropiedad }}">
+            <input type="text" name="latitud" class="form-control" required id="latitud" value="{{ $propiedad->latitud }}"> 
+            <input type="text" name="longitud" id="longitud" class="form-control" required value="{{ $propiedad->longitud }}">
+        </div>
+
+
+
+
+        <div class="ubicacion">
+            <br>
+            <h2><strong>Ubicación</strong></h2> 
+            <h3 class="sub-direccion">{{ $propiedad->nombreComuna }},{{ $propiedad->nombreRegion }}</h3> <br>
+            <div class="cont-mapa">
+                <div id="map" style="width: 100%; height: 300px"></div>
+            </div>
+            <br>
+        </div>
+    @endif
+
+</main>
+<br>
+
 @endsection
-        @section('scripts')
-
-        <script type="text/javascript">
-            $(document).on('keypress', '.select2-search__field', function () {
-                $(this).val($(this).val().replace(/[^\d].+/, ""));
-                if ((event.which < 48 || event.which > 57)) {
-                  event.preventDefault();
-                }
-            });
-            $(document).ready(function(){
-                $('.js-example-basic-multiple').select2({
-                    language: "es",
-                    placeholder: "Ingrese un número",
-                    minimumInputLength: 3,
-                    ajax: {
-                        url: '{{ asset('api/numeros') }}',
-                        dataType: "json",
-                        type: "GET",
-                        data: function (params) {
-                            var queryParameters = {
-                                consulta: params.term
-                            }
-                            return queryParameters;
-                        },
-                        processResults: function (data) {
-                            var myResults = [];
-                            $.each(data, function (index, item) {
-                                myResults.push({
-                                    'id': item.idNumero,
-                                    'text': item.numero
-                                });
-                            });
-                            return {
-                                results: myResults
-                            };
-                        }
-                    }
-                });
-            });
-        </script>
-        <script type="text/javascript">
-            
-            let $select = $('#numeros');
-            $select.on('change', () => {
-              let selecteds = [];
-
-              // Buscamos los option seleccionados
-              $select.children(':selected').each((idx, el) => {
-                // Obtenemos los atributos que necesitamos
-                selecteds.push({
-                  id: el.id,
-                  value: el.value
-                });
+@section('scripts')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9BKzI4HVxT1mjnxQIHx_8va7FBvROI6g&callback=initMap" async defer></script>
+<script>
+    $(document).ready(function(){
+  var direccion = $("#txtDireccion").val();
+  if(direccion != "")
+  {
+    var direccion = $("#txtDireccion").val();
+    var numero = $("#txtNumero").val();
+    var pais = $("#paises option:selected").html();
+    var region = $("#select_regiones option:selected").html();
+    var provincia = $("#select_provincias option:selected").html();
+    var comuna = $("#select_comunas option:selected").html();
+    var direccionEnviar = "" + direccion + " " + numero + " " + comuna + " " + provincia + " " + region + " " + pais + " ";
+    if(direccion != ""){
+        $.ajax({
+          url: '/curls/' + direccionEnviar,
+          method:'GET',
+          dataType: 'json',
+          success: function (respuesta) {
+              //document.getElementById("latitud").value = respuesta['results']['0']['geometry']['location']['lat'];
+              //document.getElementById("longitud").value = respuesta['results']['0']['geometry']['location']['lng'];
+              var myLatlng = new google.maps.LatLng(respuesta['results']['0']['geometry']['location']['lat'], respuesta['results']['0']['geometry']['location']['lng']); 
+              var map = new google.maps.Map(document.getElementById('map'), {
+                      center: myLatlng,
+                      zoom: 17
+                  });
+              var marker = new google.maps.Marker({
+                title: "Hello Paulo",
+                position: myLatlng
               });
-              
-              //
-              const cantidadNumeros = selecteds.length; 
-              let total = 20000*cantidadNumeros;
-              let valorFormatoCLP = Math.trunc(total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-              document.getElementById('totalOculto').value = total;
-              document.getElementById('total').innerHTML = '$'+valorFormatoCLP;
-            });
-        </script>
+              marker.setMap(map);
+          },
+          error: function(err) {
+              console.log(err);
+          }
+      });
+    }
+  }
+});
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: -33.4372, lng: -70.650633},
+  zoom: 17,
+});
+}
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="{{ asset('js/scroll-btn.js') }}"></script>
+<script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
+<script src="{{ asset('js/lightbox.min.js') }}"></script>
+<script src="{{ asset('js/jquery.nice-number.js') }}"></script>
+<script>
+$( document ).ready(function() {
+    document.getElementById('contenido-cambio').classList.remove('cont-nav');
+    document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+    
+});
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+
+<script>
+    $(function(){
+        $('input[type="number"]').niceNumber({
+            onIncrement: function () {
+                
+                var cantidadTickets = document.getElementById('numero').value;
+                var total = {{ $propiedad->valorRifa }} * cantidadTickets;
+                total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                total = total.split('').reverse().join('').replace(/^[\.]/,'');
+                document.getElementById('totalBoletos').innerHTML = 'TOTAL: $'+total+'.-';
+                
+            },
+            onDecrement: function () {
+                var cantidadTickets = document.getElementById('numero').value;
+                var total = {{ $propiedad->valorRifa }} * cantidadTickets;
+                total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                total = total.split('').reverse().join('').replace(/^[\.]/,'');
+                document.getElementById('totalBoletos').innerHTML = 'TOTAL: $'+total+'.-';
+            },
+        });
+        
+    });
+</script>
+<script>
+    function agregarPropiedadCarrito(e){
+        e.preventDefault();
+        var cantidad = document.getElementById('numero').value;
+        var idPropiedad = {{ $propiedad->idPropiedad }};
+        $.get('{{ asset('carrito-de-compra-agregar-ticket') }}/'+cantidad+'/'+idPropiedad,function(data, status){
+            if(data.estadoJson == true){
+                var total = {{ $propiedad->valorRifa }};
+                total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                total = total.split('').reverse().join('').replace(/^[\.]/,'');
+                document.getElementById('totalBoletos').innerHTML = 'TOTAL: $'+total+'.-';
+                document.getElementById('numero').value = 1;
+                if(document.getElementById('notificacion-span').style.display === 'block'){
+                    document.getElementById('notificacion-span').innerHTML = data.cantidadCarrito;
+
+                }else{
+                    document.getElementById('notificacion-span').style.display = 'block';
+                    document.getElementById('notificacion-span').innerHTML = data.cantidadCarrito;
+                }
+                
+                $('body, html').animate({
+                    scrollTop: '0px'
+                }, 300);
+
+                swal({
+                    title: "¡Agregado Correctamente!",
+                    text: "El ticket ha sido agregado correctamente",
+                    icon: "success",
+                    button: "OK",
+                });
+            }else if(data.estadoJson == false){
+                swal({
+                    title: "¡Oops! ha surgido un imprevisto",
+                    text: "No se pueden agregar mas de 15 tickets",
+                    icon: "error",
+                    button: ":c",
+                });
+            }else{
+                swal({
+                    title: "¡Oops! ha surgido un imprevisto",
+                    text: "Esta propiedad no posee tickets asociados",
+                    icon: "error",
+                    button: ":c",
+                });
+            }
+        });
+    }
+</script>
 @endsection

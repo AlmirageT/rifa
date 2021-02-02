@@ -17,3 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/numeros','ComprarRifaController@numerosBuscados');
+Route::group(['prefix'=>'otrospagos'], function(){
+    Route::post('condeu','OtrosPagosController@condeu01req');
+    Route::post('notpag','OtrosPagosController@notpag01req');
+    Route::post('revpag','OtrosPagosController@revpag01req');
+});
+
