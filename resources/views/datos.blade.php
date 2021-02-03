@@ -19,7 +19,7 @@
                 <label for="rut" class="form-label"></label>
                 <input type="text" id="rut" name="rutUsuario" class="form-input-ticket" placeholder="RUT/DNI/Pasaporte" required>
     
-                <a type="submit" class="btn-submit-ticket" id="desabilitarBoton" >Finalizar Compra</a>
+                <button type="submit" class="btn-submit-ticket" id="desabilitarBoton" >Finalizar Compra</button>
               </form>
         </div>
     </div>
