@@ -32,7 +32,7 @@ Adjunto encontrarás los tickets asociados a la rifa @if (count($propiedad)>1)
 La premiación se realizará de acuerdo a las bases legales que podrás siempre consultar en {{ asset('/') }}, en la Notaria Manquehual de Santiago mediante via LIVE STREAMING vía youtube. <br><br><br>
 Y además: Comparte esta gran oportunidad con tus amigos, familiares, compañeros de trabajo o cercanos a ti! <br><br><br>
 Saludos del equipo.
-<img src="{{ asset('images/iconos/logo.png') }}"/> <br><br><br>
+<img src="{{ asset('images/variantes logo rifopoly-05.png') }}"/> <br><br><br>
 @endsection
 @section('bodyDetalles')
 
