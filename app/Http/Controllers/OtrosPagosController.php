@@ -158,7 +158,7 @@ class OtrosPagosController extends Controller
             }else{
                 return response()->json([
                     'r_tid' => $idTransaccion,
-                    'r_retcod' => "10",
+                    'r_retcod' => "01",
                     'r_cau' => $request->p_doc
                 ],200);
             }
