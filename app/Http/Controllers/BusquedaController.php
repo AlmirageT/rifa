@@ -289,7 +289,7 @@ class BusquedaController extends Controller
 		                            <i class='mdi mdi-dots-horizontal font-size-18'></i>
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-right'>
-									<a class='dropdown-item' href='".asset('administrador/propiedades/editar')."/".$propiedad->idPropiedad."'>Editar</a>
+									<a class='dropdown-item' href='".route('mantenedor-propiedades.edit',$propiedad->idPropiedad)."'>Editar</a>
 		                            <a class='dropdown-item' href='".asset('administrador/propiedades/destroy')."/".$propiedad->idPropiedad."'>Eliminar</a>
 		                            <a class='dropdown-item' href='".asset('administrador/propiedades/imagenes')."/".$propiedad->idPropiedad."'>Agregar Imagenes</a>
 		                            <a class='dropdown-item' href='".asset('administrador/propiedades/premios')."/".$propiedad->idPropiedad."'>Agregar Premios</a>

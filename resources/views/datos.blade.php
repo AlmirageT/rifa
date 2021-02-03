@@ -4,11 +4,11 @@
 <main class="cont-body int-mobile">
     <div id="contacto"  class="cont-form-ticket">
         <div class="contenedor-form-ticket">
-            <form method="post" action="{{ asset('comprar-numeros') }}" class="formulario-ticket">
+              <form method="post" action="{{ asset('comprar-numeros') }}" class="formulario-ticket">
                 @csrf
                 <h1 class="ml2">Tus Datos</h1>
                 <label for="nombre" class="form-label"></label>
-                <input type="text" id="nombre" name="nombreUsuario" class="form-input-ticket" placeholder="Tu Nombre" required>
+                <input type="text" id="nombre" name="nombreUsuario" class="form-input-ticket" placeholder="Tu Nombre"required >
                 
                 <label for="correo" class="form-label"></label>
                 <input type="email" id="correo" name="correoUsuario" class="form-input-ticket" placeholder="Correo Electr&oacute;nico" required>
@@ -19,8 +19,8 @@
                 <label for="rut" class="form-label"></label>
                 <input type="text" id="rut" name="rutUsuario" class="form-input-ticket" placeholder="RUT/DNI/Pasaporte" required>
     
-                <input type="submit" class="btn-submit-ticket" value="Finalizar Compra">
-            </form>
+                <button type="submit" class="btn-submit-ticket" onclick="deshabilitar()" id="desabilitarBoton" >Finalizar Compra</button>
+              </form>
         </div>
     </div>
 </main>
@@ -37,5 +37,15 @@
         document.getElementById('contenido-cambio').classList.add('cont-nav-int');
         
     });
+
+    function deshabilitar(){
+        if(document.getElementById('nombre').value != '' && 
+        document.getElementById('correo').value != '' &&
+        document.getElementById('fono').value != '' &&
+        document.getElementById('rut').value != ''){
+            document.getElementById('desabilitarBoton').setAttribute("disabled", "");
+        }
+    }
+
 </script>
 @endsection
