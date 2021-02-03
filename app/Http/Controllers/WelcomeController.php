@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-use App\Mail\PruebaTCPDF;
+use App\Mail\EnvioBoleta;
 use App\Propiedad;
 use App\Premio;
 use App\ParametroGeneral;
@@ -42,12 +42,12 @@ class WelcomeController extends Controller
     }
     public function pdf()
     {
-        $boleta = Boleta::find(194);
-        $numeros = Numero::where('idBoleta',194)->get();
+        $boleta = Boleta::find(174);
+        $numeros = Numero::where('idBoleta',174)->get();
         $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
         $qr = QrCode::format('png')->size(200)->generate($direccion);
-        $usuario = Usuario::find(132);
-        $boletasPropiedades = BoletaPropiedad::where('idBoleta',194)->get();
+        $usuario = Usuario::find(136);
+        $boletasPropiedades = BoletaPropiedad::where('idBoleta',174)->get();
         $idPropiedad = array();
         foreach($boletasPropiedades as $boletaPropiedad){
             $array = array(
@@ -94,7 +94,7 @@ class WelcomeController extends Controller
         
         // save pdf file
         $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
-        Mail::to('contacto@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com','lina.di@isbast.com'])->send(new PruebaTCPDF($fileatt));
+        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
 
         //return view('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
