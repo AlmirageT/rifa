@@ -8,7 +8,7 @@ $(document).ready(function() {
     
     $(window).scroll(function(){
         scroll = $(window).scrollTop();
-        if(screen.width >= 1366 && screen.width <= 1920){
+        if(screen.width >= 1030 && screen.width <= 1920){
             if (scroll > 520) {
                 $("#btn-flotante").css({"width": "25%",  "border": "solid 1px #ccc", "padding": "20px",
                 "position": "fixed", "z-index": "3", "background": "#fff", "border-radius": "30px", 
