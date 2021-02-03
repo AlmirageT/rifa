@@ -19,7 +19,7 @@
                 <label for="rut" class="form-label"></label>
                 <input type="text" id="rut" name="rutUsuario" class="form-input-ticket" placeholder="RUT/DNI/Pasaporte" required>
     
-                <button type="submit" class="btn-submit-ticket" onclick="deshabilitar()" id="desabilitarBoton" >Finalizar Compra</button>
+                <a type="submit" class="btn-submit-ticket" id="desabilitarBoton" >Finalizar Compra</a>
               </form>
         </div>
     </div>
@@ -37,15 +37,6 @@
         document.getElementById('contenido-cambio').classList.add('cont-nav-int');
         
     });
-
-    function deshabilitar(){
-        if(document.getElementById('nombre').value != '' && 
-        document.getElementById('correo').value != '' &&
-        document.getElementById('fono').value != '' &&
-        document.getElementById('rut').value != ''){
-            document.getElementById('desabilitarBoton').setAttribute("disabled", "");
-        }
-    }
 
 </script>
 @endsection
