@@ -7,6 +7,8 @@ use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Crypt;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BoletasExport;
 use App\Mail\EnvioBoleta;
 use App\Boleta;
 use App\Numero;
@@ -206,5 +208,9 @@ class ListadoBoletaController extends Controller
         ]);
         toastr()->info('Boleta liberada y números disponibles');
 		return back();
-    }
+	}
+	public function exportarCompradas()
+	{
+        return Excel::download(new BoletasExport, 'Boletas Compradas.xlsx');
+	}
 }
