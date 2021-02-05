@@ -19,6 +19,8 @@ Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
 Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAFormularioUsuario');
 Route::post('compra-ticket-directo-detalle/{idPropiedad}','PropiedadController@ingresoAFormularioUsuarioDetalle');
+Route::get('revisar-estado-boleta','ComprarRifaController@estadoBoleta');
+Route::view('felicidades-por-su-compra','compraExitosa');
 
 //Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
