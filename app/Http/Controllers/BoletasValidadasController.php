@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BoletasValidadasExport;
 use App\Boleta;
 use Session;
 
@@ -99,5 +101,9 @@ class BoletasValidadasController extends Controller
 			"data" => $data
 		);
 		echo json_encode($json_data);
-    }
+	}
+	public function exportarValidadas()
+	{
+        return Excel::download(new BoletasValidadasExport, 'Boletas Validadas.xlsx');
+	}
 }

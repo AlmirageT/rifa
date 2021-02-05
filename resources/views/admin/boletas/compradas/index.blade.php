@@ -31,7 +31,11 @@ Rifo Mi Propiedad - Administrador
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <a href="{{ asset('administrador/transacciones/boletas/exportar/excel/compradas') }}" class="btn btn-primary">Exportar .csv</a>
+            </div>
         </div>
+        
             
 @endsection
 @section('scripts')

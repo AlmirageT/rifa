@@ -7,14 +7,20 @@ use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Crypt;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BoletasExport;
 use App\Mail\EnvioBoleta;
 use App\Boleta;
 use App\Numero;
+use App\Usuario;
+use App\BoletaPropiedad;
+use App\Propiedad;
 use Session;
 use QrCode;
 use Mail;
 use PDF;
 use DB;
+use PDFTC;
 
 class ListadoBoletaController extends Controller
 {
@@ -162,6 +168,20 @@ class ListadoBoletaController extends Controller
 			    	->where('boletas.idBoleta', $idBoleta)
 			    	->firstOrFail();
 			$numeros = Numero::where('idBoleta',$idBoleta)->get();
+			$usuario = Usuario::find($boleta->idUsuario);
+			$boletasPropiedades = BoletaPropiedad::where('idBoleta',$idBoleta)->get();
+
+			$idPropiedad = array();
+			foreach($boletasPropiedades as $boletaPropiedad){
+				$array = array(
+					'idPropiedad' => $boletaPropiedad->idPropiedad
+				);
+				array_push($idPropiedad,$array);
+			}
+			
+			$propiedad = Propiedad::whereIn('idPropiedad',$idPropiedad)->get();
+			
+			
 			//return view('admin.boletas.pdf',compact('boleta','numeros'));
             Boleta::where('idBoleta', $idBoleta)->update([
             	'idEstado'=>3
@@ -169,11 +189,29 @@ class ListadoBoletaController extends Controller
             Numero::where('idBoleta',$idBoleta)->update([
 	        	'idEstado'=>3
 	        ]);
-			$direccion = asset('comprobar/boleta')."/".Crypt::encrypt($idBoleta);
-			$qr = QrCode::format('png')->size(300)->generate($direccion);
-			//return view('admin.boletas.pdf',compact('boleta','numeros','qr'));
-			$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr'));
-            Mail::to($boleta->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $pdf));
+			$direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
+			$qr = QrCode::format('png')->size(200)->generate($direccion);
+			//$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
+			$certificate = 'file://'.base_path().'/public/certificado/tcpdf.crt';;
+			$info = array(
+				'Name' => 'RIFOPOLY',
+				'Location' => 'Tobalaba 4067',
+				'Reason' => 'Testear CRT',
+				'ContactInfo' => 'https://rifopoly.com/',
+			);
+			PDFTC::setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
+			PDFTC::SetTitle('Comprobante de Venta.pdf');
+			PDFTC::AddPage();
+			$text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
+			PDFTC::writeHTML($text, true, false, true, false, '');
+
+			$img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
+			$img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '">';
+			PDFTC::writeHTML($img, true, false, true, false, '');
+			
+			PDFTC::setSignatureAppearance(180, 60, 15, 15);
+			$fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
+			Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
             toastr()->info('Correo enviado exitosamente');
 			return back();
@@ -206,5 +244,9 @@ class ListadoBoletaController extends Controller
         ]);
         toastr()->info('Boleta liberada y números disponibles');
 		return back();
-    }
+	}
+	public function exportarCompradas()
+	{
+        return Excel::download(new BoletasExport, 'Boletas Compradas.xlsx');
+	}
 }

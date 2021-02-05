@@ -19,7 +19,7 @@ Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
 Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAFormularioUsuario');
 
-Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
+//Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
@@ -48,6 +48,9 @@ Route::group(['prefix'=>'administrador'], function(){
 			Route::get('compradas/detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
 			Route::get('compradas/enviar-boleta/{idBoleta}','ListadoBoletaController@enviarBoleta');
 			Route::get('compradas/liberar-boleta/{idBoleta}','ListadoBoletaController@liberarBoleta');
+			Route::get('exportar/excel/compradas','ListadoBoletaController@exportarCompradas');
+			Route::get('exportar/excel/validadas','BoletasValidadasController@exportarValidadas');
+
 
 		});
 	});
