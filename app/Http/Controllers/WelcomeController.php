@@ -42,12 +42,12 @@ class WelcomeController extends Controller
     }
     public function pdf()
     {
-        $boleta = Boleta::find(174);
-        $numeros = Numero::where('idBoleta',174)->get();
+        $boleta = Boleta::find(187);
+        $numeros = Numero::where('idBoleta',187)->get();
         $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
         $qr = QrCode::format('png')->size(200)->generate($direccion);
-        $usuario = Usuario::find(136);
-        $boletasPropiedades = BoletaPropiedad::where('idBoleta',174)->get();
+        $usuario = Usuario::find(125);
+        $boletasPropiedades = BoletaPropiedad::where('idBoleta',187)->get();
         $idPropiedad = array();
         foreach($boletasPropiedades as $boletaPropiedad){
             $array = array(
@@ -94,6 +94,7 @@ class WelcomeController extends Controller
         
         // save pdf file
         $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
+        
         Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
 

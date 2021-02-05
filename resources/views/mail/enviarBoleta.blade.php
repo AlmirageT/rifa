@@ -2,37 +2,17 @@
 
 @section('title', 'Boleta')
 @section('textoTituloPrincipal')
-@if (count($numeros)>1)
-LA COMPRA DE TUS TICKETS HA SIDO EXITOSA
-@else
-LA COMPRA DE TU TICKET HA SIDO EXITOSA
-@endif
-
+¡Hola {{ $usuario->nombreUsuario }} tu numero de la suerte ya está confirmado!
 @endsection
 @section('textoTituloSecundario')
-@if (count($numeros)>1)
-Comprobante de compra de numeros de tickets
-@else
-Comprobante de compra del numero del ticket
-@endif
+¿Te imaginas ser el ganador?
 @endsection
 @section('textoParrafoUno')
-@if (count($numeros)>1)
-Muchas gracias por comprar tus tickets. <br><br><br>
-@else
-Muchas gracias por comprar tu ticket. <br><br><br>
-@endif
-Adjunto encontrarás los tickets asociados a la rifa @if (count($propiedad)>1)
-    @foreach ($propiedad as $propi)
-        {{ $propi->nombrePropiedad }}
-    @endforeach
-@else
-    {{ $propiedad->first()->nombrePropiedad }}
-@endif. <br><br><br>
-La premiación se realizará de acuerdo a las bases legales que podrás siempre consultar en {{ asset('/') }}, en la Notaria Manquehual de Santiago mediante via LIVE STREAMING vía youtube. <br><br><br>
-Y además: Comparte esta gran oportunidad con tus amigos, familiares, compañeros de trabajo o cercanos a ti! <br><br><br>
-Saludos del equipo.
-<img src="{{ asset('images/variantes logo rifopoly-05.png') }}"/> <br><br><br>
+Mr. Rifopoly te desea mucha suerte y cree que este puede ser el ticket ganador.
+<br><br><br>
+Te adjuntamos un comprobante de compra de los tickets que elegiste. La premiación se realizará en vivo mediante STREAMING por YouTube en la Notaría Manquehual de Santiago, de acuerdo a las bases legales que podrás consultar en {{ asset('/') }}. <br><br><br>
+¡Y recuerda... compartir esta gran oportunidad con tus amigos y familiares! <br><br>
+<img src="{{ asset('images/ticket_Mesa de trabajo 1 copia.jpg') }}" width="550"/> <br><br><br>
 @endsection
 @section('bodyDetalles')
 
