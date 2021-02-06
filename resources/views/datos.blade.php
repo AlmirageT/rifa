@@ -4,7 +4,7 @@
 <main class="cont-body int-mobile">
     <div id="contacto"  class="cont-form-ticket">
         <div class="contenedor-form-ticket">
-              <form method="post" action="{{ asset('comprar-numeros') }}" class="formulario-ticket">
+              <form method="post" action="{{ asset('comprar-numeros') }}" class="formulario-ticket" target="_blank">
                 @csrf
                 <h1 class="ml2">Tus Datos</h1>
                 <label for="nombre" class="form-label"></label>
@@ -35,8 +35,21 @@
     $( document ).ready(function() {
         document.getElementById('contenido-cambio').classList.remove('cont-nav');
         document.getElementById('contenido-cambio').classList.add('cont-nav-int');
-        
+        timeout();
+
     });
+    function timeout() {
+        setTimeout(function () {
+            $.get('{{ asset('revisar-estado-boleta') }}',function(data, status) {
+                if(data == true){
+                    window.location.href='{{ asset('felicidades-por-su-compra') }}';
+                }
+            });
+            timeout();
+        }, 10000);
+    }
+
 
 </script>
+
 @endsection

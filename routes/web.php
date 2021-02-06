@@ -18,11 +18,15 @@ Route::get('rifo-propiedades/detalle', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
 Route::post('tienda-rifo-propiedades','PropiedadController@propiedadTienda');
 Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAFormularioUsuario');
+Route::post('compra-ticket-directo-detalle/{idPropiedad}','PropiedadController@ingresoAFormularioUsuarioDetalle');
+Route::get('revisar-estado-boleta','ComprarRifaController@estadoBoleta');
+Route::view('felicidades-por-su-compra','compraExitosa');
 
 //Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
+//Route::get('carrito-de-compra-agregar-ticket-detalle/{idPropiedad}','PropiedadController@crearCarritoCompraInmediata');
 Route::get('eliminar-ticket-carrito/{idPropiedad}','PropiedadController@eliminarDatoCarroCompra');
 Route::get('obetener-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@cambiarValorDatos');
 Route::get('restar-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@restarValorDatos');
