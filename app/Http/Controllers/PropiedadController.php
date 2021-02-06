@@ -549,6 +549,108 @@ class PropiedadController extends Controller
 
         return response()->json(['estadoJson' => $estadoJson]);
     }
+    //crear session solo con 1 ticket
+    /*public function crearCarritoCompraInmediata($idPropiedad)
+    {
+        $numeros = Numero::where('idPropiedad',$idPropiedad)->where('idEstado',1)->first();
+        if(!$numeros){
+            $estadoJson = "cualquiercosa";
+            return response()->json(['estadoJson' => $estadoJson]);
+        }
+        $propiedad = Propiedad::find($idPropiedad);
+        $estadoJson = false;
+
+        if (Session::has('carritoCompra')) {
+            if(count(Session::get('carritoCompra')) < 15){
+                $session = Session::get('carritoCompra');
+
+                $arrayKey = false;
+                foreach ($session as $key => $busquedaId) {
+                    if($busquedaId['idPropiedad'] == $idPropiedad){
+                        $arrayKey = $key;
+                    }
+                }
+                
+
+                if(is_numeric($arrayKey)){
+                    $arrayPropiedad = $session[$arrayKey];
+                    $nuevaCantidad = $arrayPropiedad['cantidad']+1;
+                    $arrayCambio = array('cantidad'=>$nuevaCantidad);
+                    $nuevoCarrito = array_replace($arrayPropiedad, $arrayCambio);
+
+                    if (Session::has('total')) {
+                        $array_total = Session::get('total');
+                        $restaValor = $array_total - ($arrayPropiedad['valorRifa']*$arrayPropiedad['cantidad']);
+                        Session::put('total',$restaValor);
+                        $nuevoTotalArray = Session::get('total');
+                        $total = $arrayPropiedad['valorRifa']*$nuevaCantidad;
+                        $total = $nuevoTotalArray + $total;
+                        Session::put('total',$total);
+                        $nuevoValor = Session::get('total');
+                    }
+                    
+                    $array = Session::get('carritoCompra');
+                    foreach ($array as $key => $value) {
+                        if ($key == $arrayKey) {
+                            unset($array[$arrayKey]);
+                            Session::put('carritoCompra', $array);
+                            array_push($array, $nuevoCarrito);
+                            Session::put('carritoCompra', $array);
+                        }
+                    }
+                    $cantidadCarrito = count(Session::get('carritoCompra'));
+
+                    if(Session::has('total') && Session::has('carritoCompra')){
+                        $estadoJson = true;
+                        return response()->json(['estadoJson' => $estadoJson, 'cantidadCarrito' => $cantidadCarrito]);
+                    }
+
+                }else{
+                    $array = array(
+                        'idPropiedad' => $idPropiedad,
+                        'nombrePropiedad' => $propiedad->nombrePropiedad,
+                        'valorRifa' => $propiedad->valorRifa,
+                        'cantidad' => 1,
+                        'imagenPropiedad' => $propiedad->fotoPrincipal
+                    );
+                    array_push($session, $array);
+                    Session::put('carritoCompra',$session);
+                }
+            }else{
+                return response()->json(['estadoJson' => $estadoJson]);
+            }
+            
+        }else{
+            $prueba = array(0=>[
+                    'idPropiedad' => $idPropiedad,
+                    'nombrePropiedad' => $propiedad->nombrePropiedad,
+                    'valorRifa' => $propiedad->valorRifa,
+                    'cantidad' => 1,
+                    'imagenPropiedad' => $propiedad->fotoPrincipal
+                ]
+            );
+            Session::put('carritoCompra',$prueba);
+        }
+
+        if (Session::has('total')) {
+            $array_total = Session::get('total');
+            $total = $propiedad->valorRifa*1;
+            $total = $array_total + $total;
+            Session::put('total',$total);
+        }else{
+            $total = $propiedad->valorRifa*1;
+            Session::put('total',$total);
+        }
+
+        $cantidadCarrito = count(Session::get('carritoCompra'));
+
+        if(Session::has('total') && Session::has('carritoCompra')){
+            $estadoJson = true;
+            return response()->json(['estadoJson' => $estadoJson, 'cantidadCarrito' => $cantidadCarrito]);
+        }
+
+        return response()->json(['estadoJson' => $estadoJson]);
+    }*/
     public function eliminarDatoCarroCompra($idPropiedad)
     {
         $session = Session::get('carritoCompra');
@@ -738,6 +840,107 @@ class PropiedadController extends Controller
             Session::put('total',$total);
         }else{
             $total = $propiedad->valorRifa*$request->numero;
+            Session::put('total',$total);
+        }
+
+        $cantidadCarrito = count(Session::get('carritoCompra'));
+
+        if(Session::has('total') && Session::has('carritoCompra')){
+            return redirect::to('paso-final-compra-ticket');
+        }
+        toastr()->warning('Oops ha surgido un error');
+        return back();
+    }
+    //desde propiedad
+    public function ingresoAFormularioUsuarioDetalle($idPropiedad)
+    {
+        $numeros = Numero::where('idPropiedad',$idPropiedad)->where('idEstado',1)->first();
+        if(!$numeros){
+            toastr()->warning('Esta propiedad aún no posee tickets asociados');
+            return back();
+        }
+        $propiedad = Propiedad::find($idPropiedad);
+
+        if (Session::has('carritoCompra')) {
+            if(count(Session::get('carritoCompra')) < 15){
+                $session = Session::get('carritoCompra');
+
+                $arrayKey = false;
+                foreach ($session as $key => $busquedaId) {
+                    if($busquedaId['idPropiedad'] == $idPropiedad){
+                        $arrayKey = $key;
+                    }
+                }
+                
+
+                if(is_numeric($arrayKey)){
+                    $arrayPropiedad = $session[$arrayKey];
+                    $nuevaCantidad = $arrayPropiedad['cantidad']+1;
+                    $arrayCambio = array('cantidad'=>$nuevaCantidad);
+                    $nuevoCarrito = array_replace($arrayPropiedad, $arrayCambio);
+
+                    if (Session::has('total')) {
+                        $array_total = Session::get('total');
+                        $restaValor = $array_total - ($arrayPropiedad['valorRifa']*$arrayPropiedad['cantidad']);
+                        Session::put('total',$restaValor);
+                        $nuevoTotalArray = Session::get('total');
+                        $total = $arrayPropiedad['valorRifa']*$nuevaCantidad;
+                        $total = $nuevoTotalArray + $total;
+                        Session::put('total',$total);
+                        $nuevoValor = Session::get('total');
+                    }
+                    
+                    $array = Session::get('carritoCompra');
+                    foreach ($array as $key => $value) {
+                        if ($key == $arrayKey) {
+                            unset($array[$arrayKey]);
+                            Session::put('carritoCompra', $array);
+                            array_push($array, $nuevoCarrito);
+                            Session::put('carritoCompra', $array);
+                        }
+                    }
+                    $cantidadCarrito = count(Session::get('carritoCompra'));
+
+                    if(Session::has('total') && Session::has('carritoCompra')){
+                        return redirect::to('paso-final-compra-ticket');
+                    }
+
+                }else{
+                    $array = array(
+                        'idPropiedad' => $idPropiedad,
+                        'nombrePropiedad' => $propiedad->nombrePropiedad,
+                        'valorRifa' => $propiedad->valorRifa,
+                        'cantidad' => 1,
+                        'imagenPropiedad' => $propiedad->fotoPrincipal
+                    );
+                    array_push($session, $array);
+                    Session::put('carritoCompra',$session);
+                }
+            }else{
+                toastr()->warning('Oops ha surgido un error');
+                return back();
+                
+            }
+            
+        }else{
+            $prueba = array(0=>[
+                    'idPropiedad' => $idPropiedad,
+                    'nombrePropiedad' => $propiedad->nombrePropiedad,
+                    'valorRifa' => $propiedad->valorRifa,
+                    'cantidad' => 1,
+                    'imagenPropiedad' => $propiedad->fotoPrincipal
+                ]
+            );
+            Session::put('carritoCompra',$prueba);
+        }
+
+        if (Session::has('total')) {
+            $array_total = Session::get('total');
+            $total = $propiedad->valorRifa*1;
+            $total = $array_total + $total;
+            Session::put('total',$total);
+        }else{
+            $total = $propiedad->valorRifa*1;
             Session::put('total',$total);
         }
 

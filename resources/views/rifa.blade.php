@@ -89,8 +89,8 @@
             <br> <br>
             <p class="tamanoLetra" id="totalBoletos">TOTAL: ${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
             <div class="cont-botonesCompra">
-                <button class="btnCompra" type="submit">Comprar ahora</button>
-                <button class="btnCarrito" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
+                <button class="btnCompra" style="cursor:pointer;" type="submit">Comprar ahora</button>
+                <button class="btnCarrito"  style="cursor:pointer;" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
             </div>
         </form>
     </div> 
@@ -280,7 +280,7 @@ function initMap() {
 </script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script src="{{ asset('js/scroll-btn.js') }}"></script>
+{{--  <script src="{{ asset('js/scroll-btn.js') }}"></script>--}}
 <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
 <script src="{{ asset('js/lightbox.min.js') }}"></script>
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>

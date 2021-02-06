@@ -149,6 +149,12 @@ class ComprarRifaController extends Controller
                     'telefonoUsuario' => $request->telefonoUsuario,
                     'rutUsuario' => $request->rutUsuario
                 ]);
+                if(Session::has('usuarioComprador')){
+                    Session::forget('usuarioComprador');
+                }
+                Session::put('usuarioComprador',$usuario->idUsuario);
+                
+
                 if(count(Session::get('carritoCompra'))>1){
                     
                     $boleta = Boleta::create([
@@ -253,5 +259,15 @@ class ComprarRifaController extends Controller
                 ]);
             }
         }
+    }
+    public function estadoBoleta()
+    {
+        $boleta = Boleta::where('idUsuario',Session::get('usuarioComprador'))->first();
+        $dato = false;
+        if($boleta->idEstado == 3){
+            $dato = true;
+            Session::forget('usuarioComprador');
+        }
+        return response()->json($dato);
     }
 }

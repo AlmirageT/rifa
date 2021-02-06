@@ -143,6 +143,11 @@
                                 <br>
                                 <div class="cont-botones"> <br>
                                     <a class="btn-tickets-int" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Detalles</a>
+                                    <form class="form-btn" action="{{ asset('compra-ticket-directo-detalle') }}/{{ $propiedad->idPropiedad }}" method="POST">
+                                        @csrf
+                                        <button class="buttonComprarAhora" style="cursor:pointer;" type="sumbit">Comprar ahora</button>
+                                        <button class="buttonComprarAhora" style="cursor:pointer;" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
+                                    </form>
                                     <div class="width">
                                         <ul class="share-detail">
                                             @if ($propiedad->urlFacebook)
@@ -172,6 +177,7 @@
 @endsection
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     $( document ).ready(function() {
@@ -230,5 +236,47 @@
             }
         });
     });
+</script>
+<script>
+    function agregarPropiedadCarrito(e){
+        e.preventDefault();
+        var idPropiedad = {{ $propiedad->idPropiedad }};
+        $.get('{{ asset('carrito-de-compra-agregar-ticket') }}/'+1+'/'+idPropiedad,function(data, status){
+            if(data.estadoJson == true){
+                if(document.getElementById('notificacion-span').style.display === 'block'){
+                    document.getElementById('notificacion-span').innerHTML = data.cantidadCarrito;
+
+                }else{
+                    document.getElementById('notificacion-span').style.display = 'block';
+                    document.getElementById('notificacion-span').innerHTML = data.cantidadCarrito;
+                }
+                
+                $('body, html').animate({
+                    scrollTop: '0px'
+                }, 300);
+
+                swal({
+                    title: "¡Agregado Correctamente!",
+                    text: "El ticket ha sido agregado correctamente",
+                    icon: "success",
+                    button: "OK",
+                });
+            }else if(data.estadoJson == false){
+                swal({
+                    title: "¡Oops! ha surgido un imprevisto",
+                    text: "No se pueden agregar mas de 15 tickets",
+                    icon: "error",
+                    button: ":c",
+                });
+            }else{
+                swal({
+                    title: "¡Oops! ha surgido un imprevisto",
+                    text: "Esta propiedad no posee tickets asociados",
+                    icon: "error",
+                    button: ":c",
+                });
+            }
+        });
+    }
 </script>
 @endsection
