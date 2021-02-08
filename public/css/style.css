@@ -1547,6 +1547,11 @@ input[type="number"] {
 /********RESPONSIVE MOBILE********/
  @media (min-width:320px) and (max-width:360px){
 
+  .cont-nav ul li a
+  {
+    text-decoration: none;
+    color: #fff;
+  }
 
   .form-btn{
     width: 100%;
@@ -1710,7 +1715,7 @@ header .navigation.active
   left: 0;
   width: 100%;
   height: 100%;
-  background: #af1840;
+  background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(175,2,2,1) 35%, rgba(254,0,0,1) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1743,6 +1748,7 @@ header .navigation.active
   background-size: 40px;
   background-repeat: no-repeat;
   background-position: center;
+  color: #fff;
 }
  
 .cont-header 
@@ -2325,6 +2331,12 @@ width: 100%;
 
 @media (min-width:361px) and (max-width:414px){
 
+  .cont-nav ul li a
+{
+  text-decoration: none;
+  color: #fff;
+}
+
   .form-btn{
     width: 100%;
     display: flex;
@@ -2605,7 +2617,7 @@ width: 100%;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #af1840;
+    background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(175,2,2,1) 35%, rgba(254,0,0,1) 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2638,6 +2650,7 @@ width: 100%;
     background-size: 25px;
     background-repeat: no-repeat;
     background-position: center;
+    color: #fff;
   }
    
   .cont-header 
@@ -2650,6 +2663,7 @@ width: 100%;
     justify-content: space-between;
     z-index: 1;
     flex-wrap: wrap;
+    color: #fff;
   }
   
   .cont-tittle 
@@ -3130,6 +3144,11 @@ width: 100%;
 
   @media (min-width:415px) and (max-width:515px)
   {
+    .cont-nav ul li a
+    {
+      text-decoration: none;
+      color: #fff;
+    }
 
     .form-btn{
       width: 100%;
@@ -3350,6 +3369,7 @@ margin-top: 10px;
     background-size: 25px;
     background-repeat: no-repeat;
     background-position: center;
+    color: #fff;
   }
    
   .cont-header 
@@ -3837,6 +3857,11 @@ margin-top: 10px;
   @media (min-width:640px) and (max-width:667px)
   {
 
+    .cont-nav ul li a
+    {
+      text-decoration: none;
+      color: #fff;
+    }
     .form-btn{
       width: 100%;
       display: flex;
@@ -3978,6 +4003,7 @@ margin-top: 10px;
     background-size: 25px;
     background-repeat: no-repeat;
     background-position: center;
+    color: #fff;
   }
    
   .cont-header 
@@ -4481,6 +4507,11 @@ margin-top: 10px;
 
   @media (min-width:668px) and (max-width:768px)
   {
+    .cont-nav ul li a
+    {
+      text-decoration: none;
+      color: #fff;
+    }
 
     .circle 
     {
@@ -5130,6 +5161,11 @@ margin-top: 10px;
 
   @media (min-width:769px) and (max-width:1024px)
   {
+    .cont-nav ul li a
+    {
+      text-decoration: none;
+      color: #fff;
+    }
 
     .circle 
     {
