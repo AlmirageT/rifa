@@ -127,14 +127,15 @@ class OtrosPagosController extends Controller
                 $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
                 $qr = QrCode::format('png')->size(200)->generate($direccion);
                 //$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
-                $certificate = 'file://'.base_path().'/public/certificado/tcpdf.crt';;
+                $certificate = 'file://'.base_path().'/public/certificado/certificadoRifo.crt';
+                $key = 'file://'.base_path().'/public/certificado/llaveNoEncriptada.key';
                 $info = array(
                     'Name' => 'RIFOPOLY',
                     'Location' => 'Tobalaba 4067',
-                    'Reason' => 'Testear CRT',
+                    'Reason' => 'Validacion Compra',
                     'ContactInfo' => 'https://rifopoly.com/',
                 );
-                PDFTC::setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
+                PDFTC::setSignature($certificate, $key, 'tcpdfdemo', '', 2, $info);
                 PDFTC::SetTitle('Comprobante de Venta.pdf');
                 PDFTC::AddPage();
                 $text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
