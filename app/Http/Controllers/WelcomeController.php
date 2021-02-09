@@ -28,6 +28,7 @@ class WelcomeController extends Controller
             ->join('regiones','propiedades.idRegion','=','regiones.idRegion')
             ->join('comunas','propiedades.idComuna','=','comunas.idComuna')
             ->join('provincias','propiedades.idProvincia','=','provincias.idProvincia')
+            ->where('propiedades.idEstado',7)
             ->orderBy('propiedades.idPropiedad','DESC')
             ->limit($parametroGeneral->valorParametroGeneral)
             ->get();
@@ -59,19 +60,15 @@ class WelcomeController extends Controller
         // set certificate file
         //return view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
 
-        $certificate = 'file://'.base_path().'/public/certificado/tcpdf.crt';;
-        //$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
-
-        // set additional information in the signature
+        $certificate = 'file://'.base_path().'/public/certificado/certificadoRifo.crt';
+        $key = 'file://'.base_path().'/public/certificado/llaveNoEncriptada.key';
         $info = array(
             'Name' => 'RIFOPOLY',
             'Location' => 'Tobalaba 4067',
-            'Reason' => 'Testear CRT',
+            'Reason' => 'Validacion Compra',
             'ContactInfo' => 'https://rifopoly.com/',
         );
-
-        // set document signature
-        PDFTC::setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
+        PDFTC::setSignature($certificate, $key, 'tcpdfdemo', '', 2, $info);
         
         //PDFTC::SetFont('helvetica', '', 12);
         PDFTC::SetTitle('Comprobante de Venta.pdf');

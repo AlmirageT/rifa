@@ -70,13 +70,14 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    {{--  
     <script type="text/javascript">
       $(window).on('load', function () {
             setTimeout(function () {
           $(".loader-page").css({visibility:"hidden",opacity:"0"})
         }, 1);
       });
-  </script>
+  </script>--}}
   <script>
     function toggleMenu() {
       const menuToggle = document.querySelector('.toggle');
