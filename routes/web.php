@@ -54,7 +54,7 @@ Route::group(['prefix'=>'administrador'], function(){
 			Route::get('compradas/liberar-boleta/{idBoleta}','ListadoBoletaController@liberarBoleta');
 			Route::get('exportar/excel/compradas','ListadoBoletaController@exportarCompradas');
 			Route::get('exportar/excel/validadas','BoletasValidadasController@exportarValidadas');
-
+			Route::get('crear-boleta-por-deposito','ListadoBoletaController@crearBoleta');
 
 		});
 	});
@@ -197,3 +197,5 @@ Route::delete('mantenedor-caracteristicas/{idPropiedadCaracteristica}',array(
     'uses'=>'PropiedadCaracteristicaController@destroy',
     'as'=>'mantenedor-caracteristicas.delete'
 ));
+//crear boleta
+Route::resource('mantenedor-boletas','ListadoBoletaController');

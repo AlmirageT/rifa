@@ -12,7 +12,7 @@ Mr. Rifopoly te desea mucha suerte y cree que este puede ser el ticket ganador.
 <br><br><br>
 Te adjuntamos un comprobante de compra de los tickets que elegiste. La premiación se realizará en vivo mediante STREAMING por YouTube en la Notaría Manquehual de Santiago, de acuerdo a las bases legales que podrás consultar en {{ asset('/') }}. <br><br><br>
 ¡Y recuerda... compartir esta gran oportunidad con tus amigos y familiares! <br><br>
-<img src="{{ asset('images/ticket_Mesa de trabajo 1 copia.jpg') }}" width="550"/> <br><br><br>
+<img src="https://rifopoly.com/images/ticket_Mesa de trabajo 1 copia.jpg" width="550"/> <br><br><br>
 @endsection
 @section('bodyDetalles')
 

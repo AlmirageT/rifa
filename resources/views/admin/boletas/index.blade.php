@@ -9,6 +9,9 @@ Rifo Mi Propiedad - Administrador
             <div class="col-lg-12" align="center">
                 <h3>Boletas</h3> 
             </div>
+            <div class="col-lg-12">
+                <a href="{{ asset('administrador/transacciones/boletas/crear-boleta-por-deposito') }}" class="btn btn-primary">Crear Boleta</a>
+            </div>
         </div>
         <br>
         <div class="row">
