@@ -18,7 +18,7 @@
   </div>
 
   <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
-      <img src="{{ asset('images/GIF-05.gif') }}" alt="">
+      <img src="{{ asset('images/gifHomeCompress.gif') }}" alt="">
   </div>
 </div>
 
@@ -120,7 +120,7 @@
 
 <div class="cont-seccion2">
   <div class="seccion-1">
-      <img src="images/gif.gif" alt="" class="wow slideInLeft">
+      <img src="{{ asset('images/gif(1).gif') }}" alt="" class="wow slideInLeft">
   </div>
   <div class="seccion-2">
       <h2 class="wow zoomIn">¿Cómo funciona Rifopoly?</h2>
