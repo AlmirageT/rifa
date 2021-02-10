@@ -14,7 +14,7 @@
                 <input type="email" id="correo" name="correoUsuario" class="form-input-ticket" placeholder="Correo Electr&oacute;nico" required>
                 
                 <label for="fono" class="form-label"></label>
-                <input type="number" id="fono" name="telefonoUsuario" class="form-input-ticket" placeholder="Tel&eacute;fono 987654321" min="111111111" max="999999999" required>
+                <input type="number" id="fono" name="telefonoUsuario" class="form-input-ticket" placeholder="Tel&eacute;fono 987654321" min="111111111" max="999999999999999999" required>
                 
                 <label for="rut" class="form-label"></label>
                 <input type="text" id="rut" name="rutUsuario" class="form-input-ticket" placeholder="RUT/DNI/Pasaporte" required>
