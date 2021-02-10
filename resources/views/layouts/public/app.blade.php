@@ -59,6 +59,7 @@
     <!--<div id="loader-page" class="loader-page"></div>-->
     <!-- BOTÓN FLOTANTE WSP -->
     <a href="https://wa.me/56942940824"><div class="plus-button" style="background-size: cover;"></div></a>
+    @yield('boton-comprar')
     @include('layouts.public.header')
     @yield('content')
     

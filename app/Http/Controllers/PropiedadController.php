@@ -952,4 +952,9 @@ class PropiedadController extends Controller
         toastr()->warning('Oops ha surgido un error');
         return back();
     }
+    public function enviarPropiedad()
+    {
+        $propiedades = Propiedad::all();
+        return view('pagos',compact('propiedades'));
+    }
 }

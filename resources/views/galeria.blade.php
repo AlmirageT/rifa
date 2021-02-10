@@ -61,7 +61,8 @@
         <form action="{{ asset('paso-final-compra-ticket') }}" method="get">
           <h5>Resumen de la compra</h5>
           <p id="totalFInal">TOTAL: ${{ number_format(Session::get('total'),0,',','.') }}.-</p>
-          <button class="btnCompraCarrito" type="submit">Continuar compra</button>
+          {{-- 
+          <button class="btnCompraCarrito" type="submit">Continuar compra</button> --}}
         </form>
       @else
         <h5>Resumen de la compra</h5>
@@ -87,15 +88,16 @@
 @section('scripts')
 <script>
   $( document ).ready(function() {
-      document.getElementById('contenido-cambio').classList.remove('cont-nav');
-      document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+      /*
+        document.getElementById('contenido-cambio').classList.remove('cont-nav');
+        document.getElementById('contenido-cambio').classList.add('cont-nav-int');*/
       
   });
   </script>
 
 <script src="js/jquery.nice-number.js"></script>
-    <script>
-        $(function(){
+<script>
+  $(function(){
     
     $('input[type="number"]').niceNumber({
         onIncrement: function ($currentInput, amount, settings) {
@@ -116,6 +118,6 @@
         },
     });
     
-    });
-    </script>
+  });
+</script>
 @endsection
