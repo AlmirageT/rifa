@@ -753,6 +753,10 @@ class PropiedadController extends Controller
     }
     public function ingresoAFormularioUsuario(Request $request, $idPropiedad)
     {
+        if($request->numero <= 0){
+            toastr()->warning('No puede comprar menos de 0 tickets');
+            return back();
+        }
         $numeros = Numero::where('idPropiedad',$idPropiedad)->where('idEstado',1)->first();
         if(!$numeros){
             toastr()->warning('Esta propiedad aún no posee tickets asociados');
@@ -951,5 +955,10 @@ class PropiedadController extends Controller
         }
         toastr()->warning('Oops ha surgido un error');
         return back();
+    }
+    public function enviarPropiedad()
+    {
+        $propiedades = Propiedad::all();
+        return view('pagos',compact('propiedades'));
     }
 }
