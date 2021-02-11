@@ -451,7 +451,7 @@ justify-content: center;
 
 .contenedor-form  .btn-submit-bottom 
 {
-  width: 30%;
+ 
   outline: none;
   border: none;
   background: #1d1d1d;
@@ -1648,6 +1648,16 @@ input[type="number"] {
     list-style: none;
   }
 
+  .cont-video {
+    width: 100%;
+    padding: 5%;
+
+  }
+
+  .cont-video video {
+    margin-top: 20%;
+  }
+
 
 /********RESPONSIVE MOBILE********/
  @media (min-width:320px) and (max-width:360px){
@@ -1874,10 +1884,9 @@ header .navigation.active
   color: #fff;
 }
 
-.toggle 
-{
+.toggle {
   position: relative;
-  width: 110px;
+  width: 30px;
   height: 60px;
   right: 20px;
   background: url(../images/iconos/bars-solid.svg);
@@ -1892,6 +1901,7 @@ header .navigation.active
 .toggle.active 
 {
   position: fixed;
+  width: 40px;
   right: 20px;
   background: url(../images/iconos/close-solid.svg);
   background-size: 40px;
@@ -2131,18 +2141,18 @@ header .navigation.active
   
   .seccion-1 {
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   background: #1d1d1d;
   margin: auto;
   justify-content: center;
   }
   
   .seccion-1 img {
-    display:block;
+    display: block;
     margin: 50px auto;
     width: 100%;
-    padding-top: 120px;
-    }
+    padding-top: 1%;
+}
   
   .seccion-2 {
     width: 100%;
@@ -2171,11 +2181,7 @@ header .navigation.active
   padding: 30px 20px;
  }
 
- .contenedor-form  .btn-submit-bottom 
-{
-  width: 70%;
 
-}
 
 .cont-nav-int a img {
   width: 30%;
@@ -2481,6 +2487,22 @@ width: 100%;
 
 @media (min-width:361px) and (max-width:414px){
 
+  .flotante-compraProp{
+    width: 75%;
+    border: solid 1px #ccc;
+    padding: 5px;
+    position: fixed;
+    z-index: 2;
+    background: #fff;
+    border-radius: 30px;
+    right: 1px;
+    bottom: 12px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+  
+
   .flotante-compraProp form{
     display: flex;
   }
@@ -2771,11 +2793,7 @@ width: 100%;
   margin-top: 10px;
   }
 
-  .contenedor-form  .btn-submit-bottom 
-{
-  width: 50%;
 
-}
   .cont-nav a img 
   {
     width: 100%;
@@ -2815,11 +2833,10 @@ width: 100%;
     color: #fff;
   }
   
-  .toggle 
-  {
+  .toggle {
     position: relative;
-    width: 105px;
-    height: 30px;
+    width: 30px;
+    height: 60px;
     right: 20px;
     background: url(../images/iconos/bars-solid.svg);
     background-size: 30px;
@@ -2985,18 +3002,18 @@ width: 100%;
     
     .seccion-1 {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background: #1d1d1d;
     margin: auto;
     justify-content: center;
     }
     
     .seccion-1 img {
-      display:block;
+      display: block;
       margin: 50px auto;
-      width: 100%;
-      padding-top: 120px;
-      }
+      width: 45%;
+      padding-top: 20%;
+  }
     
     .seccion-2 {
       width: 100%;
@@ -3333,6 +3350,22 @@ width: 100%;
   @media (min-width:415px) and (max-width:515px)
   {
 
+    .flotante-compraProp{
+
+      width: 70%;
+      border: solid 1px #ccc;
+      padding: 5px;
+      padding-left: 20px;
+      position: fixed;
+      z-index: 2;
+      background: #fff;
+      border-radius: 15px;
+      right: 1px;
+      bottom: 12px;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+  }
     .flotante-compraProp form{
       display: flex;
     }
@@ -3558,11 +3591,10 @@ margin-top: 10px;
     color: #fff;
   }
   
-  .toggle 
-  {
+  .toggle {
     position: relative;
-    width: 60px;
-    height: 30px;
+    width: 30px;
+    height: 60px;
     right: 20px;
     background: url(../images/iconos/bars-solid.svg);
     background-size: 30px;
@@ -3576,6 +3608,7 @@ margin-top: 10px;
   .toggle.active 
   {
     position: fixed;
+    width: 40px;
     right: 20px;
     background: url(../images/iconos/close-solid.svg);
     background-size: 25px;
@@ -3617,15 +3650,15 @@ margin-top: 10px;
   {
     text-decoration: none;
     padding: 20px;
-    background-color: #f7ef6a;
-    color: #465c8b;
+    background-color: #1d1d1d;
+    color: #fff;
     border-radius: 40px;
   }
   
   .cont-header  a:hover
   {
-    background-color: #93c178;
-    color: #dfdce3;
+    background-color: #af1840;
+    color: #fff;
   }
   
   .cont-img img
@@ -3722,18 +3755,18 @@ margin-top: 10px;
   
   .seccion-1 {
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   background: #1d1d1d;
   margin: auto;
   justify-content: center;
   }
   
   .seccion-1 img {
-    display:block;
+    display: block;
     margin: 50px auto;
-    width: 100%;
-    padding-top: 120px;
-    }
+    width: 45%;
+    padding-top: 1%;
+}
   
   .seccion-2 {
     width: 100%;
@@ -4226,11 +4259,10 @@ margin-top: 10px;
   }
   
   
-  .toggle 
-  {
+  .toggle {
     position: relative;
-    width: 60px;
-    height: 30px;
+    width: 30px;
+    height: 60px;
     right: 20px;
     background: url(../images/iconos/bars-solid.svg);
     background-size: 30px;
@@ -4244,6 +4276,7 @@ margin-top: 10px;
   .toggle.active 
   {
     position: fixed;
+    width: 40px;
     right: 20px;
     background: url(../images/iconos/close-solid.svg);
     background-size: 25px;
@@ -4318,11 +4351,11 @@ margin-top: 10px;
     }
     
     .seccion-1 img {
-      display:block;
+      display: block;
       margin: 50px auto;
-      width: 30%;
-      padding-top: 5px;
-      }
+      width: 100%;
+      padding-top: 1%;
+  }
     
     .seccion-2 {
       width: 100%;
@@ -4752,7 +4785,12 @@ margin-top: 10px;
   }
 
   @media (min-width:668px) and (max-width:768px)
+
   {
+
+    .cont-video video {
+      margin-top: 5%;
+    }
     .cont-nav ul li a
     {
       text-decoration: none;
@@ -4777,8 +4815,8 @@ margin-top: 10px;
       font-size: 15px;
   }
 
-  .premios-list li, p{
-    font-size: 13px;
+  .premios-list li, p {
+    font-size: 34px;
 }
 
     .width {
@@ -4913,6 +4951,7 @@ margin-top: 10px;
   .toggle.active 
   {
     position: fixed;
+    width: 40px;
     right: 20px;
     background: url(../images/iconos/close-solid.svg);
     background-size: 25px;
@@ -4986,11 +5025,11 @@ margin-top: 10px;
     }
     
     .seccion-1 img {
-      display:block;
+      display: block;
       margin: 50px auto;
       width: 50%;
-      padding-top: 40px;
-      }
+      padding-top: 5%;
+  }
     
     .seccion-2 {
       width: 100%;
@@ -5532,6 +5571,7 @@ margin-top: 10px;
   .toggle.active 
   {
     position: fixed;
+    width: 40px;
     right: 20px;
     background: url(../images/iconos/close-solid.svg);
     background-size: 25px;
@@ -5702,11 +5742,11 @@ margin-top: 10px;
     }
     
     .seccion-1 img {
-      display:block;
+      display: block;
       margin: 50px auto;
-      width: 50%;
-     
-      }
+      width: 100%;
+      padding-top: 1%;
+  }
     
     .seccion-2 {
       width: 100%;

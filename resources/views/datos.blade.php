@@ -19,7 +19,7 @@
   <br>
   
   <div class="cont-infoCarrito">
-    <div class="resumenPropiedades">
+    <div class="resumenPropiedades" id="resumenPropiedades">
       @if (Session::has('carritoCompra'))
         @foreach (Session::get('carritoCompra') as $key => $propiedadTicket)
           <div class="desglose">
@@ -50,24 +50,21 @@
             </div>
           </div>
           <br>
-<br>
+          <br>
         @endforeach
       @else
-          <div class="desglose">
-            <h1>No hay tickets comprados</h1>
-          </div>
-<br>
-<br>
-<br>
-<br>
-
+        <div class="desglose">
+          <h1>No hay tickets comprados</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
       @endif 
-        
-        
       <br>
     </div>
   
-    <div class="total">
+    <div class="total" id="totalResumen">
       @if (Session::has('total'))
         <form action="{{ asset('paso-final-compra-ticket') }}" method="get">
           <h5>Resumen de la compra</h5>
@@ -152,6 +149,23 @@
             $.get('{{ asset('revisar-estado-boleta') }}',function(data, status) {
                 if(data == true){
                     window.location.href='{{ asset('felicidades-por-su-compra') }}';
+                }else{
+                  document.getElementById('resumenPropiedades').innerHTML = '';
+                  document.getElementById('totalResumen').innerHTML = '';
+                  document.getElementById('resumenPropiedades').innerHTML = `
+                    <div class="desglose">
+                      <h1>No hay tickets comprados</h1>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                  `;
+                  document.getElementById('totalResumen').innerHTML = `
+                    <h5>Resumen de la compra</h5>
+                    <p>TOTAL: $00.000.-</p>
+                  `;
+
                 }
             });
             timeout();
@@ -160,5 +174,24 @@
 
 
 </script>
+<script>
+  // Wrap every letter in a span
+  var textWrapper = document.querySelector('.ml2');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
+  anime.timeline({loop: false})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  });
+  $(document).ready(function() {
+      // Inicializando WOW
+      new WOW().init();
+  });
+</script> 
 @endsection
