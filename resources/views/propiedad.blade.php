@@ -5,10 +5,30 @@
 <link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
 @endsection
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo rifopoly_Mesa de trabajo 1.png') }}" alt=""></a>
+@endsection
+@section('boton-comprar')
+<form action="{{ asset('compra-ticket-directo') }}/{{ $propiedades->first()->idPropiedad }}" method="POST">
+    @csrf
+    <input type="hidden" name="numero" value="1" min="1">
+    <button class="btn-comprar-flotanteProp letras-btn" style="cursor: pointer">Comprar <i class="fas fa-shopping-cart" aria-hidden="true"></i></button>
+</form>
+@endsection
 
 @section('content')
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <main class="cont-body int-mobile">
-    <h1 class="ml2">Escoge la rifa que quieres ganar</h1>
+    <h1 class="ml2">Gana estos premios con $20.000</h1>
     <br>
     @if(count($propiedades)>1)
         <form class="form-buscar wow slideInLeft" data-wow-delay="0.4s" action="{{ asset('tienda-rifo-propiedades') }}" method="POST">
@@ -116,7 +136,7 @@
                                 <h3><strong>{{ $propiedad->nombrePropiedad }}</strong></h3>
                                 <h4 id="nombreComuna{{ $propiedad->idPropiedad }}"><i class="fas fa-map-marker-alt"></i>{{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
 
-                                <p>${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
+                                <p> <strong> ${{ number_format($propiedad->valorRifa,0,',','.') }}.-</strong></p>
                                 <p>{!! $propiedad->descripcionPropiedad !!}</p>
                                 <br>
                                 <p class="titlePremios">{{ $propiedad->cantidadTotalPremios }} premios a repartir</p>
@@ -138,16 +158,16 @@
                                         @endforeach
                                         
                                     @endif
-
                                 </div>
                                 <br>
                                 <div class="cont-botones"> <br>
                                     <a class="btn-tickets-int" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Detalles</a>
+                                    {{--  
                                     <form class="form-btn" action="{{ asset('compra-ticket-directo-detalle') }}/{{ $propiedad->idPropiedad }}" method="POST">
                                         @csrf
                                         <button class="buttonComprarAhora" style="cursor:pointer;" type="sumbit">Comprar ahora</button>
                                         <button class="buttonComprarAhora" style="cursor:pointer;" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
-                                    </form>
+                                    </form>--}}
                                     <div class="width">
                                         <ul class="share-detail">
                                             @if ($propiedad->urlFacebook)
@@ -181,8 +201,12 @@
 
 <script>
     $( document ).ready(function() {
+        /*
         document.getElementById('contenido-cambio').classList.remove('cont-nav');
-        document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+        document.getElementById('contenido-cambio').classList.add('cont-nav-int');*/
+        document.getElementById('contenido-cambio').style.color = "black";
+        document.getElementById('contenido-cambio-1').style.color = "black";
+        document.getElementById('contenido-cambio-2').style.color = "black";
     });
 </script>
 @foreach($propiedades as $propiedad)
@@ -279,4 +303,24 @@
         });
     }
 </script>
+<script>
+    // Wrap every letter in a span
+    var textWrapper = document.querySelector('.ml2');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: false})
+    .add({
+      targets: '.ml2 .letter',
+      scale: [4,1],
+      opacity: [0,1],
+      translateZ: 0,
+      easing: "easeOutExpo",
+      duration: 950,
+      delay: (el, i) => 70*i
+    });
+    $(document).ready(function() {
+        // Inicializando WOW
+        new WOW().init();
+    });
+  </script> 
 @endsection

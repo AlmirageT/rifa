@@ -1,30 +1,70 @@
 @extends('layouts.public.app')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
+<style>
+  .portada{
+      background-image: url('{{ asset('images/banner_Mesa de trabajo 1.jpg') }}'); 
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      width:100%;
+      height:100%;
+    }
+    .responsive {
+      width: 100%;
+      height: auto;
+    }
+</style>
+@endsection
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo-blanco.png') }}" alt=""></a>
+@endsection
 @section('cont-header')
+<img src="{{ asset('images/banner_Mesa de trabajo 1.jpg') }}" alt="" class="responsive">
+
+{{-- 
 <a class="btn-comprar-flotante letras-btn" href="{{ asset('tienda-rifo-propiedades') }}">Comprar<br><i class="fas fa-shopping-cart" aria-hidden="true"></i> </a>
+ --}}
 
 <div class="cont-header">
   <div class="cont-tittle">
-      <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>
-      <p class="wow slideInLeft" data-wow-delay="0.6s">
-        No llegaste a Rifopoly porque si, cree en tu suerte,
-        compra tu número y desafía al destino 
-        
-      </p>
+    {{--  
+      <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>--}}
+      <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque si, cree en tu suerte. Compra tu número y desafía al destino.</p> 
+      <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>$20.000.-</strong></p>
       <br>
-      <p class=""><strong>Son 10 premios a repartir</strong></p>
+      <p class="">Son 10 premios: Departamento de Lujo(premio mayor) y 9 premios en efectivo.</p>
+
       <br> <br>
-      <a href="{{ asset('tienda-rifo-propiedades') }}">Ver Propiedades <i class="far fa-building"></i></a> 
+      <a href="{{ asset('tienda-rifo-propiedades') }}">Ver Premios <i class="far fa-building"></i></a> 
       <!--<a href="{{ asset('tienda-rifo-propiedades') }}">Quiero saber más</a>-->
   </div>
-
+{{--  
   <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
-      <img src="{{ asset('images/GIF-05.gif') }}" alt="">
-  </div>
+      <img src="{{ asset('images/gifHomeCompress.gif') }}" alt="">
+  </div>--}}
 </div>
-
-<div class="circle"></div>
+{{--  
+<div class="circle"></div> --}}
+<div class="flotante-compraProp">
+  <form action="{{ asset('compra-ticket-directo') }}/{{ $propiedades->first()->idPropiedad }}" method="POST">
+    @csrf
+      <label for="numero" class="tamanoLetra">Cantidad de Tickets</label>
+      <input type="number" id="numero"  name="numero" class="" placeholder="" value="1" min="1">
+      
+      <p class="tamanoLetra" id="totalBoletos">TOTAL: $20.000.-</p>
+      <div class="cont-botonesCompra">
+      <button class="btnCompra" type="submit">Comprar ahora</button>
+      <!--<button class="btnCarrito" type="submit">Agregar al carrito</button> -->
+  </div>
+  </form>
+</div>
 @endsection
+
 @section('content')
+
 <main class="cont-body ">
   <h2 class="wow fadeInRight">Este departamento puede ser tuyo</h2> 
   <div class="seccion1 swiper-container ">
@@ -36,7 +76,7 @@
           @endphp
           <div class="cont-propiedades swiper-slide">
               <div class="cont-tour wow zoomIn" data-wow-delay="1s">
-                  <h3>Tour 3D</h3>
+                  <h3>La propiedad</h3>
                   <br>
                   <img src="{{ $propiedad->fotoPrincipal }}" alt="Propiedad en rifa">
                   <!--<iframe class="frame-mapa" src="{{ $propiedad->urlGoogleMaps }}" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
@@ -120,7 +160,7 @@
 
 <div class="cont-seccion2">
   <div class="seccion-1">
-      <img src="images/gif.gif" alt="" class="wow slideInLeft">
+      <img src="{{ asset('images/gif(1).gif') }}" alt="" class="wow slideInLeft">
   </div>
   <div class="seccion-2">
       <h2 class="wow zoomIn">¿Cómo funciona Rifopoly?</h2>
@@ -133,6 +173,10 @@
       <form action="{{ asset('enviar-consulta') }}" class="formulario-bottom" method="post">
         @csrf
           <h2 class="">CONTÁCTANOS</h2>
+          <div style="text-align: center;">
+            <a style="color: black" href="tel:+56942940824" ><i class="fa fa-mobile"></i>Asistente Teléfonico +56 9 4294 0824</a>
+            <br>
+          </div>
           <label for="nombre" class="form-label"></label>
           <input type="text" id="nombre" name="nombre" class="form-input-bottom" placeholder="Tu Nombre" required>
           
@@ -151,6 +195,29 @@
 </div>
 @endsection
 @section('scripts')
+<script src="{{ asset('js/jquery.nice-number.js') }}"></script>
+<script>
+  $(function(){
+    $('#numero').niceNumber({
+        onIncrement: function () {
+            
+            var cantidadTickets = document.getElementById('numero').value;
+            var total = {{ $propiedad->valorRifa }} * cantidadTickets;
+            total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+            total = total.split('').reverse().join('').replace(/^[\.]/,'');
+            document.getElementById('totalBoletos').innerHTML = 'TOTAL: $'+total+'.-';
+            
+        },
+        onDecrement: function () {
+            var cantidadTickets = document.getElementById('numero').value;
+            var total = {{ $propiedad->valorRifa }} * cantidadTickets;
+            total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+            total = total.split('').reverse().join('').replace(/^[\.]/,'');
+            document.getElementById('totalBoletos').innerHTML = 'TOTAL: $'+total+'.-';
+        },
+    });
+  });
+</script>
 <script>
   
   var swiper = new Swiper('.swiper-container', {

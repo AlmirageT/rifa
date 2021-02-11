@@ -59,6 +59,7 @@
     <!--<div id="loader-page" class="loader-page"></div>-->
     <!-- BOTÓN FLOTANTE WSP -->
     <a href="https://wa.me/56942940824"><div class="plus-button" style="background-size: cover;"></div></a>
+    @yield('boton-comprar')
     @include('layouts.public.header')
     @yield('content')
     
@@ -88,26 +89,7 @@
   </script>
 
 
-<script>
-    // Wrap every letter in a span
-    var textWrapper = document.querySelector('.ml2');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    anime.timeline({loop: false})
-    .add({
-      targets: '.ml2 .letter',
-      scale: [4,1],
-      opacity: [0,1],
-      translateZ: 0,
-      easing: "easeOutExpo",
-      duration: 950,
-      delay: (el, i) => 70*i
-    });
-    $(document).ready(function() {
-        // Inicializando WOW
-        new WOW().init();
-    });
-  </script> 
   @toastr_js
   @toastr_render
     @yield('scripts')
