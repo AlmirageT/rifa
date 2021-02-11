@@ -1,14 +1,15 @@
 
 <header>
-    <div class="cont-nav" id="contenido-cambio">
-        <a href="{{ asset('/') }}"><img src="{{ asset('images/logo rifopoly_Mesa de trabajo 1.png') }}" alt=""></a>
+    <div class="cont-nav" >
+        @yield('imagen-inicio')
+        
         <div class="toggle" onclick="toggleMenu()"></div>
         <ul class="navigation">
            <!-- <li><a href="propiedades.html">Propiedades</a></li> -->
-            <li><a href="{{ asset('tienda-rifo-propiedades') }}" >Premios</a></li>
+            <li><a href="{{ asset('tienda-rifo-propiedades') }}" id="contenido-cambio">Premios</a></li>
            <!-- <li><a href="bases-legales.html">Bases Legales</a></li> -->
             <div class="contNotificacion">
-                <li><a href="{{ asset('formas-de-pago') }}">Formas de Pago</a></li>
+                <li><a href="{{ asset('formas-de-pago') }}" id="contenido-cambio-1">Formas de Pago</a></li>
                 {{--  
                 <li><a href="{{ asset('carrito-compra') }}" >Carrito de Compra</a></li>
                 @if (Session::has('carritoCompra'))
@@ -18,10 +19,9 @@
                 @endif--}}
             </div>
 
-            <li><a href="{{ asset('/') }}#contacto" >Contacto</a></li>
+            <li><a href="{{ asset('/') }}#contacto" id="contenido-cambio-2">Contacto</a></li>
         </ul>
     </div>
-
 
     @yield('cont-header')
     

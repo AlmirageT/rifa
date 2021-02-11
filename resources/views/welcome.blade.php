@@ -1,16 +1,38 @@
 @extends('layouts.public.app')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
+<style>
+  .portada{
+      background-image: url('{{ asset('images/banner_Mesa de trabajo 1.jpg') }}'); 
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      width:100%;
+      height:100%;
+    }
+    .responsive {
+      width: 100%;
+      height: auto;
+    }
+</style>
+@endsection
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo-blanco.png') }}" alt=""></a>
 @endsection
 @section('cont-header')
+<img src="{{ asset('images/banner_Mesa de trabajo 1.jpg') }}" alt="" class="responsive">
+
 {{-- 
 <a class="btn-comprar-flotante letras-btn" href="{{ asset('tienda-rifo-propiedades') }}">Comprar<br><i class="fas fa-shopping-cart" aria-hidden="true"></i> </a>
  --}}
+
 <div class="cont-header">
   <div class="cont-tittle">
     {{--  
       <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>--}}
-      <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque si, cree en tu suerte. Compra tu numero y desafía al destino.</p> 
+      <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque si, cree en tu suerte. Compra tu número y desafía al destino.</p> 
       <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>$20.000.-</strong></p>
       <br>
       <p class="">Son 10 premios: Departamento de Lujo(premio mayor) y 9 premios en efectivo.</p>
@@ -19,12 +41,13 @@
       <a href="{{ asset('tienda-rifo-propiedades') }}">Ver Premios <i class="far fa-building"></i></a> 
       <!--<a href="{{ asset('tienda-rifo-propiedades') }}">Quiero saber más</a>-->
   </div>
-
+{{--  
   <div class="cont-img wow fadeInUp" data-wow-delay="0.7s">
       <img src="{{ asset('images/gifHomeCompress.gif') }}" alt="">
-  </div>
+  </div>--}}
 </div>
-<div class="circle"></div> 
+{{--  
+<div class="circle"></div> --}}
 <div class="flotante-compraProp">
   <form action="{{ asset('compra-ticket-directo') }}/{{ $propiedades->first()->idPropiedad }}" method="POST">
     @csrf
@@ -39,7 +62,9 @@
   </form>
 </div>
 @endsection
+
 @section('content')
+
 <main class="cont-body ">
   <h2 class="wow fadeInRight">Este departamento puede ser tuyo</h2> 
   <div class="seccion1 swiper-container ">

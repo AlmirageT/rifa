@@ -1,4 +1,7 @@
 @extends('layouts.public.app')
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo rifopoly_Mesa de trabajo 1.png') }}" alt=""></a>
+@endsection
 @section('content')
 <br>
 <br>
@@ -35,6 +38,16 @@
 </main>
 @endsection
 @section('scripts')
+<script>
+    $( document ).ready(function() {
+        /*
+        document.getElementById('contenido-cambio').classList.remove('cont-nav');
+        document.getElementById('contenido-cambio').classList.add('cont-nav-int');*/
+        document.getElementById('contenido-cambio').style.color = "black";
+        document.getElementById('contenido-cambio-1').style.color = "black";
+        document.getElementById('contenido-cambio-2').style.color = "black";
+    });
+</script>
 <script>
     // Wrap every letter in a span
     var textWrapper = document.querySelector('.ml2');

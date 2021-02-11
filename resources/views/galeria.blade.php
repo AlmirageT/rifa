@@ -2,6 +2,9 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
 @endsection
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo rifopoly_Mesa de trabajo 1.png') }}" alt=""></a>
+@endsection
 @section('content')
 <main class="cont-body int-mobile">
   <h1 class="ml2">Cada vez más cerca de ganar</h1>
@@ -91,6 +94,9 @@
       /*
         document.getElementById('contenido-cambio').classList.remove('cont-nav');
         document.getElementById('contenido-cambio').classList.add('cont-nav-int');*/
+        document.getElementById('contenido-cambio').style.color = "black";
+        document.getElementById('contenido-cambio-1').style.color = "black";
+        document.getElementById('contenido-cambio-2').style.color = "black";
       
   });
   </script>
