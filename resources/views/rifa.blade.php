@@ -14,9 +14,21 @@
 <link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
 @endsection
-
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo rifopoly_Mesa de trabajo 1.png') }}" alt=""></a>
+@endsection
 @section('content')
 <main class="cont-body int-mobile">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h1 class="ml2">{{ $propiedad->nombrePropiedad }}</h1>
     <br>
     <div class="swiper-container">
@@ -84,13 +96,15 @@
     <div class="flotante-compra" id="btn-flotante">
         <form action="{{ asset('compra-ticket-directo') }}/{{ $propiedad->idPropiedad }}" method="POST">
             @csrf
-            <label for="numero" class="tamanoLetra">Cantidad</label> <br> <br>
+            <label for="numero" class="tamanoLetra">Cantidad de Tickets</label> <br> <br>
             <input type="number" id="numero" name="numero" class="" placeholder="" value="1" min="1">
             <br> <br>
             <p class="tamanoLetra" id="totalBoletos">TOTAL: ${{ number_format($propiedad->valorRifa,0,',','.') }}.-</p>
             <div class="cont-botonesCompra">
                 <button class="btnCompra" style="cursor:pointer;" type="submit">Comprar ahora</button>
+                {{--  
                 <button class="btnCarrito"  style="cursor:pointer;" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
+                --}}
             </div>
         </form>
     </div> 
@@ -119,7 +133,7 @@
     @if ($propiedad->urlMattlePort)
         
         <div class="cont-matterport">
-            <h2>Tour 3D</h2>
+            <h2>La propiedad</h2>
             @if ($propiedad->urlMattlePort)
                 <iframe  src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
             @endif
@@ -286,8 +300,9 @@ function initMap() {
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>
 <script>
 $( document ).ready(function() {
-    document.getElementById('contenido-cambio').classList.remove('cont-nav');
-    document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+        document.getElementById('contenido-cambio').style.color = "black";
+        document.getElementById('contenido-cambio-1').style.color = "black";
+        document.getElementById('contenido-cambio-2').style.color = "black";
     
 });
 </script>
@@ -372,4 +387,24 @@ $( document ).ready(function() {
         });
     }
 </script>
+<script>
+    // Wrap every letter in a span
+    var textWrapper = document.querySelector('.ml2');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: false})
+    .add({
+      targets: '.ml2 .letter',
+      scale: [4,1],
+      opacity: [0,1],
+      translateZ: 0,
+      easing: "easeOutExpo",
+      duration: 950,
+      delay: (el, i) => 70*i
+    });
+    $(document).ready(function() {
+        // Inicializando WOW
+        new WOW().init();
+    });
+  </script> 
 @endsection

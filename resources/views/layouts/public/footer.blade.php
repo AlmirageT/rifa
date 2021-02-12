@@ -17,6 +17,7 @@
             <h2>Contacto</h2>
             <p><i class="fas fa-map-marker-alt"></i> Av. Providencia 1650 OF 601, Providencia</p>
             <a href="mailto:contacto@rifopoly.com"><i class="far fa-envelope"></i> contacto@rifopoly.com</a>
+            <a href="tel:+56942940824"><i class="fa fa-mobile"></i> +56 9 4294 0824</a>
             <ul class="sci">
                 <li><a href="https://www.facebook.com/Rifopoly-102077135127324"><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href="https://www.instagram.com/rifopoly/"><i class="fab fa-instagram"></i></a></li>

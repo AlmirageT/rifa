@@ -11,8 +11,8 @@
 |
 */
 Route::get('/', 'WelcomeController@index');
-Route::view('carrito-compra', 'galeria');
-Route::view('bases-legales', 'bases');
+//Route::view('carrito-compra', 'galeria');
+//Route::view('bases-legales', 'bases');
 Route::get('tienda-rifo-propiedades', 'PropiedadController@tienda');
 Route::get('rifo-propiedades/detalle', 'ComprarRifaController@index');
 Route::post('comprar-numeros','ComprarRifaController@envioEmail');
@@ -21,6 +21,7 @@ Route::post('compra-ticket-directo/{idPropiedad}','PropiedadController@ingresoAF
 Route::post('compra-ticket-directo-detalle/{idPropiedad}','PropiedadController@ingresoAFormularioUsuarioDetalle');
 Route::get('revisar-estado-boleta','ComprarRifaController@estadoBoleta');
 Route::view('felicidades-por-su-compra','compraExitosa');
+Route::get('formas-de-pago','PropiedadController@enviarPropiedad');
 
 //Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');

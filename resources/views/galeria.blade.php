@@ -2,6 +2,9 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
 @endsection
+@section('imagen-inicio')
+<a href="{{ asset('/') }}"><img src="{{ asset('images/logo rifopoly_Mesa de trabajo 1.png') }}" alt=""></a>
+@endsection
 @section('content')
 <main class="cont-body int-mobile">
   <h1 class="ml2">Cada vez más cerca de ganar</h1>
@@ -61,7 +64,8 @@
         <form action="{{ asset('paso-final-compra-ticket') }}" method="get">
           <h5>Resumen de la compra</h5>
           <p id="totalFInal">TOTAL: ${{ number_format(Session::get('total'),0,',','.') }}.-</p>
-          <button class="btnCompraCarrito" type="submit">Continuar compra</button>
+          {{-- 
+          <button class="btnCompraCarrito" type="submit">Continuar compra</button> --}}
         </form>
       @else
         <h5>Resumen de la compra</h5>
@@ -87,15 +91,19 @@
 @section('scripts')
 <script>
   $( document ).ready(function() {
-      document.getElementById('contenido-cambio').classList.remove('cont-nav');
-      document.getElementById('contenido-cambio').classList.add('cont-nav-int');
+      /*
+        document.getElementById('contenido-cambio').classList.remove('cont-nav');
+        document.getElementById('contenido-cambio').classList.add('cont-nav-int');*/
+        document.getElementById('contenido-cambio').style.color = "black";
+        document.getElementById('contenido-cambio-1').style.color = "black";
+        document.getElementById('contenido-cambio-2').style.color = "black";
       
   });
   </script>
 
 <script src="js/jquery.nice-number.js"></script>
-    <script>
-        $(function(){
+<script>
+  $(function(){
     
     $('input[type="number"]').niceNumber({
         onIncrement: function ($currentInput, amount, settings) {
@@ -116,6 +124,26 @@
         },
     });
     
-    });
-    </script>
+  });
+</script>
+<script>
+  // Wrap every letter in a span
+  var textWrapper = document.querySelector('.ml2');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+  anime.timeline({loop: false})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  });
+  $(document).ready(function() {
+      // Inicializando WOW
+      new WOW().init();
+  });
+</script> 
 @endsection

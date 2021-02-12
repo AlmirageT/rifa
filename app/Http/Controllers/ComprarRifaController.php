@@ -219,7 +219,7 @@ class ComprarRifaController extends Controller
                 return redirect()->to('https://otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.$boleta->idBoleta.'&tiidc=03');
             }else{
                 DB::rollback();
-                toastr()->warning('Debe pasar por el carrito de compra antes de poder continuar');
+                toastr()->warning('Su compra ya ha sido procesada o no ha realizado compra');
                 return back();
             }
 
