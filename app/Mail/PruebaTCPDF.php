@@ -30,6 +30,6 @@ class PruebaTCPDF extends Mailable
     public function build()
     {
         $fileatt = $this->fileatt;
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($fileatt, "Comprobante de Compra.pdf")->view('mail.hola');
+        return $this->from(['contacto@rifopoly.com','Rifo Mi Propiedad'])->subject('Comprobante de Compra')->attachData($fileatt, "Comprobante de Compra.pdf")->view('mail.hola');
     }
 }

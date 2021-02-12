@@ -35,6 +35,6 @@ class ConfirmarSolicitud extends Mailable
         $boleta = $this->boleta;
         $numerosComprados = $this->numerosComprados;
         $total = $this->total;
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Datos Bancarios')->view('mail.datosMail',compact('boleta','numerosComprados','total'));        
+        return $this->from(['contacto@rifopoly.com','Rifo Mi Propiedad'])->subject('Datos Bancarios')->view('mail.datosMail',compact('boleta','numerosComprados','total'));        
     }
 }

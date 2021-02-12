@@ -224,7 +224,7 @@ class ComprarRifaController extends Controller
             }
 
             //Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new ConfirmarSolicitud($boleta, $numerosComprados, $total));
-	    	//Mail::to('tickets@rifomipropiedad.com')->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
+	    	//Mail::to('tickets@rifopoly.com')->bcc(['pauloberrios@gmail.com', 'ivan.saez@informatica.isbast.com','lina.di@isbast.com'])->send(new NumerosFolio($boleta, $numerosComprados, $total,$usuario));
 	    	//return view('datos',compact('numerosComprados','total'));
     	} catch (ModelNotFoundException $e) {
             toastr()->warning('No autorizado');

@@ -37,7 +37,7 @@
             </strong><br>
             <span style="font-size: 16px; line-height: 55px;">Cuenta: <strong>0220844303</strong></span><br>
             <span style="font-size: 16px; line-height: 18px;">Rut: <strong>76454378-5</strong></span><br>
-            <span style="font-size: 16px; line-height: 55px;">Email: <strong>tickets@rifomipropiedad.com</strong></span><br>
+            <span style="font-size: 16px; line-height: 55px;">Email: <strong>tickets@rifopoly.com</strong></span><br>
             <span style="font-size: 16px; line-height: 55px;">En el comentario del deposito ingresar folio de la boleta indicado en este correo o solo tu nombre y correo electrónico.</span>
         </p>
       </div>

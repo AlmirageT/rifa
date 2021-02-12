@@ -38,6 +38,6 @@ class Consulta extends Mailable
         $correo = $this->correo;
         $fono = $this->fono;
         $consulta = $this->consulta;
-        return $this->from(['contacto@rifomipropiedad.com','Rifo Mi Propiedad'])->subject('Consulta rifa')->view('mail.mailConsulta',compact('nombre','correo','fono', 'consulta'));        
+        return $this->from(['contacto@rifopoly.com','Rifo Mi Propiedad'])->subject('Consulta rifa')->view('mail.mailConsulta',compact('nombre','correo','fono', 'consulta'));        
     }
 }

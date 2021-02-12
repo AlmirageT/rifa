@@ -92,7 +92,7 @@ class WelcomeController extends Controller
         // save pdf file
         $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
         
-        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
+        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
 
         //return view('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
