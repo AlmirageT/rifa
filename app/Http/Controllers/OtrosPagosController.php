@@ -147,7 +147,7 @@ class OtrosPagosController extends Controller
                 
                 PDFTC::setSignatureAppearance(180, 60, 15, 15);
                 $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
-                Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifomipropiedad.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
+                Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
                 //EnviarBoletaJob::dispatch($numeros, $boleta, $usuario, $propiedad);
                 //sigue otros pagos
