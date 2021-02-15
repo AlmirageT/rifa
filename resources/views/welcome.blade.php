@@ -1,6 +1,8 @@
 @extends('layouts.public.app')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
+<link rel="stylesheet" href="{{ asset('css/slick.css') }}">
+<link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
 <style>
   .portada{
       background-image: url('{{ asset('images/banner_Mesa de trabajo 1.jpg') }}'); 
@@ -22,8 +24,11 @@
 <a href="{{ asset('/') }}"><img src="{{ asset('images/logo-blanco.png') }}" alt=""></a>
 @endsection
 @section('cont-header')
-<img src="{{ asset('images/banner_Mesa de trabajo 1.jpg') }}" alt="" class="responsive">
+<div class="single-item">
+  <img src="{{ asset('images/banner_Mesa de trabajo 1.jpg') }}" alt="" class="responsive">
+  <img src="{{ asset('images/BANNER 2_Mesa de trabajo 1.jpg') }}" alt="" class="responsive">
 
+</div>
 {{-- 
 <a class="btn-comprar-flotante letras-btn" href="{{ asset('tienda-rifo-propiedades') }}">Comprar<br><i class="fas fa-shopping-cart" aria-hidden="true"></i> </a>
  --}}
@@ -196,6 +201,8 @@
 @endsection
 @section('scripts')
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>
+<script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+<script src="{{ asset('js/slick.min.js') }}"></script>
 <script>
   $(function(){
     $('#numero').niceNumber({
@@ -234,5 +241,10 @@
   
 
 </script>
-
+<script>
+  $('.single-item').slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+  });
+</script>
 @endsection
