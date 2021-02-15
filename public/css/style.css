@@ -2142,6 +2142,7 @@ header .navigation.active
 
 .cont-seccion2{
   display: block;
+  margin-top: 443px;
   }
   
   .seccion-1 {
@@ -3005,6 +3006,7 @@ width: 100%;
 
   .cont-seccion2{
     display: block;
+    margin-top: 389px;
     }
     
     .seccion-1 {
@@ -3763,6 +3765,7 @@ margin-top: 10px;
 
   .cont-seccion2{
   display: block;
+  margin-top: 400px;
   }
   
   .seccion-1 {
@@ -4357,11 +4360,12 @@ margin-top: 10px;
 
   .cont-seccion2{
     display: block;
+    margin-top: 389px;
     }
     
     .seccion-1 {
     width: 100%;
-    height: 50vh;
+    height: 90vh;
     background: #1d1d1d;
     margin: auto;
     justify-content: center;
@@ -5036,11 +5040,12 @@ margin-top: 10px;
 
   .cont-seccion2{
     display: block;
+    margin-top: 364px;
     }
     
     .seccion-1 {
     width: 100%;
-    height: 50vh;
+    height: 70vh;
     background: #1d1d1d;
     margin: auto;
     justify-content: center;
@@ -5055,7 +5060,7 @@ margin-top: 10px;
     
     .seccion-2 {
       width: 100%;
-      height: 50vh;
+      height: 100vh;
       padding: 80px;
       color: #fff;
       font-size: 30px;
@@ -5680,10 +5685,13 @@ margin-top: 10px;
     color: #333;
   }
   
-  .seccion1 
-  {
-    width: 100%; 
-  }
+  .seccion-1 {
+    width: 100%;
+    height: 50vh;
+    background: #1d1d1d;
+    margin: auto;
+    justify-content: center;
+    }
   
   .cont-body h2, h1 
   {
@@ -5760,12 +5768,13 @@ margin-top: 10px;
 
   .cont-seccion2{
     display: block;
+    margin-top: 400px;
     }
     
     .seccion-1 {
     width: 100%;
-    height: 50vh;
-    background: #ffffff;
+    height: 130vh;
+    background: black;
     margin: auto;
     justify-content: center;
     }
@@ -6102,6 +6111,26 @@ margin-top: 10px;
       margin-top: -127px;
       color: black;   
     }
+    .cont-seccion2{
+      width: 100%;
+      display: flex;
+      margin-top: 400px;
+    }
+    .seccion-2 {
+      width: 50%;
+      height: 114vh;
+      background: #e30613;
+      padding: 220px 90px;
+      color: #fff;
+      font-size: 30px;
+  }
+  .seccion-1 {
+    width: 50%;
+    height: 114vh;
+    background: #1d1d1d;
+    margin: auto;
+    justify-content: center;
+}
   }
   @media (min-width:1296px) and (max-width:1664px){
     .cont-tittle

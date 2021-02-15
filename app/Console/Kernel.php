@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call('App\Http\Controllers\ComprarRifaController@reversarEstadoDeNoPagados')->dailyAt('13:00');
+        $schedule->call('App\Http\Controllers\WelcomeController@contarJobs')->everyFiveMinutes();
     }
 
     /**
