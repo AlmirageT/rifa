@@ -82,7 +82,7 @@ class WelcomeController extends Controller
         PDFTC::writeHTML($text, true, false, true, false, '');
         $img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
 
-        $img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '">';
+        $img = '<p align="center"><img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '"></p>';
 
         PDFTC::writeHTML($img, true, false, true, false, '');
         //PDFTC::writeHTML($text, true, 0, true, 0);
