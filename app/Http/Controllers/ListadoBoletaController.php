@@ -117,7 +117,8 @@ class ListadoBoletaController extends Controller
 		                        </a>
 		                        <div class='dropdown-menu dropdown-menu-center'>
 		                        	<a href='".asset('administrador/transacciones/boletas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
-		                        </div>
+		                        	<a href='".asset('administrador/transacciones/boletas/validadas/reenviar-boleta')."/".$boleta->idBoleta."/".$boleta->idUsuario."' class='dropdown-item btn btn-info'>Reenviar Ticket</a>
+								</div>
 		                    </div>";
 				}
 				$data[] = $nestedData;
@@ -350,4 +351,5 @@ class ListadoBoletaController extends Controller
             return redirect::back();
         }
 	}
+	
 }
