@@ -37,7 +37,7 @@
   <div class="cont-tittle">
     {{--  
       <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>--}}
-      <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque si, cree en tu suerte. Compra tu número y desafía al destino.</p> 
+      <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque sí, cree en tu suerte. Compra tu número y desafía al destino.</p> 
       <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>$20.000.-</strong></p>
       <br>
       <p class="">Son 10 premios: Departamento de Lujo(premio mayor) y 9 premios en efectivo.</p>

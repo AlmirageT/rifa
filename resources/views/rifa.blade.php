@@ -300,9 +300,15 @@ function initMap() {
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>
 <script>
 $( document ).ready(function() {
+    if(screen.width >=1025 ){
         document.getElementById('contenido-cambio').style.color = "black";
         document.getElementById('contenido-cambio-1').style.color = "black";
         document.getElementById('contenido-cambio-2').style.color = "black";
+        document.getElementById('contenido-cambio-3').style.color = "black";
+    }
+    if(screen.width < 1025){
+        document.getElementById('colorNegro').style = 'filter: invert(0%);';
+    }
     
 });
 </script>
