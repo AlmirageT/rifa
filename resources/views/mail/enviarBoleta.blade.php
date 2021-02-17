@@ -2,7 +2,7 @@
 
 @section('title', 'Boleta')
 @section('textoTituloPrincipal')
-¡Hola {{ $usuario->nombreUsuario }} tu numero de la suerte ya está confirmado!
+¡Hola {{ $usuario->nombreUsuario }} tu número de la suerte ya está confirmado!
 @endsection
 @section('textoTituloSecundario')
 ¿Te imaginas ser el ganador?

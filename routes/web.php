@@ -23,6 +23,13 @@ Route::get('revisar-estado-boleta','ComprarRifaController@estadoBoleta');
 Route::view('felicidades-por-su-compra','compraExitosa');
 Route::get('formas-de-pago','PropiedadController@enviarPropiedad');
 
+//Route::get('contarJobs','WelcomeController@contarJobs');
+/*
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});*/
+
 //Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 

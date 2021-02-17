@@ -122,33 +122,11 @@ class OtrosPagosController extends Controller
                 }
                 
                 $propiedad = Propiedad::whereIn('idPropiedad',$idPropiedad)->get();
-                
                 Log::info($propiedad);
-                $direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
-                $qr = QrCode::format('png')->size(200)->generate($direccion);
-                //$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
-                $certificate = 'file://'.base_path().'/public/certificado/certificadoRifo.crt';
-                $key = 'file://'.base_path().'/public/certificado/llaveNoEncriptada.key';
-                $info = array(
-                    'Name' => 'RIFOPOLY',
-                    'Location' => 'Tobalaba 4067',
-                    'Reason' => 'Validacion Compra',
-                    'ContactInfo' => 'https://rifopoly.com/',
-                );
-                PDFTC::setSignature($certificate, $key, 'tcpdfdemo', '', 2, $info);
-                PDFTC::SetTitle('Comprobante de Venta.pdf');
-                PDFTC::AddPage();
-                $text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
-                PDFTC::writeHTML($text, true, false, true, false, '');
 
-                $img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
-                $img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '">';
-                PDFTC::writeHTML($img, true, false, true, false, '');
+                EnviarBoletaJob::dispatch($numeros, $boleta, $usuario, $propiedad);
                 
-                PDFTC::setSignatureAppearance(180, 60, 15, 15);
-                $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
-                Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
-
+                
                 //EnviarBoletaJob::dispatch($numeros, $boleta, $usuario, $propiedad);
                 //sigue otros pagos
                 return response()->json([

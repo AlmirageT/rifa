@@ -69,7 +69,15 @@
 @endsection
 
 @section('content')
-
+<div class="cont-seccion2">
+  <div class="seccion-1">
+      <img src="{{ asset('images/gif(1).gif') }}" alt="" class="wow slideInLeft">
+  </div>
+  <div class="seccion-2">
+      <h2 class="wow zoomIn">¿Dónde y cómo se realiza?</h2>
+      <p class="wow fadeInUp">Comprando tu ticket de la suerte por $20.000 participas en el sorteo de 10 premios en total. Se realizará en la notaria Manquehual de Santiago, ante Notario, jefa de Registro y Mr. Rifopoly. Se transmitirá por YouTube live y redes sociales, de este modo todos los compradores pueden presenciarlo.</p>
+  </div>
+</div>
 <main class="cont-body ">
   <h2 class="wow fadeInRight">Este departamento puede ser tuyo</h2> 
   <div class="seccion1 swiper-container ">
@@ -163,15 +171,7 @@
 </div> -->
 
 
-<div class="cont-seccion2">
-  <div class="seccion-1">
-      <img src="{{ asset('images/gif(1).gif') }}" alt="" class="wow slideInLeft">
-  </div>
-  <div class="seccion-2">
-      <h2 class="wow zoomIn">¿Cómo funciona Rifopoly?</h2>
-      <p class="wow fadeInUp">Compra tu número a $20.000.- el sorteo será realizado en la notaría Manquehual, el cual será transmitido por Youtube Live, de este modo todos los compradores pueden asistir.</p>
-  </div>
-</div>
+
 
 <div id="contacto"  class="cont-form">
   <div class="contenedor-form">
