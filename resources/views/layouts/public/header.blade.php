@@ -3,10 +3,11 @@
     <div class="cont-nav" >
         @yield('imagen-inicio')
         
-        <div class="toggle" onclick="toggleMenu()"></div>
+        <div class="toggle" onclick="toggleMenu()" id="colorNegro"></div>
         <ul class="navigation">
            <!-- <li><a href="propiedades.html">Propiedades</a></li> -->
             <li><a href="{{ asset('tienda-rifo-propiedades') }}" id="contenido-cambio">Premios</a></li>
+            <li><a href="{{ asset('nosotros') }}" id="contenido-cambio-3">Nosotros</a></li>
            <!-- <li><a href="bases-legales.html">Bases Legales</a></li> -->
             <div class="contNotificacion">
                 <li><a href="{{ asset('formas-de-pago') }}" id="contenido-cambio-1">Formas de Pago</a></li>

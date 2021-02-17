@@ -14,6 +14,13 @@
 header {
   background: #fff;
 }
+.textoNosotros {
+  font-size: 25px;
+}
+
+.imgNosotros{
+  width: 100%;
+}
 .circle 
 {
   position: relative;
@@ -1664,7 +1671,13 @@ input[type="number"] {
 /********RESPONSIVE MOBILE********/
  @media (min-width:320px) and (max-width:360px){
 
+  .tituloNosotros {
+    font-size: 40px;
+  }
 
+  .textoNosotros {
+    font-size: 20px;
+  }
 
   .cont-nav ul li a
   {
@@ -2491,6 +2504,13 @@ width: 100%;
 }
 
 @media (min-width:361px) and (max-width:414px){
+  .tituloNosotros {
+    font-size: 40px;
+  }
+
+  .textoNosotros {
+    font-size: 20px;
+  }
 
   .flotante-compraProp{
     width: 75%;
@@ -3356,6 +3376,13 @@ width: 100%;
 
 @media (min-width:415px) and (max-width:515px)
   {
+    .tituloNosotros {
+      font-size: 40px;
+    }
+  
+    .textoNosotros {
+      font-size: 20px;
+    }
     .cont-tittle {
       width: 55%;
       margin-top: -157px;
@@ -4113,6 +4140,13 @@ margin-top: 10px;
 
   @media (min-width:640px) and (max-width:667px)
   {
+    .tituloNosotros {
+      font-size: 40px;
+    }
+  
+    .textoNosotros {
+      font-size: 20px;
+    }
     .cont-tittle {
       width: 55%;
       margin-top: -202px;
@@ -4804,6 +4838,13 @@ margin-top: 10px;
   @media (min-width:668px) and (max-width:768px)
 
   {
+    .tituloNosotros {
+      font-size: 40px;
+    }
+  
+    .textoNosotros {
+      font-size: 20px;
+    }
     .cont-tittle {
       width: 55%;
       margin-top: -198px;
@@ -5483,6 +5524,13 @@ margin-top: 10px;
 
   @media (min-width:769px) and (max-width:1024px)
   {
+    .tituloNosotros {
+      font-size: 40px;
+    }
+  
+    .textoNosotros {
+      font-size: 20px;
+    }
     .cont-tittle {
       width: 55%;
       margin-top: -238px;

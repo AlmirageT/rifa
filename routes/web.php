@@ -31,6 +31,7 @@ Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','Propieda
 Route::get('eliminar-ticket-carrito/{idPropiedad}','PropiedadController@eliminarDatoCarroCompra');
 Route::get('obetener-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@cambiarValorDatos');
 Route::get('restar-valor-tickets/{idPropiedad}/{cantidad}','PropiedadController@restarValorDatos');
+Route::view('nosotros','conocenos');
 
 Route::get('paso-final-compra-ticket','UsuarioController@formularioUsuario');
 

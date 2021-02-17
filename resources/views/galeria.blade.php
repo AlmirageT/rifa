@@ -94,9 +94,15 @@
       /*
         document.getElementById('contenido-cambio').classList.remove('cont-nav');
         document.getElementById('contenido-cambio').classList.add('cont-nav-int');*/
-        document.getElementById('contenido-cambio').style.color = "black";
-        document.getElementById('contenido-cambio-1').style.color = "black";
-        document.getElementById('contenido-cambio-2').style.color = "black";
+        if(screen.width >=1025 ){
+          document.getElementById('contenido-cambio').style.color = "black";
+          document.getElementById('contenido-cambio-1').style.color = "black";
+          document.getElementById('contenido-cambio-2').style.color = "black";
+          document.getElementById('contenido-cambio-3').style.color = "black";
+      }
+      if(screen.width < 1025){
+          document.getElementById('colorNegro').style = 'filter: invert(0%);';
+      }
       
   });
   </script>
