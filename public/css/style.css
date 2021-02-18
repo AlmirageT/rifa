@@ -341,7 +341,11 @@ transition: 0.3s ease-in-out;
 }
 
 
-
+.imgNosotros{
+  width: 40%;
+  display: block;
+  margin: auto;
+}
 
 /********SECCION PREMIOS********/
 
@@ -352,7 +356,7 @@ display: flex;
 
 .seccion-1 {
 width: 50%;
-height: 100vh;
+height: 117vh;
 background: #1d1d1d;
 margin: auto;
 justify-content: center;
@@ -365,7 +369,7 @@ justify-content: center;
 
 .seccion-2 {
   width: 50%;
-  height: 100vh;
+  height: 117vh;
   background: #e30613;
   padding: 220px 90px;
   color: #fff;
@@ -2499,7 +2503,11 @@ width: 100%;
 .cont-resumen-compra {
   display: block;
 }
-
+.imgNosotros{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
 
 
 }
@@ -3372,6 +3380,11 @@ width: 100%;
   padding: 10px 10px;
   overflow-x: hidden;
 }
+.imgNosotros{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
   
   }
 
@@ -4137,6 +4150,11 @@ margin-top: 10px;
   padding: 10px 10px;
   overflow-x: hidden;
 }
+.imgNosotros{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
   
   }
 
@@ -4834,7 +4852,11 @@ margin-top: 10px;
   padding: 10px 10px;
   overflow-x: hidden;
 }
-
+.imgNosotros{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
 
   
   }
@@ -5522,13 +5544,22 @@ margin-top: 10px;
   overflow-x: hidden;
 }
 
-
+.imgNosotros{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
   
   }
 
 
   @media (min-width:769px) and (max-width:1024px)
   {
+    .imgNosotros{
+      width: 100%;
+      display: block;
+      margin: auto;
+    }
     .tituloNosotros {
       font-size: 40px;
     }
