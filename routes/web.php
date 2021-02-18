@@ -33,6 +33,8 @@ Route::get('/clear-cache', function() {
 //Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 
+Route::view('bases-legales','basesLegales');
+
 Route::get('carrito-de-compra-agregar-ticket/{cantidad}/{idPropiedad}','PropiedadController@crearCarritoCompra');
 //Route::get('carrito-de-compra-agregar-ticket-detalle/{idPropiedad}','PropiedadController@crearCarritoCompraInmediata');
 Route::get('eliminar-ticket-carrito/{idPropiedad}','PropiedadController@eliminarDatoCarroCompra');

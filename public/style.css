@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Spartan', sans-serif !important;
+  font-family: 'Spartan', sans-serif;
 }
 
 /********HOME********/
@@ -863,8 +863,9 @@ width: 100%;
   flex-wrap: wrap;
 }
 
-.premios-list {
-  width: 45%;
+.premios-list 
+{
+  width: 33%;
   list-style: none;
 }
 
@@ -1092,10 +1093,9 @@ video
 }
 
 .contListaPremios ul {
-  text-align: center;
-  padding: 5px 10px;
-  list-style: none;
-  width: 100%;
+text-align: left;
+padding: 5px 10px;
+list-style: none;
 }
 
 .contListaPremios p {
@@ -1671,54 +1671,9 @@ input[type="number"] {
     margin-top: 20%;
   }
 
-  .contPremioMayor {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .contPremioMayor img {
-    width: 30%;
-  }
-
-  .contTercerPremio {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: auto;
-  }
-
-  .tercerPremio{
-width: 25%;
-justify-content: center;
-text-align: center;
-  }
-
-  .tercerPremio p {
-    font-size: 15px;
-      }
-
-      .tercerPremio  strong{
-        font-size: 20px;
-          }
-
-  .tercerPremio img{
-    width: 100%;
-      }
-
 
 /********RESPONSIVE MOBILE********/
  @media (min-width:320px) and (max-width:360px){
-
-  .contPremioMayor img {
-    width: 100%;
-  }
-
-  .tercerPremio{
-    width: 50%;
-      }
 
   .tituloNosotros {
     font-size: 40px;
@@ -2558,13 +2513,6 @@ width: 100%;
 }
 
 @media (min-width:361px) and (max-width:414px){
-  .contPremioMayor img {
-    width: 100%;
-  }
-
-  .tercerPremio{
-    width: 50%;
-      }
   .tituloNosotros {
     font-size: 40px;
   }
@@ -3443,14 +3391,6 @@ width: 100%;
 
 @media (min-width:415px) and (max-width:515px)
   {
-
-    .contPremioMayor img {
-      width: 100%;
-    }
-  
-    .tercerPremio{
-      width: 50%;
-        }
     .tituloNosotros {
       font-size: 40px;
     }
@@ -4221,14 +4161,6 @@ margin-top: 10px;
 
   @media (min-width:640px) and (max-width:667px)
   {
-
-    .contPremioMayor img {
-      width: 100%;
-    }
-  
-    .tercerPremio{
-      width: 50%;
-        }
     .tituloNosotros {
       font-size: 40px;
     }
@@ -4932,12 +4864,6 @@ margin-top: 10px;
   @media (min-width:668px) and (max-width:768px)
 
   {
-
-    .contPremioMayor img {
-      width: 40%;
-    }
-
-
     .tituloNosotros {
       font-size: 40px;
     }
@@ -4977,7 +4903,7 @@ margin-top: 10px;
   }
 
   .premios-list li, p {
-    font-size:20px;
+    font-size: 34px;
 }
 
     .width {
@@ -5596,10 +5522,9 @@ margin-top: 10px;
   }
   
   .contListaPremios ul {
-    text-align: center;
-    padding: 5px 10px;
-    list-style: none;
-    width: 100%;
+  text-align: left;
+  padding: 5px 10px;
+  list-style: none;
   }
   
   .contListaPremios p {

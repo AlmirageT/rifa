@@ -132,6 +132,7 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
+                            {{--  
                             <div class="info-propiedad">
                                 <h3><strong>{{ $propiedad->nombrePropiedad }}</strong></h3>
                                 <h4 id="nombreComuna{{ $propiedad->idPropiedad }}"><i class="fas fa-map-marker-alt"></i>{{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
@@ -162,12 +163,12 @@
                                 <br>
                                 <div class="cont-botones"> <br>
                                     <a class="btn-tickets-int" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Detalles</a>
-                                    {{--  
+                                    //aca va un comentado en el form
                                     <form class="form-btn" action="{{ asset('compra-ticket-directo-detalle') }}/{{ $propiedad->idPropiedad }}" method="POST">
                                         @csrf
                                         <button class="buttonComprarAhora" style="cursor:pointer;" type="sumbit">Comprar ahora</button>
                                         <button class="buttonComprarAhora" style="cursor:pointer;" onclick="agregarPropiedadCarrito(event)">Agregar al carrito</button>
-                                    </form>--}}
+                                    </form>
                                     <div class="width">
                                         <ul class="share-detail">
                                             @if ($propiedad->urlFacebook)
@@ -180,6 +181,101 @@
                                     </div>
                                 </div>
                                 <br>
+                            </div>--}}
+                            <div class="info-propiedad">
+                                <p><strong>Premio Mayor</strong></p>
+                                    @php
+                                        $arraySinEdicion = $premios->where('idPropiedad',$propiedad->idPropiedad);
+                                        $primerValorPremios = $arraySinEdicion->shift();
+                                    @endphp
+                                    <div class="contPremioMayor">
+                                        <img src="{{ asset($primerValorPremios->imagenPremio) }}" alt="">
+                                        <ul class="premios-list">
+                                            <li>Departamento de lujo de 113 m2</li>
+                                            <li>Moto de agua</li>
+                                            <li>Kit palos de golf</li>
+                                            <li>$2.000.000.- en efectivo</li>
+                                        </ul>    
+                                    </div>
+                                    <br>
+                                    <div class="cont-botones"> <br>
+                                        <a class="btn-tickets-int" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Detalles premio mayor</a>
+                        <!--
+                        <form class="form-btn" action="">
+                            <button class="buttonComprarAhora">Comprar ahora</button>
+                            <button class="buttonComprarAhora">Agregar al carrito</button>
+                        </form> -->
+                                        <div class="width">
+                                            <ul class="share-detail">
+                                                <li><a target="_blank" href="{{ $propiedad->urlFacebook }}"><i class="fab fa-facebook-square wow bounceIn" data-wow-delay="0.4s"></i></a></li>
+                                                <li><a target="_blank" href="{{ $propiedad->urlInstagram }}"><i class="fab fa-instagram wow bounceIn" data-wow-delay="0.6s"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br>
+                            </div>
+                        </div>
+                        <div class="propiedades wow fadeInUpBig">
+                            <div class="slide-img swiper-container">
+                                <div class="swiper-wrapper">
+                                </div>
+                            </div> 
+                            @php
+                                $segundoValorPremios = $arraySinEdicion->shift();
+                            @endphp
+                            <div class="info-propiedad">
+                                <p><strong>Segundo Premio</strong></p>
+                                <div class="contPremioMayor">
+                                    <img src="{{ asset($segundoValorPremios->imagenPremio) }}" alt="">
+                                    <ul class="premios-list">
+                                        <li>$2.000.000.- en efectivo</li>
+                                    </ul>  
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="propiedades wow fadeInUpBig">
+                            <div class="contTercerPremio">
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Tercer Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Cuarto Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Quinto Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Sexto Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Séptimo Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Octavo Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Noveno Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
+                                <div class="tercerPremio">
+                                    <img src="{{ asset($arraySinEdicion->first()->imagenPremio) }}" alt="">
+                                    <p><strong>Décimo Premio</strong></p>
+                                    <p>$1.000.000.- en efetivo</p>
+                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -209,6 +305,8 @@
             document.getElementById('contenido-cambio-1').style.color = "black";
             document.getElementById('contenido-cambio-2').style.color = "black";
             document.getElementById('contenido-cambio-3').style.color = "black";
+            document.getElementById('contenido-cambio-4').style.color = "black";
+            document.getElementById('contenido-cambio-5').style.color = "black";
         }
         if(screen.width < 1025){
             document.getElementById('colorNegro').style = 'filter: invert(0%);';

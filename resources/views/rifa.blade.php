@@ -124,16 +124,17 @@
                 <li><i class="{{ $propiedadCaracteristica->itag }}"></i> {{ $propiedadCaracteristica->descripcionCaracterisitca }}</li>
             @endforeach
         </ul> <br>
+        {{--  
         @if ($propiedad->pdfBasesLegales)
             <a class="download" href="{{ asset($propiedad->pdfBasesLegales) }}" download="BasesLegalesMarinaGolf">Descargar bases legales</a>
         @endif
-
+--}}
     </div>
     <br>
     @if ($propiedad->urlMattlePort)
         
         <div class="cont-matterport">
-            <h2>La propiedad</h2>
+            <h2>Visita virtual de la propiedad</h2>
             @if ($propiedad->urlMattlePort)
                 <iframe  src="{{ $propiedad->urlMattlePort }}" frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
             @endif
@@ -144,7 +145,7 @@
     @if (count($premios)>0)
         
         <div class="cont-premios-detail">
-            <h2>Premios</h2>
+            <h2>El premio mayor también incluye</h2>
             <div class="cont-premios">
                 <div class="contListaPremios">
                     @php
@@ -152,11 +153,13 @@
                     @endphp
                     <img src="{{ asset($primerValorPremios->imagenPremio) }}" alt="">
                     <ul>
-                        <p><i class="fas fa-award"></i> {{ $primerValorPremios->nombreTipoPremio }}</p>
+                        {{--  
+                        <p><i class="fas fa-award"></i> {{ $primerValorPremios->nombreTipoPremio }}</p>--}}
                         {!! $primerValorPremios->descripcion !!}
                     </ul>
                     
                 </div>
+                {{--  
                 @foreach ($premios as $premio)
 
                 <div class="contListaPremios">
@@ -169,7 +172,7 @@
 
                 </div>
                 @endforeach
-
+--}}
             </div>
 
             <br>
@@ -305,6 +308,8 @@ $( document ).ready(function() {
         document.getElementById('contenido-cambio-1').style.color = "black";
         document.getElementById('contenido-cambio-2').style.color = "black";
         document.getElementById('contenido-cambio-3').style.color = "black";
+        document.getElementById('contenido-cambio-4').style.color = "black";
+        document.getElementById('contenido-cambio-5').style.color = "black";
     }
     if(screen.width < 1025){
         document.getElementById('colorNegro').style = 'filter: invert(0%);';
