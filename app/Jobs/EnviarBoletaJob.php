@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\EnvioBoleta;
+use App\SMS;
 use PDFTC;
 use QrCode;
 use Mail;
@@ -97,6 +98,30 @@ class EnviarBoletaJob implements ShouldQueue
         // save pdf file
         $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
         PDFTC::reset();
+        $cantidadNumero = strlen(strval($usuario->telefonoUsuario));
+
+        $enviar = SMS::sendSMS();
+        if($cantidadNumero == 9 ){
+            $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+        }else if($cantidadNumero == 11){
+            $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+        }else if($cantidadNumero == 12){
+            $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+        }
+        
+
         Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
     }

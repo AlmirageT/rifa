@@ -11,6 +11,7 @@ class Boleta extends Model
     protected $fillable = [
         'totalBoleta',
         'fechaVencimiento',
+        'tokenCorto',
     	'idUsuario',
         'idEstado',
         'idOtrosPagosTransaccion'

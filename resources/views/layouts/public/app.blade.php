@@ -40,7 +40,7 @@
     <link rel="icon" href="{{ asset('images/variantes logo rifopoly-07.png') }}" type="image/jpg">
     <title>Rifopoly</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script src="https://kit.fontawesome.com/9987974c2b.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/9987974c2b.js') }}" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
