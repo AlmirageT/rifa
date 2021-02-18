@@ -144,11 +144,25 @@ class BoletasValidadasController extends Controller
             'ContactInfo' => 'https://rifopoly.com/',
         );
         PDFTC::setSignature($certificate, $key, 'tcpdfdemo', '', 2, $info);
-        
+        PDFTC::setHeaderCallback(function($pdf)
+        {
+            $style = array(
+                'vpadding' => 'auto',
+                'hpadding' => 'auto',
+                'fgcolor' => array(0,0,0),
+                'bgcolor' => false,
+                'module_width' => 1,
+                'module_height' => 1
+            );
+            $image_file = base_path().'/public/images/variantes logo rifopoly-05.png';
+            $pdf->Image($image_file, 15, 10, 48, '', 'PNG', '', 'T', false, 500, '', false, false, 0, false, false, false);
+        });
         //PDFTC::SetFont('helvetica', '', 12);
         PDFTC::SetTitle('Comprobante de Venta.pdf');
         PDFTC::AddPage();
         
+        PDFTC::SetMargins(10, 35, 10, true);
+        PDFTC::SetProtection(array('modify'));
 
         // print a line of text
         $text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
