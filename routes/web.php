@@ -29,7 +29,7 @@ Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });*/
-
+Route::get('tickets/{tokencorto}','WelcomeController@descargarPdf');
 //Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 
