@@ -161,7 +161,8 @@ class ComprarRifaController extends Controller
                         'totalBoleta' => Session::get('total'),
                         'fechaVencimiento' => $date->format('Y-m-d H:i:s'),
                         'idUsuario' => $usuario->idUsuario,
-                        'idEstado' => 2
+                        'idEstado' => 2,
+                        'tokenCorto'=>uniqid()
                     ]);
                     foreach (Session::get('carritoCompra') as $carrito) {
                         if($carrito['cantidad'] == 1){
@@ -189,7 +190,8 @@ class ComprarRifaController extends Controller
                             'totalBoleta' => Session::get('total'),
                             'fechaVencimiento' => $date->format('Y-m-d H:i:s'),
                             'idUsuario' => $usuario->idUsuario,
-                            'idEstado' => 2
+                            'idEstado' => 2,
+                            'tokenCorto'=>uniqid()
                         ]);
 
                         if($carrito['cantidad'] == 1){
