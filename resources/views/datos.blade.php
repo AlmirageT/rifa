@@ -149,6 +149,8 @@
           document.getElementById('contenido-cambio-1').style.color = "black";
           document.getElementById('contenido-cambio-2').style.color = "black";
           document.getElementById('contenido-cambio-3').style.color = "black";
+          document.getElementById('contenido-cambio-4').style.color = "black";
+          document.getElementById('contenido-cambio-5').style.color = "black";
       }
       if(screen.width < 1025){
           document.getElementById('colorNegro').style = 'filter: invert(0%);';

@@ -6,6 +6,7 @@
         <div class="toggle" onclick="toggleMenu()" id="colorNegro"></div>
         <ul class="navigation">
            <!-- <li><a href="propiedades.html">Propiedades</a></li> -->
+            <li><a href="{{ asset('/') }}" id="contenido-cambio-5">Inicio</a></li>
             <li><a href="{{ asset('tienda-rifo-propiedades') }}" id="contenido-cambio">Premios</a></li>
             <li><a href="{{ asset('nosotros') }}" id="contenido-cambio-3">Nosotros</a></li>
            <!-- <li><a href="bases-legales.html">Bases Legales</a></li> -->
@@ -20,6 +21,7 @@
                 @endif--}}
             </div>
 
+            <li><a href="{{ asset('bases-legales') }}" id="contenido-cambio-4">Bases Legales</a></li>
             <li><a href="{{ asset('/') }}#contacto" id="contenido-cambio-2">Contacto</a></li>
         </ul>
     </div>

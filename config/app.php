@@ -162,7 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
-        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+        /*
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,*/
         /*
          * Package Service Providers...
          */
@@ -229,7 +230,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+        /*
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,*/
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDFTC' => Elibyy\TCPDF\Facades\TCPDF::class,

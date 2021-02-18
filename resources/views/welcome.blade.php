@@ -99,8 +99,9 @@
                   <h3>{{ $propiedad->nombrePropiedad }}</h3>
                   <h4><i class="fas fa-map-marker-alt"></i> {{ $propiedad->nombreComuna }}, {{ $propiedad->nombreRegion }}</h4>
                   <p>{!! $propiedad->descripcionPropiedad !!}</p>
-                  <p> <strong>Hay {{ $propiedad->cantidadTotalPremios }} premios esperando por ti.</strong> </p>
+                  {{--  <p> <strong>Hay {{ $propiedad->cantidadTotalPremios }} premios esperando por ti.</strong> </p>
                   <br>
+                  
                   @if ($premios->where('idPropiedad',$propiedad->idPropiedad))
                     @php
                         $arraySinEdicion = $premios->where('idPropiedad',$propiedad->idPropiedad);
@@ -117,7 +118,8 @@
                       </ul><br>
                     @endforeach
                   @endif
-                  <br> <br>
+                  <br> <br>--}}
+                  <br>
                   <a class="btn-tickets" href="{{ asset('rifo-propiedades/detalle') }}?nombrePropiedad={{ $nombrePropiedad }}&idPropiedad={{ Crypt::encrypt($propiedad->idPropiedad) }}">Quiero saber más</a>
                   <br> <br>
               </div>

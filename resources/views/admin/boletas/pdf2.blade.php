@@ -7,7 +7,11 @@
 <body>
     <div class="row">
         <div class="col-lg-1">
+            <img src="data:image/png;base64, {!! base64_encode($qr) !!}">
+
+            {{--  
             <img src="/images/variantes logo rifopoly-05.png" width="150">
+            --}}
         </div>
         <div class="col-lg-3 offset-6">
             <table class="table">

@@ -18,15 +18,16 @@
     <h1 class="ml2 tituloNosotros">Conócenos</h1>
     <br>
     <p class="textoNosotros">
-        Rifopoly es una plataforma tecnológica que se dedica a la rifa de propiedades de lujo alrededor del mundo, de manera fácil y transparente, con un premio mayor y nueve premios en efectivo. <br>
-        Mr. Rifopoly está convencido de que todos pueden desafiar a la suerte, sabe que las posibilidades de ganar son muy altas y por lo mismo quiere que todos participen. Siempre con un mensaje positivo, alegre y esperanzador.  <br>
-        Además, uno de nuestros objetivos mediante esta rifa es poder ayudar a diferentes organizaciones que trabajan ayudando a la comunidad.  <br>
-        ¡Te invitamos a participar!
+        Rifopoly es la primera plataforma tecnológica en Chile que rifa propiedades de lujo, en donde las posibilidades de ganar son reales. Es transparente porque el sorteo se transmitirá en vivo el 3 de septiembre desde la notaría ante notario y testigos, puedes descargar las bases legales. <br>
+        El sorteo vigente consiste en un Premio Mayor que es un departamento en Rapel a pasos del lago, incluye mobiliario, dos acciones en el campo de golf, palos de golf, moto de agua, estacionamiento, bodega, y $2.000.000 en efectivo. Un segundo lugar con premio de $2.000.000 y otros ocho premios más de $1.000.000.   <br>
+        Junto a Mr. Rifopoly compartiremos alegría, esperanza y buena suerte para que puedas desafiar al destino y ser el ganador.
     </p>
     <br>
-    <p class="textoNosotros">¡Conoce nuestro equipo!</p>
+    <p class="textoNosotros">
+
+        Somos un equipo de profesionales de distintas áreas,usamos la tecnología como herramienta, dinámicos y alegres. Queremos compartir los fondos con organizaciones de caridad.</p>
     <br>
-    <p class="textoNosotros"> Somos un equipo entretenido, dinámico y juvenil, conformado por profesionales de diferentes áreas que disfrutamos trabajar en equipo y unir diferentes metodologías de trabajo.</p>
+    <p class="textoNosotros"> ¡Te invitamos a participar!</p>
     <br>
     <img class="imgNosotros" src="{{ asset('images/conocenos.jpg') }}" alt="">
     
@@ -40,6 +41,8 @@
                 document.getElementById('contenido-cambio-1').style.color = "black";
                 document.getElementById('contenido-cambio-2').style.color = "black";
                 document.getElementById('contenido-cambio-3').style.color = "black";
+                document.getElementById('contenido-cambio-4').style.color = "black";
+                document.getElementById('contenido-cambio-5').style.color = "black";
             }
             if(screen.width < 1025){
                 document.getElementById('colorNegro').style = 'filter: invert(0%);';
