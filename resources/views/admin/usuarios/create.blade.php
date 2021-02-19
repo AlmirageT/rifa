@@ -32,7 +32,15 @@ Crear Usuario
                                 <label>Teléfono</label>
                                 <div class="input-group">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">+56</span>
+                                    <select name="codigoPais" class="form-control">
+                                        @foreach ($codigosPaises as $codigoPais)
+                                            @if ($codigoPais->nombrePais == "Chile")
+                                                <option value="{{ $codigoPais->codigoPais }}" selected>{{ $codigoPais->codigoPais }}</option>
+                                            @else
+                                                <option value="{{ $codigoPais->codigoPais }}">{{ $codigoPais->codigoPais }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                   </div>
                                   <input type="number" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
                                 </div>

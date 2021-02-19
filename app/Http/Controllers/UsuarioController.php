@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
 use App\Usuario;
 use App\TipoUsuario;
+use App\CodigoPais;
 use Session;
 use DB;
 
@@ -29,7 +30,8 @@ class UsuarioController extends Controller
             return abort(401);
         }
         $tiposUsuarios = TipoUsuario::all();
-    	return view('admin.usuarios.create',compact('tiposUsuarios'));
+		$codigosPaises = CodigoPais::all();
+    	return view('admin.usuarios.create',compact('tiposUsuarios','codigosPaises'));
     }
     public function store(Request $request)
     {
@@ -39,7 +41,8 @@ class UsuarioController extends Controller
                 'correoUsuario' => 'required',
                 'telefonoUsuario' => 'required',
                 'rutUsuario' => 'required',
-                'idTipoUsuario' => 'required'
+                'idTipoUsuario' => 'required',
+                'codigoPais' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Los datos no pueden venir en blanco');
@@ -51,6 +54,7 @@ class UsuarioController extends Controller
             $usuario->correoUsuario = $request->correoUsuario;
             $usuario->telefonoUsuario = $request->telefonoUsuario;
             $usuario->rutUsuario = $request->rutUsuario;
+            $usuario->codigoPais = $request->codigoPais;
             if($request->idTipoUsuario == "usuario"){
                 $usuario->idTipoUsuario = null;
             }else{
@@ -88,8 +92,9 @@ class UsuarioController extends Controller
         }
         $usuario = Usuario::find($idUsuario);
         $tiposUsuarios = TipoUsuario::all();
+		$codigosPaises = CodigoPais::all();
 
-    	return view('admin.usuarios.edit',compact('tiposUsuarios','usuario'));
+    	return view('admin.usuarios.edit',compact('tiposUsuarios','usuario','codigosPaises'));
     }
     public function update(Request $request, $idUsuario)
     {
@@ -99,7 +104,8 @@ class UsuarioController extends Controller
                 'correoUsuario' => 'required',
                 'telefonoUsuario' => 'required',
                 'rutUsuario' => 'required',
-                'idTipoUsuario' => 'required'
+                'idTipoUsuario' => 'required',
+                'codigoPais' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Los datos no pueden venir en blanco');
@@ -111,6 +117,7 @@ class UsuarioController extends Controller
             $usuario->correoUsuario = $request->correoUsuario;
             $usuario->telefonoUsuario = $request->telefonoUsuario;
             $usuario->rutUsuario = $request->rutUsuario;
+            $usuario->codigoPais = $request->codigoPais;
             if($request->idTipoUsuario == "usuario"){
                 $usuario->idTipoUsuario = null;
             }else{
@@ -172,6 +179,7 @@ class UsuarioController extends Controller
     //vistas publicas
     public function formularioUsuario()
     {
-        return view('datos');
+        $codigosPaises = CodigoPais::all();
+        return view('datos',compact('codigosPaises'));
     }
 }

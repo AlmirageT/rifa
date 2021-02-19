@@ -130,9 +130,10 @@ class ComprarRifaController extends Controller
     	try{
             $validator = Validator::make($request->all(), [
                 'correoUsuario'=> 'required|email',
-                'telefonoUsuario'=> 'required',
+                'telefonoUsuario'=> 'required|numeric',
                 'rutUsuario'=> 'required',
-                'nombreUsuario'=>'required'
+                'nombreUsuario'=>'required',
+                'codigoPais'=>'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Todos los datos deben estar llenos');
@@ -147,7 +148,8 @@ class ComprarRifaController extends Controller
                     'nombreUsuario' => $request->nombreUsuario,
                     'correoUsuario' => $request->correoUsuario,
                     'telefonoUsuario' => $request->telefonoUsuario,
-                    'rutUsuario' => $request->rutUsuario
+                    'rutUsuario' => $request->rutUsuario,
+                    'codigoPais' => $request->codigoPais
                 ]);
                 if(Session::has('usuarioComprador')){
                     Session::forget('usuarioComprador');
