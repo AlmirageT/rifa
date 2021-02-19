@@ -1666,7 +1666,11 @@ input[type="number"] {
     padding: 5%;
 
   }
-
+  .cont-video iframe {
+    margin-top: 20%;
+    width: 100%;
+    height: 380px;
+  }
   .cont-video video {
     margin-top: 20%;
   }
@@ -1711,7 +1715,11 @@ text-align: center;
 
 /********RESPONSIVE MOBILE********/
  @media (min-width:320px) and (max-width:360px){
-
+  .cont-video iframe {
+    margin-top: 10%;
+    width: 100%;
+    height: 200px;
+  }
   .contPremioMayor img {
     width: 100%;
   }
@@ -2561,7 +2569,11 @@ width: 100%;
   .contPremioMayor img {
     width: 100%;
   }
-
+  .cont-video iframe {
+    margin-top: 10%;
+    width: 100%;
+    height: 200px;
+  }
   .tercerPremio{
     width: 50%;
       }

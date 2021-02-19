@@ -71,7 +71,9 @@
 @section('content')
 <div class="cont-seccion2">
   <div class="seccion-1">
-      <img src="{{ asset('images/gif(1).gif') }}" alt="" class="wow slideInLeft">
+    <div class="cont-video">
+      <iframe src="https://www.youtube.com/embed/hC9sOjeMOHU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div> 
   </div>
   <div class="seccion-2">
       <h2 class="wow zoomIn">¿Dónde y cómo se realiza?</h2>
