@@ -44,6 +44,8 @@
                 <p class="font-weight-bolder font-size-h4">¡Ya tienes tu ticket de la suerte! 🍀  <br><br>
                     ¿Te imaginas ser el ganador de uno de nuestros 10 premios?
                     <br><br>
+                    Enviamos tu ticket de la suerte al correo electrónico registrado (revisa tu carpeta Spam si no lo ves) y además te enviamos un mensaje de texto con el link de descarga del ticket.
+                    <br><br>
                     Si tienes dudas escribenos al WhatsApp +56 9 4294 0824</p>
                     
             </div>
