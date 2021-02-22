@@ -181,7 +181,7 @@
                 <input type="email" id="correo" name="correoUsuario" class="form-input-ticket" placeholder="Correo Electr&oacute;nico" required>
                 
                 <label for="fono" class="form-label"></label>
-                <select name="codigoPais" id="codigoPais">
+                <select name="codigoPais" id="codigoPais" >
                   @foreach ($codigosPaises as $codigoPais)
                       @if ($codigoPais->nombrePais == "Chile")
                         <option data-imagesrc="{{ asset($codigoPais->fotoPais) }}" value="{{ $codigoPais->codigoPais }}" data-description="{{ $codigoPais->codigoPais }}" selected></option>
@@ -190,6 +190,7 @@
                       @endif
                   @endforeach
                 </select>
+                <input type="hidden" name="codigoPais" id="codigoPaisSelect">
                 <input type="number" id="fono" name="telefonoUsuario" class="form-input-ticket valor-numero" placeholder="Tel&eacute;fono 987654321" min="111111111" max="999999999999999999" required>
                 
                 <label for="rut" class="form-label"></label>
@@ -212,6 +213,9 @@
 <script>
   $('#codigoPais').ddslick({
     width: 150,
+    onSelected: function (data) {
+        document.getElementById('codigoPaisSelect').value = data.selectedData.value;
+    }
   });
 </script>
 <script>
