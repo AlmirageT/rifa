@@ -368,7 +368,7 @@ class PropiedadController extends Controller
         if (!Session::has('idUsuario') && !Session::has('idTipoUsuario') && !Session::has('nombre') && !Session::has('apellido') && !Session::has('correo') && !Session::has('rut')) {
             return abort(401);
         }
-        $imagenesPropiedades = ImagenPropiedad::where('idPropiedad',$idPropiedad)->get();
+        $imagenesPropiedades = ImagenPropiedad::where('idPropiedad',$idPropiedad)->orderBy('idImagenPropiedad','DESC')->get();
         return view('admin.propiedades.imagenesPropiedad',compact('idPropiedad','imagenesPropiedades'));
     }
     public function dropzone(Request $request, $idPropiedad)
@@ -393,7 +393,10 @@ class PropiedadController extends Controller
 			$img = Image::make($imagen);
 
             $imgName = uniqid().'-'.$direccionGuion.'-'.$comunaGuion.'-'.$regionGuion.'.'.$imagen->getClientOriginalExtension();
-			
+			$img->resize(1024, 683, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
             $img->save('assets/images/fotosPropiedades/'.$imgName);
             
             ImagenPropiedad::create([
