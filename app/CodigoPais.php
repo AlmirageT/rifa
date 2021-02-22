@@ -10,6 +10,7 @@ class CodigoPais extends Model
     protected $primaryKey = 'idCodigoPaisNumero';
     protected $fillable = [
         'nombrePais',
-        'codigoPais'
+        'codigoPais',
+        'fotoPais'
     ];
 }

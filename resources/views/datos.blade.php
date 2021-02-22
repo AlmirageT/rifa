@@ -84,58 +84,86 @@
   
   </div>
 <style>
-  select {
-    background: transparent;
-    border: none;
-    font-size: 14px;
-    height: 37px;
-    padding: 5px;
-    width: 78px;
-    position: absolute;
-  }
   @media (min-width:1367px) and (max-width:1920px){
     .valor-numero{
-      margin-left: 91px;
-      width: 94.5% !important;
+      margin-left: 162px;
+      width: 81% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
   @media (min-width:1000px) and (max-width:1366px){
     .valor-numero{
-      margin-left: 91px;
-      width: 92% !important;
+      margin-left: 162px;
+      width: 73% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
   @media (min-width:640px) and (max-width:999px){
     .valor-numero{
-      margin-left: 91px;
-      width: 85% !important;
+      margin-left: 162px;
+      width: 71% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
   @media (min-width:600px) and (max-width:639px){
     .valor-numero{
-      margin-left: 91px;
-      width: 78% !important;
+      margin-left: 162px;
+      width: 39% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
-  @media (min-width:516px) and (max-width:600px){
+  @media (min-width:516px) and (max-width:599px){
     .valor-numero{
-      margin-left: 91px;
-      width: 71% !important;
+      margin-left: 162px;
+      width: 30% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
   @media (min-width:400px) and (max-width:515px){
     .valor-numero{
-      margin-left: 91px;
-      width: 77% !important;
+      margin-left: 162px;
+      width: 54% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
-  @media (min-width:300px) and (max-width:400px){
+  @media (min-width:300px) and (max-width:399px){
     .valor-numero{
-      margin-left: 91px;
-      width: 67% !important;
+      margin-left: 162px;
+      width: 37% !important;
+      position: absolute !important;
+      margin-top: -47px;
+    }
+    .input-rut{
+      margin-top: 14px;
     }
   }
-  
+  .dd-selected-description{
+    color: black !important;
+  }
 </style>
 
     <div id="contacto"  class="cont-form-ticket">
@@ -153,19 +181,19 @@
                 <input type="email" id="correo" name="correoUsuario" class="form-input-ticket" placeholder="Correo Electr&oacute;nico" required>
                 
                 <label for="fono" class="form-label"></label>
-                <select name="codigoPais" >
+                <select name="codigoPais" id="codigoPais">
                   @foreach ($codigosPaises as $codigoPais)
                       @if ($codigoPais->nombrePais == "Chile")
-                        <option value="{{ $codigoPais->codigoPais }}" selected>{{ $codigoPais->codigoPais }}</option>
+                        <option data-imagesrc="{{ asset($codigoPais->fotoPais) }}" value="{{ $codigoPais->codigoPais }}" data-description="{{ $codigoPais->codigoPais }}" selected></option>
                       @else
-                        <option value="{{ $codigoPais->codigoPais }}">{{ $codigoPais->codigoPais }}</option>
+                        <option data-imagesrc="{{ asset($codigoPais->fotoPais) }}" value="{{ $codigoPais->codigoPais }}" data-description="{{ $codigoPais->codigoPais }}"></option>
                       @endif
                   @endforeach
                 </select>
                 <input type="number" id="fono" name="telefonoUsuario" class="form-input-ticket valor-numero" placeholder="Tel&eacute;fono 987654321" min="111111111" max="999999999999999999" required>
                 
                 <label for="rut" class="form-label"></label>
-                <input type="text" id="rut" name="rutUsuario" class="form-input-ticket" placeholder="RUT/DNI/Pasaporte" required>
+                <input type="text" id="rut" name="rutUsuario" class="form-input-ticket input-rut" placeholder="RUT/DNI/Pasaporte" required>
     
                 <button type="submit" class="btn-submit-ticket" id="desabilitarBoton" >Finalizar Compra</button>
               </form>
@@ -180,6 +208,12 @@
 @endsection
 @section('scripts')
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>
+<script src="{{ asset('js/jquery.ddslick.min.js') }}"></script>
+<script>
+  $('#codigoPais').ddslick({
+    width: 150,
+  });
+</script>
 <script>
     $(function(){
       
