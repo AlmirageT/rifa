@@ -91,7 +91,7 @@ class ComprarRifaController extends Controller
                 ->join('tipos_caracteristicas','propiedades_caracteristicas.idTipoCaracteristica','=','tipos_caracteristicas.idTipoCaracteristica')
                 ->where('idPropiedad',Crypt::decrypt($request->idPropiedad))
                 ->get();
-            $imagenesPropiedad = ImagenPropiedad::where('idPropiedad',Crypt::decrypt($request->idPropiedad))->orderBy('idImagenPropiedad','DESC')->get();
+            $imagenesPropiedad = ImagenPropiedad::where('idPropiedad',Crypt::decrypt($request->idPropiedad))->orderBy('idImagenPropiedad','ASC')->get();
             $portada1 = $imagenesPropiedad->shift();
             $portada2 = $imagenesPropiedad->shift();
             $premios = Premio::select('*')
