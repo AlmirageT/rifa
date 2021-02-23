@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\EnvioBoleta;
 use App\SMS;
+use App\LogTransaccion;
 use PDFTC;
 use QrCode;
 use Mail;
@@ -100,29 +101,74 @@ class EnviarBoletaJob implements ShouldQueue
         PDFTC::reset();
         $cantidadNumero = strlen(strval($usuario->telefonoUsuario));
 
-        $enviar = SMS::sendSMS();
-        if($cantidadNumero == 9 ){
-            $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
-                'from' => $enviar['numero'], 
-                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                ] 
-            );
-        }else if($cantidadNumero == 11){
-            $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
-                'from' => $enviar['numero'], 
-                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                ] 
-            );
-        }else if($cantidadNumero == 12){
-            $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
-                'from' => $enviar['numero'], 
-                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                ] 
-            );
+        try {
+            Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
+            LogTransaccion::create([
+                'tipoTransaccion' => "MAIL ENVIADO",
+                'modeloOrigen' => "EMAIL",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+            $enviar = SMS::sendSMS();
+            if($cantidadNumero == 9 ){
+                $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
+                    'from' => $enviar['numero'], 
+                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                    ] 
+                );
+            }else if($cantidadNumero == 11){
+                $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
+                    'from' => $enviar['numero'], 
+                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                    ] 
+                );
+            }else if($cantidadNumero == 12){
+                $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
+                    'from' => $enviar['numero'], 
+                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                    ] 
+                );
+            }
+            LogTransaccion::create([
+                'tipoTransaccion' => "SMS ENVIADO",
+                'modeloOrigen' => "SMS",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+        } catch (\Exception $th) {
+            LogTransaccion::create([
+                'tipoTransaccion' => "EL MAIL NO SE ENVIO",
+                'modeloOrigen' => "EMAIL",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+            if($cantidadNumero == 9 ){
+                $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
+                    'from' => $enviar['numero'], 
+                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                    ] 
+                );
+            }else if($cantidadNumero == 11){
+                $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
+                    'from' => $enviar['numero'], 
+                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                    ] 
+                );
+            }else if($cantidadNumero == 12){
+                $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
+                    'from' => $enviar['numero'], 
+                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                    ] 
+                );
+            }
+            LogTransaccion::create([
+                'tipoTransaccion' => "SMS ENVIADO",
+                'modeloOrigen' => "SMS",
+                'idUsuario' => $usuario->idUsuario
+            ]);
         }
+
+
+        
         
 
-        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
     }
 }
