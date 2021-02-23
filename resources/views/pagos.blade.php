@@ -32,7 +32,7 @@
                 <li>Banco Itau cuenta corriente</li>
                 <li>Mail: tickets@rifomipropiedad.com</li>
             </ul> <br>
-            <p> <strong>3.Compra física</strong>  <br>Puedes visitarnos para la compra en <strong>Avenida Tobalaba 4067 local 101, Providencia</strong>, a pasos del metro Francisco Bilbao, un asistente te ayudará.</p> 
+            <p> <strong>3.Compra presencial</strong>  <br>Puedes visitarnos para la compra en <strong>Avenida Tobalaba 4067 local 101, Providencia</strong>, a pasos del metro Francisco Bilbao, un asistente te ayudará.</p> 
     
     </div>
 </main>
