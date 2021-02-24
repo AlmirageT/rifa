@@ -46,11 +46,11 @@ class WelcomeController extends Controller
     }
     public function pdf()
     {
-        $boleta = Boleta::find(187);
-        $numeros = Numero::where('idBoleta',187)->get();
+        $boleta = Boleta::find(336);
+        $numeros = Numero::where('idBoleta',336)->get();
         
-        $usuario = Usuario::find(125);
-        $boletasPropiedades = BoletaPropiedad::where('idBoleta',187)->get();
+        $usuario = Usuario::find(301);
+        $boletasPropiedades = BoletaPropiedad::where('idBoleta',336)->get();
         $idPropiedad = array();
         foreach($boletasPropiedades as $boletaPropiedad){
             $array = array(
