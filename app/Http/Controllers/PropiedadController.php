@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use App\Propiedad;
+use App\ParametroGeneral;
 use App\Premio;
 use App\ImagenPropiedad;
 use App\Pais;
@@ -370,7 +371,9 @@ class PropiedadController extends Controller
         }
 
         $imagenesPropiedades = ImagenPropiedad::where('idPropiedad',$idPropiedad)->orderBy('idImagenPropiedad','ASC')->get();
-        return view('admin.propiedades.imagenesPropiedad',compact('idPropiedad','imagenesPropiedades'));
+        $anchoImagen = ParametroGeneral::where('nombreParametroGeneral','ANCHO')->first();
+        $largoImagen = ParametroGeneral::where('nombreParametroGeneral','LARGO')->first();
+        return view('admin.propiedades.imagenesPropiedad',compact('idPropiedad','imagenesPropiedades','anchoImagen','largoImagen'));
     }
     public function dropzone(Request $request, $idPropiedad)
     {
@@ -394,10 +397,6 @@ class PropiedadController extends Controller
 			$img = Image::make($imagen);
 
             $imgName = uniqid().'-'.$direccionGuion.'-'.$comunaGuion.'-'.$regionGuion.'.'.$imagen->getClientOriginalExtension();
-			$img->resize(1024, 683, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
             $img->save('assets/images/fotosPropiedades/'.$imgName);
             
             ImagenPropiedad::create([

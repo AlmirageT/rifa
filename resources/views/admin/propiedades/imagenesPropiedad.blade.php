@@ -80,13 +80,19 @@ Imagenes Propiedades
 				buttonConfirm.style.left = '10px';
 				buttonConfirm.style.top = '10px';
 				buttonConfirm.style.zIndex = 9999;
-				buttonConfirm.textContent = 'Confirm';
+				buttonConfirm.textContent = 'GUARDAR';
 				editor.appendChild(buttonConfirm);
 				buttonConfirm.addEventListener('click', function() {    
 					// obtener la nueva imagen que devuelve Cropper.js
 					var canvas = cropper.getCroppedCanvas({
-						width: 1024,
-						height: 683
+						width: {{ $anchoImagen->valorParametroGeneral }},
+						height: {{ $largoImagen->valorParametroGeneral }},
+						minWidth: {{ $anchoImagen->valorParametroGeneral }},
+						minHeight: {{ $largoImagen->valorParametroGeneral }},
+						maxWidth: {{ $anchoImagen->valorParametroGeneral }},
+						maxHeight: {{ $largoImagen->valorParametroGeneral }},
+						imageSmoothingEnabled: true,
+						imageSmoothingQuality: 'high',
 					});  // devuelve la imagen en blob
 					canvas.toBlob(function(blob) {    // devulve el archivo a Dropzone
 						done(blob);  
@@ -99,7 +105,15 @@ Imagenes Propiedades
 				editor.appendChild(image);
 				
 				// Crear Cropper.js
-				var cropper = new Cropper(image, { aspectRatio: 1 });
+				var cropper = new Cropper(image, { 
+					aspectRatio: 3 / 2,
+					dragMode: 'move',
+					data:
+					{
+						width: {{ $anchoImagen->valorParametroGeneral }},
+						height:  {{ $largoImagen->valorParametroGeneral }},
+					},
+				});
 			},
 			sending: function(file, xhr, formData) {
 				formData.append("_token", "{{ csrf_token() }}");
