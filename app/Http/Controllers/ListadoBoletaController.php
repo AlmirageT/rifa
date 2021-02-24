@@ -44,9 +44,10 @@ class ListadoBoletaController extends Controller
 			4=> 'correoUsuario',
 			5=> 'telefonoUsuario',
 			6=> 'nombreEstado',
-			7=> 'options'
+			7=> 'created_at',
+			8=> 'options'
 		);
-		$totalData = Boleta::select('*')
+		$totalData = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		        ->count();
@@ -58,7 +59,7 @@ class ListadoBoletaController extends Controller
 
 		if(empty($request->input('search.value')))
 		{
-			$boletas = Boleta::select('*')
+			$boletas = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 				->offset($start)
@@ -67,7 +68,7 @@ class ListadoBoletaController extends Controller
 				->get();
 		}else{
 			$search = $request->input('search.value');
-			$boletas = Boleta::select('*')
+			$boletas = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		    	->where('usuarios.nombreUsuario', 'LIKE',"%{$search}%")
@@ -79,7 +80,7 @@ class ListadoBoletaController extends Controller
 				->orderBy('boletas.idBoleta','desc')
 				->get();
 
-			$totalFiltered = Boleta::select('*')
+			$totalFiltered = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		    	->where('usuarios.nombreUsuario', 'LIKE',"%{$search}%")
@@ -99,6 +100,7 @@ class ListadoBoletaController extends Controller
 				$nestedData['correoUsuario'] = $boleta->correoUsuario;
 				$nestedData['telefonoUsuario'] = $boleta->telefonoUsuario;
 				$nestedData['nombreEstado'] = $boleta->nombreEstado;
+				$nestedData['created_at'] = date("d-m-Y",strtotime($boleta->fechaCompra));
 				if ($boleta->idEstado == 2) {
 					$nestedData['options'] = "<div class='dropdown'>
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
