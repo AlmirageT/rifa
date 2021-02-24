@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\EnvioBoleta;
 use App\SMS;
+use App\LogTransaccion;
 use PDFTC;
 use QrCode;
 use Mail;
@@ -127,9 +128,49 @@ class EnviarBoletaJob implements ShouldQueue
                 ] 
             );
         }*/
-        
 
-        Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
+        try {
+            Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
+            LogTransaccion::create([
+                'tipoTransaccion' => "MAIL ENVIADO",
+                'modeloOrigen' => "EMAIL",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+            $enviar['cliente']->messages->create( $usuario->codigoPais.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://dev.rifomipropiedad.com.ngrok.io/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+            
+            LogTransaccion::create([
+                'tipoTransaccion' => "SMS ENVIADO",
+                'modeloOrigen' => "SMS",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+        } catch (\Exception $th) {
+            LogTransaccion::create([
+                'tipoTransaccion' => "EL MAIL NO SE ENVIO",
+                'modeloOrigen' => "EMAIL",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+            $enviar['cliente']->messages->create( $usuario->codigoPais.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://dev.rifomipropiedad.com.ngrok.io/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+            LogTransaccion::create([
+                'tipoTransaccion' => "SMS ENVIADO",
+                'modeloOrigen' => "SMS",
+                'idUsuario' => $usuario->idUsuario
+            ]);
+        }catch ( \Services_Twilio_RestException $e ) {
+            LogTransaccion::create([
+                'tipoTransaccion' => "EL SMS NO SE ENVIO",
+                'modeloOrigen' => "SMS",
+                'idUsuario' => $usuario->idUsuario
+            ]);  
+        }
+        
 
     }
 }
