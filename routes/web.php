@@ -31,7 +31,7 @@ Route::get('/clear-cache', function() {
 });*/
 Route::get('tickets/{tokencorto}','WelcomeController@descargarPdf');
 
-//Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
+Route::get('prueba-pdf-envio-mail','WelcomeController@pdf');
 //Route::get('prueba-funcion-kernel','ComprarRifaController@reversarEstadoDeNoPagados');
 
 Route::view('bases-legales','basesLegales');
