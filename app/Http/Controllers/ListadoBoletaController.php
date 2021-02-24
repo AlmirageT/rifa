@@ -16,6 +16,7 @@ use App\Numero;
 use App\Usuario;
 use App\BoletaPropiedad;
 use App\Propiedad;
+use App\CodigoPais;
 use Session;
 use QrCode;
 use Mail;
@@ -43,9 +44,10 @@ class ListadoBoletaController extends Controller
 			4=> 'correoUsuario',
 			5=> 'telefonoUsuario',
 			6=> 'nombreEstado',
-			7=> 'options'
+			7=> 'created_at',
+			8=> 'options'
 		);
-		$totalData = Boleta::select('*')
+		$totalData = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		        ->count();
@@ -57,7 +59,7 @@ class ListadoBoletaController extends Controller
 
 		if(empty($request->input('search.value')))
 		{
-			$boletas = Boleta::select('*')
+			$boletas = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 				->offset($start)
@@ -66,7 +68,7 @@ class ListadoBoletaController extends Controller
 				->get();
 		}else{
 			$search = $request->input('search.value');
-			$boletas = Boleta::select('*')
+			$boletas = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		    	->where('usuarios.nombreUsuario', 'LIKE',"%{$search}%")
@@ -78,7 +80,7 @@ class ListadoBoletaController extends Controller
 				->orderBy('boletas.idBoleta','desc')
 				->get();
 
-			$totalFiltered = Boleta::select('*')
+			$totalFiltered = Boleta::select('boletas.*','usuarios.*','estados.*','boletas.created_at as fechaCompra')
 		        ->join('usuarios','boletas.idUsuario','=','usuarios.idUsuario')
 		        ->join('estados','boletas.idEstado','=','estados.idEstado')
 		    	->where('usuarios.nombreUsuario', 'LIKE',"%{$search}%")
@@ -98,6 +100,7 @@ class ListadoBoletaController extends Controller
 				$nestedData['correoUsuario'] = $boleta->correoUsuario;
 				$nestedData['telefonoUsuario'] = $boleta->telefonoUsuario;
 				$nestedData['nombreEstado'] = $boleta->nombreEstado;
+				$nestedData['created_at'] = date("d-m-Y",strtotime($boleta->fechaCompra));
 				if ($boleta->idEstado == 2) {
 					$nestedData['options'] = "<div class='dropdown'>
 		                        <a href='' class='dropdown-toggle card-drop' data-toggle='dropdown' aria-expanded='false'>
@@ -192,9 +195,6 @@ class ListadoBoletaController extends Controller
             Numero::where('idBoleta',$idBoleta)->update([
 	        	'idEstado'=>3
 	        ]);
-			$direccion = asset('comprobar/boleta')."/".Crypt::encrypt($boleta->idBoleta);
-			$qr = QrCode::format('png')->size(200)->generate($direccion);
-			//$pdf = PDF::loadView('admin.boletas.pdf',compact('boleta','numeros','qr','usuario','propiedad'));
 			$certificate = 'file://'.base_path().'/public/certificado/certificadoRifo.crt';
 			$key = 'file://'.base_path().'/public/certificado/llaveNoEncriptada.key';
 			$info = array(
@@ -204,17 +204,42 @@ class ListadoBoletaController extends Controller
 				'ContactInfo' => 'https://rifopoly.com/',
 			);
 			PDFTC::setSignature($certificate, $key, 'tcpdfdemo', '', 2, $info);
+			PDFTC::setHeaderCallback(function($pdf)
+			{
+				$style = array(
+					'vpadding' => 'auto',
+					'hpadding' => 'auto',
+					'fgcolor' => array(0,0,0),
+					'bgcolor' => false,
+					'module_width' => 1,
+					'module_height' => 1
+				);
+				$image_file = base_path().'/public/images/variantes logo rifopoly-05.png';
+				$pdf->Image($image_file, 15, 10, 48, '', 'PNG', '', 'T', false, 500, '', false, false, 0, false, false, false);
+			});
+			//PDFTC::SetFont('helvetica', '', 12);
 			PDFTC::SetTitle('Comprobante de Venta.pdf');
 			PDFTC::AddPage();
-			$text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
-			PDFTC::writeHTML($text, true, false, true, false, '');
-
-			$img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
-			$img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '">';
-			PDFTC::writeHTML($img, true, false, true, false, '');
 			
+			PDFTC::SetMargins(10, 35, 10, true);
+			PDFTC::SetProtection(array('modify'));
+			// print a line of text
+			$text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
+	
+			// add view content
+			PDFTC::writeHTML($text, true, false, true, false, '');
+			$img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
+	
+			$img = '<p align="center"><img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '"></p>';
+	
+			PDFTC::writeHTML($img, true, false, true, false, '');
+			//PDFTC::writeHTML($text, true, 0, true, 0);
+			// define active area for signature appearance
 			PDFTC::setSignatureAppearance(180, 60, 15, 15);
+			
+			// save pdf file
 			$fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
+			PDFTC::reset();
 			Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
             toastr()->info('Correo enviado exitosamente');
@@ -259,7 +284,8 @@ class ListadoBoletaController extends Controller
             return abort(401);
         }
 		$propiedades = Propiedad::where('idEstado',7)->get();
-		return view('admin.boletas.create',compact('propiedades'));
+		$codigosPaises = CodigoPais::all();
+		return view('admin.boletas.create',compact('propiedades','codigosPaises'));
 	}
 	public function store(Request $request)
 	{
@@ -270,7 +296,8 @@ class ListadoBoletaController extends Controller
                 'telefonoUsuario' => 'required',
                 'rutUsuario' => 'required',
                 'cantidadNumeros' => 'required',
-                'idPropiedad' => 'required'
+                'idPropiedad' => 'required',
+                'codigoPais' => 'required'
             ]);
             if ($validator->fails()) {
                 toastr()->info('Tienen que estar todos los datos llenos');
@@ -282,6 +309,7 @@ class ListadoBoletaController extends Controller
 			$usuario->correoUsuario = $request->correoUsuario;
 			$usuario->telefonoUsuario = $request->telefonoUsuario;
 			$usuario->rutUsuario = $request->rutUsuario;
+			$usuario->codigoPais = $request->codigoPais;
 			$usuario->save();
 
 			$propiedad = Propiedad::find($request->idPropiedad);
@@ -317,17 +345,42 @@ class ListadoBoletaController extends Controller
 				'ContactInfo' => 'https://rifopoly.com/',
 			);
 			PDFTC::setSignature($certificate, $key, 'tcpdfdemo', '', 2, $info);
+			PDFTC::setHeaderCallback(function($pdf)
+			{
+				$style = array(
+					'vpadding' => 'auto',
+					'hpadding' => 'auto',
+					'fgcolor' => array(0,0,0),
+					'bgcolor' => false,
+					'module_width' => 1,
+					'module_height' => 1
+				);
+				$image_file = base_path().'/public/images/variantes logo rifopoly-05.png';
+				$pdf->Image($image_file, 15, 10, 48, '', 'PNG', '', 'T', false, 500, '', false, false, 0, false, false, false);
+			});
+			//PDFTC::SetFont('helvetica', '', 12);
 			PDFTC::SetTitle('Comprobante de Venta.pdf');
 			PDFTC::AddPage();
-			$text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
-			PDFTC::writeHTML($text, true, false, true, false, '');
-
-			$img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
-			$img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '">';
-			PDFTC::writeHTML($img, true, false, true, false, '');
 			
+			PDFTC::SetMargins(10, 35, 10, true);
+			PDFTC::SetProtection(array('modify'));
+			// print a line of text
+			$text = view('admin.boletas.pdf2',compact('boleta','numeros','qr','usuario','propiedad'));
+	
+			// add view content
+			PDFTC::writeHTML($text, true, false, true, false, '');
+			$img_base64_encoded = 'data:image/png;base64,'.base64_encode($qr);
+	
+			$img = '<p align="center"><img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $img_base64_encoded) . '"></p>';
+	
+			PDFTC::writeHTML($img, true, false, true, false, '');
+			//PDFTC::writeHTML($text, true, 0, true, 0);
+			// define active area for signature appearance
 			PDFTC::setSignatureAppearance(180, 60, 15, 15);
+			
+			// save pdf file
 			$fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
+			PDFTC::reset();
 			Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
 
             toastr()->success('El ticket se ha enviado de forma correcta', 'Enviado Correctamente');

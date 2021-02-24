@@ -14,6 +14,7 @@ class Usuario extends Model
     	'telefonoUsuario',
     	'rutUsuario',
     	'password',
+		'codigoPais',
     	'idTipoUsuario'
     ];
 }

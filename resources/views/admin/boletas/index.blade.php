@@ -28,6 +28,7 @@ Rifo Mi Propiedad - Administrador
                               <th>Correo</th>
                               <th>Teléfono</th>
                               <th>Estado</th>
+                              <th>Fecha de compra</th>
                               <th>Acciones</th>
                             </tr>
                           </thead>
@@ -57,6 +58,7 @@ Rifo Mi Propiedad - Administrador
                     { "data": "correoUsuario" },
                     { "data": "telefonoUsuario" },
                     { "data": "nombreEstado" },
+                    { "data": "created_at" },
                     { "data": "options" }
                 ],
                 language: {
