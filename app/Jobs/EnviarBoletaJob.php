@@ -99,7 +99,35 @@ class EnviarBoletaJob implements ShouldQueue
         // save pdf file
         $fileatt = PDFTC::Output('Comprobante de Venta.pdf', 'S');
         PDFTC::reset();
-        $cantidadNumero = strlen(strval($usuario->telefonoUsuario));
+
+        //$cantidadNumero = strlen(strval($usuario->telefonoUsuario));
+
+        $enviar = SMS::sendSMS();
+        $enviar['cliente']->messages->create( $usuario->codigoPais.$usuario->telefonoUsuario,[
+            'from' => $enviar['numero'], 
+            'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://dev.rifomipropiedad.com.ngrok.io/tickets/'.$boleta->tokenCorto
+            ] 
+        );
+        /*
+        if($cantidadNumero == 9 ){
+            $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+        }else if($cantidadNumero == 11){
+            $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+        }else if($cantidadNumero == 12){
+            $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+        }*/
 
         try {
             Mail::to($usuario->correoUsuario)->bcc(['pauloberrios@gmail.com','tickets@rifopoly.com','lina.di@isbast.com','ivan.saez@informatica.isbast.com'])->send(new EnvioBoleta($boleta, $numeros, $fileatt, $usuario,$propiedad));
@@ -108,26 +136,12 @@ class EnviarBoletaJob implements ShouldQueue
                 'modeloOrigen' => "EMAIL",
                 'idUsuario' => $usuario->idUsuario
             ]);
-            $enviar = SMS::sendSMS();
-            if($cantidadNumero == 9 ){
-                $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
-                    'from' => $enviar['numero'], 
-                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                    ] 
-                );
-            }else if($cantidadNumero == 11){
-                $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
-                    'from' => $enviar['numero'], 
-                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                    ] 
-                );
-            }else if($cantidadNumero == 12){
-                $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
-                    'from' => $enviar['numero'], 
-                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                    ] 
-                );
-            }
+            $enviar['cliente']->messages->create( $usuario->codigoPais.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://dev.rifomipropiedad.com.ngrok.io/tickets/'.$boleta->tokenCorto
+                ] 
+            );
+            
             LogTransaccion::create([
                 'tipoTransaccion' => "SMS ENVIADO",
                 'modeloOrigen' => "SMS",
@@ -139,36 +153,24 @@ class EnviarBoletaJob implements ShouldQueue
                 'modeloOrigen' => "EMAIL",
                 'idUsuario' => $usuario->idUsuario
             ]);
-            if($cantidadNumero == 9 ){
-                $enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
-                    'from' => $enviar['numero'], 
-                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                    ] 
-                );
-            }else if($cantidadNumero == 11){
-                $enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
-                    'from' => $enviar['numero'], 
-                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                    ] 
-                );
-            }else if($cantidadNumero == 12){
-                $enviar['cliente']->messages->create($usuario->telefonoUsuario,[
-                    'from' => $enviar['numero'], 
-                    'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
-                    ] 
-                );
-            }
+            $enviar['cliente']->messages->create( $usuario->codigoPais.$usuario->telefonoUsuario,[
+                'from' => $enviar['numero'], 
+                'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://dev.rifomipropiedad.com.ngrok.io/tickets/'.$boleta->tokenCorto
+                ] 
+            );
             LogTransaccion::create([
                 'tipoTransaccion' => "SMS ENVIADO",
                 'modeloOrigen' => "SMS",
                 'idUsuario' => $usuario->idUsuario
             ]);
+        }catch ( \Services_Twilio_RestException $e ) {
+            LogTransaccion::create([
+                'tipoTransaccion' => "EL SMS NO SE ENVIO",
+                'modeloOrigen' => "SMS",
+                'idUsuario' => $usuario->idUsuario
+            ]);  
         }
-
-
         
-        
-
 
     }
 }

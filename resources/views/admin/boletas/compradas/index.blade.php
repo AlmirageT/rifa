@@ -24,6 +24,7 @@ Rifo Mi Propiedad - Administrador
                                   <th>Rut</th>
                                   <th>Correo</th>
                                   <th>Teléfono</th>
+                                  <th>Fecha compra</th>
                                   <th>Acciones</th>
                                 </tr>
                               </thead>
@@ -57,6 +58,7 @@ Rifo Mi Propiedad - Administrador
                     { "data": "rutUsuario" },
                     { "data": "correoUsuario" },
                     { "data": "telefonoUsuario" },
+                    { "data": "created_at" },
                     { "data": "options" }
                 ],
                 language: {

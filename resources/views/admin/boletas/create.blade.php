@@ -33,7 +33,20 @@ Rifo Mi Propiedad - Administrador
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="">Teléfono Comprador</label>
-                                        <input type="number" required class="form-control" name="telefonoUsuario" min="111111111" max="999999999">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <select name="codigoPais" class="form-control">
+                                                    @foreach ($codigosPaises as $codigoPais)
+                                                        @if ($codigoPais->nombrePais == "Chile")
+                                                            <option value="{{ $codigoPais->codigoPais }}" selected>{{ $codigoPais->codigoPais }}</option>
+                                                        @else
+                                                            <option value="{{ $codigoPais->codigoPais }}">{{ $codigoPais->codigoPais }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <input type="number" class="form-control" name="telefonoUsuario" aria-describedby="basic-addon1" required>
+                                          </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
