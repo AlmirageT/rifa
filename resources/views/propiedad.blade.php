@@ -28,7 +28,7 @@
 <br>
 <br>
 <main class="cont-body int-mobile">
-    <h1 class="ml2">Gana estos premios con $20.000</h1>
+    <h1 class="ml2">Gana estos premios con ${{ number_format($propiedades->first()->valorRifa,0,',','.') }}</h1>
     <br>
     @if(count($propiedades)>1)
         <form class="form-buscar wow slideInLeft" data-wow-delay="0.4s" action="{{ asset('tienda-rifo-propiedades') }}" method="POST">
