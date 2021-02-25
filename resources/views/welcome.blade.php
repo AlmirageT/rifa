@@ -38,7 +38,7 @@
     {{--  
       <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>--}}
       <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque sí, cree en tu suerte. Compra tu número y desafía al destino.</p> 
-      <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>$20.000.-</strong></p>
+      <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>${{ number_format($propiedades->first()->valorRifa,0,',','.') }}.-</strong></p>
       <br>
       <p class="">Son 10 premios: Departamento de Lujo(premio mayor) y 9 premios en efectivo.</p>
 
@@ -59,7 +59,7 @@
       <label for="numero" class="tamanoLetra">Cantidad de Tickets</label>
       <input type="number" id="numero"  name="numero" class="" placeholder="" value="1" min="1">
       
-      <p class="tamanoLetra" id="totalBoletos">TOTAL: $20.000.-</p>
+      <p class="tamanoLetra" id="totalBoletos">TOTAL: ${{ number_format($propiedades->first()->valorRifa,0,',','.') }}.-</p>
       <div class="cont-botonesCompra">
       <button class="btnCompra" type="submit">Comprar ahora</button>
       <!--<button class="btnCarrito" type="submit">Agregar al carrito</button> -->
@@ -77,7 +77,7 @@
   </div>
   <div class="seccion-2">
       <h2 class="wow zoomIn">¿Dónde y cómo se realiza?</h2>
-      <p class="wow fadeInUp">Comprando tu ticket de la suerte por $20.000 participas en el sorteo de 10 premios en total. Se realizará en la notaria Manquehual de Santiago, ante Notario, jefa de Registro y Mr. Rifopoly. Se transmitirá por YouTube live y redes sociales, de este modo todos los compradores pueden presenciarlo.</p>
+      <p class="wow fadeInUp">Comprando tu ticket de la suerte por ${{ number_format($propiedades->first()->valorRifa,0,',','.') }} participas en el sorteo de 10 premios en total. Se realizará en la notaria Manquehual de Santiago, ante Notario, jefa de Registro y Mr. Rifopoly. Se transmitirá por YouTube live y redes sociales, de este modo todos los compradores pueden presenciarlo.</p>
   </div>
 </div>
 <main class="cont-body ">
