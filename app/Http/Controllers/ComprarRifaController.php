@@ -163,6 +163,28 @@ class ComprarRifaController extends Controller
                             'totalBoleta' => Session::get('total'),
                             'idUsuario' => $usuario->idUsuario
                         ]);
+                        $numeros = Numero::where('idBoleta',Session::get('boletaCarrito'))->get();
+                        foreach (Session::get('carritoCompra') as $carrito) {
+                            if(count($numeros) < $carrito['cantidad']){
+                                $diferenciaNumeros = $carrito['cantidad'] - count($numeros);
+                                for ($i=0; $i < $diferenciaNumeros; $i++) { 
+                                    $numeros = Numero::where('idPropiedad',$carrito['idPropiedad'])->where('idEstado', 1)->first()->update([
+                                        'idBoleta' => Session::get('boletaCarrito'),
+                                        'idEstado' => 2
+                                    ]);
+                                }
+                            }else if(count($numeros) > $carrito['cantidad']){
+                                $diferenciaNumeros =  count($numeros)-$carrito['cantidad'];
+                                $numeros = Numero::where('idBoleta',Session::get('boletaCarrito'))->orderBy('idNumero','DESC')->get();
+                                for ($i=0; $i < $diferenciaNumeros; $i++) { 
+                                    $numeros->first()->update([
+                                        'idBoleta' => null,
+                                        'idEstado' => 1
+                                    ]);
+                                }
+                            }
+                        }
+                        
                         DB::commit();
 
                         return redirect()->to('https://otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.Session::get('boletaCarrito').'&tiidc=03');
@@ -203,6 +225,28 @@ class ComprarRifaController extends Controller
                                 'totalBoleta' => Session::get('total'),
                                 'idUsuario' => $usuario->idUsuario
                             ]);
+                            $numeros = Numero::where('idBoleta',Session::get('boletaCarrito'))->get();
+                            foreach (Session::get('carritoCompra') as $carrito) {
+                                if(count($numeros) < $carrito['cantidad']){
+                                    $diferenciaNumeros = $carrito['cantidad'] - count($numeros);
+                                    for ($i=0; $i < $diferenciaNumeros; $i++) { 
+                                        $numeros = Numero::where('idPropiedad',$carrito['idPropiedad'])->where('idEstado', 1)->first()->update([
+                                            'idBoleta' => Session::get('boletaCarrito'),
+                                            'idEstado' => 2
+                                        ]);
+                                    }
+                                }else if(count($numeros) > $carrito['cantidad']){
+                                    $diferenciaNumeros =  count($numeros)-$carrito['cantidad'];
+                                    $numeros = Numero::where('idBoleta',Session::get('boletaCarrito'))->orderBy('idNumero','DESC')->get();
+                                    for ($i=0; $i < $diferenciaNumeros; $i++) { 
+                                        $numeros->first()->update([
+                                            'idBoleta' => null,
+                                            'idEstado' => 1
+                                        ]);
+                                    }
+                                }
+                            }
+                        
                             DB::commit();
 
                             return redirect()->to('https://otrospagos.com/publico/portal/enlace?id='.getenv('OTROS_PAGOS_COVENIO').'&idcli='.Session::get('boletaCarrito').'&tiidc=03');
@@ -235,7 +279,6 @@ class ComprarRifaController extends Controller
                             'idBoleta' => $boleta->idBoleta
                         ]);
                     }
-                    DB::commit();
 
 
                 }

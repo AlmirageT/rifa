@@ -679,6 +679,13 @@ class PropiedadController extends Controller
             }else if(count(Session::get('carritoCompra'))==1){
                 Session::forget('carritoCompra');
                 Session::forget('total');
+                if(Session::has('usuarioComprador')){
+                    Session::forget('usuarioComprador');
+                }
+                if(Session::has('boletaCarrito')){
+                    Session::forget('boletaCarrito');
+                    
+                }
             }
         }
         toastr()->success('Eliminado Correctamente', 'Se ha eliminado el ticket solicitado');
