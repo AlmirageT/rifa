@@ -285,7 +285,7 @@
 </script>
 <script>
   $(document).ready(function(){
-    initAlert();
+    // initAlert();
     function initAlert() {
 
         Swal.fire({
