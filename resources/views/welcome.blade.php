@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/jquery.nice-number.css') }}">
 <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
 <link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset ('css/sweetalert2.css') }}">
 <style>
   .portada{
       background-image: url('{{ asset('images/banner_Mesa de trabajo 1.jpg') }}'); 
@@ -18,6 +19,36 @@
       width: 100%;
       height: auto;
     }
+</style>
+<style type="text/css">
+    .swal2-modal {
+        max-width: 100%;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .swal2-image {
+        height: auto !important;
+        width: auto !important;
+        margin: auto;
+    }
+    .carousel {
+        /height: 100vh;/
+        width: 100%;
+        overflow:hidden;
+    }
+    .carousel .carousel-inner {
+        height:100%;    
+    }
+    .carousel .carousel-inner img {
+        display:block;
+        object-fit: cover;
+    }
+</style>
+<style>
+  .swal2-confirm{
+    width: 100px !important;
+  }
 </style>
 @endsection
 @section('imagen-inicio')
@@ -38,7 +69,7 @@
     {{--  
       <h1 class="ml2">Rifa Departamento de Lujo</h1> <br>--}}
       <p class="wow slideInLeft" data-wow-delay="0.6s">No llegaste a Rifopoly porque sí, cree en tu suerte. Compra tu número y desafía al destino.</p> 
-      <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>$20.000.-</strong></p>
+      <p class="wow slideInLeft" data-wow-delay="0.6s">Valor ticket de la suerte : <strong>${{ number_format($propiedades->first()->valorRifa,0,',','.') }}.-</strong></p>
       <br>
       <p class="">Son 10 premios: Departamento de Lujo(premio mayor) y 9 premios en efectivo.</p>
 
@@ -59,7 +90,7 @@
       <label for="numero" class="tamanoLetra">Cantidad de Tickets</label>
       <input type="number" id="numero"  name="numero" class="" placeholder="" value="1" min="1">
       
-      <p class="tamanoLetra" id="totalBoletos">TOTAL: $20.000.-</p>
+      <p class="tamanoLetra" id="totalBoletos">TOTAL: ${{ number_format($propiedades->first()->valorRifa,0,',','.') }}.-</p>
       <div class="cont-botonesCompra">
       <button class="btnCompra" type="submit">Comprar ahora</button>
       <!--<button class="btnCarrito" type="submit">Agregar al carrito</button> -->
@@ -77,7 +108,7 @@
   </div>
   <div class="seccion-2">
       <h2 class="wow zoomIn">¿Dónde y cómo se realiza?</h2>
-      <p class="wow fadeInUp">Comprando tu ticket de la suerte por $20.000 participas en el sorteo de 10 premios en total. Se realizará en la notaria Manquehual de Santiago, ante Notario, jefa de Registro y Mr. Rifopoly. Se transmitirá por YouTube live y redes sociales, de este modo todos los compradores pueden presenciarlo.</p>
+      <p class="wow fadeInUp">Comprando tu ticket de la suerte por ${{ number_format($propiedades->first()->valorRifa,0,',','.') }} participas en el sorteo de 10 premios en total. Se realizará en la notaria Manquehual de Santiago, ante Notario, jefa de Registro y Mr. Rifopoly. Se transmitirá por YouTube live y redes sociales, de este modo todos los compradores pueden presenciarlo.</p>
   </div>
 </div>
 <main class="cont-body ">
@@ -207,6 +238,7 @@
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>
 <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
 <script src="{{ asset('js/slick.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 <script>
   $(function(){
     $('#numero').niceNumber({
@@ -249,6 +281,29 @@
   $('.single-item').slick({
     autoplay: true,
     autoplaySpeed: 3000,
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    // initAlert();
+    function initAlert() {
+
+        Swal.fire({
+            imageUrl: '{{ asset('/images/popup RIFOPOLY_pop up.jpg') }}',
+            imageHeight: 300,
+            imageAlt: 'pop up',
+            allowEscapeKey: true,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            showCloseButton: true,
+            cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+            timer: 150000
+        }).then((result) => {
+            if (result.value) {
+                console.log(result.value);
+            }
+        });
+      }
   });
 </script>
 @endsection
