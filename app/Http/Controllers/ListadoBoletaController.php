@@ -121,6 +121,7 @@ class ListadoBoletaController extends Controller
 		                        <div class='dropdown-menu dropdown-menu-center'>
 		                        	<a href='".asset('administrador/transacciones/boletas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
 		                        	<a href='".asset('administrador/transacciones/boletas/validadas/reenviar-boleta')."/".$boleta->idBoleta."/".$boleta->idUsuario."' class='dropdown-item btn btn-info'>Reenviar Ticket</a>
+		                        	<a href='".asset('administrador/transacciones/boletas/validadas/reenviar-boleta-sms')."/".$boleta->idBoleta."/".$boleta->idUsuario."' class='dropdown-item btn btn-info'>Reenviar SMS</a>
 								</div>
 		                    </div>";
 				}
