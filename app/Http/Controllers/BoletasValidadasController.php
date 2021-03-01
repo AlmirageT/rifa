@@ -12,6 +12,7 @@ use App\Propiedad;
 use App\Usuario;
 use App\Numero;
 use App\BoletaPropiedad;
+use App\SMS;
 use QrCode;
 use PDFTC;
 use Mail;
@@ -101,7 +102,8 @@ class BoletasValidadasController extends Controller
 		                        <div class='dropdown-menu dropdown-menu-center'>
 		                        	<a href='".asset('administrador/transacciones/boletas/validadas/detalle-boleta')."/".$boleta->idBoleta."' class='dropdown-item btn btn-info'>Detalles</a>
 		                        	<a href='".asset('administrador/transacciones/boletas/validadas/reenviar-boleta')."/".$boleta->idBoleta."/".$boleta->idUsuario."' class='dropdown-item btn btn-info'>Reenviar Ticket</a>
-		                        </div>
+		                        	<a href='".asset('administrador/transacciones/boletas/validadas/reenviar-boleta-sms')."/".$boleta->idBoleta."/".$boleta->idUsuario."' class='dropdown-item btn btn-info'>Reenviar SMS</a>
+								</div>
 		                    </div>";
 				$data[] = $nestedData;
 			}
@@ -188,5 +190,41 @@ class BoletasValidadasController extends Controller
 		toastr()->success('El ticket se ha enviado de forma correcta', 'Enviado Correctamente');
 		return back();
 
+	}
+	public function reeviarSMS($idBoleta, $idUsuario)
+	{
+		$boleta = Boleta::find($idBoleta);
+		$usuario = Usuario::find($idUsuario);
+		$enviar = SMS::sendSMS();
+		if($usuario->codigoPais != null){
+			$enviar['cliente']->messages->create( $usuario->codigoPais.$usuario->telefonoUsuario,[
+				'from' => $enviar['numero'], 
+				'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://dev.rifomipropiedad.com.ngrok.io/tickets/'.$boleta->tokenCorto
+				] 
+			);
+		}else{
+			$cantidadNumero = strlen(strval($usuario->telefonoUsuario));
+			if($cantidadNumero == 9 ){
+				$enviar['cliente']->messages->create( '+56'.$usuario->telefonoUsuario,[
+					'from' => $enviar['numero'], 
+					'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+					] 
+				);
+			}else if($cantidadNumero == 11){
+				$enviar['cliente']->messages->create( '+'.$usuario->telefonoUsuario,[
+					'from' => $enviar['numero'], 
+					'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+					] 
+				);
+			}else if($cantidadNumero == 12){
+				$enviar['cliente']->messages->create($usuario->telefonoUsuario,[
+					'from' => $enviar['numero'], 
+					'body' => 'Gracias por comprar tu ticket en rifopoly. Descarga tu ticket en https://rifopoly.com/tickets/'.$boleta->tokenCorto
+					] 
+				);
+			}
+		}
+		toastr()->info('SMS enviado exitosamente');
+		return back();
 	}
 }

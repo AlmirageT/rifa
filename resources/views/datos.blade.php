@@ -267,23 +267,6 @@
             $.get('{{ asset('revisar-estado-boleta') }}',function(data, status) {
                 if(data == true){
                     window.location.href='{{ asset('felicidades-por-su-compra') }}';
-                }else{
-                  document.getElementById('resumenPropiedades').innerHTML = '';
-                  document.getElementById('totalResumen').innerHTML = '';
-                  document.getElementById('resumenPropiedades').innerHTML = `
-                    <div class="desglose">
-                      <h1>No hay tickets comprados</h1>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                  `;
-                  document.getElementById('totalResumen').innerHTML = `
-                    <h5>Resumen de la compra</h5>
-                    <p>TOTAL: $00.000.-</p>
-                  `;
-
                 }
             });
             timeout();

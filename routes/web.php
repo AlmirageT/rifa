@@ -61,6 +61,7 @@ Route::group(['prefix'=>'administrador'], function(){
 			Route::get('validadas','BoletasValidadasController@index');
 			Route::get('validadas/detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
 			Route::get('validadas/reenviar-boleta/{idBoleta}/{idUsuario}','BoletasValidadasController@reeviar');
+			Route::get('validadas/reenviar-boleta-sms/{idBoleta}/{idUsuario}','BoletasValidadasController@reeviarSMS');
 			Route::get('compradas','BoletasCompradasController@index');
 			Route::get('compradas/detalle-boleta/{idBoleta}','ListadoBoletaController@detalle');
 			Route::get('compradas/enviar-boleta/{idBoleta}','ListadoBoletaController@enviarBoleta');
